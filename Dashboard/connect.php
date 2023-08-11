@@ -137,7 +137,7 @@
         //search
         function search($name){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn where title like '%$name%'";
+            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%')";
             $result = $db->getList($query);
             return $result;
         }
