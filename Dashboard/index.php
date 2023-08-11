@@ -6,7 +6,7 @@
 <?php  include ('inc/deshboad.php'); ?>
                 </div>
                 <div class="recent-order">
-                    <h2>SẢN PHẨM</h2>
+                <h2>SẢN PHẨM - <span style="color: green;">Thuocsi.vn</span></h2>
                     
                     <table>
                     <?php
