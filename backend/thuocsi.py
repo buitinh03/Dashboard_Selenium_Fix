@@ -6,24 +6,21 @@ import psycopg2
 from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, request, redirect
 import datetime
-import subprocess
-import codecs
 import sys
+import codecs
 import os
 from dotenv import load_dotenv
+from flask import Flask, request, redirect
 
 # Load environment variables from .env file
 load_dotenv()
 
 
-
-# Set console encoding to UTF-8
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
-
+    
 app = Flask(__name__)
 
 
@@ -37,7 +34,9 @@ def run_python():
     numend = request.form.get('numend')
     bd = numstart
     kt = numend
-
+    
+    
+# Tự động cài đặt ChromeDriver phù hợp với phiên bản Chrome đã cài đặt
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
@@ -45,11 +44,8 @@ def run_python():
     driver = webdriver.Chrome(options=chrome_options)
     url = "https://thuocsi.vn/products"
 
+    # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
-        # host="localhost",
-        # database="thuocsi_selenium",
-        # user="postgres",
-        # password="abcd@1234"
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
         user=os.getenv("DB_USER"),
@@ -60,8 +56,11 @@ def run_python():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
                 title TEXT,
-                price TEXT,
-                sales_in_last_24_hours INTEGER,
+                giacu TEXT,
+                ngaycu date,
+                giamoi TEXT,
+                ngaymoi date,
+                sales_in_last_24_hours TEXT,
                 month_1 TEXT,
                 month_2 TEXT,
                 month_3 TEXT,
@@ -73,20 +72,18 @@ def run_python():
                 month_9 TEXT,
                 month_10 TEXT,
                 month_11 TEXT,
-                month_12 TEXT,	
-                nha_san_xuat TEXT,
-                nuoc_san_xuat TEXT,			
+                month_12 TEXT,
                 photo TEXT,
+                nha_san_xuat TEXT,
+                nuoc_san_xuat TEXT,
                 hamluong_thanhphan TEXT,
                 thong_tin_san_pham TEXT,
-                link TEXT,
-                ngay timestamp 
-
+                link TEXT
             )
         ''')
         connection.commit()
 
-    # Mở đường dẫn URL
+    # Đăng nhập vào trang web
     driver.get(url)
     try:
         wait = WebDriverWait(driver, 10)
@@ -95,8 +92,7 @@ def run_python():
         click_login.click()
 
         username_input = wait.until(
-            EC.visibility_of_element_located(
-                (By.CSS_SELECTOR, ".MuiFormControl-root:nth-child(1) .MuiInputBase-input")))
+            EC.visibility_of_element_located((By.CSS_SELECTOR, ".MuiFormControl-root:nth-child(1) .MuiInputBase-input")))
         password_input = wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
@@ -110,18 +106,18 @@ def run_python():
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".styles_root__yHa_F > .styles_tab_panel__NAwAa")))
     except (NoSuchElementException, TimeoutException) as e:
         print("Đăng nhập thành công ")
-        print("Sản phẩm đang được load ")
         connection.commit()
+
 
     def extract_product_info(html):
         soup = BeautifulSoup(html, 'html.parser')
 
         manufacturer = ""
         country_of_origin = ""
-        sales_in_last_24_hours = ""
         product_info = ""
+        sales_in_last_24_hours = ""
 
-        # Find the manufacturer info and extract data if available
+        # Tìm thông tin nhà sản xuất và trích xuất dữ liệu nếu có
         manufacturer_info = soup.find('div', class_='styles_warpper____CUU')
         if manufacturer_info:
             manufacturer_element = manufacturer_info.find('a', class_='styles_manufactureInfoLink__0pU6d')
@@ -135,9 +131,13 @@ def run_python():
             if country_of_origin_element:
                 country_of_origin = country_of_origin_element.text
 
+        product_info_element = soup.find('div', class_='styles_content__L0lSp')
+        if product_info_element:
+            product_info = product_info_element.text.strip()
+
         sales_element = soup.find('p', class_='MuiTypography-root styles_nameDescNumber__JUiEI MuiTypography-body1')
         if sales_element:
-            sales_in_last_24_hours = sales_element.text.strip().replace('.', '')
+            sales_in_last_24_hours = sales_element.text.strip()
 
         product_name_element = wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm')))
@@ -177,41 +177,43 @@ def run_python():
 
         return manufacturer, country_of_origin, tphl, product_info, sales_in_last_24_hours, product_name
 
-    # num_pages_to_scrape = 1
+
+    num_pages_to_scrape = 1
     link = []
-    for page_num in range(int(bd), int(kt) + 1):
+    for page_num in range(1, num_pages_to_scrape + 1):
         url = f"https://thuocsi.vn/products?page={page_num}"
         driver.get(url)
         l = driver.find_elements(By.CSS_SELECTOR,
-                                 ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
+                                ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
         for i in l:
             lin = i.get_attribute('href')
             link.append(lin)
+
 
     def check_product_exist(cursor, product_name):
         cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
-    # Thêm các sản phẩm vào cơ sở dữ liệu với giá mới lưu vào 12 tháng gần nhất
+    # Thêm các sản phẩm vào cơ sở dữ liệu với giá mới lưu vào tháng hiện tại
     for a in link:
         try:
-            ngay1 = datetime.datetime.now()
-            ngay = ngay1.replace(microsecond=0)
+            ngay = datetime.datetime.now()
             a = a.replace("/loading", "")
             driver.get(a)
             ten = ""
-            gia = None
-            gia_sales = ""
+            gia = ""
             anh = ""
             nha_san_xuat = ""
             nuoc_san_xuat = ""
             tphl = ""
-            product_info = ""
+            thong_tin_san_pham = ""
             sales_in_last_24_hours = ""
             product_name = ""
+
+
             try:
                 html = driver.page_source
-                nha_san_xuat, nuoc_san_xuat, tphl, product_info, sales_in_last_24_hours, product_name = extract_product_info(
+                nha_san_xuat, nuoc_san_xuat, tphl, thong_tin_san_pham, sales_in_last_24_hours, product_name = extract_product_info(
                     html)
             except NoSuchElementException:
                 pass
@@ -219,11 +221,11 @@ def run_python():
             try:
                 ten = driver.find_element(By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm').text
             except NoSuchElementException:
-                ten = "N/A"
+                ten = ""
 
             try:
                 gia_element = driver.find_element(By.CSS_SELECTOR,
-                                                  'div.styles_old_price__n6fx5,span.styles_old_price__n6fx5')
+                                                'div.styles_old_price__n6fx5,span.styles_old_price__n6fx5')
                 gia = gia_element.text
                 gia = gia.replace('.', '').replace('đ', '')
                 gia = int(gia)
@@ -243,45 +245,40 @@ def run_python():
 
             if gia is None:
                 gia = gia_sales
-
             try:
                 anh = driver.find_element(By.CSS_SELECTOR, 'img.styles_imageMain__UQ9fH').get_attribute('src')
             except NoSuchElementException:
                 anh = "N/A"
 
+            # Lấy tháng hiện tại (từ 1 đến 12) và lưu vào biến current_month
+            current_month = datetime.datetime.now().month
+
             with connection.cursor() as cursor:
                 if check_product_exist(cursor, product_name):
-                    cursor.execute('''
-                            UPDATE thuocsi_vn
-                            SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham= %s, 
-                                    hamluong_thanhphan = %s,
-                                sales_in_last_24_hours = %s, month_12 = month_11, month_11 = month_10, month_10 = month_9,
-                                month_9 = month_8, month_8 = month_7, month_7 = month_6, month_6 = month_5,
-                                month_5 = month_4, month_4 = month_3, month_3 = month_2, month_2 = month_1, month_1 = %s,ngay = %s
-                            WHERE title = %s;
-                        ''', (
-                        anh, nha_san_xuat, nuoc_san_xuat, product_info, tphl, sales_in_last_24_hours, gia_sales,ngay,
-                        product_name ))
+                    # Sản phẩm đã tồn tại, cập nhật thông tin của nó
+                    cursor.execute(f'''
+                                UPDATE thuocsi_vn
+                                SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham = %s, hamluong_thanhphan = %s,
+                                    sales_in_last_24_hours = %s, month_{current_month} = %s, link = %s,
+                                    giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s
+                                WHERE title = %s;
+                            ''', (
+                    anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, sales_in_last_24_hours, gia_sales, a, gia_sales,
+                    ngay, product_name))
                 else:
-                    cursor.execute('''
-                                    INSERT INTO thuocsi_vn (title, price, photo, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, 
-                                        hamluong_thanhphan, sales_in_last_24_hours, month_1, link,ngay)
-                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-                                ''', (
-                        product_name, gia, anh, nha_san_xuat, nuoc_san_xuat, product_info, tphl, sales_in_last_24_hours,
-                        gia_sales, a, ngay))
+                    cursor.execute(f'''
+                                INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
+                                thong_tin_san_pham, hamluong_thanhphan, sales_in_last_24_hours, month_{current_month}, link)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                            ''', (
+                    product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl,
+                    sales_in_last_24_hours, gia_sales, a))
                 connection.commit()
         except Exception as e:
-            pass
+            print("Lỗi khi scraping sản phẩm:", str(e))
 
     connection.close()
     driver.quit()
-    # host_url=request.host_url
-    # return redirect(host_url)
-    # return 'Bạn đã cào thành công'
-    # return redirect(cur_path)
     return '''<script>window.history.back();</script>'''
-
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
