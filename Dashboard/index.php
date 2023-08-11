@@ -6,7 +6,7 @@
 <?php  include ('inc/deshboad.php'); ?>
                 </div>
                 <div class="recent-order">
-                    <h2>SẢN PHẨM</h2>
+                <h2>SẢN PHẨM - <span style="color: green;">Thuocsi.vn</span></h2>
                     
                     <table>
                     <?php
@@ -64,10 +64,10 @@
                             while($set = $result->fetch()){
                                 $j++
                         ?>
-                        <tbody>
+                      <tbody>
                             <tr onclick="handleClick(event)">
                                 <td><?php echo $j;?></td>
-                                <td class="title"><?php echo $set['title']?></td>
+                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
                                 <td class="warning" style="text-align: right;"><?php echo $set['sales_in_last_24_hours'] ?></td>
                                 <?php 
                                 if($sorow==0){
@@ -83,14 +83,11 @@
                                 }
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: center;"><?php echo $set['ngaymoi']; ?></td>
-                                <td class="title">thuocsi.vn</td>
-                                <td style="align-items: center; text-align:center; margin: 0 auto;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
+                                <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
+                                <td class="nguon"><a href="https://thuocsi.vn/products">thuocsi.vn</a></td>
+                                <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
-
-                               
-                               
                             </tr>
                             <?php 
                                       }
