@@ -317,22 +317,48 @@
                     </form> -->
                     
                     <script>
-                    document.getElementById("runButton").addEventListener("click", function(){
+                   document.getElementById("runButton").addEventListener("click",function(){
+                        var fun=[a,b]
+                        for(var i=0;i<fun.length;i++){
+                            fun[i]();
+                        }
+                    })
+                    function a(){
                     // Thực hiện một yêu cầu HTTP (AJAX) để chạy file Python
+                    setTimeout(function(){
+                        document.querySelector('.adress-form').style.display = "none";
+                        
+                    },5000)
                     var xhr = new XMLHttpRequest();
                     xhr.open("GET", "/run-python", true); // Đổi "/run-python" thành URL tương ứng với file Python của bạn
                     xhr.send();
-                    // alert('Phiên cào giá trang web thuocsi.vn đang chạy. Vui lòng chờ trong giây lát')
+                    
                     // Xử lý kết quả từ server (nếu cần thiết)
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                         var response = xhr.responseText;
                         // Xử lý kết quả ở đây
-                        
+                           
                         }
+                        
+                    }; 
+                                 
                     };
-                    
-                    });
+                    function b(){
+                        // console.log("tắt");
+                        // alert('Phiên cào giá trang web thuocsi.vn đang chạy. Vui lòng chờ trong giây lát');  
+                        // document.querySelector(alert).style.display ="none"
+                        swal({
+                        title: "Thông báo",
+                        text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
+                        icon: "success",
+                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                        buttons: false,  // Ẩn nút Close
+                        });
+                        localStorage.setItem('eventName', 'true');
+
+                        
+                    }
                     
                     </script>
                     <!-- <button id="caogia-button" onclick="sendCaoGiaRequest()">

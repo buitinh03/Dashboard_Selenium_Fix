@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="./style.css">    
         <link rel="stylesheet" href="css/detail.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
        <div class="container">
