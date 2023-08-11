@@ -27,8 +27,6 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                <!-- <th>Nhà SX</th>
-                                <th>Nước SX</th> -->
                                 <th>SL bán</th>
                                 <?php 
                                 $h1=0;
