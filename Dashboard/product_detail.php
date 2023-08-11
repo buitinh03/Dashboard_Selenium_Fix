@@ -38,7 +38,7 @@ include_once('connect.php');
 
         <h2>Thời gian:</h2>
     
-        <p><?php echo $result['ngay'] ?></p>
+        <p><?php echo $result['ngaymoi'] ?></p>
 
         <div class="features">
             <h3>Đặc tính sản phẩm:</h3>
@@ -53,17 +53,17 @@ include_once('connect.php');
 
         <p class="price">Giá:
         <?php
-         if($price == $result['price']){
+         if($price == $result['giamoi']){
             ?>
-             <span ><?php echo number_format($result['price']); ?><sup>đ</sup> (giá cũ)</span>
+             <span ><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (giá cũ)</span>
              <?php 
-            }elseif($price > $result['price']){
+            }elseif($price > $result['giamoi']){
                 ?>
-            <span style="color: green;"><?php echo number_format($result['price']); ?><sup>đ</sup> (giảm)</span>
+            <span style="color: green;"><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (giảm)</span>
             <?php 
             } else{
                 ?>
-            <span style="color: red;"><?php echo number_format($result['price']); ?><sup>đ</sup> (tăng)</span>
+            <span style="color: red;"><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (tăng)</span>
             <?php 
             } 
             ?>
@@ -90,62 +90,44 @@ include_once('connect.php');
                         <h1>BẢNG SO SÁNH GIÁ QUA CÁC THÁNG</h1>
                     </div>
                     <div class="warranty-policy-content">
-                        <!-- <span>12 tháng gần nhất</span> -->
-                            <?php
-                                $thang=array();
-                                
-                                for($j=0;$j<12;$j++){
-                                    $thang[$j]="month_".($j+1);
-                                }
-                            ?>
-                            
-                            <?php
-                            $dam=0;
-                            for($i=11;$i>=0;$i--){  
-                                if($result[$thang[$i]]!= "") {
-                                    $dam++;
-                                } 
-                                
-                                if($result[$thang[$i]]!= ""&&$result[$thang[$i+1]]!= ""){
-                                    
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Tháng 1</th>
+                                <th>Tháng 2</th>
+                                <th>Tháng 3</th>
+                                <th>Tháng 4</th>
+                                <th>Tháng 5</th>
+                                <th>Tháng 6</th>
+                                <th>Tháng 7</th>
+                                <th>Tháng 8</th>
+                                <th>Tháng 9</th>
+                                <th>Tháng 10</th>
+                                <th>Tháng 11</th>
+                                <th>Tháng 12</th>
+
+                            </tr>
+                            </thead>
+                         <tbody>
+                         <tr>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                                <td>100.00đ</td>
+                            </tr>
+                          
+                         </tbody>
                            
-                            if($result[$thang[$i]]==$result[$thang[$i+1]]){
-                            ?>
-                            <span class="spans"><?php echo "Tháng ".($dam); ?>
-                            <li ><p style="color: black;"><span>+ </span><?php echo number_format($result[$thang[$i]]); ?><sup>đ</sup> <?php echo "(Giá không đổi(0%)  So với tháng ".($dam-1).")"?></p></li>
-                            </span>
-                            <?php 
-                            }elseif($result[$thang[$i]]>$result[$thang[$i+1]]){
-                            ?>
-                            <?php  $phantram = $result[$thang[$i]] / $result[$thang[($i+1)]] * 100; $ket = $phantram - 100; $ketqua = round($ket * 100) / 100; ?>
-                            <span class="spans"><?php echo "Tháng ".($dam); ?>
-                            <li ><p style="color: red;"><span>+ </span><?php echo number_format($result[$thang[$i]]); ?><sup>đ</sup> <?php echo "(Giá tăng ".$ketqua." %  So với tháng ".($dam-1).")";?></p></li>
-                            </span>
-                            <?php 
-                            }elseif($result[$thang[$i]]<$result[$thang[$i+1]]){
-                            ?>
-                            <?php $phantram = $result[$thang[$i+1]] / $result[$thang[($i)]] * 100; $ket = 100-$phantram; $ketqua = round($ket * 100) / 100; ?>
-                            <span class="spans"><?php echo "Tháng ".($dam); ?>
-                            <li ><p style="color: green;"><span>+ </span><?php echo number_format($result[$thang[$i]]); ?><sup>đ</sup> <?php echo "(Giá giảm ".$ketqua." % So với tháng ".($dam-1).")"?></p></li>
-                            </span>
-                            <?php }}
-                            if($result[$thang[$i]]!= ""&&$result[$thang[$i+1]]== ""){
-                            ?>
-                                <span class="spans"><?php echo "Tháng ".($dam); ?>
-                                <li ><p style="color: black;"><span>+ </span><?php echo number_format($result[$thang[$i]]); ?><sup>đ</sup><?php echo "(giá tháng".($dam).")"; ?></p></li>
-                                </span>
-                            <?php 
-                            }
-                            if($result[$thang[11]]!= ""){
-                            ?>
-                                <span class="spans"><?php echo "Tháng ".($dam); ?>
-                                <li ><p style="color: black;"><span>+ </span><?php echo number_format($result[$thang[$i]]); ?><sup>đ</sup><?php echo "(giá tháng".($dam).")"; ?></p></li>
-                                </span>
-                            <?php 
-            
-                            }
-                            
-                        }   ?>    
+                        </table>
+                       
                     </div>
                 </div>
                         

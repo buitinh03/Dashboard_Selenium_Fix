@@ -72,9 +72,63 @@
             <!END OF RECENT>
              <div class="sales-analytics">
                     <h2>Sản phẩm bán chạy</h2>
+                    <div class="item online" >
+                        <div class="icon" style="background-color: #f97e0e;">
+                         <span class="material-icons-sharp"><img src="images/vuongmien1.jpg" alt="" class="img"></span>
+                     </div>
+                
+                        <div class="right">
+                  
+                         <?php
+                         $tongsanpham =  $pd->tongsanpham();
+                         if($tongsanpham){
+                             while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){
+ 
+                   
+                         ?>
+                         <style>
+
+                            .img {
+                                background-color: #ddd;
+                            }
+                          
+                          .right .item.online h3 a span{
+                            transition: all .5s ease;
+                           
+                        }
+
+                        .right .item.online h3 a:hover span{
+                            color:  #f97e0e;
+                            margin-top: 5px;
+                        }
+
+                        .right .item.online .h3 {
+                            margin-top: 10px;
+                        }
+
+                        .info a:hover span{
+                            color:  #f97e0e;
+                        }
+                         </style>
+                         <div class="info">
+                                <h3 class="h3"><a href="#"><span>Tổng sản phẩm</span></a></h3>
+                         
+                         </div>
+                        
+                        <h1 class="success" style="color: black; font-weight:normal;"><?php echo $result['quantity']?>Sp</h1>
+                      
+                       
+                          <h3></h3>
+                          <?php
+                                
+                            }
+                        }
+                        ?>
+                        </div>
+                    </div> 
                     <div class="item online">
                         <div class="icon">
-                         <span class="material-icons-sharp"><img src="images/top1.jpg" alt=""></span>
+                         <span class="material-icons-sharp"><img src="images/caonhat.avif" alt=""></span>
                      </div>
                 
                         <div class="right">
@@ -85,7 +139,7 @@
 
                          ?>
                          <div class="info">
-                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['price']?>">Mua nhiều nhất</a></h3>
+                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['giamoi']?>">Mua nhiều nhất</a></h3>
                              <small class="text-muted"><?php echo $fm->textShorten($result['title'], 23) ?></small>
                          </div>
                         <?php
@@ -94,7 +148,7 @@
                             while($row = $phantramnhieunhat->fetch(PDO::FETCH_ASSOC)){
 
                         ?>
-                        <h5 class="success">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramnhieunhat'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
+                        <h5 class="danger">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramnhieunhat'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
                         <?php
                             }
                         }
@@ -108,62 +162,29 @@
                         ?>
                         </div>
                     </div> 
-                    <div class="item offline">
-                        <div class="icon">
-                         <span class="material-icons-sharp"><img src="images/top2.jpg" alt=""></span>
-                     </div>
-                        <div class="right">
-                        <?php
-                        $buy_the_two = $pd-> buy_the_two();
-                        if($buy_the_two){
-                            while($result = $buy_the_two->fetch(PDO::FETCH_ASSOC)){
-
-                        ?>
-                         <div class="info">
-                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['price']?>">Mua nhiều nhì</a></h3>
-                             <small class="text-muted"><?php echo $fm->textShorten($result['title'], 23) ?></small>
-                         </div>
-                      <?php
-                        $phantramnhieunhi = $pd->phantramnhieunhi();
-                        if($phantramnhieunhi){
-                            while($row = $phantramnhieunhi->fetch(PDO::FETCH_ASSOC)){
-
-                         ?>
-                        <h5 class="danger">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramnhieunhi'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
-                     <?php
-                            }
-                        }
-                        ?>
-                     
-                         <h3><?php echo $result['sales_in_last_24_hours']?>Sp</h3>
-                         <?php
-                             }
-                        }
-                        ?>
-                        </div>
-                    </div>
+                 
                     <div class="item customers">
                         <div class="icon">
-                         <span class="material-icons-sharp"><img src="images/top3b.jpg" alt=""></span>
+                         <span class="material-icons-sharp"><img src="images/thapnhat.jpg" alt=""></span>
                      </div>
                         <div class="right">
                         <?php
-                        $muanhieunhi = $pd-> buy_the_three();
-                         if($muanhieunhi){
-                            while($result = $muanhieunhi->fetch(PDO::FETCH_ASSOC)){
+                        $buy_min = $pd-> buy_min();
+                         if($buy_min){
+                            while($result = $buy_min->fetch(PDO::FETCH_ASSOC)){
 
                          ?>
                          <div class="info">
-                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['price']?>">Mua nhiều ba</a></h3>
+                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['giamoi']?>">Mua ít nhất</a></h3>
                              <small class="text-muted"><?php echo $fm->textShorten($result['title'], 23) ?></small>
                          </div>
                          <?php
-                        $phantramnhieuba = $pd->phantramnhieuba();
+                        $phantramnhieuba = $pd->phantramitnhat();
                         if($phantramnhieuba){
                             while($row = $phantramnhieuba->fetch(PDO::FETCH_ASSOC)){
 
                          ?>
-                        <h5 class="success">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramnhieuba'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
+                        <h5 class="success">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramitnhat'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
                      <?php
                             }
                         }
@@ -176,7 +197,7 @@
                         }
                         ?>
                         </div>
-                    </div> 
+                    </div>
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>
@@ -258,7 +279,7 @@
                             }
 
                         </style>
-                        <li id="adress-form"><a href="#"><h3>Tiếp tục Cào</h3></a></li>
+                        <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
                         <div class="adress-form">
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>

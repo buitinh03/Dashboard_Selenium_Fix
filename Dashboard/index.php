@@ -11,35 +11,20 @@
                     <table>
                     <?php
                         $pro = new product();
-                        $tuan = array();
-                        for($h=0;$h<12;$h++){
-                            $tuan[$h]="month_".($h+1);
-                        }
-                        $socol = array();
-                        for($h=0;$h<12;$h++){
-                            $demcol = $pro->testcol($tuan[$h]);
+                            $demcol = $pro->testcol('giacu');
                             $demd = $demcol->fetch();
-                            
-                            $socol[$h]=$demd['sothu'];
-                        }
+                            $sorow=$demd['sothu'];
                      ?>
                         <thead>
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
                                 <th>SL bán</th>
-                                <?php 
-                                $h1=0;
-                                for($h=11;$h>=0;$h--){
-                                    
-                                    if((int)$socol[$h]!=0){
-                                        $h1++;
-                                ?>
-                                <th><?php echo "Lần ".($h1); ?></th>
-                                <?php
-                                    }
-                                }
-                                 ?>
+                                <th>Giá cũ</th>
+                                <th>Thời gian</th>
+                                <th>Giá mới</th>
+                                <th>Thời gian</th>
+                                <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
                                 
@@ -73,6 +58,7 @@
                         $format = new Format();
                         $pro = new product();
                         $result = $pro ->getListproduct();
+             
                         if($result){
                             $j=0;
                             while($set = $result->fetch()){
@@ -83,20 +69,25 @@
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $set['title']?></td>
                                 <td class="warning" style="text-align: right;"><?php echo $set['sales_in_last_24_hours'] ?></td>
-                               
                                 <?php 
-                                for($h=11;$h>=0;$h--){
-                                    if($socol[$h]!=0){
+                                if($sorow==0){
                                 ?>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set[$tuan[$h]]); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: center;">-</td>
+                                <td class="primary" style="text-align: center;">-</td>
+                                <?php   
+                                }else{
+                                ?>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: center;"><?php echo $set['ngaycu']; ?></td>
                                 <?php
-                                    }
                                 }
-                                 ?>
-                              
+                                ?>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: center;"><?php echo $set['ngaymoi']; ?></td>
+                                <td class="title">thuocsi.vn</td>
                                 <td style="align-items: center; text-align:center; margin: 0 auto;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
-                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['price']?>">Chi tiết</a></td>
+                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
 
                                
                                
