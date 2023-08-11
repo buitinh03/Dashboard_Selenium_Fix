@@ -50,7 +50,20 @@
                             .thong_tin {
                                 text-align: left;
                             }
+                            
+                            .nguon {
+                                width: 10%;
+                            }
 
+                            td:nth-child(8) a{
+                                transition: all .5s ease;
+                                color: green;
+                                font-weight: bold;
+                            }
+
+                            .nguon a:hover{
+                                color: #00CC00;
+                            }
                          
                         </style>
                         
