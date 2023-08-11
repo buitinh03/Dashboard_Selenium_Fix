@@ -1,0 +1,232 @@
+
+/* Detail */
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.product {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 350px;
+}
+.product-image {
+    width: 22%;
+    height: auto;
+    background-color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    transition: 1s all ease;
+    margin-bottom: 20px;
+    border-radius: 3px;
+
+}
+
+.product-image:hover{
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.product-image img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 75%;
+    cursor: pointer;
+    transition: 1s all ease;
+    /* margin-bottom: 20px; */
+}
+
+
+.product-image:hover img {
+    transform: translateY(-10px);
+}
+.product-details {
+    width: 20%;
+    margin-left: 30px;
+    margin-right: 50px;
+    padding-right: 100;
+}
+h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+h2 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+p {
+    font-size: 14px;
+    color: #999;
+}
+
+.product_thongtin p {
+    width: 90%;
+    margin-left: 20px;
+    color: #5a5656;
+    font-size: 17px;
+}
+
+.product_hamluong p{
+    width: 90%;
+    margin-left: 20px;
+    color: #5a5656;
+    font-size: 17px;
+}
+.product_link {
+    width: 90%;
+    margin-bottom: 20px;
+}
+.product_link p{
+    width: 90%;
+    margin-left: 20px;
+    color: #5a5656;
+    font-size: 17px;
+}
+
+.product_link a {
+    color: blue;
+    transition: .5s all ease;
+    cursor: pointer;
+}
+
+.product_link a:hover {
+    color: #78a5d1;
+}
+.features {
+    margin-top: 20px;
+}
+.features h3 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+.features ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.features li {
+    display: flex;
+    margin-bottom: 10px;
+}
+.features li span {
+    font-size: 15px;
+    color: #999;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.features li p {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+.price {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 1px solid #333;
+}
+.add-to-cart {
+    display: block;
+    margin-top: 20px;
+    background-color: #78a5d1;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form label{
+    margin-top: 6px;
+    font-size: 20px;
+}
+
+.number-one {
+    font-size: 20px; 
+    width: 100px;
+    padding: 1px 0;
+    text-align:center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.number-one:focus{
+    outline: none;
+}
+
+.warranty-policy {
+    margin-top: 40%;
+    position: absolute;
+    max-width: 100%;
+    
+}
+.warranty-policy-h1 {
+    max-width: 90%;
+    margin-top: 3%;
+    border: 1px solid #333;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #ebebf7;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+}
+
+.warranty-policy-h1 h1 {
+    margin-left: 10px;
+    color: #464141;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.warranty-policy-content {
+    /* position: absolute; */
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    justify-content: space-between;
+    margin-top: 30px;
+    /* margin-left: 30px; */
+    margin-bottom: 30px;
+    /* border: 1px solid #333; */
+    background-color: #fff;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.warranty-policy-content span {
+    font-size: 18px;
+}
+
+.warranty-policy-content p {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.recent-order {
+    margin-top: 20px;
+}
+
+.spans {
+    color: #6a6a6e;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 34px;
+    margin-bottom: 10px;
+    max-width: 90%;
+}
+
+.container {
+    margin-bottom: 15%;
+}
