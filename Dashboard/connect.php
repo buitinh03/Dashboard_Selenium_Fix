@@ -42,7 +42,16 @@
 
         function getListproduct(){
             $db=new connect();
-            $select="select * from thuocsi_vn";
+            $select="SELECT giamoi/giacu as a,* FROM thuocsi_vn ORDER BY
+                                                CASE
+                                                    WHEN (giamoi / giacu) > 1 THEN (giamoi / giacu)
+                                                        END asc,
+                                                CASE
+                                                    WHEN (giamoi / giacu) < 1 THEN (giamoi / giacu)
+                                                    END asc,
+                                                CASE
+                                                    WHEN (giamoi / giacu) = 1 THEN (giamoi / giacu)
+                                                END ;";
             $result=$db->getList($select);
             return $result;
         }
