@@ -5,6 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ADMIN DASHBOARD</title>
         <!--MATERIAL CDN-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
