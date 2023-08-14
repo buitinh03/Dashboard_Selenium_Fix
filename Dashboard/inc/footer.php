@@ -164,7 +164,7 @@
                     </div> 
                  
                     <div class="item customers">
-                        <div class="icon">
+                        <!-- <div class="icon">
                          <span class="material-icons-sharp"><img src="images/thapnhat.jpg" alt=""></span>
                      </div>
                         <div class="right">
@@ -196,7 +196,13 @@
                             }
                         }
                         ?>
-                        </div>
+                        </div> -->
+                        <form action="" method="post">
+                            <p>Nhập thông tin đăng nhập</p>
+                            <input type="text" placeholder="Tên đăng nhập" name="username" id="" required oninvalid="setCustomValidity('Vui lòng điền tên đăng nhập')">
+                            <input type="text" placeholder="mật khẩu" name="password" id="" required oninvalid="setCustomValidity('Vui lòng điền mật khẩu')">
+                            <button type="submit" name="button" id="login">Xác nhận</button>
+                        </form>
                     </div>
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>

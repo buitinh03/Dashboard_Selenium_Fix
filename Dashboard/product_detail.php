@@ -109,21 +109,33 @@ include_once('connect.php');
                             </tr>
                             </thead>
                          <tbody>
+                            <?php  
+                            $format = new Format();
+                            $pro = new product();
+                            $result = $pro ->getListproduct();
+             
+                            if($result){
+                            
+                            while($set = $result->fetch()){ ?>
                          <tr>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                                <td>100.00đ</td>
-                            </tr>
-                          
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_1']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_2']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_3']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_4']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_5']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_6']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_7']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_8']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_9']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_10']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_11']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_12']); ?><sup>đ</sup></td>
+                                
+                        </tr>
+                            <?php 
+                                      }
+                                 }
+                            ?>
                          </tbody>
                            
                         </table>
