@@ -31,7 +31,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                <th>SL bán</th>
+                                
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
@@ -94,7 +94,7 @@
                             <tr onclick="handleClick(event)">
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
-                                <td class="warning" style="text-align: right;"><?php echo $set['sales_in_last_24_hours'] ?></td>
+                            
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -116,7 +116,7 @@
                                            $gialech=($set['giamoi']/$set['giacu']*100)-100;
                                          }
                                         else $gialech=100-($set['giamoi']/ $set['giacu']*100);
-                                    }else $gialech= 0;
+                                    }else {$gialech= 0;}
                                     $gialech=round($gialech,2);
                                     if ($set['giamoi']>$set['giacu']){
                                 ?>
@@ -126,7 +126,7 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>">thuocsi.vn</a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>"></a><?php echo $set['nguon']?></td>
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>

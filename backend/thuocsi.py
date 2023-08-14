@@ -56,11 +56,10 @@ def run_python():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
                 title TEXT,
-                giacu decimal,
+                giacu text,
                 ngaycu date,
-                giamoi decimal,
+                giamoi text,
                 ngaymoi date,
-                sales_in_last_24_hours TEXT,
                 month_1 TEXT,
                 month_2 TEXT,
                 month_3 TEXT,
@@ -77,8 +76,9 @@ def run_python():
                 nha_san_xuat TEXT,
                 nuoc_san_xuat TEXT,
                 hamluong_thanhphan TEXT,
-                thong_tin_san_pham TEXT,
-                link TEXT
+                thong_tin_san_pham TEXT,                
+                link TEXT,
+                nguon text DEFAULT 2
             )
         ''')
         connection.commit()
@@ -259,7 +259,7 @@ def run_python():
                     cursor.execute(f'''
                                 UPDATE thuocsi_vn
                                 SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham = %s, hamluong_thanhphan = %s,
-                                    sales_in_last_24_hours = %s, month_{current_month} = %s, link = %s,
+                                    month_{current_month} = %s, link = %s,
                                     giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s
                                 WHERE title = %s;
                             ''', (
@@ -268,11 +268,11 @@ def run_python():
                 else:
                     cursor.execute(f'''
                                 INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
-                                thong_tin_san_pham, hamluong_thanhphan, sales_in_last_24_hours, month_{current_month}, link)
-                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                                thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'thuocsi.vn');
                             ''', (
                     product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl,
-                    sales_in_last_24_hours, gia_sales, a))
+                     gia_sales, a))
                 connection.commit()
         except Exception as e:
             print("Lỗi khi scraping sản phẩm:", str(e))

@@ -2,7 +2,7 @@
 include_once('inc/header.php');
 // include_once('inc/deshboad.php');
 include_once('connect.php');
-
+include_once('format/format.php');
     $product = new product();
 ?>
 
@@ -21,7 +21,14 @@ include_once('connect.php');
 
 <div class="product">
     <?php
-    $detailPro = $product->details_product_2($id);
+    $detailPro = $product->details_product_2($id);   
+    $format = new Format();
+    $pro = new product();                            
+    $month=array();
+    for($thu=0;$thu<12;$thu++){
+        $month[$thu]="month_".($thu+1);
+    }                            
+                           
     if($detailPro){
         while($result = $detailPro->fetch()){
     ?>
@@ -109,32 +116,28 @@ include_once('connect.php');
                             </tr>
                             </thead>
                          <tbody>
-                            <?php  
-                            $format = new Format();
-                            $pro = new product();
-                            $result = $pro ->getListproduct();
-             
-                            if($result){
                             
-                            while($set = $result->fetch()){ ?>
+                                
                          <tr>
-                                <!-- <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_1']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_2']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_3']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_4']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_5']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_6']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_7']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_8']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_9']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_10']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_11']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_12']); ?><sup>đ</sup></td>
-                                 -->
+                                <?php
+                                for($j=0;$j<12;$j++){
+                                    if($result[$month[$j]]!=""){
+                                        ?>
+                                         <td class="primary" style="text-align: right;"><?php echo number_format( $result[$month[$j]]); ?><sup>đ</sup></td>
+                                        <?php
+                                    }
+                                    else {
+                                        ?>
+                                        <td class="primary" style="text-align:center;">-</td>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                
                         </tr>
                             <?php 
-                                      }
-                                 }
+                                      
+                                 
                             ?>
                          </tbody>
                            
