@@ -274,7 +274,25 @@ main .date{
     padding: 0.5rem 1.6rem;
     margin-bottom: 5px;
 }
+.income{
+    background:var(--color-white) ;
+    padding:var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    margin-bottom: .7rem;
+}
 
+.income:hover{
+    box-shadow: none;
+}
+.income span{
+    background:var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color:var(--color-white);
+    font-size: 2rem;
+}
 main .date input[type="date"]{
     background: transparent;
     color: var(--color-dark);

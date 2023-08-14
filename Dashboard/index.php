@@ -40,7 +40,13 @@
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
-                                
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <th hidden>month_<?php echo $k ?></th>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                         </thead>
                         <style>
@@ -130,6 +136,13 @@
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <td hidden><?php echo $set['month_'.$k] ?></td>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                             <?php 
                                       }
