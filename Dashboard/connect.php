@@ -42,15 +42,15 @@
 
         function getListproduct(){
             $db=new connect();
-            $select="SELECT cast (giamoi as real) / cast(giacu as real) as a,* FROM thuocsi_vn ORDER BY
+            $select="SELECT giamoi/giacu as a,* FROM thuocsi_vn ORDER BY
                                                 CASE
-                                                    WHEN (cast (giamoi as real) / cast(giacu as real)) > 1 THEN (cast (giamoi as real) / cast(giacu as real))
+                                                    WHEN (giamoi / giacu) > 1 THEN (giamoi / giacu)
                                                         END asc,
                                                 CASE
-                                                    WHEN (cast (giamoi as real) / cast(giacu as real)) < 1 THEN (cast (giamoi as real) / cast(giacu as real))
+                                                    WHEN (giamoi / giacu) < 1 THEN (giamoi / giacu)
                                                     END asc,
                                                 CASE
-                                                    WHEN (cast (giamoi as real) / cast(giacu as real)) = 1 THEN (cast (giamoi as real) / cast(giacu as real))
+                                                    WHEN (giamoi / giacu) = 1 THEN (giamoi / giacu)
                                                 END ;";
             $result=$db->getList($select);
             return $result;
