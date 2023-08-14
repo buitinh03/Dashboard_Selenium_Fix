@@ -42,7 +42,7 @@
         }
 
         .search-box input[type="text"] {
-            width: 200px;
+            width: 70%;
             padding: 10px;
             border: none;
             border-radius: 20px;

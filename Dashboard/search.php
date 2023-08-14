@@ -19,91 +19,94 @@
                     <h2>TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2>
                     
                     <table>
+                    <?php
+                        $pro = new product();
+                            $demcol = $pro->testcol('giacu');
+                            $demd = $demcol->fetch();
+                            $sorow=$demd['sothu'];
+                     ?>
                         <thead>
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Nhà SX</th>
-                                <th>Nước SX</th>
-                                <th>Thông tin</th>
                                 <th>SL bán</th>
-                                <th>Giá</th>
+                                <th>Giá cũ</th>
+                                <th>Thời gian</th>
+                                <th>Giá mới</th>
+                                <th>Thời gian</th>
+                                <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
+                                
                             </tr>
                         </thead>
+                        <style>
+                            .primary {
+                                text-align: right;
+                            }
+
+                            .title {
+                                text-align: left;
+                            }
+
+                            .nha-san-xuat {
+                                text-align: left;
+                            }
+
+                            .nuoc-san-xuat {
+                                text-align: left;
+                            }
+
+                            .thong_tin {
+                                text-align: left;
+                            }
+                            
+                            .nguon {
+                                width: 10%;
+                            }
+
+                            td:nth-child(8) a{
+                                transition: all .5s ease;
+                                color: green;
+                                font-weight: bold;
+                            }
+
+                            .nguon a:hover{
+                                color: #00CC00;
+                            }
+                         
+                        </style>
                         <?php 
-                      
+                        $format = new Format();
                         if(!empty($product_search) ){
                             $j=0;
                             while($set = $product_search->fetch()){
                                 $j++
                         ?>
                             <tbody>
-                            <tr>
+                            <tr onclick="handleClick(event)">
                                 <td><?php echo $j;?></td>
-                                <td><?php echo $set['title']?></td>
-                                <td><?php echo $set['nha_san_xuat'] ?></td>
-                                <td><?php echo $set['nuoc_san_xuat']?></td>
-                                <td><?php echo $fm->textShorten($set['thong_tin_san_pham'], 50)?></td>
-                                <td class="warning"><?php echo $set['sales_in_last_24_hours']?></td>
-                                <?php if($set['month_2'] == ""){
-                                    ?>
-                                <td class="primary"><?php echo number_format($set['month_1'])?><sup>đ</sup></td>
-                                <?php
-                                } elseif($set['month_3'] == ""){
+                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
+                                <td class="warning" style="text-align: right;"><?php echo $set['sales_in_last_24_hours'] ?></td>
+                                <?php 
+                                if($sorow==0){
                                 ?>
-                                 <td class="primary"><?php echo number_format($set['month_2'])?><sup>đ</sup></td>
-                                 <?php 
-                                }elseif($set['month_4'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_3'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_5'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_4'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_6'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_5'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_7'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_6'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_8'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_7'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_9'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_8'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_10'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_9'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_11'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_10'])?><sup>đ</sup></td>
-                                    <?php 
-                                }elseif($set['month_12'] == ""){
-                                ?>
-                                    <td class="primary"><?php echo number_format($set['month_11'])?><sup>đ</sup></td>
-                                    <?php 
+                                <td class="primary" style="text-align: center;">-</td>
+                                <td class="primary" style="text-align: center;">-</td>
+                                <?php   
                                 }else{
                                 ?>
-                                    <td class="primary"><?php echo number_format($set['month_12'])?><sup>đ</sup></td>
-                                    <?php 
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: center;"><?php echo $set['ngaycu']; ?></td>
+                                <?php
                                 }
                                 ?>
-                            
-                                <td style="align-items: center; text-align:center; margin: 0 auto;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
+                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>">thuocsi.vn</a></td>
+                                <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
-                                <td><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['price']?>">Chi tiết</a></td>
-                                <!-- <td><a href="#">Sửa</a><a href="#">Xoá</a></td> -->
-                                <!-- <td class="warning">Pending</td>
-                                <td class="primary">Details</td> -->
+                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                             </tr>
                             <?php 
                                       }

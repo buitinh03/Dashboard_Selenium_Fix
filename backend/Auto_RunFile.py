@@ -15,7 +15,7 @@ def my_task():
     subprocess.run(["python", python_script_path])
 
 # Schedule the task to run daily at 10 AM
-schedule.every().day.at("14:00").do(my_task)
+schedule.every().day.at("15:59").do(my_task)
 
 while True:
     schedule.run_pending()

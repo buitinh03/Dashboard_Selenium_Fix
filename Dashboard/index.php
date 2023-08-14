@@ -1,12 +1,19 @@
-<?php include "inc/header.php";
+<?php include_once('inc/header.php');
     include_once('format/format.php');
 
 ?>
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
                 </div>
+                <style>
+                    main .recent-order .a{
+                        text-align: start;
+                        display:contents;
+                        color: green;
+                    }
+                </style>
                 <div class="recent-order">
-                <h2>SẢN PHẨM - <span style="color: green;">Thuocsi.vn</span></h2>
+                <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
                     
                     <table>
                     <?php
@@ -64,7 +71,8 @@
                             .nguon a:hover{
                                 color: #00CC00;
                             }
-                         
+
+                           
                         </style>
                         
                         <?php 
@@ -97,7 +105,7 @@
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                                <td class="nguon"><a href="https://thuocsi.vn/products">thuocsi.vn</a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>">thuocsi.vn</a></td>
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
@@ -109,7 +117,7 @@
                        
                         </tbody>
                     </table>
-                    <a href="#">Show All</a>
+                    <a href="#"></a>
                 </div>
             </main>
          
