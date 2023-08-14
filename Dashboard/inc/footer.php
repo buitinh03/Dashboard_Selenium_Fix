@@ -163,41 +163,54 @@
                         </div>
                     </div> 
                  
-                    <div class="item customers">
-                        <div class="icon">
-                         <span class="material-icons-sharp"><img src="images/thapnhat.jpg" alt=""></span>
-                     </div>
-                        <div class="right">
-                        <?php
-                        $buy_min = $pd-> buy_min();
-                         if($buy_min){
-                            while($result = $buy_min->fetch(PDO::FETCH_ASSOC)){
-
-                         ?>
-                         <div class="info">
-                                <h3><a href="product_detail.php?id=<?php echo $result['photo']?>&price=<?php echo $result['giamoi']?>">Mua ít nhất</a></h3>
-                             <small class="text-muted"><?php echo $fm->textShorten($result['title'], 23) ?></small>
-                         </div>
-                         <?php
-                        $phantramnhieuba = $pd->phantramitnhat();
-                        if($phantramnhieuba){
-                            while($row = $phantramnhieuba->fetch(PDO::FETCH_ASSOC)){
-
-                         ?>
-                        <h5 class="success">+<?php $ket = $result['sales_in_last_24_hours'] / $row['phantramitnhat'] *100; $ketqua = round($ket * 100) / 100; echo $ketqua; ?>%</h5>
-                     <?php
-                            }
-                        }
-                        ?>
-                      
-                         <h3><?php echo $result['sales_in_last_24_hours']?>Sp</h3>
-                         <?php
-                        
-                            }
-                        }
-                        ?>
+                    <div class="income">
+                        <div style="display:flex;margin-bottom:5px">
+                            <span class="material-icons-sharp">leaderboard</span>
+                            <div class="tongsanpham"  style="padding-left: 10px; text-align:center;   font-size: 20px;"><?php ?><p style="font-size: larger;color:blue;color: var(--color-dark);font-weight: 500;">So sánh theo tháng</p></div>
                         </div>
-                    </div>
+                             <div class="middle">
+                            <canvas id="myChart"  style="height: 150px; width: 100%;"></canvas>
+                        </div>
+                        </div>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                    data: {
+                                labels: [],
+                                datasets: []
+                            },
+                            options: {}
+                        });
+
+                        function handleClick(event) {
+                            var rowData = event.target.parentNode;
+                            var cells = rowData.getElementsByTagName('td');
+
+                            var data = [];
+                            for (var i = 11; i <cells.length; i++) {
+                                data.push(parseInt(cells[i].innerText));
+                            }
+
+                            var dataset = {
+                                // label: 'Dòng ' + (myChart.data.labels.length + 1),
+                                label:cells[1].innerText,
+                                data: data,
+                                backgroundColor: 'blue'
+                            };
+                            var h=1;
+                            var lb=[];
+                            for (var i = 11; i <cells.length; i++){
+                                lb.push(h);
+                                h++
+                            }
+                            
+                            myChart.data.labels = lb;
+                            myChart.data.datasets = [dataset];
+                            myChart.update();
+                        }
+                    </script>
+
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>

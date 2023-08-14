@@ -56,9 +56,9 @@ def run_python():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
                 title TEXT,
-                giacu TEXT,
+                giacu decimal,
                 ngaycu date,
-                giamoi TEXT,
+                giamoi decimal,
                 ngaymoi date,
                 sales_in_last_24_hours TEXT,
                 month_1 TEXT,

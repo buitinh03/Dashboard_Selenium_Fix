@@ -14,8 +14,18 @@
                 </style>
                 <div class="recent-order">
                 <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
+<<<<<<< HEAD
                     
                     <table>
+=======
+                <style>
+                    main .recent-order table{
+                        
+                        border: 2px;
+                    }
+                </style>
+                    <table border="2">
+>>>>>>> origin/master
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -31,10 +41,17 @@
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
+                                <th>Giá lệch</th>
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
-                                
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <th hidden>month_<?php echo $k ?></th>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                         </thead>
                         <style>
@@ -104,11 +121,38 @@
                                 }
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+<<<<<<< HEAD
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
+=======
+                                <td class="primary" style="text-align: center;"><?php echo $set['ngaymoi']; ?></td>
+                                <?php
+                                    if($set['giamoi']!=0&&$set['giacu']!=0){
+                                        if( $set['giamoi']>$set['giacu']){
+                                           $gialech=($set['giamoi']/$set['giacu']*100)-100;
+                                         }
+                                        else $gialech=100-($set['giamoi']/ $set['giacu']*100);
+                                    }else $gialech= 0;
+                                    $gialech=round($gialech,2);
+                                    if ($set['giamoi']>$set['giacu']){
+                                ?>
+                                <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                <?php } elseif($set['giamoi']<$set['giacu']){ ?>
+                                    <td class="primary" style="text-align: right; color:red"><?php echo "-".$gialech."%" ?></td>
+                                <?php } else { ?>
+                                    <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
+                                <?php } ?>
+>>>>>>> origin/master
                                 <td class="nguon"><a href="<?php echo $set['link'];?>">thuocsi.vn</a></td>
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <td hidden><?php echo $set['month_'.$k] ?></td>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                             <?php 
                                       }

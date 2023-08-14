@@ -42,7 +42,16 @@
 
         function getListproduct(){
             $db=new connect();
-            $select="select * from thuocsi_vn";
+            $select="SELECT CAST(giamoi AS real)/CAST(giacu AS real) as a,* FROM thuocsi_vn ORDER BY
+                                                CASE
+                                                    WHEN (CAST(giamoi AS real) / CAST(giacu AS real)) > 1 THEN (CAST(giamoi AS real) / CAST(giacu AS real))
+                                                        END asc,
+                                                CASE
+                                                    WHEN (CAST(giamoi AS real) / CAST(giacu AS real)) < 1 THEN (CAST(giamoi AS real) / CAST(giacu AS real))
+                                                    END asc,
+                                                CASE
+                                                    WHEN (CAST(giamoi AS real) / CAST(giacu AS real)) = 1 THEN (CAST(giamoi AS real) / CAST(CAST(giacu AS real) AS real))
+                                                END ;";
             $result=$db->getList($select);
             return $result;
         }
@@ -137,7 +146,7 @@
         //search
         function search($name){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn where title like '%$name%'";
+            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%')";
             $result = $db->getList($query);
             return $result;
         }
