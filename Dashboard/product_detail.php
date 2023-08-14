@@ -118,7 +118,7 @@ include_once('connect.php');
                             
                             while($set = $result->fetch()){ ?>
                          <tr>
-                                <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_1']); ?><sup>đ</sup></td>
+                                <!-- <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_1']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_2']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_3']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_4']); ?><sup>đ</sup></td>
@@ -130,7 +130,7 @@ include_once('connect.php');
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_10']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_11']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['month_12']); ?><sup>đ</sup></td>
-                                
+                                 -->
                         </tr>
                             <?php 
                                       }
