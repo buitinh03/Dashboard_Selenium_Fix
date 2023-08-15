@@ -55,31 +55,31 @@ def run_python():
     with connection.cursor() as cursor:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
-                title TEXT,
-                giacu text,
-                ngaycu date,
-                giamoi text,
-                ngaymoi date,
-                month_1 TEXT,
-                month_2 TEXT,
-                month_3 TEXT,
-                month_4 TEXT,
-                month_5 TEXT,
-                month_6 TEXT,
-                month_7 TEXT,
-                month_8 TEXT,
-                month_9 TEXT,
-                month_10 TEXT,
-                month_11 TEXT,
-                month_12 TEXT,
-                photo TEXT,
-                nha_san_xuat TEXT,
-                nuoc_san_xuat TEXT,
-                hamluong_thanhphan TEXT,
-                thong_tin_san_pham TEXT,                
-                link TEXT,
-                nguon text DEFAULT 2
-            )
+            title TEXT,
+            giacu TEXT,
+            ngaycu date,
+            giamoi TEXT,
+            ngaymoi date,
+            month_1 TEXT,
+            month_2 TEXT,
+            month_3 TEXT,
+            month_4 TEXT,
+            month_5 TEXT,
+            month_6 TEXT,
+            month_7 TEXT,
+            month_8 TEXT,
+            month_9 TEXT,
+            month_10 TEXT,
+            month_11 TEXT,
+            month_12 TEXT,
+            photo TEXT,
+            nha_san_xuat TEXT,
+            nuoc_san_xuat TEXT,
+            hamluong_thanhphan TEXT,
+            thong_tin_san_pham TEXT,
+            link TEXT,
+            nguon TEXT DEFAULT 2
+        )
         ''')
         connection.commit()
 
@@ -96,8 +96,8 @@ def run_python():
         password_input = wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
-        username_input.send_keys("0898861325")
-        password_input.send_keys("giahuy1234")
+        username_input.send_keys("0332790644")
+        password_input.send_keys("abc")
 
         login_button = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_register__zCg7F > .MuiButton-label")))
@@ -175,7 +175,7 @@ def run_python():
         if product_info_element:
             product_info = product_info_element.text.strip()
 
-        return manufacturer, country_of_origin, tphl, product_info, sales_in_last_24_hours, product_name
+        return manufacturer, country_of_origin, tphl, product_info, product_name
 
 
     num_pages_to_scrape = 1
@@ -209,19 +209,20 @@ def run_python():
             thong_tin_san_pham = ""
             sales_in_last_24_hours = ""
             product_name = ""
+            nguon="thuocsi.vn"
 
 
             try:
                 html = driver.page_source
-                nha_san_xuat, nuoc_san_xuat, tphl, thong_tin_san_pham, sales_in_last_24_hours, product_name = extract_product_info(
+                nha_san_xuat, nuoc_san_xuat, tphl, thong_tin_san_pham, product_name = extract_product_info(
                     html)
             except NoSuchElementException:
                 pass
 
             try:
-                ten = driver.find_element(By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm').text
+                product_name = driver.find_element(By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm').text
             except NoSuchElementException:
-                ten = ""
+                product_name = ""
 
             try:
                 gia_element = driver.find_element(By.CSS_SELECTOR,
@@ -259,20 +260,20 @@ def run_python():
                     cursor.execute(f'''
                                 UPDATE thuocsi_vn
                                 SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham = %s, hamluong_thanhphan = %s,
-                                    month_{current_month} = %s, link = %s,
+                                     month_{current_month} = %s, link = %s,
                                     giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s
                                 WHERE title = %s;
                             ''', (
-                    anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, sales_in_last_24_hours, gia_sales, a, gia_sales,
+                    anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, gia_sales, a, gia_sales,
                     ngay, product_name))
                 else:
                     cursor.execute(f'''
-                                INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
-                                thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link)
-                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'thuocsi.vn');
-                            ''', (
-                    product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl,
-                     gia_sales, a))
+                               INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
+                            thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link, nguon)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                        ''', (
+                    product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl
+                    , gia_sales, a,nguon))
                 connection.commit()
         except Exception as e:
             print("Lỗi khi scraping sản phẩm:", str(e))

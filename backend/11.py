@@ -16,9 +16,9 @@ url = "https://thuocsi.vn/products"
 # Kết nối đến cơ sở dữ liệu PostgreSQL
 connection = psycopg2.connect(
     host="localhost",
-    database="Auto",
+    database="thuocsi",
     user="postgres",
-    password="123"
+    password="123456789a"
 )
 
 with connection.cursor() as cursor:
@@ -29,7 +29,6 @@ with connection.cursor() as cursor:
             ngaycu date,
             giamoi TEXT,
             ngaymoi date,
-            sales_in_last_24_hours TEXT,
             month_1 TEXT,
             month_2 TEXT,
             month_3 TEXT,
@@ -47,7 +46,8 @@ with connection.cursor() as cursor:
             nuoc_san_xuat TEXT,
             hamluong_thanhphan TEXT,
             thong_tin_san_pham TEXT,
-            link TEXT
+            link TEXT,
+            nguon TEXT DEFAULT 2
         )
     ''')
     connection.commit()
@@ -65,8 +65,8 @@ try:
     password_input = wait.until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
-    username_input.send_keys("0898861325")
-    password_input.send_keys("giahuy1234")
+    username_input.send_keys("0332790644")
+    password_input.send_keys("abc")
 
     login_button = wait.until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_register__zCg7F > .MuiButton-label")))
@@ -180,6 +180,7 @@ for a in link:
         thong_tin_san_pham = ""
         sales_in_last_24_hours = ""
         product_name = ""
+        nguon="thuocsi.vn"
 
         try:
             html = driver.page_source
@@ -230,21 +231,21 @@ for a in link:
                 cursor.execute(f'''
                             UPDATE thuocsi_vn
                             SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham = %s, hamluong_thanhphan = %s,
-                                sales_in_last_24_hours = %s, month_{current_month} = %s, link = %s,
+                                 month_{current_month} = %s, link = %s,
                                 giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s
                             WHERE title = %s;
                         ''', (
-                    anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, sales_in_last_24_hours, gia_sales, a,
+                    anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, gia_sales, a,
                     gia_sales,
                     ngay, product_name))
             else:
                 cursor.execute(f'''
                             INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
-                            thong_tin_san_pham, hamluong_thanhphan, sales_in_last_24_hours, month_{current_month}, link)
+                            thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link, nguon)
                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                         ''', (
-                    product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl,
-                    sales_in_last_24_hours, gia_sales, a))
+                    product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl
+                    , gia_sales, a,nguon))
             connection.commit()
     except Exception as e:
         print("Lỗi khi scraping sản phẩm:", str(e))

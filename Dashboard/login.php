@@ -17,7 +17,9 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signin'])){
       
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $hash = $_POST['password'];
+    $password = hash('sha256', $hash);
+ 
     $login_customer = $customer->login_customer($username, $password);
     
 }

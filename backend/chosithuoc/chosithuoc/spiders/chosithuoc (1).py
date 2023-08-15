@@ -57,7 +57,7 @@ class LaptopSpider(scrapy.Spider):
 
     def start_requests(self):
         categories = {
-            # 'hoa-my-pham': 73,
+            'hoa-my-pham': 1,
             # 'thuoc-tan-duoc': 341,
             'thuoc-xuong-khop': 2,
             # 'thuoc-giam-can': 9,
@@ -65,6 +65,7 @@ class LaptopSpider(scrapy.Spider):
             # 'thuc-pham-chuc-nang': 133,
             # 'thuc-pham-cao-cap': 14,
             # 'thiet-bi-y-te': 33,
+            # 'thuoc-khong-ke-don': 6,
         }
 
         for category, num_pages in categories.items():
@@ -104,10 +105,8 @@ class LaptopSpider(scrapy.Spider):
             giacu = '0'
         else:
             giacu = giacu_text.replace('đ', '').replace(',', '')
-        # maso = response.meta.get('maso')
-        # number = response.meta.get('number')
         img_url = response.meta.get('img_url')
-        ngay_moi = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Lấy ngày giờ hiện tại
+        ngay_moi = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         thanh_phan_xpath = '//h2[contains(., "Thành phần")]/following-sibling::ul[1]/li//text()'
         hamluong_thanhphan = response.xpath(thanh_phan_xpath).getall()
@@ -136,7 +135,6 @@ class LaptopSpider(scrapy.Spider):
         data = {
             'name': name.strip() if name else None,
             'giamoi': giacu.strip() if giacu else None,
-            # 'number': maso + ' ' + number.strip() if maso and number else None,
             f'month_{current_month}': giacu.strip() if giacu else None,
             'thong_tin': thong_tin if thong_tin else 'Không đề cập',
             'nha_san_xuat': nha_san_xuat if nha_san_xuat else 'Không đề cập',
@@ -151,12 +149,12 @@ class LaptopSpider(scrapy.Spider):
                 query = f'''
                     UPDATE thuocsi_vn
                     SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                        hamluong_thanhphan = %s, photo = %s, link = %s, giacu = %s, ngaycu = %s, giamoi = %s, ngaymoi = %s
+                        hamluong_thanhphan = %s, photo = %s, link = %s, giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon=%s 
                     WHERE title = %s;
                 '''
                 values = (
                 data[f'month_{current_month}'], data['thong_tin'], data['nha_san_xuat'], data['nuoc_san_xuat'],
-                data['hamluong_thanhphan'], data['img_url'], data['link'], data['giamoi'], ngay_moi, data['giamoi'], ngay_moi,
+                data['hamluong_thanhphan'], data['img_url'], data['link'], data['giamoi'], ngay_moi,'chosithuoc.com',
                 data['name'])
             else:
                 query = f'''

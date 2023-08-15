@@ -51,20 +51,17 @@ Session::checkSession();
                         <?php
                         $checkLoginAdmin = Session::get('adminType');
                         $check = Session::get('adminlogin');
-                        if($checkLoginAdmin == 1){
+                        if($checkLoginAdmin == 0){
                           
                          ?>
-                        '<a href="register.php">
-                            <span class="material-icons-sharp">local_mall</span>
+                       <a href="register.php">
+                            <span class="material-icons-sharp">sms_failed</span>
                             <h3>Tạo tài khoản</h3>
-                              </a>
+                        </a>
                         <?php
                     
                         }else {
-                            echo '<a href="register.php">
-                            <span class="material-icons-sharp">sms_failed</span>
-                            <h3>Tạo tài khoản</h3>
-                              </a>';
+                            echo '';
                         }
                         ?>
                      

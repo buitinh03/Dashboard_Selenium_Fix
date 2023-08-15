@@ -29,7 +29,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                <th>SL bán</th>
+                                
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
@@ -87,7 +87,7 @@
                             <tr onclick="handleClick(event)">
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
-                                <td class="warning" style="text-align: right;"><?php echo $set['sales_in_last_24_hours'] ?></td>
+                                
                                 <?php 
                                 if($sorow==0){
                                 ?>

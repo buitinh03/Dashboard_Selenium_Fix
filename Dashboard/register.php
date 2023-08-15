@@ -14,11 +14,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $signupuser = $_POST['signupuser'];
-    $password = $_POST['password'];
+    $hash = $_POST['password'];
+    $password = hash('sha256', $hash);
     $type = $_POST['type'];
 
     $insert_customer = $customer->insert_customer($fullname,$email,$phone,$signupuser,$password,$type);
-    
 }
 ?>
 <!DOCTYPE html>
