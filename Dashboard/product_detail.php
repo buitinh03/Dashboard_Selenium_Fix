@@ -41,8 +41,6 @@ include_once('format/format.php');
  
         <h1><?php echo $result['title'] ?></h1>
 
-        <p>Đã bán: <?php echo $result['sales_in_last_24_hours'] ?></p>
-
         <h2>Thời gian:</h2>
     
         <p><?php echo $result['ngaymoi'] ?></p>
@@ -90,6 +88,62 @@ include_once('format/format.php');
             <div class="product_link">
                 <h2>Sản phẩm</h2>
                 <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>"><ins>bấm vào đây !</ins></a></p>
+            </div>
+            <div class="container-cat">
+                <div class="warranty-policy">
+                    <div class="warranty-policy-h1">
+                        <h1>BẢNG SO SÁNH GIÁ QUA CÁC THÁNG</h1>
+                    </div>
+                    <div class="warranty-policy-content">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Tháng 1</th>
+                                <th>Tháng 2</th>
+                                <th>Tháng 3</th>
+                                <th>Tháng 4</th>
+                                <th>Tháng 5</th>
+                                <th>Tháng 6</th>
+                                <th>Tháng 7</th>
+                                <th>Tháng 8</th>
+                                <th>Tháng 9</th>
+                                <th>Tháng 10</th>
+                                <th>Tháng 11</th>
+                                <th>Tháng 12</th>
+
+                            </tr>
+                            </thead>
+                         <tbody>
+                            
+                                
+                         <tr>
+                                <?php
+                                for($j=0;$j<12;$j++){
+                                    if($result[$month[$j]]!=""){
+                                        ?>
+                                         <td class="primary" style="text-align: right;"><?php echo number_format( $result[$month[$j]]); ?><sup>đ</sup></td>
+                                        <?php
+                                    }
+                                    else {
+                                        ?>
+                                        <td class="primary" style="text-align:center;">-</td>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                
+                        </tr>
+                            <?php 
+                                      
+                                 
+                            ?>
+                         </tbody>
+                           
+                        </table>
+                       
+                    </div>
+                </div>
+                        
             </div>
             <div class="container-cat">
                 <div class="warranty-policy">

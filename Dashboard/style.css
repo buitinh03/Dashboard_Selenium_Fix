@@ -416,11 +416,7 @@ main table tbody td{
 }
 
 main table tbody tr:last-child td{
-<<<<<<< HEAD
     border: none;
-=======
-    /* border: none; */
->>>>>>> origin/master
 }
 
 main .recent-order a{
@@ -896,8 +892,6 @@ gap: 0.6rem;
 
 
 
-<<<<<<< HEAD
-=======
 
 
 

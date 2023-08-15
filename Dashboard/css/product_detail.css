@@ -165,7 +165,7 @@ p {
 
 .warranty-policy {
     margin-top: 40%;
-    position: absolute;
+    position: static;
     max-width: 100%;
     
 }
