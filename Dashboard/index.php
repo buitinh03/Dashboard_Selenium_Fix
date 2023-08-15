@@ -1,4 +1,4 @@
-<?php include "inc/header.php";
+<?php include_once('inc/header.php');
     include_once('format/format.php');
 
 ?>
@@ -14,13 +14,8 @@
                 </style>
                 <div class="recent-order">
                 <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
-                <style>
-                    main .recent-order table{
-                        
-                        border: 2px;
-                    }
-                </style>
-                    <table border="2">
+                    
+                    <table>
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -40,7 +35,13 @@
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
-                                
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <th hidden>month_<?php echo $k ?></th>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                         </thead>
                         <style>
@@ -77,7 +78,8 @@
                             .nguon a:hover{
                                 color: #00CC00;
                             }
-                         
+
+                           
                         </style>
                         
                         <?php 
@@ -109,7 +111,10 @@
                                 }
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
-                                <td class="primary" style="text-align: center;"><?php echo $set['ngaymoi']; ?></td>
+
+                                <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
+
+                                
                                 <?php
                                     if($set['giamoi']!=0&&$set['giacu']!=0){
                                         if( $set['giamoi']>$set['giacu']){
@@ -126,10 +131,22 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
+
                                 <td class="nguon"><a href="<?php echo $set['link'];?>"></a><?php echo $set['nguon']?></td>
+
+
+                                
+
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                <?php
+                                    for($k=1;$k<=12;$k++){
+                                        ?>
+                                        <td hidden><?php echo $set['month_'.$k] ?></td>
+                                <?php
+                                    }
+                                 ?>
                             </tr>
                             <?php 
                                       }
@@ -138,7 +155,7 @@
                        
                         </tbody>
                     </table>
-                    <a href="#">Show All</a>
+                    <a href="#"></a>
                 </div>
             </main>
          

@@ -1,6 +1,13 @@
+
 <?php
     include "connect.php";
 ?>
+<?php 
+
+include_once('lib/session.php');
+Session::checkSession();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,6 +20,7 @@
         <link rel="stylesheet" href="css/detail.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     </head>
     <body>
        <div class="container">
@@ -40,15 +48,31 @@
                             <span class="material-icons-sharp">local_mall</span>
                             <h3>Sản phẩm phụ</h3>
                         </a> 
-                        <!-- <a href="#">
+                        <?php
+                        $checkLoginAdmin = Session::get('adminType');
+                        $check = Session::get('adminlogin');
+                        if($checkLoginAdmin == 1){
+                          
+                         ?>
+                        '<a href="register.php">
                             <span class="material-icons-sharp">local_mall</span>
-                            <h3>Orders</h3>
-                        </a>
-                        <a href="#">
+                            <h3>Tạo tài khoản</h3>
+                              </a>
+                        <?php
+                    
+                        }else {
+                            echo '<a href="register.php">
+                            <span class="material-icons-sharp">sms_failed</span>
+                            <h3>Tạo tài khoản</h3>
+                              </a>';
+                        }
+                        ?>
+                     
+                      <!-- <a href="register.php">
                             <span class="material-icons-sharp">insights</span>
                             <h3>Analytics</h3>
-                        </a>
-                        <a href="#">
+                        </a> -->
+                     <!--   <a href="#">
                             <span class="material-icons-sharp">mail_outline</span>
                             <h3>Messages</h3>
                             <span class="message-count">26</span>
@@ -69,7 +93,12 @@
                             <span class="material-icons-sharp">add</span>
                             <h3>Add Product</h3>
                         </a>  -->
-                        <a href="#">
+                        <?php
+                            if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+                                Session::destroy();
+                            }
+                        ?>
+                        <a href="?action=logout">
                             <span class="material-icons-sharp">logout</span>
                             <h3>Đăng xuất</h3>
                         </a>
