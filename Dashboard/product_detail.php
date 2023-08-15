@@ -13,6 +13,7 @@ include_once('format/format.php');
     }else{
         $id = $_GET['id'];
         $price = $_GET['price'];
+        $link = $_GET['link'];
     }
 
 ?>
