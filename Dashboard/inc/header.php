@@ -39,15 +39,12 @@ Session::checkSession();
 
                     <div class="sidebar">
                         <a href="index.php" for="Dashboard">
+                            <i class="fa fa-caret-down dropdown__caret"></i>
                             <span class="material-icons-sharp">space_dashboard</span>
                             <h3 id="Dashboard">Bảng chính</h3>
                         </a>
                         <!-- class="active" -->
-                      <a href="productview.php" >
-                            <!-- <span class="material-icons-sharp">person_outline</span> -->
-                            <span class="material-icons-sharp">local_mall</span>
-                            <h3>Sản phẩm phụ</h3>
-                        </a> 
+                   
                           <?php
                         $checkLoginAdmin = Session::get('adminType');
                         $check = Session::get('adminlogin');
@@ -55,6 +52,7 @@ Session::checkSession();
                           
                          ?>
                        <a href="register.php">
+                            <i class="fa fa-caret-down dropdown__caret"></i>
                             <span class="material-icons-sharp">sms_failed</span>
                             <h3>Tạo tài khoản</h3>
                         </a>
