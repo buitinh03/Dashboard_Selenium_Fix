@@ -1125,4 +1125,9 @@ gap: 0.6rem;
  
  }
 
+aside .sidebar a:hover i{
+    color: #FF6600;
+    transform: rotate(-90deg);
+ }
+
 
