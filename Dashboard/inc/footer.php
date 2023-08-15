@@ -18,10 +18,11 @@
                         <span class="material-icons-sharp">dark_mode</span>
                     </div>
                     <div class="profile">
-                        <!-- <div class="info">
-                            <p>Hey,<b> Vizt</b></p>
-                            <small class="text-muted">Admin</small>
-                        </div> -->
+                        <div class="info">
+                            <p>Chào,<b><?php echo Session::get('adminUser');?></b></p>
+                            <?php $chucvu = Session::get('adminType');?>
+                            <small class="text-muted"><?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?></small>
+                        </div>
                     </div>
                     <div class="profile-photo">
                         <!-- <img src="./images/profile-1.jpg" > -->
