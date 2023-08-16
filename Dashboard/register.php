@@ -12,13 +12,12 @@ Session::checkSession();
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
     $signupuser = $_POST['signupuser'];
     $hash = $_POST['password'];
     $password = hash('sha256', $hash);
     $type = $_POST['type'];
 
-    $insert_customer = $customer->insert_customer($fullname,$email,$phone,$signupuser,$password,$type);
+    $insert_customer = $customer->insert_customer($fullname,$email,$signupuser,$password,$type);
 }
 ?>
 <!DOCTYPE html>
@@ -65,10 +64,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                         <i class="fas fa-envelope"></i>
                         <input type="email" name="email" placeholder="Email" required id="">
                     </div>
-                    <div class="input-field">
+<!--                <div class="input-field">
                     <i class="fas fa-phone"></i>
                         <input type="number" name="phone" placeholder="Điện thoại" maxlength="10" required id="" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);">
-                    </div>
+                    </div> -->
                     <div class="input-field">
                         <i class="fas fa-address-card"></i>
                         <select name="type" id="">
