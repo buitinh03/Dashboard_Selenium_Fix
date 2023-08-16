@@ -65,14 +65,25 @@
                                 width: 10%;
                             }
 
-                            td:nth-child(8) a{
+                             td:nth-child(7) a{
                                 transition: all .5s ease;
                                 color: green;
                                 font-weight: bold;
+                                text-align: left;
                             }
 
                             .nguon a:hover{
                                 color: #00CC00;
+                            }
+                            .nguona .thea {
+                                transition: all .5s ease;
+                                color: #0000BB;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
+
+                            .nguona .thea:hover {
+                                color: #3366FF;
                             }
                          
                         </style>
@@ -103,7 +114,21 @@
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon']?></a></td>
+                                            
+                                <?php 
+                                    if($set['nguon'] == 'thuocsi.vn'){
+                                ?>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <?php 
+                                    }elseif($set['nguon'] == 'chosithuoc.com'){
+                                ?>
+                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <?php 
+                                    }else{
+                                        echo "";
+                                    }
+                                    ?>
+       
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
