@@ -22,7 +22,7 @@ include_once('format/format.php');
 
 <div class="product">
     <?php
-    $detailPro = $product->details_product_2($id);   
+    $detailPro = $product->details_product_2($id, $link);   
     $format = new Format();
     $pro = new product();                            
     $month=array();
