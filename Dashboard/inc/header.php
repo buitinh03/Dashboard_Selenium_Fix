@@ -16,11 +16,17 @@ Session::checkSession();
         <title>ADMIN DASHBOARD</title>
         <!--MATERIAL CDN-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
         <link rel="stylesheet" href="./style.css">    
         <link rel="stylesheet" href="css/detail.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<<<<<<< HEAD
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+=======
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+>>>>>>> 8b87a77995c43702ad068c8fd5fc8879c1bb5cb9
     </head>
     <body>
        <div class="container">
@@ -39,12 +45,15 @@ Session::checkSession();
 
                     <div class="sidebar">
                         <a href="index.php" for="Dashboard">
-                            <i class="fa fa-caret-down dropdown__caret"></i>
                             <span class="material-icons-sharp">space_dashboard</span>
                             <h3 id="Dashboard">Bảng chính</h3>
                         </a>
+<<<<<<< HEAD
+                        
+=======
                         <!-- class="active" -->
                    
+>>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                           <?php
                         $checkLoginAdmin = Session::get('adminType');
                         $check = Session::get('adminlogin');
@@ -52,7 +61,6 @@ Session::checkSession();
                           
                          ?>
                        <a href="register.php">
-                            <i class="fa fa-caret-down dropdown__caret"></i>
                             <span class="material-icons-sharp">sms_failed</span>
                             <h3>Tạo tài khoản</h3>
                         </a>
@@ -88,6 +96,8 @@ Session::checkSession();
                             <span class="material-icons-sharp">add</span>
                             <h3>Add Product</h3>
                         </a>  -->
+                        <!-- <a href="#" id="nextPageButton">Xem thêm</a> -->
+                        
                         <?php
                             if(isset($_GET['action']) && $_GET['action'] == 'logout') {
                                 Session::destroy();

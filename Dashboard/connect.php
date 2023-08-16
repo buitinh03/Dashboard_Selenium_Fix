@@ -49,7 +49,7 @@
             WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
-        FROM thuocsi_vn ORDER BY gialech desc;";
+        FROM thuocsi_vn ORDER BY gialech desc limit 500;";
             $result=$db->getList($select);
             return $result;
         }
@@ -179,5 +179,7 @@
             $result = $db->getList($query);
             return $result;
         }
+
+        
     }
 ?>

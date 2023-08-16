@@ -177,7 +177,7 @@ p {
 }
 
 .warranty-policy {
-    position: absolute;
+    position: static;
     max-width: 100%;
     
 }
@@ -265,4 +265,9 @@ p {
 .warranty-policy-content table tbody tr td {
     padding: 5px 5px;
     /* border: 1px solid #333; */
+}
+.warranty-policy {
+    position: static;
+    max-width: 100%;
+    
 }
