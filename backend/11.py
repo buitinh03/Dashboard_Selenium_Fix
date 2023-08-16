@@ -241,8 +241,8 @@ for a in link:
             else:
                 cursor.execute(f'''
                             INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
-                            thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link, nguon)
-                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                            thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link,nguon)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s);
                         ''', (
                     product_name, gia_sales, ngay, anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl
                     , gia_sales, a,nguon))

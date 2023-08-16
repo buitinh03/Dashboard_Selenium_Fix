@@ -14,8 +14,38 @@
                 </style>
                 <div class="recent-order">
                 <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
-                    
-                    <table>
+                <style>
+                        #pagination {
+                            display: flex;
+                        }
+                    </style>
+                    <?php
+                         $tongsanpham =  $pd->tongsanpham();
+                         if($tongsanpham){
+                             while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){                   
+                            $tong= $result['quantity'];
+                         }
+                         if($tong%50==0){$trang=$tong/50;}
+                         else{$trang=$tong/50+1;}
+                        }
+                        ?>  
+                    <div id="pagination">
+                        <a href="#" id="pr">Previous</a>
+                        <?php 
+                        $page=array();                        
+                        for($i=0;$i<$trang;$i++){
+                            $page[$i]="p".($i+1);
+                        }
+                        $next=1; 
+                        for($i=0;$i<$trang;$i++){
+                            if($i<$next+9){                           
+                            ?>
+                            <a href="#" id=<?php echo "$page[$i]" ?>><?php echo ($i+1) ?></a>
+                            <?php
+                        }} ?>                        
+                        <a href="#" id="next">Next</a>
+                    </div>
+                    <table id="mytable">
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -42,6 +72,7 @@
                                 <?php
                                     }
                                  ?>
+                                
                             </tr>
                         </thead>
                         <style>
@@ -93,7 +124,7 @@
                                 $j++
                         ?>
                       <tbody>
-                            <tr onclick="handleClick(event)">
+                            <tr onclick="handleClick(event)" id="tbody" class="tr">
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
                             
@@ -131,11 +162,11 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
-
-                                <td class="nguon"><a href="<?php echo $set['link'];?>"></a><?php echo $set['nguon']?></td>
-
-
-                                
+                                <?php if($set['nguon']=="thuocsi.vn") {?>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: right"><?php echo $set['nguon']?></a></td>
+                                <?php } elseif($set['nguon']=="chosithuoc.com"){ ?>
+                                    <td class="nguon"><a href="<?php echo $set['link'];?>" style="color:#6699FF; text-align: right"><?php echo $set['nguon']?></a></td>
+                                <?php } ?>
 
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
@@ -155,7 +186,81 @@
                        
                         </tbody>
                     </table>
-                    <a href="#"></a>
+                    
+                 
+                    <script>
+                        
+                        $(function() {
+                            // Lấy phần chia trang và bảng
+                            const pagination = $("#pagination");
+                            const table = $("#mytable");                       
+                            
+                            // Đếm số dòng trong bảng
+                            const rowCount = table.find(".tr").length;
+                            // Đặt trang hiện tại thành 1
+                            var currentPage = 1;
+
+                            // Thêm một sự kiện lắng nghe cho liên kết "Previous"
+                            const pr =document.getElementById("pr");
+                            pr.addEventListener("click",function(){
+                                if (currentPage > 1) {
+                                currentPage--;
+                                showPage(currentPage);
+                            }
+                            });
+                                <?php 
+                            $page=array();                        
+                            for($i=0;$i<$trang;$i++){
+                                $page[$i]="p".($i+1);
+                            }
+                            for($i=0;$i<$trang;$i++){
+                            ?>
+                            const <?php echo $page[$i] ?> =document.getElementById(<?php echo '"'.$page[$i].'"' ?>);
+                                <?php echo $page[$i] ?>.addEventListener("click",function(){
+                                    currentPage=<?php echo $i+1 ?>;
+                                    // <?php $next=$i+1 ?>                                    
+                                    showPage(currentPage);  })
+                            <?php
+                                
+                            }?>
+                            // Thêm một sự kiện lắng nghe cho liên kết "Next"
+                            const next =document.getElementById("next");
+                            next.addEventListener("click",function(){
+                                
+                                currentPage++;
+                                showPage(currentPage);
+                            }
+                            );
+
+                            // Hiển thị trang hiện tại
+                            showPage(currentPage);
+
+                            // Định nghĩa chức năng để hiển thị một trang
+                            function showPage(page) {
+                            // Ẩn tất cả các dòng trong bảng
+                            table.find(".tr").hide();
+                            // Lấy hàng tiêu đề
+                            // const headerRow = table.rows[0];                            
+                            // // Hiển thị hàng tiêu đề
+                            // headerRow.style.display = "block";
+
+                            // Hiển thị các dòng cho trang hiện tại
+
+                            for (var i = (page - 1) * 50; i <page * 50 && i < rowCount; i++) {
+                                table.find(".tr").eq(i).show();
+                            }
+
+                            // Cập nhật các liên kết chia trang
+                            pagination.find("a.page").each(function() {
+                                $(this).removeClass("active");
+                            });
+
+                            // Đặt liên kết hoạt động cho trang hiện tại
+                            pagination.find("a.page").eq(page - 1).addClass("active");
+                            }
+                        });
+                    </script>
+                    
                 </div>
             </main>
          

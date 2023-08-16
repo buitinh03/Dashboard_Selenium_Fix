@@ -41,7 +41,7 @@ include_once('format/format.php');
  
         <h1><?php echo $result['title'] ?></h1>
 
-        <p>Đã bán: <?php echo $result['sales_in_last_24_hours'] ?></p>
+        
 
         <h2>Thời gian:</h2>
     
@@ -147,6 +147,7 @@ include_once('format/format.php');
                 </div>
                         
             </div>
+            
           </div>
 
           <?php

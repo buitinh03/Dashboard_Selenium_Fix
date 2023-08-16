@@ -106,6 +106,7 @@ def run_python():
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".styles_root__yHa_F > .styles_tab_panel__NAwAa")))
     except (NoSuchElementException, TimeoutException) as e:
         print("Đăng nhập thành công ")
+        print("Vui lòng đợi, sản phẩm đang tiến hành load")
         connection.commit()
 
 
@@ -176,11 +177,9 @@ def run_python():
             product_info = product_info_element.text.strip()
 
         return manufacturer, country_of_origin, tphl, product_info, product_name
-
-
-    num_pages_to_scrape = 1
+    num_pages_to_scrape = bd
     link = []
-    for page_num in range(1, num_pages_to_scrape + 1):
+    for page_num in range(bd, kt):
         url = f"https://thuocsi.vn/products?page={page_num}"
         driver.get(url)
         l = driver.find_elements(By.CSS_SELECTOR,
