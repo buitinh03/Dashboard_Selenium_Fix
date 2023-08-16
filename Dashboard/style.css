@@ -1130,4 +1130,19 @@ aside .sidebar a:hover i{
     transform: rotate(-90deg);
  }
 
+ main .recent-order h2 span i {
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    font-size: 0px;
+    margin-right: 2em;
+ }
+
+
+
+ main .recent-order h2 span:hover i{
+    transform: translateX(100%);
+    transform: rotate(-90deg);
+    font-size: 15px;
+ }
+
 
