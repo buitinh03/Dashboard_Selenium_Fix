@@ -1125,11 +1125,6 @@ gap: 0.6rem;
  
  }
 
-aside .sidebar a:hover i{
-    color: #FF6600;
-    transform: rotate(-90deg);
- }
-
  main .recent-order h2 span i {
     transform: translateX(-100%);
     transition: all .5s ease;
