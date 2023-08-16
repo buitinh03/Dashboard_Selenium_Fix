@@ -11,7 +11,7 @@ import sys
 import codecs
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, redirect
+# from flask import Flask, request, redirect
 
 # Load environment variables from .env file
 load_dotenv()
@@ -21,19 +21,19 @@ if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
     
-app = Flask(__name__)
+# app = Flask(__name__)
 
 
-@app.route("/run-python", methods=['POST'])
-def run_python():
-    pre_url = request.referrer
-    cur_path = request.headers['Referer']
-    cur_scheme = request.scheme
-    pre_full_url = cur_scheme + "://" + pre_url + cur_path
-    numstart = request.form.get('numstart')
-    numend = request.form.get('numend')
-    bd = numstart
-    kt = numend
+# @app.route("/run-python", methods=['POST'])
+# def run_python():
+#     pre_url = request.referrer
+#     cur_path = request.headers['Referer']
+#     cur_scheme = request.scheme
+#     pre_full_url = cur_scheme + "://" + pre_url + cur_path
+#     numstart = request.form.get('numstart')
+#     numend = request.form.get('numend')
+#     bd = numstart
+#     kt = numend
     
     
 # Tự động cài đặt ChromeDriver phù hợp với phiên bản Chrome đã cài đặt
@@ -178,25 +178,25 @@ def run_python():
         return manufacturer, country_of_origin, tphl, product_info, product_name
 
 
-    # num_pages_to_scrape = 1
-    # link = []
-    # for page_num in range(1, num_pages_to_scrape + 1):
-    #     url = f"https://thuocsi.vn/products?page={page_num}"
-    #     driver.get(url)
-    num_pages_to_scrape = 1000
+    num_pages_to_scrape = 1
     link = []
-
     for page_num in range(1, num_pages_to_scrape + 1):
         url = f"https://thuocsi.vn/products?page={page_num}"
         driver.get(url)
+    # num_pages_to_scrape = 1000
+    # link = []
 
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
+    # for page_num in range(1, num_pages_to_scrape + 1):
+    #     url = f"https://thuocsi.vn/products?page={page_num}"
+    #     driver.get(url)
 
-        search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+    #     html = driver.page_source
+    #     soup = BeautifulSoup(html, 'html.parser')
 
-        if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
-            break
+    #     search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+
+    #     if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
+    #         break
         l = driver.find_elements(By.CSS_SELECTOR,
                                 ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
         for i in l:
@@ -293,6 +293,6 @@ def run_python():
 
     connection.close()
     driver.quit()
-    return '''<script>window.history.back();</script>'''
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+#     return '''<script>window.history.back();</script>'''
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0')

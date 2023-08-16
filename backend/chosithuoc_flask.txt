@@ -3,16 +3,27 @@ import psycopg2
 import datetime
 import os
 from dotenv import load_dotenv 
-import sys
+import sys  
 import codecs
+from flask import Flask, request, redirect
+
+
+load_dotenv()
 
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+    
+app = Flask(__name__)
 
-load_dotenv()
-
+@app.route("/run-python", methods=['POST'])
+def run_python():
+    pre_url = request.referrer
+    cur_path = request.headers['Referer']
+    cur_scheme = request.scheme
+    pre_full_url = cur_scheme + "://" + pre_url + cur_path
+    
 class LaptopSpider(scrapy.Spider):
     name = "chosithuoc"
     host = os.environ.get('DB_HOST')
@@ -90,7 +101,7 @@ class LaptopSpider(scrapy.Spider):
             for page_number in range(1, num_pages + 1):
                 category_url = f'https://chosithuoc.com/{category}-trang-{page_number}/'
                 yield scrapy.Request(url=category_url, callback=self.parse_page,
-                                     meta={'page_number': page_number, 'category': category})
+                                    meta={'page_number': page_number, 'category': category})
 
     def parse_page(self, response):
         if response.status == 200:
@@ -109,13 +120,13 @@ class LaptopSpider(scrapy.Spider):
                 # Kiểm tra trạng thái của trang chi tiết trước khi tạo yêu cầu mới
                 if detail_url:
                     yield scrapy.Request(url=detail_url, callback=self.parse_detail,
-                                         meta={'name': name, 'gia': gia, 'number': number, 'img_url': img_url})
+                                        meta={'name': name, 'gia': gia, 'number': number, 'img_url': img_url})
 
         # Xác định trang tiếp theo và tạo yêu cầu để duyệt qua các trang khác
         next_page = response.css('ul.pagination a[rel="next"]::attr(href)').get()
         if next_page:
             yield scrapy.Request(url=next_page, callback=self.parse_page,
-                                 meta={'page_number': response.meta['page_number'] + 1, 'category': response.meta['category']})
+                                meta={'page_number': response.meta['page_number'] + 1, 'category': response.meta['category']})
     def parse_detail(self, response):
         name = response.meta.get('name')
         giacu_text = response.meta.get('gia')
@@ -145,7 +156,7 @@ class LaptopSpider(scrapy.Spider):
 
         thong_tin = response.css('div.row_noidung li::text').getall()
         thong_tin = [item.strip().replace(";", "").replace("\n", "").replace("\t", "").replace("\r", "").replace("……………………………………", "")
-                              for item in thong_tin]
+                            for item in thong_tin]
         thong_tin = '; '.join(item for item in thong_tin if item) or 'Không đề cập'
 
         current_month = datetime.datetime.now().month
@@ -177,11 +188,11 @@ class LaptopSpider(scrapy.Spider):
             else:
                 query = f'''
                     INSERT INTO thuocsi_vn (title, giamoi, month_{current_month}, thong_tin_san_pham, nha_san_xuat,
-                     nuoc_san_xuat, hamluong_thanhphan, ngaymoi, photo, link, nguon)
+                    nuoc_san_xuat, hamluong_thanhphan, ngaymoi, photo, link, nguon)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                 '''
                 values = (data['name'], data['giamoi'], giacu.strip(), data['thong_tin'], data['nha_san_xuat'],
-                          data['nuoc_san_xuat'], data['hamluong_thanhphan'], ngay_moi, data['img_url'], data['link'], 'chosithuoc.com')
+                        data['nuoc_san_xuat'], data['hamluong_thanhphan'], ngay_moi, data['img_url'], data['link'], 'chosithuoc.com')
 
             self.cursor.execute(query, values)
             self.connection.commit()
@@ -190,3 +201,7 @@ class LaptopSpider(scrapy.Spider):
             self.logger.error(f"Error while inserting/updating data: {e}")
 
         yield data
+        return '''<script>window.history.back();</script>'''
+if __name__ == '__main__':
+     app.run(host='0.0.0.0')
+    
