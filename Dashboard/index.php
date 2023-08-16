@@ -14,7 +14,7 @@
                 </style>
                 <div class="recent-order">
 <<<<<<< HEAD
-                <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
+                 <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
                 <style>
                         #pagination {
                             display: flex;
