@@ -180,9 +180,9 @@
                                 <?php } ?>
 <<<<<<< HEAD
                                 <?php if($set['nguon']=="thuocsi.vn") {?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: right"><?php echo $set['nguon']?></a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: left;"><?php echo $set['nguon']?></a></td>
                                 <?php } elseif($set['nguon']=="chosithuoc.com"){ ?>
-                                    <td class="nguon"><a href="<?php echo $set['link'];?>" style="color:#6699FF; text-align: right"><?php echo $set['nguon']?></a></td>
+                                    <td class="nguon"><a href="<?php echo $set['link'];?>" style="color:#6699FF; text-align: left;"><?php echo $set['nguon']?></a></td>
                                 <?php } ?>
 =======
 
