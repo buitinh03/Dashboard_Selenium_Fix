@@ -177,7 +177,7 @@ p {
 }
 
 .warranty-policy {
-    position: absolute;
+    position: static;
     max-width: 100%;
     
 }

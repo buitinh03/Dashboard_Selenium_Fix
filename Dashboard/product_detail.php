@@ -14,7 +14,7 @@ include_once('format/format.php');
         $id = $_GET['id'];
         $price = $_GET['price'];
     }
-
+    $q=0;
 ?>
 <section class="product-gallery-one">
 <div class="container">
@@ -148,55 +148,57 @@ include_once('format/format.php');
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
-                        <h1>BẢNG SO SÁNH GIÁ QUA CÁC THÁNG</h1>
+                        <h1>BIỂU ĐỒ SO SÁNH GIÁ QUA CÁC THÁNG</h1>
                     </div>
                     <div class="warranty-policy-content">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Tháng 1</th>
-                                <th>Tháng 2</th>
-                                <th>Tháng 3</th>
-                                <th>Tháng 4</th>
-                                <th>Tháng 5</th>
-                                <th>Tháng 6</th>
-                                <th>Tháng 7</th>
-                                <th>Tháng 8</th>
-                                <th>Tháng 9</th>
-                                <th>Tháng 10</th>
-                                <th>Tháng 11</th>
-                                <th>Tháng 12</th>
+                    <canvas id="myChart"  style="height: 150px; width: 100%;"></canvas>
+                        
+                        
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                    data: {
+                                labels: [],
+                                datasets: []
+                            },
+                            options: {}
+                        });
 
-                            </tr>
-                            </thead>
-                         <tbody>
+                        function handleClick() {
+                            var data = [];
                             
-                                
-                         <tr>
-                                <?php
-                                for($j=0;$j<12;$j++){
-                                    if($result[$month[$j]]!=""){
-                                        ?>
-                                         <td class="primary" style="text-align: right;"><?php echo number_format( $result[$month[$j]]); ?><sup>đ</sup></td>
-                                        <?php
-                                    }
-                                    else {
-                                        ?>
-                                        <td class="primary" style="text-align:center;">-</td>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                                
-                        </tr>
-                            <?php 
-                                      
-                                 
+                            <?php
+                            for($r=0;$r<12;$r++){
+                                if($result['month_'.($r+1)]!=''){
                             ?>
-                         </tbody>
-                           
-                        </table>
-                       
+                            data[<?php echo $r?>]=parseInt('<?php echo $result['month_'.($r+1)]?>');
+                            <?php
+                                }else {
+                            ?>
+                            data[<?php echo $r?>]=parseInt('0');
+                            <?php        
+                                }
+                            }
+                             ?>
+                            var dataset = {
+                                label:'<?php echo $result['title'] ?>',
+                                data: data,
+                                backgroundColor: 'blue'
+                            };
+                            var h=1;
+                            var lb=[];
+                            for (var i = 0; i <12; i++){
+                                lb.push("Tháng "+h);
+                                h++
+                            }
+                            
+                            myChart.data.labels = lb;
+                            myChart.data.datasets = [dataset];
+                            myChart.update();
+                        }
+                        window.onload=handleClick;
+                    </script>
                     </div>
                 </div>
                         
@@ -211,7 +213,7 @@ include_once('format/format.php');
       
     </div>
  
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
           
          
 

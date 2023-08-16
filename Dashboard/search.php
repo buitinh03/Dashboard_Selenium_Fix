@@ -11,7 +11,9 @@
         $search=$_POST['keyword'];
         $product_search=$product->search($search);
     }
-
+    $giabd=[];
+    $tenbd=[];
+    $nguonbd=[];
 ?>
                 </div>
                 <div class="recent-order">
@@ -81,10 +83,13 @@
                         if(!empty($product_search) ){
                             $j=0;
                             while($set = $product_search->fetch()){
+                                $giabd[$j]=$set['giamoi'];
+                                $tenbd[$j]=$set['title'];
+                                $nguonbd[$j]=$set['nguon'];
                                 $j++
                         ?>
                             <tbody>
-                            <tr onclick="handleClick(event)">
+                            <tr >
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
                                 
@@ -116,6 +121,81 @@
                         </tbody>
                     </table>
                     <!-- <a href="#">Show All</a> -->
+                </div>
+                <style>
+                    main .recent-order canvas{
+                    background: var(--color-white);
+                    width: 100%;
+                    border-radius:var(--card-border-radius) ;
+                    padding :var(--card-padding);
+                    text-align: center;
+                    box-shadow: var(--box-shadow);
+                    transition: all 300ms ease;
+                    border: #0b0c0c 2px;
+                    }
+
+                    main .recent-order canvas:hover{
+                    box-shadow: none;
+                    }
+                </style>
+                <div class="recent-order">
+                    <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
+                    <canvas id="myChart"  style="height: 300px; width: 100%;"></canvas>
+                      
+                        
+                        <script>
+                            var ctx = document.getElementById('myChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                            labels: [],
+                                            datasets: []
+                                        },
+                                        options: {
+                                            labels: {
+                                                style: {
+                                                    width:'auto',
+                                                    overflow:'hidden',
+                                                    textOverflow: 'ellipsis'
+                                                }
+                                            }
+                                        }
+                                    });
+                            
+                            function handleClick() {
+                                var data = [];
+                                var lb=[];
+                                var lab=[];
+                                <?php
+                                for($y=0;$y<sizeof($giabd);$y++){
+                                ?>
+                                data[<?php echo $y?>]=parseInt(<?php echo $giabd[$y] ?>);
+                                lb[<?php echo $y?>]='<?php echo $tenbd[$y] ?>'
+                                lab[<?php echo $y?>]='<?php echo $nguonbd[$y] ?>'
+                                <?php
+                            
+                                    };
+                                 ?>
+                                var dataset = {
+                                    label:'Sản phẩm',
+                                    data: data,
+                                    backgroundColor: 'blue'
+                                };
+                    
+                                myChart.data.labels = lb;
+                                myChart.data.datasets = [dataset];
+                                myChart.update();
+                            }
+                            
+                            window.onload=handleClick;
+                            var chart =document.getElementById('myChart');
+                            chart.labels.addEventListener('mouseover',function(){
+                                this.style.display = 'block';
+                            });
+                            chart.labels.addEventListener('mouseout',function(){
+                                this.style.display = 'none';
+                            });
+                        </script>
                 </div>
             </main>
             <! END OF MAIN>
