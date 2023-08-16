@@ -52,11 +52,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signin'])){
                    ?>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Username"  id="">
+                        <input type="text" name="username" placeholder="Email đăng nhập"  id="">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i> 
-                        <input type="password" name="password" placeholder="Password"  id="hiddenpassword">
+                        <input type="password" name="password" placeholder="Mật khẩu"  id="hiddenpassword">
                         <div id="eye" style="margin-top: -63%;">
                         <i  class="far fa-eye-slash" style="margin-left: 600%; margin-top: -150%; cursor: pointer;"></i>
                         </div>

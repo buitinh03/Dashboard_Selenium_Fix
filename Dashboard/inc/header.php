@@ -16,6 +16,7 @@ Session::checkSession();
         <title>ADMIN DASHBOARD</title>
         <!--MATERIAL CDN-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
         <link rel="stylesheet" href="./style.css">    
         <link rel="stylesheet" href="css/detail.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -43,7 +44,12 @@ Session::checkSession();
                             <span class="material-icons-sharp">space_dashboard</span>
                             <h3 id="Dashboard">Bảng chính</h3>
                         </a>
+<<<<<<< HEAD
                         
+=======
+                        <!-- class="active" -->
+                   
+>>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                           <?php
                         $checkLoginAdmin = Session::get('adminType');
                         $check = Session::get('adminlogin');

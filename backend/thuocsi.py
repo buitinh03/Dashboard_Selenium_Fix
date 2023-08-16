@@ -116,7 +116,7 @@ def run_python():
         manufacturer = ""
         country_of_origin = ""
         product_info = ""
-        sales_in_last_24_hours = ""
+        # sales_in_last_24_hours = ""
 
         # Tìm thông tin nhà sản xuất và trích xuất dữ liệu nếu có
         manufacturer_info = soup.find('div', class_='styles_warpper____CUU')
@@ -136,9 +136,9 @@ def run_python():
         if product_info_element:
             product_info = product_info_element.text.strip()
 
-        sales_element = soup.find('p', class_='MuiTypography-root styles_nameDescNumber__JUiEI MuiTypography-body1')
-        if sales_element:
-            sales_in_last_24_hours = sales_element.text.strip()
+        # sales_element = soup.find('p', class_='MuiTypography-root styles_nameDescNumber__JUiEI MuiTypography-body1')
+        # if sales_element:
+        #     sales_in_last_24_hours = sales_element.text.strip()
 
         product_name_element = wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm')))
@@ -177,11 +177,33 @@ def run_python():
             product_info = product_info_element.text.strip()
 
         return manufacturer, country_of_origin, tphl, product_info, product_name
+<<<<<<< HEAD
     num_pages_to_scrape = bd
     link = []
     for page_num in range(bd, kt):
+=======
+
+
+    # num_pages_to_scrape = 1
+    # link = []
+    # for page_num in range(1, num_pages_to_scrape + 1):
+    #     url = f"https://thuocsi.vn/products?page={page_num}"
+    #     driver.get(url)
+    num_pages_to_scrape = 1000
+    link = []
+
+    for page_num in range(1, num_pages_to_scrape + 1):
+>>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
         url = f"https://thuocsi.vn/products?page={page_num}"
         driver.get(url)
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+
+        search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+
+        if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
+            break
         l = driver.find_elements(By.CSS_SELECTOR,
                                 ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
         for i in l:
@@ -206,7 +228,6 @@ def run_python():
             nuoc_san_xuat = ""
             tphl = ""
             thong_tin_san_pham = ""
-            sales_in_last_24_hours = ""
             product_name = ""
             nguon="thuocsi.vn"
 
@@ -241,14 +262,14 @@ def run_python():
                 gia_sales = int(gia_sales)
 
             except NoSuchElementException:
-                gia_sales = "N/A"
+                gia_sales = "0"
 
             if gia is None:
                 gia = gia_sales
             try:
                 anh = driver.find_element(By.CSS_SELECTOR, 'img.styles_imageMain__UQ9fH').get_attribute('src')
             except NoSuchElementException:
-                anh = "N/A"
+                anh = ""
 
             # Lấy tháng hiện tại (từ 1 đến 12) và lưu vào biến current_month
             current_month = datetime.datetime.now().month

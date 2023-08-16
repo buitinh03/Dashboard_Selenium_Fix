@@ -85,12 +85,13 @@
             return $result;
         }
 
-        function details_product_2($id){
+        function details_product_2($id, $link){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn WHERE photo='$id'";
+            $query = "SELECT * FROM thuocsi_vn WHERE photo='$id' AND link='$link'";
             $result = $db->getList($query);
             return $result;
         }
+
 
         function buy_the_most(){
             $db =  new connect();

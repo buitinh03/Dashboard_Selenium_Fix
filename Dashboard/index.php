@@ -13,6 +13,7 @@
                     }
                 </style>
                 <div class="recent-order">
+<<<<<<< HEAD
                 <h2>SẢN PHẨM - <span style="color: green;"><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span></h2>
                 <style>
                         #pagination {
@@ -46,6 +47,11 @@
                         <a href="#" id="next">Next</a>
                     </div>
                     <table id="mytable">
+=======
+                  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
+                    
+                    <table>
+>>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -104,13 +110,22 @@
                                 transition: all .5s ease;
                                 color: green;
                                 font-weight: bold;
+                                text-align: left;
                             }
 
                             .nguon a:hover{
                                 color: #00CC00;
                             }
+                            .nguona .thea {
+                                transition: all .5s ease;
+                                color: #0000BB;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
 
-                           
+                            .nguona .thea:hover {
+                                color: #3366FF;
+                            }
                         </style>
                         
                         <?php 
@@ -162,15 +177,34 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
+<<<<<<< HEAD
                                 <?php if($set['nguon']=="thuocsi.vn") {?>
                                 <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: right"><?php echo $set['nguon']?></a></td>
                                 <?php } elseif($set['nguon']=="chosithuoc.com"){ ?>
                                     <td class="nguon"><a href="<?php echo $set['link'];?>" style="color:#6699FF; text-align: right"><?php echo $set['nguon']?></a></td>
                                 <?php } ?>
+=======
+
+                                <?php 
+                                    if($set['nguon'] == 'thuocsi.vn'){
+                                ?>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <?php 
+                                    }elseif($set['nguon'] == 'chosithuoc.com'){
+                                ?>
+                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <?php 
+                                    }else{
+                                        echo "";
+                                    }
+                                    ?>
+
+                                
+>>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
 
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
-                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                 <?php
                                     for($k=1;$k<=12;$k++){
                                         ?>

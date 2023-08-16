@@ -19,7 +19,7 @@
                     </div>
                     <div class="profile">
                         <div class="info">
-                            <p>Chào,<b><?php echo Session::get('adminUser');?></b></p>
+                            <p>Chào,<b><?php echo Session::get('adminName');?></b></p>
                             <?php $chucvu = Session::get('adminType');?>
                             <small class="text-muted"><?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?></small>
                         </div>
