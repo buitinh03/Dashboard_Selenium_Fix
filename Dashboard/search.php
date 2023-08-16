@@ -199,6 +199,9 @@
                     box-shadow: none;
                     }
                 </style>
+              <?php
+                    if($checkLoginAdmin == 0){
+                 ?>
                 <div class="recent-order">
                     <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 100%;"></canvas>
@@ -258,6 +261,11 @@
                             });
                         </script>
                 </div>
+                  <?php
+                    }else{
+                        echo "";
+                    }
+                    ?>
             </main>
             <! END OF MAIN>
         <?php include_once('inc/footer.php') ?>
