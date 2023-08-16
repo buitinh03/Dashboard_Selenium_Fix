@@ -73,13 +73,22 @@
                                 transition: all .5s ease;
                                 color: green;
                                 font-weight: bold;
+                                text-align: left;
                             }
 
                             .nguon a:hover{
                                 color: #00CC00;
                             }
+                            .nguona .thea {
+                                transition: all .5s ease;
+                                color: #0000BB;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
 
-                           
+                            .nguona .thea:hover {
+                                color: #3366FF;
+                            }
                         </style>
                         
                         <?php 
@@ -132,8 +141,19 @@
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
 
-                                <td class="nguon"><a href="<?php echo $set['link'];?>"></a><?php echo $set['nguon']?></td>
-
+                                <?php 
+                                    if($set['nguon'] == 'thuocsi.vn'){
+                                ?>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <?php 
+                                    }elseif($set['nguon'] == 'chosithuoc.com'){
+                                ?>
+                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <?php 
+                                    }else{
+                                        echo "";
+                                    }
+                                    ?>
 
                                 
 
