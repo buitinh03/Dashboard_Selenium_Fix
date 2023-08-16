@@ -63,12 +63,19 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                
+                                  <?php
+                                if($checkLoginAdmin == 0){
+                                ?>
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
                                 <th>Giá lệch</th>
+                                <?php
+                                }else{
+                                    echo "";
+                                }
+                                ?>
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
@@ -143,7 +150,9 @@
                             <tr onclick="handleClick(event)" id="tbody" class="tr">
                                 <td><?php echo $j;?></td>
                                 <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
-                            
+                              <?php
+                                if($checkLoginAdmin == 0){
+                                ?>
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -178,6 +187,11 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
+                                      <?php
+                                }else{
+                                    echo "";
+                                }
+                                ?>
 <<<<<<< HEAD
                                 <?php if($set['nguon']=="thuocsi.vn") {?>
                                 <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: left;"><?php echo $set['nguon']?></a></td>
