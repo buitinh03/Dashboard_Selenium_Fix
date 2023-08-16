@@ -121,6 +121,13 @@
                                 text-align: left;
                             }
 
+                            .nguon .thea1{
+                                transition: all .5s ease;
+                                color: green;
+                                font-weight: bold;
+                                text-align: left;
+                            }
+
                             .nguon a:hover{
                                 color: #00CC00;
                             }
@@ -193,11 +200,19 @@
                                 }
                                 ?>
 <<<<<<< HEAD
-                                <?php if($set['nguon']=="thuocsi.vn") {?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" style="text-align: left;"><?php echo $set['nguon']?></a></td>
-                                <?php } elseif($set['nguon']=="chosithuoc.com"){ ?>
-                                    <td class="nguon"><a href="<?php echo $set['link'];?>" style="color:#6699FF; text-align: left;"><?php echo $set['nguon']?></a></td>
-                                <?php } ?>
+                                <?php 
+                                    if($set['nguon'] == 'thuocsi.vn'){
+                                ?>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
+                                <?php 
+                                    }elseif($set['nguon'] == 'chosithuoc.com'){
+                                ?>
+                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <?php 
+                                    }else{
+                                        echo "";
+                                    }
+                                    ?>
 =======
 
                                 <?php 
