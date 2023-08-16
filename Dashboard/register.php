@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     <h2 class="title">ĐĂNG KÝ</h2>
                     <div class="input-field">
                         <i class="fas fa-user-circle"></i>
-                        <input type="text" name="fullname" placeholder="Fullname" required id="">
+                        <input type="text" name="fullname" placeholder="Họ và tên" required id="">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     </div>
                     <div class="input-field">
                     <i class="fas fa-phone"></i>
-                        <input type="number" name="phone" placeholder="Phone" maxlength="10" required id="" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);">
+                        <input type="number" name="phone" placeholder="Điện thoại" maxlength="10" required id="" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-address-card"></i>
@@ -79,11 +79,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                  
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="signupuser" placeholder="Username" required id="">
+                        <input type="text" name="signupuser" placeholder="Tên đăng nhập" required id="">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" required id="hiiddenpassword">
+                        <input type="password" name="password" placeholder="Mật khẩu" required id="hiiddenpassword">
                         <div id="eyes" style="margin-top: -63%;">
                         <i  class="far fa-eye-slash" style="margin-left: 600%; margin-top: -150%; cursor: pointer;"></i>
                         </div>

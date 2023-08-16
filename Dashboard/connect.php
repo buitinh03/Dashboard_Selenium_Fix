@@ -49,7 +49,7 @@
             WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
-        FROM thuocsi_vn ORDER BY gialech desc;";
+        FROM thuocsi_vn ORDER BY gialech desc limit 500;";
             $result=$db->getList($select);
             return $result;
         }
@@ -85,12 +85,13 @@
             return $result;
         }
 
-        function details_product_2($id){
+        function details_product_2($id, $link){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn WHERE photo='$id'";
+            $query = "SELECT * FROM thuocsi_vn WHERE photo='$id' AND link='$link'";
             $result = $db->getList($query);
             return $result;
         }
+
 
         function buy_the_most(){
             $db =  new connect();

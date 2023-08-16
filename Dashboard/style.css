@@ -853,7 +853,7 @@ gap: 0.6rem;
 
 .chitiet a:hover{
     color: red;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .recent-order tbody tr td:nth-child(2){
@@ -1122,6 +1122,21 @@ gap: 0.6rem;
         max-width: 87%; 
     }
  
+ }
+
+ main .recent-order h2 span i {
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    font-size: 0px;
+    margin-right: 2em;
+ }
+
+
+
+ main .recent-order h2 span:hover i{
+    transform: translateX(100%);
+    transform: rotate(-90deg);
+    font-size: 15px;
  }
 
 
