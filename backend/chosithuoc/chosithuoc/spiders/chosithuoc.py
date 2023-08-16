@@ -1,22 +1,33 @@
 import scrapy
 import psycopg2
 import datetime
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class LaptopSpider(scrapy.Spider):
     name = "chosithuoc"
+    host = os.environ.get('DB_HOST')
+    port = os.environ.get('DB_PORT')
+    database = os.environ.get('DB_NAME')
+    user = os.environ.get('DB_USER')
+    password = os.environ.get('DB_PASSWORD')
 
-    def __init__(self):
-        host = 'localhost'
-        port = '5432'
-        database = 'thuocsi'
-        user = 'postgres'
-        password = '123456789a'
-        conn_str = f"host='{host}' port='{port}' dbname='{database}' user='{user}' password='{password}'"
-        self.connection = psycopg2.connect(conn_str)
-        self.cursor = self.connection.cursor()
+    conn_str = f"host='{host}' port='{port}' dbname='{database}' user='{user}' password='{password}'"
+    connection = psycopg2.connect(conn_str)
+    cursor = connection.cursor()
+    # def __init__(self):
+    #     host = 'localhost'
+    #     port = '5432'
+    #     database = 'thuocsi'
+    #     user = 'postgres'
+    #     password = '123456789a'
+    #     conn_str = f"host='{host}' port='{port}' dbname='{database}' user='{user}' password='{password}'"
+    #     self.connection = psycopg2.connect(conn_str)
+    #     self.cursor = self.connection.cursor()
 
-        self.create_table()
+    #     self.create_table()
 
     def create_table(self):
         query = '''
