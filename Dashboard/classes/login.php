@@ -18,14 +18,14 @@
            return $alert;
        }else {
         // Kiểm tra nếu trùng email thì thông báo 
-        $check_login = "SELECT COUNT(*) as a FROM tbl_admin WHERE username='$username' AND password='$password' LIMIT 1";
+        $check_login = "SELECT COUNT(*) as a FROM tbl_admin WHERE email='$username' AND password='$password' LIMIT 1";
         $result_check = $db->getList($check_login);
         $count = 0;
         while($rsc=$result_check->fetch()){
             $count = $rsc['a'];
         }
         
-        $check_logins = "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password' LIMIT 1";
+        $check_logins = "SELECT * FROM tbl_admin WHERE email='$username' AND password='$password' LIMIT 1";
         $result_checks = $db->getList($check_logins);
         // return $result_check;
         if($count == 1){
