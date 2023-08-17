@@ -12,13 +12,12 @@ Session::checkSession();
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
     $signupuser = $_POST['signupuser'];
     $hash = $_POST['password'];
     $password = hash('sha256', $hash);
     $type = $_POST['type'];
 
-    $insert_customer = $customer->insert_customer($fullname,$email,$phone,$signupuser,$password,$type);
+    $insert_customer = $customer->insert_customer($fullname,$email,$signupuser,$password,$type);
 }
 ?>
 <!DOCTYPE html>
@@ -67,10 +66,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                         <input type="email" name="email" placeholder="Email" required id="">
                     </div>
                     <div class="input-field">
-                    <i class="fas fa-phone"></i>
-                        <input type="number" name="phone" placeholder="Điện thoại" maxlength="10" required id="" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);">
-                    </div>
-                    <div class="input-field">
                         <i class="fas fa-address-card"></i>
                         <select name="type" id="">
                             <option value="1">Nhân viên</option>
@@ -90,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                         </div>
                     </div>
                     <input type="submit" name="signup" value="Đăng ký" class="btn solid">
-                    <!-- <p class="social-text">Hoặc đăng ký bằng nền tảng xã hội</p> -->
+                    <p class="social-text"><a href="index.php">Quay lại trang chủ</a></p>
                     <div class="social-media">
                    
                     </div>
