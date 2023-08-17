@@ -11,7 +11,7 @@ Session::checkSession();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        // <base href="http://localhost:3000/Dashboard_Selenium_Fix/Dashboard">
+<!--         <base href="http://localhost:3000/Dashboard_Selenium_Fix/Dashboard"> -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ADMIN DASHBOARD</title>
