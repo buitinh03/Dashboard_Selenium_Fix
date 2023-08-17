@@ -51,7 +51,7 @@
                             </tr>
                         </thead>
                         <style>
-                            .primary {
+                             .primary {
                                 text-align: right;
                             }
 
@@ -95,7 +95,24 @@
                             .nguona .thea:hover {
                                 color: #3366FF;
                             }
+                           .nguon .thea1{
+                                transition: all .5s ease;
+                                color: green;
+                                font-weight: bold;
+                                text-align: left;
+                            }
                          
+                            .recent-order tbody tr td:nth-child(2) a{
+                            cursor: pointer;
+                            color: rgb(221, 94, 94);
+                            transition: .5s all ease;
+                            text-align: left;
+                            }
+
+                            .recent-order tbody tr td:nth-child(2):hover a{
+                                color: rgb(221, 50, 50);
+                                font-size: 13px;
+                            }
                         </style>
                         <?php 
                         $format = new Format();
@@ -110,8 +127,10 @@
                             <tbody>
                             <tr >
                                 <td><?php echo $j;?></td>
-                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
-                                
+                                <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $format->textShorten($set['title'],30) ?></a></td>
+                          <?php
+                                if($checkLoginAdmin == 0){
+                         ?> 
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -127,11 +146,15 @@
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                                            
-                                <?php 
-                                    if($set['nguon'] == 'thuocsi.vn'){
+                          <?php
+                                }else{
+                                    echo "";
+                                }
+                         ?>
+                                  <?php 
+                                 if($set['nguon'] == 'thuocsi.vn'){
                                 ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
                                 <?php 
                                     }elseif($set['nguon'] == 'chosithuoc.com'){
                                 ?>
@@ -141,7 +164,6 @@
                                         echo "";
                                     }
                                     ?>
-       
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
@@ -150,6 +172,7 @@
                                       }
                                  }
                             ?>
+                       
                        
                         </tbody>
                     </table>
