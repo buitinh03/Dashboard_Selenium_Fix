@@ -3,8 +3,13 @@ import psycopg2
 import datetime
 import os
 from dotenv import load_dotenv 
+import sys
+import codecs
+
 load_dotenv()
-    
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 class LaptopSpider(scrapy.Spider):
     name = "chosithuoc"
@@ -17,17 +22,6 @@ class LaptopSpider(scrapy.Spider):
     conn_str = f"host='{host}' port='{port}' dbname='{database}' user='{user}' password='{password}'"
     connection = psycopg2.connect(conn_str)
     cursor = connection.cursor()
-    # def __init__(self):
-    #     host = 'localhost'
-    #     port = '5432'
-    #     database = 'thuocsi'
-    #     user = 'postgres'
-    #     password = '123456789a'
-    #     conn_str = f"host='{host}' port='{port}' dbname='{database}' user='{user}' password='{password}'"
-    #     self.connection = psycopg2.connect(conn_str)
-    #     self.cursor = self.connection.cursor()
-
-    #     self.create_table()
 
     def create_table(self):
         query = '''
@@ -69,14 +63,14 @@ class LaptopSpider(scrapy.Spider):
     def start_requests(self):
         categories = {
             'hoa-my-pham': 1,
-            # 'thuoc-tan-duoc': 341,
+            'thuoc-tan-duoc': 341,
             'thuoc-xuong-khop': 2,
-            # 'thuoc-giam-can': 9,
-            # 'thuoc-bo-than': 24,
-            # 'thuc-pham-chuc-nang': 133,
-            # 'thuc-pham-cao-cap': 14,
-            # 'thiet-bi-y-te': 33,
-            # 'thuoc-khong-ke-don': 6,
+            'thuoc-giam-can': 9,
+            'thuoc-bo-than': 24,
+            'thuc-pham-chuc-nang': 133,
+            'thuc-pham-cao-cap': 14,
+            'thiet-bi-y-te': 33,
+            'thuoc-khong-ke-don': 6,
         }
 
         for category, num_pages in categories.items():
