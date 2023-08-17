@@ -89,8 +89,19 @@
                                 text-align: right;
                             }
 
-                            .title {
+                            td:nth-child(2) a{
                                 text-align: left;
+                            }
+
+                            .recent-order tbody tr td:nth-child(2) a{
+                            cursor: pointer;
+                            color: rgb(221, 94, 94);
+                            transition: .5s all ease;
+                            }
+
+                            .recent-order tbody tr td:nth-child(2):hover a{
+                                color: rgb(221, 50, 50);
+                                font-size: 13px;
                             }
 
                             .nha-san-xuat {
@@ -110,6 +121,13 @@
                             }
 
                             td:nth-child(8) a{
+                                transition: all .5s ease;
+                                color: green;
+                                font-weight: bold;
+                                text-align: left;
+                            }
+
+                            .nguon .thea1{
                                 transition: all .5s ease;
                                 color: green;
                                 font-weight: bold;
