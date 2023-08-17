@@ -1,11 +1,11 @@
-RewriteEngine On
+# RewriteEngine On
 # RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteRule ^id/([a-zA-Z0-9]+)/link/([a-zA-Z0-9]+)/price/([0-9]+)$ product_detail.php?id=$1&link=$2&price=$3
 
-  RewriteRule trang-chu/ index.php
-  RewriteRule dang-ky/ register.php
-  RewriteRule tim-kiem/ search.php
-  RewriteRule chi-tiet/ product_detail.php
-  RewriteRule dang-nhap/ login.php
+#  RewriteRule trang-chu/ index.php
+#  RewriteRule dang-ky/ register.php
+#  RewriteRule tim-kiem/ search.php
+# RewriteRule chi-tiet/ product_detail.php
+#  RewriteRule dang-nhap/ login.php
