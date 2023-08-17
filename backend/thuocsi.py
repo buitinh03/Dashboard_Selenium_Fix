@@ -7,18 +7,29 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
+from dotenv import load_dotenv
+import os
+import sys
+import codecs
 
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 # Tự động cài đặt ChromeDriver phù hợp với phiên bản Chrome đã cài đặt
 chromedriver_autoinstaller.install()
-driver = webdriver.Chrome()
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
+driver = webdriver.Chrome(options=chrome_options)
 url = "https://thuocsi.vn/products"
+load_dotenv()
 
 # Kết nối đến cơ sở dữ liệu PostgreSQL
 connection = psycopg2.connect(
-    host="localhost",
-    database="thuocsi",
-    user="postgres",
-    password="123456789a"
+    host=os.getenv("DB_HOST"),
+    database=os.getenv("DB_NAME"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD")
 )
 
 with connection.cursor() as cursor:
@@ -148,11 +159,20 @@ def extract_product_info(html):
     return manufacturer, country_of_origin, tphl, product_info, sales_in_last_24_hours, product_name
 
 
-num_pages_to_scrape = 1
+num_pages_to_scrape = 1000
 link = []
-for page_num in range(1, num_pages_to_scrape + 1):
+
+for page_num in range(663, num_pages_to_scrape + 1):
     url = f"https://thuocsi.vn/products?page={page_num}"
     driver.get(url)
+
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
+
+    search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+
+    if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
+        break
     l = driver.find_elements(By.CSS_SELECTOR,
                              ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
     for i in l:
@@ -212,7 +232,7 @@ for a in link:
             gia_sales = int(gia_sales)
 
         except NoSuchElementException:
-            gia_sales = "N/A"
+            gia_sales = ""
 
         if gia is None:
             gia = gia_sales
@@ -220,7 +240,7 @@ for a in link:
         try:
             anh = driver.find_element(By.CSS_SELECTOR, 'img.styles_imageMain__UQ9fH').get_attribute('src')
         except NoSuchElementException:
-            anh = "N/A"
+            anh = "Không đề cập"
 
             # Lấy tháng hiện tại (từ 1 đến 12) và lưu vào biến current_month
         current_month = datetime.datetime.now().month
