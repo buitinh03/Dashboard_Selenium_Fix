@@ -92,6 +92,9 @@ include_once('format/format.php');
                 <h2>Sản phẩm</h2>
                 <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>"><ins>bấm vào đây !</ins></a></p>
             </div>
+             <?php
+                if($checkLoginAdmin == 0){
+                ?>
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
