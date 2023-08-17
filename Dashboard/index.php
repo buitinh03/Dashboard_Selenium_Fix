@@ -142,13 +142,12 @@
                                 $j++
                         ?>
                       <tbody>
-                            <tr onclick="handleClick(event)" id="tbody" class="tr">
+                           <tr onclick="handleClick(event)" id="tbody" class="tr">
                                 <td><?php echo $j;?></td>
-                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
-                             <?php
-                            if($checkLoginAdmin == 0){
-
-                            ?>
+                                <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $format->textShorten($set['title'],30) ?></a></td>
+                              <?php
+                                if($checkLoginAdmin == 0){
+                                ?>
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -175,7 +174,7 @@
                                         else $gialech=100-($set['giamoi']/ $set['giacu']*100);
                                     }else {$gialech= 0;}
                                     $gialech=round($gialech,2);
-                                    if ($set['giamoi']>$set['giacu']&&$set['giacu']!=0){
+                                    if ($set['giamoi']>$set['giacu']){
                                 ?>
                                 <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                 <?php } elseif($set['giamoi']<$set['giacu']){ ?>
@@ -183,32 +182,24 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
-<<<<<<< HEAD
-=======
                                       <?php
                                 }else{
                                     echo "";
                                 }
                                 ?>
->>>>>>> a1e80eb37bc1ad88a6f41aab8ac6633d05490f1c
-
                                 <?php 
                                     if($set['nguon'] == 'thuocsi.vn'){
                                 ?>
-                                <td class="nguon"><a style='text-align:right' href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
                                 <?php 
                                     }elseif($set['nguon'] == 'chosithuoc.com'){
                                 ?>
-                                 <td class="nguona"><a style='text-align:right' href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                  <?php 
                                     }else{
-                                        ?>
-                                        <td class="nguona"><a style='text-align:right; color:lightcoral' href="<?php echo $set['link'];?>" class="thea"><?php echo "Ankhang.com";?></a></td>
-                                        <?php
+                                        echo "";
                                     }
                                     ?>
-
-                                
 
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
@@ -225,7 +216,6 @@
                                       }
                                  }
                             ?>
-                       
                         </tbody>
                     </table>
                     
