@@ -14,7 +14,6 @@
                 </style>
                 <div class="recent-order">
  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
-<<<<<<< HEAD
                 
                 <style>
                         #pagination {
@@ -48,11 +47,6 @@
                         <a href="#" id="next">Next</a>
                     </div>
                     <table id="mytable">
-=======
-                  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
-                    
-                    <table>
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -199,21 +193,6 @@
                                     echo "";
                                 }
                                 ?>
-<<<<<<< HEAD
-                                <?php 
-                                    if($set['nguon'] == 'thuocsi.vn'){
-                                ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
-                                <?php 
-                                    }elseif($set['nguon'] == 'chosithuoc.com'){
-                                ?>
-                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
-                                 <?php 
-                                    }else{
-                                        echo "";
-                                    }
-                                    ?>
-=======
 
                                 <?php 
                                     if($set['nguon'] == 'thuocsi.vn'){
@@ -230,7 +209,6 @@
                                     ?>
 
                                 
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
 
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              

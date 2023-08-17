@@ -21,12 +21,7 @@ Session::checkSession();
         <link rel="stylesheet" href="css/detail.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<<<<<<< HEAD
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-=======
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
->>>>>>> 8b87a77995c43702ad068c8fd5fc8879c1bb5cb9
     </head>
     <body>
        <div class="container">
@@ -48,12 +43,7 @@ Session::checkSession();
                             <span class="material-icons-sharp">space_dashboard</span>
                             <h3 id="Dashboard">Bảng chính</h3>
                         </a>
-<<<<<<< HEAD
                         
-=======
-                        <!-- class="active" -->
-                   
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                           <?php
                         $checkLoginAdmin = Session::get('adminType');
                         $check = Session::get('adminlogin');
