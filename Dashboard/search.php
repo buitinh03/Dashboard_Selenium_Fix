@@ -31,11 +31,19 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                
+                             <?php
+                            if($checkLoginAdmin == 0){
+
+                            ?>    
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
+                            <?php
+                            }else {
+                                echo "";
+                            }
+                            ?>
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
@@ -163,6 +171,10 @@
                     box-shadow: none;
                     }
                 </style>
+            <?php
+                if($checkLoginAdmin == 0){
+            
+            ?>
                 <div class="recent-order">
                     <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 100%;"></canvas>
@@ -222,6 +234,11 @@
                             });
                         </script>
                 </div>
+                    <?php
+                }else {
+                    echo "";
+                }
+                ?>
             </main>
             <! END OF MAIN>
         <?php include_once('inc/footer.php') ?>
