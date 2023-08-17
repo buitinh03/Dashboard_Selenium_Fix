@@ -1,5 +1,5 @@
 from scrapy.crawler import CrawlerProcess
-from chosithuoc import LaptopSpider  
+from chosithuoc import LaptopSpider  # Thay đổi thành đường dẫn đến spider của bạn
 
 def run_spider():
     process = CrawlerProcess(settings={

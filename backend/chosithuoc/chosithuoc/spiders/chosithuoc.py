@@ -3,15 +3,8 @@ import psycopg2
 import datetime
 import os
 from dotenv import load_dotenv 
-import sys
-import codecs
-
-
-if sys.stdout.encoding != 'utf-8':
-    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
-    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
-
 load_dotenv()
+    
 
 class LaptopSpider(scrapy.Spider):
     name = "chosithuoc"
