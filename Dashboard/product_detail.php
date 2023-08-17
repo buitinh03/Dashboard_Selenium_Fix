@@ -42,11 +42,8 @@ include_once('format/format.php');
  
         <h1><?php echo $result['title'] ?></h1>
 
-<<<<<<< HEAD
         
 
-=======
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
         <h2>Thời gian:</h2>
     
         <p><?php echo $result['ngaymoi'] ?></p>
@@ -95,9 +92,6 @@ include_once('format/format.php');
                 <h2>Sản phẩm</h2>
                 <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>"><ins>bấm vào đây !</ins></a></p>
             </div>
-            <?php
-              if($checkLoginAdmin == 0){
-            ?>
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
@@ -154,9 +148,6 @@ include_once('format/format.php');
                 </div>
                         
             </div>
-<<<<<<< HEAD
-            
-=======
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
@@ -215,12 +206,6 @@ include_once('format/format.php');
                 </div>
                         
             </div>
-             <?php
-                }else{
-                    echo "";
-                }
-            ?>
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
           </div>
 
           <?php

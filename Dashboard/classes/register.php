@@ -14,7 +14,7 @@
         
     }
 
-    function insert_customer($fullname,$email,$signupuser,$password,$type){
+    function insert_customer($fullname,$email,$phone,$signupuser,$password,$type){
         $db = new connect();
         
          $check_login = "SELECT COUNT(*) as a FROM tbl_admin WHERE email='$email' LIMIT 1";
@@ -30,7 +30,7 @@
             $msg = "<span class='error' style='color:  #FF0000;'>Email đã tồn tại. Vui lòng thử lại với email khác!</span>";
             return $msg;
         }else{
-        $query = "INSERT INTO tbl_admin(fullname,email,username,password,type)VALUES('$fullname','$email','$signupuser','$password','$type')";
+        $query = "INSERT INTO tbl_admin(fullname,email,phone,username,password,type)VALUES('$fullname','$email','$phone','$signupuser','$password','$type')";
         $result = $db->exec($query);
         // return $result;
         if($result){

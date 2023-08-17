@@ -31,18 +31,11 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                  <?php
-                                if($checkLoginAdmin == 0){
-                                ?>
+                                
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
-                                <?php
-                                }else{
-                                    echo "";
-                                }
-                                ?>
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
@@ -94,23 +87,6 @@
                             .nguona .thea:hover {
                                 color: #3366FF;
                             }
-                           .nguon .thea1{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-
-                          .recent-order tbody tr td:nth-child(2) a{
-                            cursor: pointer;
-                            color: rgb(221, 94, 94);
-                            transition: .5s all ease;
-                            }
-
-                            .recent-order tbody tr td:nth-child(2):hover a{
-                                color: rgb(221, 50, 50);
-                                font-size: 13px;
-                            }
                          
                         </style>
                         <?php 
@@ -126,10 +102,8 @@
                             <tbody>
                             <tr >
                                 <td><?php echo $j;?></td>
-                                <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $format->textShorten($set['title'],30) ?></a></td>
-                          <?php
-                                if($checkLoginAdmin == 0){
-                         ?> 
+                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
+                                
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -145,31 +119,11 @@
                                 ?>
                                 <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                          <?php
-                                }else{
-                                    echo "";
-                                }
-                         ?>
-<<<<<<< HEAD
-                                  <?php 
-                                 if($set['nguon'] == 'thuocsi.vn'){
-                                ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
-                                <?php 
-                                    }elseif($set['nguon'] == 'chosithuoc.com'){
-                                ?>
-                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
-                                 <?php 
-                                    }else{
-                                        echo "";
-                                    }
-                                    ?>
-=======
                                             
-                                  <?php 
-                                 if($set['nguon'] == 'thuocsi.vn'){
+                                <?php 
+                                    if($set['nguon'] == 'thuocsi.vn'){
                                 ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
+                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
                                 <?php 
                                     }elseif($set['nguon'] == 'chosithuoc.com'){
                                 ?>
@@ -180,7 +134,6 @@
                                     }
                                     ?>
        
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
                                 <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
@@ -209,15 +162,8 @@
                     main .recent-order canvas:hover{
                     box-shadow: none;
                     }
-                       
-                   .sosanh {
-                        margin-bottom: 3em;
-                    }
                 </style>
-              <?php
-                    if($checkLoginAdmin == 0){
-                 ?>
-                <div class="recent-order sosanh">
+                <div class="recent-order">
                     <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 100%;"></canvas>
                       
@@ -276,11 +222,6 @@
                             });
                         </script>
                 </div>
-                  <?php
-                    }else{
-                        echo "";
-                    }
-                    ?>
             </main>
             <! END OF MAIN>
         <?php include_once('inc/footer.php') ?>

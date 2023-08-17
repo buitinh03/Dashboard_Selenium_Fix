@@ -66,8 +66,9 @@ for url in link_lists:
     driver.get(url)
     sleep(1)
     try:
-        active_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.active:nth-child(2)")))
+        active_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
         active_button.click()
+        
     except ElementNotInteractableException:
         pass
     sleep(2)

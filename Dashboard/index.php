@@ -14,7 +14,6 @@
                 </style>
                 <div class="recent-order">
  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
-<<<<<<< HEAD
                 
                 <style>
                         #pagination {
@@ -48,11 +47,6 @@
                         <a href="#" id="next">Next</a>
                     </div>
                     <table id="mytable">
-=======
-                  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/thuoc-xuong-khop-trang-1/" class="a" style="color: blue;">Chosithuoc.com</a></span></h2>
-                    
-                    <table>
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
                     <?php
                         $pro = new product();
                             $demcol = $pro->testcol('giacu');
@@ -63,19 +57,12 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sản phẩm</th>
-                                  <?php
-                                if($checkLoginAdmin == 0){
-                                ?>
+                                
                                 <th>Giá cũ</th>
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
                                 <th>Giá lệch</th>
-                                <?php
-                                }else{
-                                    echo "";
-                                }
-                                ?>
                                 <th>Nguồn</th>
                                 <th>Ảnh</th>
                                 <th>Chức năng</th>
@@ -121,13 +108,6 @@
                                 text-align: left;
                             }
 
-                            .nguon .thea1{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-
                             .nguon a:hover{
                                 color: #00CC00;
                             }
@@ -140,17 +120,6 @@
 
                             .nguona .thea:hover {
                                 color: #3366FF;
-                            }
-
-                            .recent-order tbody tr td:nth-child(2) a{
-                            cursor: pointer;
-                            color: rgb(221, 94, 94);
-                            transition: .5s all ease;
-                            }
-
-                            .recent-order tbody tr td:nth-child(2):hover a{
-                                color: rgb(221, 50, 50);
-                                font-size: 13px;
                             }
                         </style>
                         
@@ -167,10 +136,8 @@
                       <tbody>
                             <tr onclick="handleClick(event)" id="tbody" class="tr">
                                 <td><?php echo $j;?></td>
-                                <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $format->textShorten($set['title'],30) ?></a></td>
-                              <?php
-                                if($checkLoginAdmin == 0){
-                                ?>
+                                <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
+                            
                                 <?php 
                                 if($sorow==0){
                                 ?>
@@ -197,7 +164,7 @@
                                         else $gialech=100-($set['giamoi']/ $set['giacu']*100);
                                     }else {$gialech= 0;}
                                     $gialech=round($gialech,2);
-                                    if ($set['giamoi']>$set['giacu']){
+                                    if ($set['giamoi']>$set['giacu']&&$set['giacu']!=0){
                                 ?>
                                 <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                 <?php } elseif($set['giamoi']<$set['giacu']){ ?>
@@ -205,43 +172,24 @@
                                 <?php } else { ?>
                                     <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
                                 <?php } ?>
-                                      <?php
-                                }else{
-                                    echo "";
-                                }
-                                ?>
-<<<<<<< HEAD
-                                <?php 
-                                    if($set['nguon'] == 'thuocsi.vn'){
-                                ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
-                                <?php 
-                                    }elseif($set['nguon'] == 'chosithuoc.com'){
-                                ?>
-                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
-                                 <?php 
-                                    }else{
-                                        echo "";
-                                    }
-                                    ?>
-=======
 
                                 <?php 
                                     if($set['nguon'] == 'thuocsi.vn'){
                                 ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                <td class="nguon"><a style='text-align:right' href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
                                 <?php 
                                     }elseif($set['nguon'] == 'chosithuoc.com'){
                                 ?>
-                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                 <td class="nguona"><a style='text-align:right' href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                  <?php 
                                     }else{
-                                        echo "";
+                                        ?>
+                                        <td class="nguona"><a style='text-align:right; color:lightcoral' href="<?php echo $set['link'];?>" class="thea"><?php echo "Ankhang.com";?></a></td>
+                                        <?php
                                     }
                                     ?>
 
                                 
->>>>>>> bf62ebaf46fbba6420ee7136f33c2ea93d13181c
 
                                 <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
                              
