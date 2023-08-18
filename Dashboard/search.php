@@ -101,7 +101,17 @@
                                 font-weight: bold;
                                 text-align: left;
                             }
-                         
+                           .nguonb .thea {
+                            transition: all .5s ease;
+                            color: #FFCCCC;
+                            font-weight: bold;
+                            text-align: left;
+                        } 
+
+                        .nguonb .thea:hover {
+                            color: #00FF00;
+                        }
+                        
                             .recent-order tbody tr td:nth-child(2) a{
                             cursor: pointer;
                             color: rgb(221, 94, 94);
@@ -159,6 +169,10 @@
                                     }elseif($set['nguon'] == 'chosithuoc.com'){
                                 ?>
                                  <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                    <?php 
+                                            }elseif($set['nguon'] == 'nhathuocankhang.com'){
+                                        ?>
+                                        <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                  <?php 
                                     }else{
                                         echo "";
