@@ -208,7 +208,7 @@
                             }
 
                         </style>
-                        <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
+                        <!-- <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
                         <div class="adress-form">
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>
@@ -219,7 +219,7 @@
                                         <button type="submit" name="button" id="runButton">Xác nhận</button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <script>
                             // Click vào Button Địa chỉ
                             const adressbtn = document.querySelector('#adress-form')

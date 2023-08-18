@@ -151,10 +151,6 @@ include_once('format/format.php');
                 </div>
                         
             </div>
-<<<<<<< HEAD
-=======
-            
->>>>>>> a1e80eb37bc1ad88a6f41aab8ac6633d05490f1c
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
@@ -213,14 +209,11 @@ include_once('format/format.php');
                 </div>
                         
             </div>
-<<<<<<< HEAD
-=======
              <?php
                 }else{
                     echo "";
                 }
             ?>
->>>>>>> a1e80eb37bc1ad88a6f41aab8ac6633d05490f1c
           </div>
 
           <?php

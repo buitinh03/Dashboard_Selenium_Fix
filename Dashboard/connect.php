@@ -40,7 +40,7 @@
             return $result;
         }
 
-        function getListproduct(){
+        function getListproduct($start=1,$limit=0){
             $db=new connect();
             $select="SELECT *,
         CASE
@@ -49,7 +49,10 @@
             WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
-        FROM thuocsi_vn ORDER BY gialech desc limit 500;";
+        FROM thuocsi_vn ORDER BY gialech desc ";
+        if($limit!=0){
+            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+        }
             $result=$db->getList($select);
             return $result;
         }
