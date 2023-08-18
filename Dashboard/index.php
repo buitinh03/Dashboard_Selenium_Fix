@@ -212,7 +212,7 @@
                                                 else $gialech=100-($set['giamoi']/ $set['giacu']*100);
                                             }else {$gialech= 0;}
                                             $gialech=round($gialech,2);
-                                            if ($set['giamoi']>$set['giacu']){
+                                            if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
                                         ?>
                                         <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                         <?php } elseif($set['giamoi']<$set['giacu']){ ?>
