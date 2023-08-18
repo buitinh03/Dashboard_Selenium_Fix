@@ -96,7 +96,7 @@ def extract_product_info(html):
     manufacturer = ""
     country_of_origin = ""
     product_info = ""
-    sales_in_last_24_hours = ""
+    # sales_in_last_24_hours = ""
 
     # Tìm thông tin nhà sản xuất và trích xuất dữ liệu nếu có
     manufacturer_info = soup.find('div', class_='styles_warpper____CUU')
@@ -116,9 +116,9 @@ def extract_product_info(html):
     if product_info_element:
         product_info = product_info_element.text.strip()
 
-    sales_element = soup.find('p', class_='MuiTypography-root styles_nameDescNumber__JUiEI MuiTypography-body1')
-    if sales_element:
-        sales_in_last_24_hours = sales_element.text.strip()
+    # sales_element = soup.find('p', class_='MuiTypography-root styles_nameDescNumber__JUiEI MuiTypography-body1')
+    # if sales_element:
+    #     sales_in_last_24_hours = sales_element.text.strip()
 
     product_name_element = wait.until(
         EC.presence_of_element_located((By.CSS_SELECTOR, 'p.titleProduct,p.styles_last_breadcrumb__c7IQm')))
@@ -156,13 +156,18 @@ def extract_product_info(html):
     if product_info_element:
         product_info = product_info_element.text.strip()
 
-    return manufacturer, country_of_origin, tphl, product_info, sales_in_last_24_hours, product_name
+    return manufacturer, country_of_origin, tphl, product_info, product_name
 
-
+# num_pages_to_scrape = 5
+# link = []
+# for page_num in range(1, num_pages_to_scrape + 1):
+#     url = f"https://thuocsi.vn/products?page={page_num}"
+#     driver.get(url)
+    
 num_pages_to_scrape = 1000
 link = []
 
-for page_num in range(663, num_pages_to_scrape + 1):
+for page_num in range(1, num_pages_to_scrape + 1):
     url = f"https://thuocsi.vn/products?page={page_num}"
     driver.get(url)
 
@@ -198,13 +203,13 @@ for a in link:
         nuoc_san_xuat = ""
         tphl = ""
         thong_tin_san_pham = ""
-        sales_in_last_24_hours = ""
+        # sales_in_last_24_hours = ""
         product_name = ""
         nguon="thuocsi.vn"
 
         try:
             html = driver.page_source
-            nha_san_xuat, nuoc_san_xuat, tphl, thong_tin_san_pham, sales_in_last_24_hours, product_name = extract_product_info(
+            nha_san_xuat, nuoc_san_xuat, tphl, thong_tin_san_pham, product_name = extract_product_info(
                 html)
         except NoSuchElementException:
             pass
@@ -256,8 +261,7 @@ for a in link:
                             WHERE title = %s;
                         ''', (
                     anh, nha_san_xuat, nuoc_san_xuat, thong_tin_san_pham, tphl, gia_sales, a,
-                    gia_sales,
-                    ngay, product_name))
+                    gia_sales,ngay, product_name))
             else:
                 cursor.execute(f'''
                             INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 

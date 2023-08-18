@@ -9,10 +9,16 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
+import sys
+import codecs
+
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.nhathuocankhang.com/"
@@ -68,7 +74,6 @@ for url in link_lists:
     try:
         active_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
         active_button.click()
-        
     except ElementNotInteractableException:
         pass
     sleep(2)
@@ -94,11 +99,13 @@ for url in link_lists:
         driver.get(a)
         sleep(2)
         try:
-            ten = driver.find_element(By.CSS_SELECTOR, "h1").text
-            gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
-            gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
-            gia_sales = int(gia_sales_text)
-
+            try:
+                ten = driver.find_element(By.CSS_SELECTOR, "h1").text
+                gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
+                gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
+                gia_sales = int(gia_sales_text)
+            except NoSuchElementException:
+                gia_sales = None 
             # Cào thông tin về nhà sản xuất
             nha_san_xuat = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(4)").text
             if "Hãng sản xuất" in nha_san_xuat:
@@ -133,18 +140,19 @@ for url in link_lists:
                     cursor.execute(f'''
                         UPDATE thuocsi_vn
                         SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                            hamluong_thanhphan = %s, photo = %s, link = %s, giacu = %s, ngaycu = %s, giamoi = %s, ngaymoi = %s, nguon = %s
+                            hamluong_thanhphan = %s, photo = %s, link = %s,
+                            giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
                         WHERE title = %s;
                     ''', (
                         gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, photo, a,
-                        gia_sales, ngay, gia_sales, ngay, 'nhathuocankhang.com', ten ))
+                        gia_sales, ngay, 'nhathuocankhang.com', ten ))
                 else:
                     cursor.execute(f'''
-                        INSERT INTO thuocsi_vn (title, giacu, ngaycu, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
                         nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                     ''', (
-                        ten, gia_sales, ngay, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
+                        ten, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
                         thanhphan_hamluong, thong_tin_san_pham, a, 'nhathuocankhang.com'))
                     connection.commit()
         except Exception as e:
