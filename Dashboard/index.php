@@ -176,7 +176,7 @@
                                     }
                                     .nguonb .thea {
                                         transition: all .5s ease;
-                                        color: #FFCCCC;
+                                        color:green;
                                         font-weight: bold;
                                         text-align: left;
                                     } 

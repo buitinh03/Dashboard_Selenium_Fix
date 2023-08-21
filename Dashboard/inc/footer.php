@@ -225,7 +225,7 @@
                                         
                                             system('python ../backend/auto/thuocsi.py');
                                             
-                                            system('python ../backend/auto/run_chosithuoc.py');
+                                            // system('python ../backend/auto/run_chosithuoc.py');
                                         //     echo "<script>
                                         //     swal({
                                         //         title: 'Thông báo',
