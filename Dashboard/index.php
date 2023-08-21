@@ -210,12 +210,25 @@
                                         <?php   
                                         }else{
                                         ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td class="primary" style="text-align: right;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
                                         <td class="primary" style="text-align: right;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <?php } ?>
+                                            
                                         <td class="primary" style="text-align: center;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td class="primary" style="text-align: right;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
                                         <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <?php } ?>
 
                                         <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
 
