@@ -186,7 +186,7 @@
                                 font-size: 16px;
                             }
 
-                            .adress-form-content form input, select {
+                            /* .adress-form-content form input, select {
                                 display: block;
                                 height: 40px;
                                 width: 100%;
@@ -194,7 +194,7 @@
                                 border: 1px solid #ddd;
                                 padding: 6px;
                                 border-radius: 5px;
-                            }
+                            } */
 .adress-form-content form button {
                                 margin-top: 20px;
                                 height: 40px;
@@ -208,18 +208,43 @@
                             }
 
                         </style>
-                        <!-- <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
+                        <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
                         <div class="adress-form">
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>
-                                <form action="http://127.0.0.1:5000/run-python" method="post">
-                                   <p>Nhập số trang bắt đầu và trang kết thúc để tiến hành cào</p>
-                                        <input type="number" placeholder="Trang bắt đầu" min="0" name="numstart" id="" required oninvalid="setCustomValidity('Vui lòng điền trang bắt đầu')">
-                                        <input type="number" placeholder="Trang kết thúc" min="1" name="numend" id="" required oninvalid="setCustomValidity('Vui lòng điền trang kết thúc')">
-                                        <button type="submit" name="button" id="runButton">Xác nhận</button>
+                                <form action="" method="post">
+                                   <p>Chọn website bạn muốn thực hiện cào</p>
+                                     <!-- <input type="checkbox" name="top[]" id="thuocsi"> thuocsi.vn <br> 
+                                     <input type="checkbox" name="top[]" id="chosithuoc"> chosithuoc.com <br>
+                                     <input type="checkbox" name="top[]" id="ankhang">nhathuocankhang.com <br>   -->
+                                    <button name="runpython" id="runButton">Xác nhận</button>
+                                    <?php
+                                    if($_SERVER['REQUEST_METHOD']=='POST'){
+                                        if (isset($_POST['runpython'])){
+                                            
+                                        
+                                            system('python ../backend/auto/thuocsi.py');
+                                            
+                                            system('python ../backend/auto/run_chosithuoc.py');
+                                        //     echo "<script>
+                                        //     swal({
+                                        //         title: 'Thông báo',
+                                        //         text: 'Quá trình cào giá đã hoàn tất trang chosithuoc.com',
+                                        //         icon: 'success',
+                                        //         timer: 5000,  // Thời gian tự động đóng (3 giây)
+                                        //         buttons: false,  // Ẩn nút Close
+                                        //         });
+                                        //     window.location.href='index.php';
+                                        // </script>";
+                                        }
+                                        // else echo 'Không chayk';
+                                    }
+                                    
+                                    ?>
                                 </form>
+                                
                             </div>
-                        </div> -->
+                        </div>
                         <script>
                             // Click vào Button Địa chỉ
                             const adressbtn = document.querySelector('#adress-form')
@@ -245,7 +270,7 @@
 
                     </form> -->
                     
-                    <script>
+                    <!-- <script>
                    document.getElementById("runButton").addEventListener("click",function(){
                         var fun=[a,b]
                         for(var i=0;i<fun.length;i++){
@@ -289,7 +314,7 @@
                         
                     }
                     
-                    </script>
+                    </script> -->
                     <!-- <button id="caogia-button" onclick="sendCaoGiaRequest()">
                         <div class="item add-product">
                             <span class="material-icons-sharp">add</span>
@@ -300,7 +325,7 @@
                         </div>
                     </button>    -->
                 </div>
-                <script>
+                <!-- <script>
                     function sendCaoGiaRequest() {
                         axios.post('/caogia')
                         .then(function(response) {
@@ -311,7 +336,7 @@
                             console.error(error);
                         });
                     }
-                </script>
+                </script> -->
             </div>
        </div> 
        <!-- <script src="./orders.js"></script> -->
