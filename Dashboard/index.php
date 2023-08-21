@@ -46,9 +46,23 @@
                              while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){                   
                             $tong= $result['quantity'];
                          }
-                         if($tong%9==0){$trang=$tong/9;}
-                         else{$trang=$tong/9+1;}
+                         if($tong%100==0){$trang=$tong/100;}
+                         else{$trang=ceil($tong/100);}
                         }
+                         
+                                $format = new Format();
+                                $pro = new product();
+                                $trangthu=1;
+                                $from=1;
+                                $to=6;
+                        if(isset($_GET['trang'])){
+                            $trangthu=$_GET['trang'];
+                            $from=$trangthu-5; if($from<5){$from=1;}
+                            $to=$trangthu+5; if($to>$trang){$to=$trang;}
+                            $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
+                            $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
+                        }
+                        $result = $pro ->getListproduct($trangthu,100);
                         ?>  
                     
                     <?php
@@ -59,22 +73,30 @@
                             $sorow=$demd['sothu'];
                         ?>
                         <div id="pagination">
-                            <a href="index.php?&trang=<?=1?>" id="pr">Trước</a>
-                            <?php 
-                            
+                            <a href="index.php?&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            <?php if($trangthu==1){ ?> 
+                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <?php }else{ ?> 
+                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } 
                             $page=array();                        
-                            for($i=0;$i<15;$i++){
-                                $page[$i]="p".($i+1);
+                            for($i=$from;$i<=$to;$i++){
+                                $page[$i]="pa".($i);
                             }
                             $next=1; 
-                            for($i=0;$i<15;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="index.php?&trang=<?=($i+1)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i+1) ?></a>
+                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
-                            $trangthu=($i+1);
-                        } ?>                        
-                        <a href="index.php?&trang=<?=20?>" id="next">Sau</a>
+                            
+                        } ?>
+                        <?php if($trangthu>=$trang){ ?> 
+                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <?php }else{ ?>                     
+                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <?php } ?>
+                        <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
                     </div>
                             <table id="mytable">                    
                                 <thead>
@@ -164,16 +186,10 @@
                                     }
                                 </style>
                                 
-                                <?php 
-                                $format = new Format();
-                                $pro = new product();
-                                $trangthu=1;
                                 
-                                if(isset($_GET['trang'])){
-                                    $trangthu=$_GET['trang'];
-                                }
-                                $result = $pro ->getListproduct($trangthu,100);
-                    
+                                
+                                
+                                <?php
                                 if($result){
                                     $j=0;
                                     while($set = $result->fetch()){
@@ -264,35 +280,34 @@
                                 </tbody>
                             </table>
                             <div id="pagination">
-                            <a href="#" id="pr">Trước</a>
-                            <?php 
-                            
+                            <a href="index.php?&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            <?php if($trangthu==1){ ?> 
+                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <?php }else{ ?> 
+                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } 
                             $page=array();                        
-                            for($i=0;$i<15;$i++){
-                                $page[$i]="pa".($i+1);
+                            for($i=$from;$i<=$to;$i++){
+                                $page[$i]="p".($i);
                             }
                             $next=1; 
-                            for($i=0;$i<15;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="index.php?&trang=<?=($i+1)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i+1) ?></a>
+                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
-                            $trangthu=($i+1);
-                        } ?>                        
-                        <a href="#" id="next">Sau</a>
+                            
+                        } ?>
+                        <?php if($trangthu>=$trang){ ?> 
+                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <?php }else{ ?>                     
+                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <?php } ?>
+                        <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
                     </div>
                  
                     <script>
-                        
-                    //     $(function() {
-                    //         // Lấy phần chia trang và bảng
-                    //         const pagination = $("#pagination");
-                    //         const table = $("#mytable");                       
-                            
-                    //         // Đếm số dòng trong bảng
-                    //         const rowCount = table.find(".tr").length;
-                    //         // Đặt trang hiện tại thành 1
-                    //         var currentPage = 1;
+                     
                             function changeColor(element) {
                                 element.style.color="red";                                
                             }
@@ -327,43 +342,11 @@
                             }
                             );
 
-                    //         // Hiển thị trang hiện tại
-                    //         showPage(currentPage);
-
-                    //         // Định nghĩa chức năng để hiển thị một trang
-                    //         function showPage(page) {
-                    //         // Ẩn tất cả các dòng trong bảng
-                    //         table.find(".tr").hide();
-                    //         // const xhr = new XMLHttpRequest();
-                    //         // xhr.open("GET", "/load_data.php");
-                    //         // xhr.onload = function() {
-                    //         // if (xhr.status === 200) {
-                    //         //     // The data was loaded successfully
-                    //         //     const data = JSON.parse(xhr.responseText);
-                    //         //     // Do something with the data
-                    //         // } else {
-                    //         //     // The data was not loaded successfully
-                    //         //     alert("Error loading data: " + xhr.status);
-                    //         // }
-                    //         // };
-                    //         // xhr.send();
-                    //         // Hiển thị các dòng cho trang hiện tại
-
-                    //         for (var i = (page - 1) * 9; i <page * 9 && i < rowCount; i++) {
-                    //             table.find(".tr").eq(i).show();
-                    //         }
-
-                    //         // Cập nhật các liên kết chia trang
-                    //         pagination.find("a.page").each(function() {
-                    //             $(this).removeClass("active");
-                    //         });
-
-                    // //         // Đặt liên kết hoạt động cho trang hiện tại
-                    //         pagination.find("a.page").eq(page - 1).addClass("active");
-                            
-                    //     });
-                    // </script>
+                   
+                     </script>
                         <script>
+                        // document.querySelector("#ne").style.background = '#C0C0C0';
+                        // document.querySelector("#ne").style.color = 'black';
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
