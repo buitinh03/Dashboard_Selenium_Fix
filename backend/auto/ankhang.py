@@ -100,7 +100,7 @@ for url in link_lists:
         sleep(2)
         try:
             try:
-                ten = driver.find_element(By.CSS_SELECTOR, "h1").text
+                ten = driver.find_element(By.CSS_SELECTOR, "h1.detail-title").text
                 gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
                 gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
                 gia_sales = int(gia_sales_text)

@@ -103,13 +103,13 @@
                             }
                            .nguonb .thea {
                             transition: all .5s ease;
-                            color: #FFCCCC;
+                            color:#FFCC33;
                             font-weight: bold;
                             text-align: left;
                         } 
 
                         .nguonb .thea:hover {
-                            color: #00FF00;
+                            color: #00DD00;
                         }
                         
                             .recent-order tbody tr td:nth-child(2) a{
