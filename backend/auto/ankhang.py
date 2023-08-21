@@ -145,7 +145,7 @@ for url in link_lists:
                         WHERE title = %s;
                     ''', (
                         gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, photo, a,
-                        gia_sales, ngay, 'nhathuocankhang.com', ten ))
+                        gia_sales, ngay, 'ankhang.com', ten ))
                 else:
                     cursor.execute(f'''
                         INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
@@ -153,7 +153,7 @@ for url in link_lists:
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                     ''', (
                         ten, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
-                        thanhphan_hamluong, thong_tin_san_pham, a, 'nhathuocankhang.com'))
+                        thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
                     connection.commit()
         except Exception as e:
             print("Lỗi khi scraping sản phẩm:", str(e))
