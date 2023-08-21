@@ -170,7 +170,7 @@
                                 ?>
                                  <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                     <?php 
-                                            }elseif($set['nguon'] == 'nhathuocankhang.com'){
+                                            }elseif($set['nguon'] == 'ankhang.com'){
                                         ?>
                                         <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                  <?php 
