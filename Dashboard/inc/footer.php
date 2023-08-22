@@ -212,36 +212,154 @@
                         <div class="adress-form">
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>
-                                <form action="" method="post">
+                                    <form action="#" method="post">
                                    <p>Chọn website bạn muốn thực hiện cào</p>
-                                     <!-- <input type="checkbox" name="top[]" id="thuocsi"> thuocsi.vn <br> 
-                                     <input type="checkbox" name="top[]" id="chosithuoc"> chosithuoc.com <br>
-                                     <input type="checkbox" name="top[]" id="ankhang">nhathuocankhang.com <br>   -->
-                                    <button name="runpython" id="runButton">Xác nhận</button>
+                                   <style>
+                                    /* Customize the label (the container) */
+                                    .containerr {
+                                    display: block;
+                                    position: relative;
+                                    padding-left: 20px;
+                                    margin-bottom: 8px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                    -webkit-user-select: none;
+                                    -moz-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+                                    text-align: left;
+                                    }
+
+                                    /* Hide the browser's default radio button */
+                                    .containerr input {
+                                    position: absolute;
+                                    opacity: 0;
+                                    cursor: pointer;
+                                    height: 0;
+                                    width: 0;
+                                    }
+
+                                    /* Create a custom radio button */
+                                    .checkmark {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    height: 15px;
+                                    width: 15px;
+                                    background-color: #eee;
+                                    border-radius: 50%;
+                                    }
+
+                                    /* On mouse-over, add a grey background color */
+                                    .containerr:hover input ~ .checkmark {
+                                    background-color: #ccc;
+                                    }
+
+                                    /* When the radio button is checked, add a blue background */
+                                    .containerr input:checked ~ .checkmark {
+                                    background-color: #2196F3;
+                                    }
+
+                                    /* Create the indicator (the dot/circle - hidden when not checked) */
+                                    .checkmark:after {
+                                    content: "";
+                                    position: absolute;
+                                    display: none;
+                                    }
+
+                                    /* Show the indicator (dot/circle) when checked */
+                                    .containerr input:checked ~ .checkmark:after {
+                                    display: block;
+                                    }
+
+                                    /* Style the indicator (dot/circle) */
+                                    .containerr .checkmark:after {
+                                    top: 5px;
+                                    left: 5px;
+                                    width: 5px;
+                                    height: 5px;
+                                    border-radius: 50%;
+                                    background: white;
+                                    }
+                                   </style>
+                                   <label class="containerr">Thuocsi.vn
+                                        <input type="checkbox" name='thuocsi' value="thuocsi">
+                                        <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="containerr">Chosithuoc.com
+                                        <input type="checkbox" name='chosithuoc' value="chosithuoc">
+                                        <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="containerr">NhathuocAnKhang.com
+                                        <input type="checkbox" name='ankhang' value="ankhang">
+                                        <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="containerr">Tất cả
+                                        <input type="checkbox" name="alll" value='alll'>
+                                        <span class="checkmark"></span>
+                                        </label>
+                                    <button type="submit" name="runpython" id="runButton">Xác nhận</button>
                                     <?php
                                     if($_SERVER['REQUEST_METHOD']=='POST'){
                                         if (isset($_POST['runpython'])){
+                                            ini_set('max_execution_time', (3600*24*7));
+                                            ignore_user_abort(true);
+                                            if(isset($_POST['alll'])){
+                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py'))){
+                                                echo "<script>
+                                                swal({
+                                                    title: 'Thông báo',
+                                                    text: 'Quá trình cào giá đã hoàn tất',
+                                                    icon: 'success',
+                                                    timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                    buttons: false,  // Ẩn nút Close
+                                                    });
+                                                window.location.href='index.php';
+                                                </script>";
+                                                }else echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                    window.location.href='index.php';
+                                                </script>";
+                                            }else{
+                                                if(isset($_POST['thuocsi'])){
+                                                    system('python ../backend/auto/thuocsi.py');
+                                                }
+                                                if(isset($_POST['chosithuoc'])){
+                                                    system('python ../backend/auto/run_chosithuoc.py');
+                                                }
+                                                if(isset($_POST['ankhang'])){
+                                                    system('python ../backend/auto/ankhang.py');
+                                                }
+                                                echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                    window.location.href='index.php';
+                                                </script>";
+                                            }
                                             
-                                        
-                                            system('python ../backend/auto/thuocsi.py');
-                                            
-                                            // system('python ../backend/auto/run_chosithuoc.py');
-                                        //     echo "<script>
-                                        //     swal({
-                                        //         title: 'Thông báo',
-                                        //         text: 'Quá trình cào giá đã hoàn tất trang chosithuoc.com',
-                                        //         icon: 'success',
-                                        //         timer: 5000,  // Thời gian tự động đóng (3 giây)
-                                        //         buttons: false,  // Ẩn nút Close
-                                        //         });
-                                        //     window.location.href='index.php';
-                                        // </script>";
                                         }
+                                        
+                                    
                                         // else echo 'Không chayk';
                                     }
                                     
                                     ?>
                                 </form>
+                                   
                                 
                             </div>
                         </div>
