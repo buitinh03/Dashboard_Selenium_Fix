@@ -184,6 +184,17 @@
                                     .nguonb .thea:hover {
                                         color: #00FF00;
                                     }
+                                    .recent-order tbody tr td:nth-child(2) a{
+                                    cursor: pointer;
+                                    color: rgb(221, 94, 94);
+                                    transition: .5s all ease;
+                                    text-align: left;
+                                }
+                                
+                                .recent-order tbody tr td:nth-child(2):hover a{
+                                    color: rgb(221, 50, 50);
+                                    font-size: 14px;
+                                }
                                 </style>
                                 
                                 
@@ -198,7 +209,8 @@
                             <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><?php echo $format->textShorten($set['title'],30) ?></td>
+                                        <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $format->textShorten($set['title'],30) ?></a></td>
+                                        
                                         <?php
                                         if($checkLoginAdmin == 0){
                                         ?>
