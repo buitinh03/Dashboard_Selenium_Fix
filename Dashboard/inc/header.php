@@ -62,6 +62,20 @@ Session::checkSession();
                             echo '';
                         }
                         ?>
+                        <?php
+                        if($checkLoginAdmin == 0){
+                          
+                          ?>
+                        <a href="views_user.php">
+                             <span class="material-icons-sharp">inventory_2</span>
+                             <h3>Quản lý tài khoản</h3>
+                         </a>
+                         <?php
+                     
+                         }else {
+                             echo '';
+                         }
+                         ?>
                      
                       <!-- <a href="register.php">
                             <span class="material-icons-sharp">insights</span>
