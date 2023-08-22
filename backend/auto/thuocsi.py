@@ -158,26 +158,26 @@ def extract_product_info(html):
 
     return manufacturer, country_of_origin, tphl, product_info, product_name
 
-num_pages_to_scrape = 1
-link = []
-for page_num in range(1, num_pages_to_scrape + 1):
-    url = f"https://thuocsi.vn/products?page={page_num}"
-    driver.get(url)
-    
-# num_pages_to_scrape = 1000
+# num_pages_to_scrape = 1
 # link = []
-
 # for page_num in range(1, num_pages_to_scrape + 1):
 #     url = f"https://thuocsi.vn/products?page={page_num}"
 #     driver.get(url)
+    
+num_pages_to_scrape = 1000
+link = []
 
-#     html = driver.page_source
-#     soup = BeautifulSoup(html, 'html.parser')
+for page_num in range(1, num_pages_to_scrape + 1):
+    url = f"https://thuocsi.vn/products?page={page_num}"
+    driver.get(url)
 
-#     search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
-#     if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
-#         break
+    search_info_div = soup.find("div", class_="style_search_result__5jWKu")
+
+    if search_info_div and "0 sản phẩm tìm kiếm" in search_info_div.get_text():
+        break
     l = driver.find_elements(By.CSS_SELECTOR,
                              ".style_product_grid_wrapper__lYnBj > .MuiGrid-root > div span > .styles_mobile_rootBase__8z7PQ")
     for i in l:
