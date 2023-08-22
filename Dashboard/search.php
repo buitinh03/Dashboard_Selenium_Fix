@@ -39,6 +39,7 @@
                                 <th>Thời gian</th>
                                 <th>Giá mới</th>
                                 <th>Thời gian</th>
+                                <th>Giá lệch</th>
                             <?php
                             }else {
                                 echo "";
@@ -168,11 +169,27 @@
                                         <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                 <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                          <?php
-                                }else{
-                                    echo "";
-                                }
-                         ?>
+                                <?php
+                                            if($set['giamoi']!=0&&$set['giacu']!=0){
+                                                if( $set['giamoi']>$set['giacu']){
+                                                $gialech=($set['giamoi']/$set['giacu']*100)-100;
+                                                }
+                                                else $gialech=100-($set['giamoi']/ $set['giacu']*100);
+                                            }else {$gialech= 0;}
+                                            $gialech=round($gialech,2);
+                                            if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
+                                        ?>
+                                        <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                        <?php } elseif($set['giamoi']<$set['giacu']){ ?>
+                                            <td class="primary" style="text-align: right; color:red"><?php echo "-".$gialech."%" ?></td>
+                                        <?php } else { ?>
+                                            <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
+                                        <?php } ?>
+                                        <?php
+                                        }else{
+                                            echo "";
+                                        }
+                                        ?>
                                   <?php 
                                  if($set['nguon'] == 'thuocsi.vn'){
                                 ?>
