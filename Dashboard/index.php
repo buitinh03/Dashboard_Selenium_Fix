@@ -195,6 +195,13 @@
                                     color: rgb(221, 50, 50);
                                     font-size: 14px;
                                 }
+
+                                 .nguon .thea1{
+                                    transition: all .5s ease;
+                                    color: green;
+                                    font-weight: bold;
+                                    text-align: left;
+                                }
                                 </style>
                                 
                                 <?php
@@ -266,7 +273,7 @@
                                         <?php 
                                             if($set['nguon'] == 'thuocsi.vn'){
                                         ?>
-                                        <td class="nguon"><a href="<?php echo $set['link'];?>"><?php echo $set['nguon'];?></a></td>
+                                         <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
                                         <?php 
                                             }elseif($set['nguon'] == 'chosithuoc.com'){
                                         ?>

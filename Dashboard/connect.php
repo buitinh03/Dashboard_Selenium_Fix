@@ -65,13 +65,13 @@
 
         }
 
-        function charproductorder(){
-            $db=new connect();
-            $query = "SELECT sum(sales_in_last_24_hours) as sale from thuocsi_vn";
-            $result = $db->exec($query);
-            return $result;
+        // function charproductorder(){
+        //     $db=new connect();
+        //     $query = "SELECT sum(sales_in_last_24_hours) as sale from thuocsi_vn";
+        //     $result = $db->exec($query);
+        //     return $result;
 
-        }
+        // }
 
         function chartSumproductorder(){
             $db=new connect();
@@ -96,59 +96,59 @@
         }
 
 
-        function buy_the_most(){
-            $db =  new connect();
-            $query = "SELECT title, sales_in_last_24_hours, photo, giamoi FROM thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1;";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function buy_the_most(){
+        //     $db =  new connect();
+        //     $query = "SELECT title, sales_in_last_24_hours, photo, giamoi FROM thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1;";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function buy_at_Last(){
-            $db =  new connect();
-            $query = "SELECT MIN(sales_in_last_24_hours) AS buy_at_last FROM thuocsi_vn";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function buy_at_Last(){
+        //     $db =  new connect();
+        //     $query = "SELECT MIN(sales_in_last_24_hours) AS buy_at_last FROM thuocsi_vn";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function buy_the_two(){
-            $db = new connect();
-            $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 1";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function buy_the_two(){
+        //     $db = new connect();
+        //     $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 1";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function buy_the_three(){
-            $db = new connect();
-            $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 2";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function buy_the_three(){
+        //     $db = new connect();
+        //     $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 2";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function phantramnhieunhat(){
-            $db = new connect();
-            $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhat from thuocsi_vn";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function phantramnhieunhat(){
+        //     $db = new connect();
+        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhat from thuocsi_vn";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function phantramnhieunhi(){
-            $db = new connect();
-            $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhi from thuocsi_vn";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function phantramnhieunhi(){
+        //     $db = new connect();
+        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhi from thuocsi_vn";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
-        function phantramnhieuba(){
-            $db = new connect();
-            $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieuba from thuocsi_vn";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function phantramnhieuba(){
+        //     $db = new connect();
+        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieuba from thuocsi_vn";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
         //search
         function search($name){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%')";
+            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text) ) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text) ) like LOWER('%$name%')";
             $result = $db->getList($query);
             return $result;
         }
@@ -167,21 +167,21 @@
             return $result;
 
         }
-        function buy_min(){
-            $db =new connect();
-            $query = "SELECT title, photo, giamoi,sales_in_last_24_hours
-            FROM thuocsi_vn
-            WHERE CAST(sales_in_last_24_hours AS real) = (SELECT MIN(CAST(sales_in_last_24_hours AS real))
-                            FROM thuocsi_vn)";
-            $result = $db->getList($query);
-            return $result;
-        }
-        function phantramitnhat(){
-            $db = new connect();
-            $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramitnhat from thuocsi_vn";
-            $result = $db->getList($query);
-            return $result;
-        }
+        // function buy_min(){
+        //     $db =new connect();
+        //     $query = "SELECT title, photo, giamoi,sales_in_last_24_hours
+        //     FROM thuocsi_vn
+        //     WHERE CAST(sales_in_last_24_hours AS real) = (SELECT MIN(CAST(sales_in_last_24_hours AS real))
+        //                     FROM thuocsi_vn)";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
+        // function phantramitnhat(){
+        //     $db = new connect();
+        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramitnhat from thuocsi_vn";
+        //     $result = $db->getList($query);
+        //     return $result;
+        // }
 
         
     }

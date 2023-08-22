@@ -70,19 +70,17 @@ link_lists = [
 
 for url in link_lists:
     driver.get(url)
-    sleep(1)
     try:
-        active_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
+        active_button = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
         active_button.click()
     except ElementNotInteractableException:
         pass
-    sleep(2)
     while True:
         try:
             view_more_button = driver.find_element(By.CSS_SELECTOR, ".view-more > a")
             if view_more_button.is_displayed():
                 view_more_button.click()
-                sleep(2)
+                sleep(1)
             else:
                 break
         except NoSuchElementException:
