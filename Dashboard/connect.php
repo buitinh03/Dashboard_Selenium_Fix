@@ -148,7 +148,7 @@
         //search
         function search($name){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%')";
+            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text) ) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text) ) like LOWER('%$name%')";
             $result = $db->getList($query);
             return $result;
         }
