@@ -213,10 +213,11 @@
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>
                                     <form action="#" method="post">
-                                   <p>Chọn website bạn muốn thực hiện cào</p>
+                                   <p style="font-weight: bolder;">Chọn website bạn muốn thực hiện cào</p>
                                    <style>
                                     /* Customize the label (the container) */
                                     .containerr {
+                                    margin-top: 8px;
                                     display: block;
                                     position: relative;
                                     padding-left: 20px;
@@ -229,9 +230,11 @@
                                     user-select: none;
                                     text-align: left;
                                     }
+                                    
 
                                     /* Hide the browser's default radio button */
                                     .containerr input {
+                                        margin-top: 8px;   
                                     position: absolute;
                                     opacity: 0;
                                     cursor: pointer;
@@ -241,23 +244,27 @@
 
                                     /* Create a custom radio button */
                                     .checkmark {
+                                    
                                     position: absolute;
                                     top: 0;
                                     left: 0;
                                     height: 15px;
                                     width: 15px;
-                                    background-color: #eee;
+                                    background-color:bisque;
                                     border-radius: 50%;
                                     }
 
                                     /* On mouse-over, add a grey background color */
                                     .containerr:hover input ~ .checkmark {
-                                    background-color: #ccc;
+                                    background-color:#f97e0e;
                                     }
 
                                     /* When the radio button is checked, add a blue background */
                                     .containerr input:checked ~ .checkmark {
                                     background-color: #2196F3;
+                                    }
+                                    .containerr input:disabled ~ .checkmark {
+                                    background-color:darkgray;
                                     }
 
                                     /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -274,6 +281,7 @@
 
                                     /* Style the indicator (dot/circle) */
                                     .containerr .checkmark:after {
+                                       
                                     top: 5px;
                                     left: 5px;
                                     width: 5px;
@@ -282,26 +290,76 @@
                                     background: white;
                                     }
                                    </style>
-                                   <label class="containerr">Thuocsi.vn
-                                        <input type="checkbox" name='thuocsi' value="thuocsi">
+                                   <!-- <input class="containerr" type="checkbox" name='thuocsi' value="thuocsi" id="checkbox-1">Thuocsi.vn
+                                   <input class="containerr" type="checkbox" name='chosithuoc' value="chosithuoc" id="checkbox-2">Chosithuoc
+                                   <input class="containerr" type="checkbox" name='ankhang' value="ankhang" id="checkbox-3">NhathuocAnKhang
+                                   <input class="containerr" type="checkbox" name="alll" value='alll' id="checkbox-4">Tất cả -->
+                                   <label class="containerr" style="font-weight: 400;">Thuocsi.vn
+                                        <input type="checkbox" name='thuocsi' value="thuocsi" id="checkbox-1">
                                         <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="containerr">Chosithuoc.com
-                                        <input type="checkbox" name='chosithuoc' value="chosithuoc">
+                                        <label class="containerr" style="font-weight: 400;">Chosithuoc.com
+                                        <input type="checkbox" name='chosithuoc' value="chosithuoc" id="checkbox-2">
                                         <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="containerr">NhathuocAnKhang.com
-                                        <input type="checkbox" name='ankhang' value="ankhang">
+                                        <label class="containerr" style="font-weight: 400;">NhathuocAnKhang.com
+                                        <input type="checkbox" name='ankhang' value="ankhang" id="checkbox-3">
                                         <span class="checkmark"></span>
                                         </label>
 
-                                        <label class="containerr">Tất cả
-                                        <input type="checkbox" name="alll" value='alll'>
+                                        <label class="containerr" style="font-weight: 400;">Tất cả
+                                        <input type="checkbox" name="alll" value='alll' id="checkbox-4">
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button>
+                                    <script>
+                                        const chk1=document.getElementById("checkbox-1");
+                                        const chk2=document.getElementById("checkbox-2");
+                                        const chk3=document.getElementById("checkbox-3");
+                                        const chk4=document.getElementById("checkbox-4");
+                                        chk1.addEventListener('change',function(){  
+                                                                                    
+                                            if (chk1.checked) {                                            
+                                                chk4.disabled = true;
+                                            } else {                                            
+                                                chk4.disabled = false;
+                                            }
+                                        })
+                                        // //
+                                        chk2.addEventListener('change',function(){ 
+                                                                                       
+                                            if (chk2.checked) {                                            
+                                                chk4.disabled = true;
+                                            } else {                                            
+                                                chk2.disabled = false;
+                                            }
+                                        })
+                                        //
+                                        chk3.addEventListener('change',function(){ 
+                                                                                      
+                                            if (chk3.checked) {                                            
+                                                chk4.disabled = true;
+                                            } else {                                            
+                                                chk3.disabled = false;
+                                            }
+                                        })
+                                        //
+                                        chk4.addEventListener('change',function(){  
+                                                                                      
+                                        if(chk4.checked){
+                                            chk1.disabled=true;
+                                            chk2.disabled=true;
+                                            chk3.disabled=true;
+                                        }else{
+                                            chk1.disabled=false;
+                                            chk2.disabled=false;
+                                            chk3.disabled=false;                                        
+                                        }
+                                    })
+                                        
+                                    </script>
                                     <?php
                                     if($_SERVER['REQUEST_METHOD']=='POST'){
                                         if (isset($_POST['runpython'])){
