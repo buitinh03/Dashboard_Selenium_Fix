@@ -12,13 +12,10 @@ import os
 import sys
 import codecs
 
-if sys.stdout.encoding != 'utf-8':
-    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
-    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.nhathuocankhang.com/"
@@ -34,7 +31,7 @@ connection = psycopg2.connect(
 
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS thuocsi_vn (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn5 (
             title TEXT,
             giacu TEXT,
             ngaycu DATE,
@@ -63,18 +60,28 @@ with connection.cursor() as cursor:
     ''')
 
 link_lists = [
-    "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin",
-    "https://www.nhathuocankhang.com/giam-dau-ha-sot-khang-viem"
+    "thuc-pham-chuc-nang",
+    "thuoc",
+    "dung-cu-y-te",
+    "my-pham",
+    "cham-soc-ca-nhan"
+
 ]
 
+base_url = "https://www.nhathuocankhang.com"
+all_links = []
 
-for url in link_lists:
-    driver.get(url)
+for url_suffix in link_lists:
+    full_url = f"{base_url}/{url_suffix}"
+    driver.get(full_url)
+
     try:
-        active_button = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
+        active_button = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
         active_button.click()
     except ElementNotInteractableException:
         pass
+
     while True:
         try:
             view_more_button = driver.find_element(By.CSS_SELECTOR, ".view-more > a")
@@ -86,25 +93,41 @@ for url in link_lists:
         except NoSuchElementException:
             break
 
-    l = driver.find_elements(By.CSS_SELECTOR, "ul.listing-prod > li a")
-    link = [i.get_attribute('href') for i in l]
+    link_elements = driver.find_elements(By.CSS_SELECTOR, "ul.listing-prod > li a")
+    links = [link.get_attribute('href') for link in link_elements]
+    all_links.extend(links)
+
 
     def check_product_exist(cursor, product_name):
-        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
+        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn5 WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
-    for a in link:
+    for a in links:
         driver.get(a)
-        sleep(2)
+        sleep(1)
         try:
             try:
                 ten = driver.find_element(By.CSS_SELECTOR, "h1.detail-title").text
-                gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
-                gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
-                gia_sales = int(gia_sales_text)
+
+                try:
+                    gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(3) b")
+                except NoSuchElementException:
+                    try:
+                        gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
+                    except NoSuchElementException:
+                        try:
+                            gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".box-price b")
+                        except NoSuchElementException:
+                            gia_sales_element = 0
+
+                if gia_sales_element:
+                    gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
+                    gia_sales = int(gia_sales_text)
+                else:
+                    gia_sales = 0
             except NoSuchElementException:
-                gia_sales = None 
-            # Cào thông tin về nhà sản xuất
+                gia_sales = 0
+
             nha_san_xuat = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(4)").text
             if "Hãng sản xuất" in nha_san_xuat:
                 nha_san_xuat = nha_san_xuat.replace("Hãng sản xuất", "").strip()
@@ -136,17 +159,17 @@ for url in link_lists:
             with connection.cursor() as cursor:
                 if check_product_exist(cursor, ten):
                     cursor.execute(f'''
-                        UPDATE thuocsi_vn
+                        UPDATE thuocsi_vn5
                         SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
                             hamluong_thanhphan = %s, photo = %s, link = %s,
                             giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
                         WHERE title = %s;
                     ''', (
                         gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, photo, a,
-                        gia_sales, ngay, 'ankhang.com', ten ))
+                        gia_sales, ngay, 'ankhang.com', ten))
                 else:
                     cursor.execute(f'''
-                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                        INSERT INTO thuocsi_vn5 (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
                         nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                     ''', (
@@ -157,3 +180,4 @@ for url in link_lists:
             print("Lỗi khi scraping sản phẩm:", str(e))
 
 driver.quit()
+
