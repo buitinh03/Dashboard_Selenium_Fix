@@ -127,6 +127,10 @@
                         ?>
                         </div>
                     </div>
+                    <?php
+                    if($chucvu == 0){
+
+                    ?>
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>
@@ -195,7 +199,7 @@
                                 padding: 6px;
                                 border-radius: 5px;
                             } */
-.adress-form-content form button {
+                            .adress-form-content form button {
                                 margin-top: 20px;
                                 height: 40px;
                                 width: 80%;
@@ -381,6 +385,11 @@
 
                         </script>
                     </div>
+                    <?php
+                    }else{
+                        echo "";
+                    }
+                    ?>
                     <!-- <form action="http://127.0.0.1:5000/run-python" method="post">
                         <input type="text" name="numstart" placeholder="Nhập trang bắt đầu" required oninvalid="setCustomValidity('Vui lòng điền trang bắt đầu')">
                         <input type="text" name="numend" placeholder="Nhập trang trang kết thúc" required oninvalid="setCustomValidity('Vui lòng điền trang kết thúc')">
