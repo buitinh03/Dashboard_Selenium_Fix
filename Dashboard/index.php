@@ -29,14 +29,14 @@
                         #pagination a{
                             display: flex;
                             text-align: center;
-                            padding: 5px 10px;
+                            padding: 5px 8px;
                             margin: 5px;
                             background:bisque;
-                            
+                            border-radius: 3px;
                         }
                         #pagination a:hover{
                             color: #0000BB;
-                            background: #00CC00;
+                            background: #fff;
                         }
                     </style>
                     <?php
@@ -57,8 +57,8 @@
                                 $to=6;
                         if(isset($_GET['trang'])){
                             $trangthu=$_GET['trang'];
-                            $from=$trangthu-5; if($from<5){$from=1;}
-                            $to=$trangthu+5; if($to>$trang){$to=$trang;}
+                            $from=$trangthu-4; if($from<3){$from=1;}
+                            $to=$trangthu+4; if($to>$trang){$to=$trang;}
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
                         }
@@ -176,13 +176,13 @@
                                     }
                                     .nguonb .thea {
                                         transition: all .5s ease;
-                                        color:green;
+                                        color:tomato;
                                         font-weight: bold;
                                         text-align: left;
                                     } 
 
                                     .nguonb .thea:hover {
-                                        color: #00FF00;
+                                        color:lightcoral;
                                     }
                                     .recent-order tbody tr td:nth-child(2) a{
                                     cursor: pointer;
@@ -196,9 +196,6 @@
                                     font-size: 14px;
                                 }
                                 </style>
-                                
-                                
-                                
                                 
                                 <?php
                                 if($result){
