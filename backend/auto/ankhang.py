@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, TimeoutException
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.common.by import By
@@ -12,6 +12,9 @@ import os
 import sys
 import codecs
 
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
@@ -31,7 +34,7 @@ connection = psycopg2.connect(
 
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS thuocsi_vn5 (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn (
             title TEXT,
             giacu TEXT,
             ngaycu DATE,
@@ -60,12 +63,49 @@ with connection.cursor() as cursor:
     ''')
 
 link_lists = [
-    "thuc-pham-chuc-nang",
-    "thuoc",
-    "dung-cu-y-te",
-    "my-pham",
-    "cham-soc-ca-nhan"
+    # Thuốc
+    "thuoc-bo-va-vitamin",
+    "tim-mach-tieu-duong",
+    "giam-dau-ha-sot-khang-viem",
+    "mat-tai-mui-hong",
+    "ho-hap",
+    "khang-sinh-khang-nam",
+    "tiet-nieu-sinh-duc",
+    "than-kinh-nao-bo",
+    "tieu-hoa-gan-mat"
+    "co-xuong-khop-gut",
+    "dau-cao-xoa-mieng-dan",
+    "da-lieu-di-ung",
 
+    # TPCN
+    "bo-gan-thanh-nhiet",
+    "vitamin-va-khoang-chat",
+    "dau-ca-bo-mat",
+    "ho-tro-tieu-hoa",
+    "keo-ngam-vien-ngam",
+    "vien-uong-bo-nao",
+    "bo-phe-ho-tro-ho-hap",
+    "ho-tro-lam-dep-giam-can",
+    "tang-cuong-sinh-ly-bo-than",
+    "bo-xuong-khop",
+    "ho-tro-tim-mach",
+    "ho-tro-tieu-duong",
+    "ho-tro-tri-tao-bon-tri",
+
+    # Chăm sóc cá nhân
+    "sua-bot",
+    "cham-soc-mat-tai-mui-hong",
+    "cham-soc-rang-mieng",
+    "cham-soc-toan-than",
+    "cham-soc-vung-kin",
+    "thuc-pham-do-uong",
+    "cham-soc-toc",
+    "bao-cao-su",
+    "sua-rua-mat",
+
+    "my-pham",
+    "dung-cu-y-te",
+    "cham-soc-tre-em",
 ]
 
 base_url = "https://www.nhathuocankhang.com"
@@ -76,10 +116,10 @@ for url_suffix in link_lists:
     driver.get(full_url)
 
     try:
-        active_button = WebDriverWait(driver, 10).until(
+        active_button = WebDriverWait(driver, 1).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
         active_button.click()
-    except ElementNotInteractableException:
+    except (ElementNotInteractableException, NoSuchElementException, TimeoutException):
         pass
 
     while True:
@@ -99,7 +139,7 @@ for url_suffix in link_lists:
 
 
     def check_product_exist(cursor, product_name):
-        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn5 WHERE title = %s)", (product_name,))
+        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
     for a in links:
@@ -127,14 +167,17 @@ for url_suffix in link_lists:
                     gia_sales = 0
             except NoSuchElementException:
                 gia_sales = 0
-
             nha_san_xuat = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(4)").text
             if "Hãng sản xuất" in nha_san_xuat:
                 nha_san_xuat = nha_san_xuat.replace("Hãng sản xuất", "").strip()
+            elif "Nơi sản xuất" in nha_san_xuat:
+                nha_san_xuat = nha_san_xuat.replace("Nơi sản xuất", "").strip()
             else:
                 nha_san_xuat_alt = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(5)").text
                 if "Hãng sản xuất" in nha_san_xuat_alt:
                     nha_san_xuat = nha_san_xuat_alt.replace("Hãng sản xuất", "").strip()
+                elif "Nơi sản xuất" in nha_san_xuat_alt:
+                    nha_san_xuat = nha_san_xuat_alt.replace("Nơi sản xuất", "").strip()
                 else:
                     nha_san_xuat = "Không đề cập"
 
@@ -159,7 +202,7 @@ for url_suffix in link_lists:
             with connection.cursor() as cursor:
                 if check_product_exist(cursor, ten):
                     cursor.execute(f'''
-                        UPDATE thuocsi_vn5
+                        UPDATE thuocsi_vn
                         SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
                             hamluong_thanhphan = %s, photo = %s, link = %s,
                             giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
@@ -169,7 +212,7 @@ for url_suffix in link_lists:
                         gia_sales, ngay, 'ankhang.com', ten))
                 else:
                     cursor.execute(f'''
-                        INSERT INTO thuocsi_vn5 (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
                         nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                     ''', (
@@ -180,4 +223,3 @@ for url_suffix in link_lists:
             print("Lỗi khi scraping sản phẩm:", str(e))
 
 driver.quit()
-

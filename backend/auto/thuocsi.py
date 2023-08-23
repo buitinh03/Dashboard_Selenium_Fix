@@ -18,7 +18,7 @@ if sys.stdout.encoding != 'utf-8':
 # Tự động cài đặt ChromeDriver phù hợp với phiên bản Chrome đã cài đặt
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://thuocsi.vn/products"
@@ -86,7 +86,7 @@ try:
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".styles_root__yHa_F > .styles_tab_panel__NAwAa")))
 except (NoSuchElementException, TimeoutException) as e:
     print("Đăng nhập thành công ")
-    print("Vui lòng đợi, sản phẩm đang tiến hành load")
+    print("Vui lòng đợi,aản phẩm đang tiến hành load")
     connection.commit()
 
 
