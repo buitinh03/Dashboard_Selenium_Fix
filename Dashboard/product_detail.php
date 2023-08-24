@@ -1,7 +1,7 @@
 <?php 
 include_once('inc/header.php');
 // include_once('inc/deshboad.php');
-include_once('connect.php');
+include_once('../connect.php');
 include_once('format/format.php');
     $product = new product();
 ?>
@@ -151,6 +151,63 @@ include_once('format/format.php');
                 </div>
                         
             </div>
+            <!-- <div class="container-cat">
+                <div class="warranty-policy">
+                    <div class="warranty-policy-h1">
+                        <h1>BIỂU ĐỒ SO SÁNH GIÁ QUA CÁC LƯỢT CÀO TRONG THÁNG</h1>
+                    </div>
+                    <div class="warranty-policy-content">
+                    <canvas id="myChart"  style="height: 150px; width: 100%;"></canvas>
+                        
+                        
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                    data: {
+                                labels: [],
+                                datasets: []
+                            },
+                            options: {}
+                        });
+
+                        function handleClick() {
+                            var data = [];
+                            
+                            <?php
+                            for($r=0;$r<12;$r++){
+                                if($result['month_'.($r+1)]!=''){
+                            ?>
+                            data[<?php echo $r?>]=parseInt('<?php echo $result['month_'.($r+1)]?>');
+                            <?php
+                                }else {
+                            ?>
+                            data[<?php echo $r?>]=parseInt('0');
+                            <?php        
+                                }
+                            }
+                             ?>
+                            var dataset = {
+                                label:'<?php echo $result['title'] ?>',
+                                data: data,
+                                backgroundColor: 'blue'
+                            };
+                            var h=1;
+                            var lb=[];
+                            for (var i = 0; i <12; i++){
+                                lb.push("Tháng "+h);
+                                h++
+                            }
+                            
+                            myChart.data.labels = lb;
+                            myChart.data.datasets = [dataset];
+                            myChart.update();
+                        }
+                        window.onload=handleClick;
+                    </script>
+                    </div>
+                </div>
+                 -->
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">

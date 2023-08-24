@@ -1,6 +1,6 @@
 <?php
 
-   include_once('connect.php');
+   include_once('../connect.php');
    include_once('format/format.php');
    include_once('classes/login.php');
 

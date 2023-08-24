@@ -1,4 +1,4 @@
-<?php include_once('./connect.php');
+<?php include_once('../connect.php');
     include_once('format/format.php');
 ?>
 <?php
@@ -127,10 +127,6 @@
                         ?>
                         </div>
                     </div>
-                    <?php
-                    if($chucvu == 0){
-
-                    ?>
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>
@@ -190,16 +186,8 @@
                                 font-size: 16px;
                             }
 
-                            /* .adress-form-content form input, select {
-                                display: block;
-                                height: 40px;
-                                width: 100%;
-                                margin-top: 20px;
-                                border: 1px solid #ddd;
-                                padding: 6px;
-                                border-radius: 5px;
-                            } */
-                            .adress-form-content form button {
+                            
+.adress-form-content form button {
                                 margin-top: 20px;
                                 height: 40px;
                                 width: 80%;
@@ -294,10 +282,7 @@
                                     background: white;
                                     }
                                    </style>
-                                   <!-- <input class="containerr" type="checkbox" name='thuocsi' value="thuocsi" id="checkbox-1">Thuocsi.vn
-                                   <input class="containerr" type="checkbox" name='chosithuoc' value="chosithuoc" id="checkbox-2">Chosithuoc
-                                   <input class="containerr" type="checkbox" name='ankhang' value="ankhang" id="checkbox-3">NhathuocAnKhang
-                                   <input class="containerr" type="checkbox" name="alll" value='alll' id="checkbox-4">Tất cả -->
+                                   
                                    <label class="containerr" style="font-weight: 400;">Thuocsi.vn
                                         <input type="checkbox" name='thuocsi' value="thuocsi" id="checkbox-1">
                                         <span class="checkmark"></span>
@@ -317,7 +302,8 @@
                                         <input type="checkbox" name="alll" value='alll' id="checkbox-4">
                                         <span class="checkmark"></span>
                                         </label>
-                                    <button type="submit" name="runpython" id="runButton">Xác nhận</button>
+                                    <button type="submit" name="runpython" id="runButton">Xác nhận</button><br>
+                                    <label for="">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" style="color:#2196F3;">Click</a></label>
                                     <script>
                                         const chk1=document.getElementById("checkbox-1");
                                         const chk2=document.getElementById("checkbox-2");
@@ -362,11 +348,13 @@
                                             chk3.disabled=false;                                        
                                         }
                                     })
-                                        
+                                       
                                     </script>
                                     <?php
                                     if($_SERVER['REQUEST_METHOD']=='POST'){
+                                        
                                         if (isset($_POST['runpython'])){
+                                            echo '<div class="loading"></div>';
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             if(isset($_POST['alll'])){
@@ -443,11 +431,6 @@
 
                         </script>
                     </div>
-                    <?php
-                    }else{
-                        echo "";
-                    }
-                    ?>
                     <!-- <form action="http://127.0.0.1:5000/run-python" method="post">
                         <input type="text" name="numstart" placeholder="Nhập trang bắt đầu" required oninvalid="setCustomValidity('Vui lòng điền trang bắt đầu')">
                         <input type="text" name="numend" placeholder="Nhập trang trang kết thúc" required oninvalid="setCustomValidity('Vui lòng điền trang kết thúc')">

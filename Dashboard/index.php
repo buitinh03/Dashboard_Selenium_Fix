@@ -2,6 +2,9 @@
     include_once('format/format.php');
 
 ?>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
                 <?php 
@@ -234,7 +237,7 @@
                                         <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px;"><?php echo $set['ngaycu']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
@@ -246,7 +249,7 @@
                                         <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px;"><?php echo $set['ngaymoi']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaymoi']; ?></td>
 
                                         
                                         <?php

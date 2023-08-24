@@ -1,6 +1,6 @@
 
 <?php
-    include "connect.php";
+    include "../connect.php";
 ?>
 <?php 
 
@@ -14,8 +14,10 @@ Session::checkSession();
 <!--         <base href="http://localhost:3000/Dashboard_Selenium_Fix/Dashboard"> -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ADMIN DASHBOARD</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png"/>
+        <title>HB PHARMA</title>
         <!--MATERIAL CDN-->
+        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
         <link rel="stylesheet" href="./style.css">    
@@ -23,6 +25,9 @@ Session::checkSession();
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
     </head>
     <body>
@@ -62,20 +67,6 @@ Session::checkSession();
                             echo '';
                         }
                         ?>
-                        <?php
-                        if($checkLoginAdmin == 0){
-                          
-                          ?>
-                        <a href="views_user.php">
-                             <span class="material-icons-sharp">inventory_2</span>
-                             <h3>Quản lý tài khoản</h3>
-                         </a>
-                         <?php
-                     
-                         }else {
-                             echo '';
-                         }
-                         ?>
                      
                       <!-- <a href="register.php">
                             <span class="material-icons-sharp">insights</span>

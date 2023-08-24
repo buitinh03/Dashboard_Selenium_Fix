@@ -10,7 +10,7 @@
             $port = $_ENV['DB_PORT'];
             $name = $_ENV['DB_NAME'];
             $user = $_ENV['DB_USER'];
-            $pass = $_ENV['DB_PASS'];
+            $pass = $_ENV['DB_PASSWORD'];
             $dns = "pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass";
             $this->db = new PDO($dns);
 
@@ -148,8 +148,15 @@
         //search
         function search($name){
             $db =  new connect();
-            $query = "SELECT * FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text) ) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text) ) like LOWER('%$name%')";
-            $result = $db->getList($query);
+            $query="SELECT *,
+        CASE
+            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+            ELSE 0
+            END AS gialech   
+        FROM thuocsi_vn where LOWER(title) like LOWER('%$name%') or LOWER(nguon) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text) ) like LOWER('%$name%') or LOWER(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text) ) like LOWER('%$name%') ORDER BY gialech desc ";
+             $result = $db->getList($query);
             return $result;
         }
         
