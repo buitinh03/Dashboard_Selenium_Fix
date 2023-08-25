@@ -22,6 +22,46 @@
                         color: green;
                     }
                 </style>
+                <div class="recent-updates">
+                <h2>Tìm kiếm sản phẩm</h2>
+                <div class="updates">
+                    
+                    <style>
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 4vh;
+        }
+
+        .search-box input[type="text"] {
+            width: 85%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        .search-box button {
+            width: 100;
+            padding: 7px 7px;
+            background-color:orange;
+            color:aliceblue;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+    </style>
+                    <form action="search.php" method="post" class="search-box">
+                                <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
+                                <button type="submit" name="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+            </div>
                 <div class="recent-order">
  <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span></h2>
                 

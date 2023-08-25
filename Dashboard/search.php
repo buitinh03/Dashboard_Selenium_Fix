@@ -125,6 +125,16 @@
                                 color: rgb(221, 50, 50);
                                 font-size: 13px;
                             }
+                            .nguonc .thea {
+                                        transition: all .5s ease;
+                                        color:#17a2b8;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguonc .thea:hover {
+                                        color:#0000BB;
+                                    }
                         </style>
                         <?php 
                         $format = new Format();
@@ -204,6 +214,10 @@
                                         ?>
                                         <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                  <?php 
+                                 }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
+                                    ?>
+                                    <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                    <?php 
                                     }else{
                                         echo "";
                                     }
