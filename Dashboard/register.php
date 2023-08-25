@@ -80,9 +80,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Mật khẩu" required id="hiiddenpassword">
-                        <div id="eyes" style="margin-top: -63%;">
-                        <i  class="far fa-eye-slash" style="margin-left: 600%; margin-top: -150%; cursor: pointer;"></i>
-                        </div>
+<!--                         <div id="eyes" style="margin-top: -63%;"> -->
+                        <i  class="far fa-eye-slash" style="margin-left: 600%; margin-top: -100%; cursor: pointer;" id="eyes"></i>
+<!--                         </div> -->
                     </div>
                     <input type="submit" name="signup" value="Đăng ký" class="btn solid">
                     <p class="social-text"><a href="index.php">Quay lại trang chủ</a></p>
