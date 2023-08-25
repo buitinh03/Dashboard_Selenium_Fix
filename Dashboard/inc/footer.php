@@ -127,6 +127,10 @@
                         ?>
                         </div>
                     </div>
+                    <?php
+                    if($chucvu == 0){
+
+                    ?>
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>
@@ -298,8 +302,13 @@
                                         <span class="checkmark"></span>
                                         </label>
 
+                                        <label class="containerr" style="font-weight: 400;">Thuocsi.pharex.vn
+                                        <input type="checkbox" name='pharex' value="pharex" id="checkbox-4">
+                                        <span class="checkmark"></span>
+                                        </label>
+
                                         <label class="containerr" style="font-weight: 400;">Tất cả
-                                        <input type="checkbox" name="alll" value='alll' id="checkbox-4">
+                                        <input type="checkbox" name="alll" value='alll' id="checkbox-5">
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button><br>
@@ -309,19 +318,20 @@
                                         const chk2=document.getElementById("checkbox-2");
                                         const chk3=document.getElementById("checkbox-3");
                                         const chk4=document.getElementById("checkbox-4");
+                                        const chk5=document.getElementById("checkbox-5");
                                         chk1.addEventListener('change',function(){  
                                                                                     
                                             if (chk1.checked) {                                            
-                                                chk4.disabled = true;
+                                                chk5.disabled = true;
                                             } else {                                            
-                                                chk4.disabled = false;
+                                                chk5.disabled = false;
                                             }
                                         })
                                         // //
                                         chk2.addEventListener('change',function(){ 
                                                                                        
                                             if (chk2.checked) {                                            
-                                                chk4.disabled = true;
+                                                chk5.disabled = true;
                                             } else {                                            
                                                 chk2.disabled = false;
                                             }
@@ -330,22 +340,32 @@
                                         chk3.addEventListener('change',function(){ 
                                                                                       
                                             if (chk3.checked) {                                            
-                                                chk4.disabled = true;
+                                                chk5.disabled = true;
                                             } else {                                            
                                                 chk3.disabled = false;
                                             }
                                         })
+                                        chk4.addEventListener('change',function(){ 
+                                                                                      
+                                            if (chk4.checked) {                                            
+                                                chk5.disabled = true;
+                                            } else {                                            
+                                                chk4.disabled = false;
+                                            }
+                                        })
                                         //
-                                        chk4.addEventListener('change',function(){  
+                                        chk5.addEventListener('change',function(){  
                                                                                       
                                         if(chk4.checked){
                                             chk1.disabled=true;
                                             chk2.disabled=true;
                                             chk3.disabled=true;
+                                            chk4.disabled=true;
                                         }else{
                                             chk1.disabled=false;
                                             chk2.disabled=false;
-                                            chk3.disabled=false;                                        
+                                            chk3.disabled=false;
+                                            chk4.disabled=false;                                        
                                         }
                                     })
                                        
@@ -358,8 +378,8 @@
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py'))){
-                                                echo "<script>
+                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0"'))){
+                                                    echo "<script>
                                                 swal({
                                                     title: 'Thông báo',
                                                     text: 'Quá trình cào giá đã hoàn tất',
@@ -381,13 +401,16 @@
                                                 </script>";
                                             }else{
                                                 if(isset($_POST['thuocsi'])){
-                                                    system('python ../backend/auto/thuocsi.py');
+                                                    system('python ../backend/auto/thuocsi.py "0"');
                                                 }
                                                 if(isset($_POST['chosithuoc'])){
                                                     system('python ../backend/auto/run_chosithuoc.py');
                                                 }
                                                 if(isset($_POST['ankhang'])){
-                                                    system('python ../backend/auto/ankhang.py');
+                                                    system('python ../backend/auto/ankhang.py "0"');
+                                                }
+                                                if(isset($_POST['pharex'])){
+                                                    system('python ../backend/auto/pharex.py "0"');
                                                 }
                                                 echo "<script>
                                                     swal({
@@ -431,6 +454,12 @@
 
                         </script>
                     </div>
+                    <label style='font-size: 15px;display: flex;align-items: center;justify-content: center;'>Số trang đã cào Auto được: <?php echo $numpagecao?></label>
+                    <?php
+                    }else{
+                        echo "";
+                    }
+                    ?>
                     <!-- <form action="http://127.0.0.1:5000/run-python" method="post">
                         <input type="text" name="numstart" placeholder="Nhập trang bắt đầu" required oninvalid="setCustomValidity('Vui lòng điền trang bắt đầu')">
                         <input type="text" name="numend" placeholder="Nhập trang trang kết thúc" required oninvalid="setCustomValidity('Vui lòng điền trang kết thúc')">

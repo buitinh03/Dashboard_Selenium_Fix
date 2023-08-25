@@ -48,6 +48,9 @@ function CountTime(){
     }
     document.getElementById('coundtime').innerHTML = hours + " : " + minute + " : " + second;
     // Cứ mỗi 1 giây sẽ nhảy số 1 lần 1000 = 1s
+    if(hours==9 && minute==46 && second==1){
+        window.location.href="auto.php";
+    }
     setTimeout('CountTime()', 1000);
    
 }

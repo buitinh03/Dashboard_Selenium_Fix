@@ -23,7 +23,7 @@
                     }
                 </style>
                 <div class="recent-order">
- <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/" class="a" style="color: blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span></h2>
+ <h2>SẢN PHẨM - <span style="color: green;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span></h2>
                 
                 <style>
                         #pagination {
@@ -187,6 +187,16 @@
                                     .nguonb .thea:hover {
                                         color:lightcoral;
                                     }
+                                    .nguonc .thea {
+                                        transition: all .5s ease;
+                                        color:#17a2b8;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguonc .thea:hover {
+                                        color:#0000BB;
+                                    }
                                     .recent-order tbody tr td:nth-child(2) a{
                                     cursor: pointer;
                                     color: rgb(221, 94, 94);
@@ -286,6 +296,10 @@
                                         ?>
                                         <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
                                         <?php 
+                                            }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
+                                                ?>
+                                                <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                                <?php 
                                             }else{
                                                 echo "";
                                             }
