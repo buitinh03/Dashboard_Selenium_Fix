@@ -13,6 +13,8 @@ if(isset($_SESSION['sotrang'])){
     $_SESSION['sotrang']=0;
 };
 
+$checkLoginAdmin = Session::get('adminType');
+$check = Session::get('adminlogin');
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +61,7 @@ if(isset($_SESSION['sotrang'])){
                         </a>
                         
                           <?php
-                        $checkLoginAdmin = Session::get('adminType');
-                        $check = Session::get('adminlogin');
+                        ob_start();
                         if($checkLoginAdmin == 0){
                           
                          ?>
@@ -118,6 +119,7 @@ if(isset($_SESSION['sotrang'])){
                         <?php
                             if(isset($_GET['action']) && $_GET['action'] == 'logout') {
                                 Session::destroy();
+                                ob_end_flush();
                             }
                         ?>
                         <a href="?action=logout">

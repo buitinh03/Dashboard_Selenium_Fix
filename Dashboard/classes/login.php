@@ -29,6 +29,7 @@
         $result_checks = $db->getList($check_logins);
         // return $result_check;
         if($count == 1){
+          header('Location:index.php');
           $value = $result_checks->fetch(PDO::FETCH_ASSOC);
           Session::set('adminlogin', true);
           Session::set('adminId', $value['id']);
@@ -36,8 +37,6 @@
           Session::set('adminUser', $value['username']);
           Session::set('adminType', $value['type']);
 
-          header('Location:index.php');
-   
         }else{
             $msg = "<span class='error' style='color:  #FF0000;'>Tên đăng nhập hoặc mật khẩu không chính xác</span>";
             return $msg;

@@ -387,7 +387,9 @@
                                                     timer: 3000,  // Thời gian tự động đóng (3 giây)
                                                     buttons: false,  // Ẩn nút Close
                                                     });
-                                                window.location.href='index.php';
+                                                    setTimeout(function () {
+                                                        window.location='index.php'
+                                                      }, 4000);
                                                 </script>";
                                                 }else echo "<script>
                                                     swal({
@@ -397,7 +399,9 @@
                                                         timer: 3000,  // Thời gian tự động đóng (3 giây)
                                                         buttons: false,  // Ẩn nút Close
                                                         });
-                                                    window.location.href='index.php';
+                                                        setTimeout(function () {
+                                                            window.location='index.php'
+                                                          }, 4000);
                                                 </script>";
                                             }else{
                                                 if(isset($_POST['thuocsi'])){
@@ -420,7 +424,9 @@
                                                         timer: 3000,  // Thời gian tự động đóng (3 giây)
                                                         buttons: false,  // Ẩn nút Close
                                                         });
-                                                    window.location.href='index.php';
+                                                        setTimeout(function () {
+                                                            window.location='index.php'
+                                                          }, 4000);
                                                 </script>";
                                             }
                                             
