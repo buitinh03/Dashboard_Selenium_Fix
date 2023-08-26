@@ -165,7 +165,7 @@ b{
 .sphone{color:var(--color-yellow);}
 
 aside{
-    height: 100vh;
+    height: 50vh;
     
 }
 aside .top{
@@ -198,7 +198,7 @@ aside .sidebar{
     
     display:flex;
     flex-direction: column;
-    height: 86vh;
+    height: 34vh;
     position: relative;
     top:3rem;
 }
@@ -385,43 +385,53 @@ main .insights small{
     display:block
 }
 
-main .recent-order{
+ .recent-order{
     margin-top:2rem ;
 }
-main .recent-order h2{
-margin-bottom: 0.8rem;}
+ .recent-order h2{
+    display: flex;
+margin-bottom: 0.8rem;
+}
 
-main .recent-order table{
+ .recent-order table{
 background: var(--color-white);
-width: 100%;
+width: 88%;
 border-radius:var(--card-border-radius) ;
 padding :var(--card-padding);
 text-align: center;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
 border: #0b0c0c 2px;
+margin: 0 5rem;
 }
 
-main .recent-order table:hover{
+ .recent-order table:hover{
 box-shadow: none;
 }
 
-main table tbody td{
+ table tbody td{
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
     
 }
 
-main table tbody tr:last-child td{
+ table tbody tr:last-child td{
     border: none;
 }
-
-main .recent-order a{
+.recent-order a{
     text-align: center;
     display: block;
     margin: 1rem auto;
     color :var(--color-primary);
+    font-size: 1rem;
+    }
+ .recent-order h2 a{
+    text-align: center;
+    display: contents;
+    margin: 1rem auto;
+    color :var(--color-primary);
+    font-size: 1.2rem;
     }
 
 .right{
@@ -1144,19 +1154,27 @@ gap: 0.6rem;
  
  }
 
- main .recent-order h2 span i {
+ .recent-order h2 {
+    margin-left: 4rem;
+    margin-top: 0rem;
+ }
+
+  .recent-order h2 span i {
     transform: translateX(-100%);
     transition: all .5s ease;
     font-size: 0px;
     margin-right: 2em;
  }
 
+  .recent-order h2 span {
+    font-size: 1rem;
+ }
 
 
- main .recent-order h2 span:hover i{
+  .recent-order h2 span:hover i{
     transform: translateX(100%);
     transform: rotate(-90deg);
-    font-size: 15px;
+    font-size: 1.2rem;
  }
 
 

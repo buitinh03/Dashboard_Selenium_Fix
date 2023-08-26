@@ -128,7 +128,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['xacnhan'])){
             </div>
         </div>
     </div>
+    <div hidden class="date" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                 <h3><span id="rank"></span> - Ngày: <span id="dates"></span><br> Giờ:  <span id="coundtime"></span></h3>
+                </div>
     <script src="js/login.js"></script>
+    <script src="js/time.js"></script>
     <script  src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/hiddenpassword.js"></script>
     <script src="js/loginmessage.js"></script>
