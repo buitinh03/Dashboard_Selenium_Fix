@@ -598,11 +598,11 @@
                                 <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             $page=array();                        
-                            for($i=1;$i<=$trang;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                 $page[$i]="pa".($i);
                             }
                             $next=1; 
-                            for($i=1;$i<=$trang;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
                             <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
@@ -851,11 +851,11 @@
                                 <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             $page=array();                        
-                            for($i=1;$i<=$trang;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                 $page[$i]="p".($i);
                             }
                             $next=1; 
-                            for($i=1;$i<=$trang;$i++){
+                            for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
                             <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
