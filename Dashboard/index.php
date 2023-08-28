@@ -936,6 +936,38 @@
                 </div>
                 <!-- <button class="quaylai" onclick="scrollUp()">Quay lại đầu trang</button> -->
                 <div class="abc" style="margin-bottom: 1rem; height:1rem;"></div>
-    
+
+                <style>
+                footer {
+                    background-color: #719c9c;
+                    color: #fff;
+                    padding: 40px 0;
+                    font-size: 14px;
+                    font-family: sans-serif;
+                }
+                
+                .container-footer {
+                    max-width: 1200px;
+                    color: #fff;
+                    margin: 0 auto;
+                }
+                
+                .copyright {
+                    width: 100%;
+                    text-align: center;
+                    color: #fff;
+                    font-weight: 700;
+                }
+            </style>
+                <div class="footer-index">
+                    <div class="footer-index-content">
+                <footer>
+                        <div class="container-footer">
+                        
+                            <div class="copyright">
+                            © 2023 Công ty Cổ phần HB Pharma. All rights reserved.
+                            </div>
+                        </div>
+                </footer>
                 <script src="js/time.js"></script>
                
