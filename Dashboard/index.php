@@ -910,7 +910,32 @@
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
                 </div>
-                <div class="abc" style="margin-bottom: 1rem; height:1rem;"></div>
+               <style>
+                    .quaylai {
+                        display: none;
+                        position: fixed;
+                        font-size: 2rem;
+                        text-align: right;
+                        max-width: 97%;
+                        color: #333;
+                        cursor: pointer;
+                        top: 50%;
+                        right: 1.3%;
+                        transition: .3s all ease;
+                    }
 
-            <?php include_once('inc/footer.php') ?>
+                    .quaylai i {
+                        transition: .3s all ease;
+                        color: #fff;
+                        font-size: 2.5rem;
+                    }
+                </style>
+                <div class="quaylai">
+                <i class="fas fa-chevron-circle-up" onclick="scrollUp()"></i><br>
+                <i class="fas fa-chevron-circle-down" onclick="scrollDown()"></i>
+                </div>
+                <!-- <button class="quaylai" onclick="scrollUp()">Quay lại đầu trang</button> -->
+                <div class="abc" style="margin-bottom: 1rem; height:1rem;"></div>
+    
+                <script src="js/time.js"></script>
                
