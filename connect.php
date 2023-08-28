@@ -146,7 +146,26 @@
         // }
 
         //search
-        function search($name){
+        // function search($name){
+        //     $db =  new connect();
+        //     $query="SELECT *,
+        // CASE
+        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+        //     ELSE 0
+        //     END AS gialech   
+        // FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
+        //  or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
+        //  or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
+        //  or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
+        //  ORDER BY gialech desc ";
+        //      $result = $db->getList($query);
+        //     return $result;
+        // }
+         
+        //test phan trang
+        function search($name,$st=0,$limited=0){
             $db =  new connect();
             $query="SELECT *,
         CASE
@@ -160,10 +179,24 @@
          or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
          or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
          ORDER BY gialech desc ";
+         if($st!=0){
+            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+         }
              $result = $db->getList($query);
             return $result;
         }
         
+        function count_search($thu){
+            $db = new connect();
+            $dem = "select count(*) as count from  thuocsi_vn where unaccent(title) ~* replace(unaccent('$thu'), ' ', '.*') 
+            or unaccent(nguon) ~* replace(unaccent('$thu'), ' ', '.*') 
+            or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$thu'), ' ', '.*') 
+            or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$thu'), ' ', '.*')
+             ";
+            $result = $db->exec($dem);
+            return $result;
+        }
+
         function testcol($thu){
             $db = new connect();
             $dem = "select count(*) as sothu from  thuocsi_vn where ".$thu." is not null";
