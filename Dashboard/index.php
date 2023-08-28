@@ -753,26 +753,26 @@
                                         }else{
                                         ?>
                                         <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaycu']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral;width: 10%;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
                                         <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaymoi']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral; width: 10%;"><?php echo $set['ngaymoi']; ?></td>
 
                                         
                                         <?php
