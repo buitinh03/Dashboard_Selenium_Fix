@@ -983,5 +983,38 @@
             </div>
          
 
-            <?php include_once('inc/footer.php') ?>
+            </div>   <script src="js/time.js"></script>
+            <style>
+        footer {
+            background-color: #719c9c;
+            color: #fff;
+            padding: 40px 0;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+        
+        .container-footer {
+            max-width: 1200px;
+            color: #fff;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+        }
+    </style>
+                <div class="footer-index">
+                    <div class="footer-index-content">
+                <footer>
+                        <div class="container-footer">
+                        
+                            <div class="copyright">
+                            © 2023 Công ty Cổ phần HB Pharma. All rights reserved.
+                            </div>
+                        </div>
+                </footer>
+
                
