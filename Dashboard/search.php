@@ -27,35 +27,35 @@
                 <div class="updates">
                     
                     <style>
-        .search-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 4vh;
-        }
+                    .search-box {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 4vh;
+                    }
 
-        .search-box input[type="text"] {
-            width: 85%;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-        }
+                    .search-box input[type="text"] {
+                        width: 85%;
+                        padding: 10px;
+                        border: none;
+                        border-radius: 20px;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                        font-size: 14px;
+                        font-family: Arial, sans-serif;
+                    }
 
-        .search-box button {
-            width: 100;
-            padding: 7px 7px;
-            background-color:orange;
-            color:aliceblue;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
+                    .search-box button {
+                        width: 100;
+                        padding: 7px 7px;
+                        background-color:orange;
+                        color:aliceblue;
+                        border: none;
+                        border-radius: 20px;
+                        font-size: 14px;
+                        font-family: Arial, sans-serif;
+                        cursor: pointer;
         }
-    </style>
+                    </style>
                     <form action="search.php" method="post" class="search-box">
                                 <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
                                 <button type="submit" name="submit">Tìm kiếm</button>
@@ -533,27 +533,96 @@
        </div> 
       <?php $fm = new Format();
     $product=new product();
-
+    $trangthu=1;
+    $from=1;
+    $to=1;
+    
     if($_SERVER["REQUEST_METHOD"]== 'POST' && isset($_POST['submit'])){
         $search=$_POST['keyword'];
-        $product_search=$product->search($search);
+        
+        $_SESSION['search']=$search;
+        
     }
+    $search=$_SESSION['search'];
+    $demtrang = $product->count_search($search);
+    $demd = $demtrang->fetch();
+    $sotrang=$demd['count'];
+    $trang=ceil($sotrang/10);
+    $_SESSION['sotrangsearch']=$trang;
+
+    if(isset($_GET['trang'])){
+        $trangthu=$_GET['trang'];
+        $from=$trangthu-4; if($from<3){$from=1;}
+        $to=$trangthu+4; if($to>$trang){$to=$trang;}
+        $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
+        $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
+    }
+
+   
+    $product_search=$product->search($_SESSION['search'],$trangthu,10);
+    
+     
+
+    
     $giabd=[];
     $tenbd=[];
     $nguonbd=[];
 ?>
                 </div>
                 <div class="recent-order">
-                    
-                    <h2>TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2>
-                    
+                <style>
+                        #pagination {
+                            display: flex;
+                            text-align: center;
+                            justify-content: center;
+                        }
+                        #pagination a{
+                            display: flex;
+                            text-align: center;
+                            padding: 5px 8px;
+                            margin: 5px;
+                            background:bisque;
+                            border-radius: 3px;
+                        }
+                        #pagination a:hover{
+                            color: #0000BB;
+                            background: #fff;
+                        }
+                    </style>
+                    <h2>TỪ KHÓA TÌM KIẾM: <?php if(isset($_SESSION['search'])){echo $_SESSION['search']; } elseif(isset($search)) {echo $search;}?> </h2>
+                    <div id="pagination">
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            <?php if($trangthu==1){ ?> 
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <?php }else{ ?> 
+                                <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } 
+                            $page=array();                        
+                            for($i=1;$i<=$trang;$i++){
+                                $page[$i]="pa".($i);
+                            }
+                            $next=1; 
+                            for($i=1;$i<=$trang;$i++){
+                                                     
+                            ?>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <?php
+                            
+                        } ?>
+                        <?php if($trangthu>=$trang){ ?> 
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <?php }else{ ?>                     
+                        <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <?php } ?>
+                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                    </div>
                     <table>
-                    <?php
+                    <!-- <?php
                         $pro = new product();
-                            $demcol = $pro->testcol('giacu');
+                            $demcol = $pro->search($search);
                             $demd = $demcol->fetch();
                             $sorow=$demd['sothu'];
-                     ?>
+                     ?> -->
                         <thead>
                             <tr>
                                 <th>STT</th>
@@ -672,41 +741,46 @@
                                 $nguonbd[$j]=$set['nguon'];
                                 $j++
                         ?>
-                            <tbody>
-                            <tr >
-                                <td><?php echo $j;?></td>
-                                <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
-                          <?php
-                                if($checkLoginAdmin == 0){
-                         ?>
-                         <?php 
-                                if($sorow==0){
-                                ?>
-                                <td class="primary" style="text-align: center;">-</td>
-                                <td class="primary" style="text-align: center;">-</td>
-                                <?php   
-                                }else{
-                                ?>
-                                <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right;">Liên hệ</td>
+                             <tbody>
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr">
+                                        <td><?php echo $j;?></td>
+                                        <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        
+                                        <?php
+                                        if($checkLoginAdmin == 0){
+                                        ?>
+                                        <?php 
+                                        if($sorow==0){
+                                        ?>
+                                        <td class="primary" style="text-align: center;">-</td>
+                                        <td class="primary" style="text-align: center;">-</td>
+                                        <?php   
+                                        }else{
+                                        ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
-                                <td class="primary" style="text-align: center;"><?php echo $set['ngaycu']; ?></td>
-                                <?php
-                                }
-                                ?>
-                                  <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right;">Liên hệ</td>
+                                            
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaycu']; ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
-                                <td class="primary" style="text-align: center;x"><?php echo $set['ngaymoi']; ?></td>
-                                <?php
+
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaymoi']; ?></td>
+
+                                        
+                                        <?php
                                             if($set['giamoi']!=0&&$set['giacu']!=0){
                                                 if( $set['giamoi']>$set['giacu']){
                                                 $gialech=($set['giamoi']/$set['giacu']*100)-100;
@@ -727,41 +801,82 @@
                                             echo "";
                                         }
                                         ?>
-                                  <?php 
-                                 if($set['nguon'] == 'thuocsi.vn'){
-                                ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
-                                <?php 
-                                    }elseif($set['nguon'] == 'chosithuoc.com'){
-                                ?>
-                                 <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
-                                    <?php 
+                                        <?php 
+                                            if($set['nguon'] == 'thuocsi.vn'){
+                                        ?>
+                                         <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
+                                        <?php 
+                                            }elseif($set['nguon'] == 'chosithuoc.com'){
+                                        ?>
+                                        <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                        <?php 
                                             }elseif($set['nguon'] == 'ankhang.com'){
                                         ?>
                                         <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
-                                 <?php 
-                                 }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
-                                    ?>
-                                    <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                        <?php 
+                                            }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
+                                                ?>
+                                                <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                                <?php 
+                                            }else{
+                                                echo "";
+                                            }
+                                            ?>
+
+                                        
+
+                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
+                                    
+                                        <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                        <?php
+                                            for($k=1;$k<=12;$k++){
+                                                ?>
+                                                <td hidden><?php echo $set['month_'.$k] ?></td>
+                                        <?php
+                                            }
+                                        ?>
+                                    </tr>
                                     <?php 
-                                    }else{
-                                        echo "";
-                                    }
+                                            }
+                                        }
                                     ?>
-                                <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
-                             
-                                <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
-                            </tr>
-                            <?php 
-                                      }
-                                 }
-                            ?>
-                       
-                       
-                        </tbody>
+                            
+                            </tbody>
                     </table>
+                    <div id="pagination">
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            <?php if($trangthu==1){ ?> 
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <?php }else{ ?> 
+                                <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } 
+                            $page=array();                        
+                            for($i=1;$i<=$trang;$i++){
+                                $page[$i]="p".($i);
+                            }
+                            $next=1; 
+                            for($i=1;$i<=$trang;$i++){
+                                                     
+                            ?>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <?php
+                            
+                        } ?>
+                        <?php if($trangthu>=$trang){ ?> 
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <?php }else{ ?>                     
+                        <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <?php } ?>
+                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                    </div>
                     <!-- <a href="#">Show All</a> -->
                 </div>
+                <script>
+                        // document.querySelector("#ne").style.background = '#C0C0C0';
+                        // document.querySelector("#ne").style.color = 'black';
+                        document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
+                        document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
+                    </script>
                 <style>
                     main .recent-order canvas{
                     background: var(--color-white);
