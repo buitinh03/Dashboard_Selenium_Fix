@@ -57,3 +57,46 @@ function CountTime(){
 
 CountTime();
 
+
+// Nút quay lại đầu trang trong file index
+    function scrollDown() {
+        window.scrollTo(0, document.body.scrollHeight);
+      
+        var intervals = setInterval(function() {
+          if (window.scrollY === document.body.scrollHeight) {
+            clearInterval(intervals);
+          }
+          requestAnimationFrame();
+        },0);
+      }
+   
+
+    function scrollUp() {
+        function animate() {
+            window.scrollTo(0, 0);
+            if (window.scrollY === 0) {
+            clearInterval(interval);
+            return
+            }
+            requestAnimationFrame(animate);
+        }
+    
+        var interval = setInterval(animate, 0);
+        }
+
+    
+
+    // HIện thị 2 bút lên đầu trang và xuống cuối trang
+    const element = document.querySelector(".quaylai");
+    element.style.display = "none";
+
+    window.addEventListener("scroll", function() {
+    if (window.scrollY / document.body.scrollHeight >= 0.1) {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+    });
+
+
+
