@@ -91,7 +91,7 @@ CountTime();
     element.style.display = "none";
 
     window.addEventListener("scroll", function() {
-    if (window.scrollY / document.body.scrollHeight >= 0.1) {
+    if (window.scrollY / document.body.scrollHeight >= 0.05) {
         element.style.display = "block";
     } else {
         element.style.display = "none";
