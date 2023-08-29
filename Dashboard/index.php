@@ -213,7 +213,7 @@ $(function(){
                          
                          </div>
                         
-                        <h1 class="success" style="color: black; font-weight:normal;"><?php echo $result['quantity']?>Sp</h1>
+                        <h1 class="success" style="color: black; font-weight:normal;"><?php echo $result['quantity']?></h1>
                       
                        
                           <h3></h3>
