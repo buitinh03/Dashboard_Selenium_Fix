@@ -18,7 +18,7 @@ $(function(){
     loader();
 });
 </script>
-<section id="loader">
+<section id="loader" class="section">
         <div class="loader">
             <span style="--i:1;"></span>
             <span style="--i:2;"></span>
