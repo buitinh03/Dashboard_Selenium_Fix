@@ -18,10 +18,8 @@ include_once('format/format.php');
     $q=0;
 ?>
 <section class="product-gallery-one">
-<div class="container">
 
-<div class="product">
-    <?php
+<?php
     $detailPro = $product->details_product_2($id, $link);   
     $format = new Format();
     $pro = new product();                            
@@ -33,6 +31,12 @@ include_once('format/format.php');
     if($detailPro){
         while($result = $detailPro->fetch()){
     ?>
+    <div class="nguon-trang">
+        <h1>NGUỒN TRANG: <span><?php echo $result['nguon'] ?></span></h1>
+    </div><br>
+    <div class="container">
+<div class="product">
+ 
     <div class="product-image">
        <img src="<?php echo $result['photo'] ?>" alt="">
         
@@ -59,26 +63,21 @@ include_once('format/format.php');
             </ul>
         </div>
 
-        <p class="price">Giá:
-        <?php
-         if($price == $result['giamoi']){
-            ?>
-             <span ><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (giá cũ)</span>
-             <?php 
-            }elseif($price > $result['giamoi']){
-                ?>
-            <span style="color: green;"><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (giảm)</span>
-            <?php 
-            } else{
-                ?>
-            <span style="color: red;"><?php echo number_format($result['giamoi']); ?><sup>đ</sup> (tăng)</span>
-            <?php 
-            } 
-            ?>
-             
-        </p>
+        <p class="price">Giá:<span ><?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
       
 
+    </div>
+    <div class="container-content-left">
+        <h2>HBPHARMA<span></span></h2>
+        <div class="container-content-left-thuocsi">
+            <a href="" class="a">-------</a>
+        </div>
+        <div class="container-content-left-thuocsi">
+        <a href="" class="a">-------</a>
+        </div>
+        <div class="container-content-left-thuocsi">
+        <a href="" class="a">-------</a>
+        </div>
     </div>
      
         <div class="product_thongtin">

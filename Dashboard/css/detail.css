@@ -273,6 +273,45 @@ p {
 }
 
 
+.nguon-trang {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #ebebf7;
+    border-radius: .5rem;
+    font-size: 20px;
+    height: 40px;
+}
+
+.nguon-trang h1 span{
+    color: #008000;
+}
+
+.nguon-trang h1 {
+    line-height: 40px;
+}
+
+.container-content-left {
+    width: 35%;
+    text-align: center;
+}
+
+.container-content-left-thuocsi {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin: .5rem 0;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.container-content-left-thuocsi .a{
+    font-size: 1.5rem;
+    padding: 1rem 9rem;
+    /* max-width: 100%; */
+}
+
+
+
 /*------ Hiệu ứng loading  */
 
 #loader {
