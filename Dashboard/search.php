@@ -730,6 +730,16 @@
                                     .nguonc .thea:hover {
                                         color:#0000BB;
                                     }
+                                    .nguond .thea {
+                                        transition: all .5s ease;
+                                        color:#1250dc;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguond .thea:hover {
+                                        color:#acc0f3;
+                                    }
                         </style>
                         <?php 
                         $format = new Format();
@@ -817,6 +827,10 @@
                                             }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
                                                 ?>
                                                 <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                                <?php 
+                                            }elseif($set['nguon'] == 'longchau.vn'){
+                                                ?>
+                                                <td class="nguond"><a href="<?php echo $set['link'];?>" class="thea">longchau.vn</a></td>
                                                 <?php 
                                             }else{
                                                 echo "";
