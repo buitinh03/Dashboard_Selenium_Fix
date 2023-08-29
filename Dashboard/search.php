@@ -537,8 +537,8 @@
     $from=1;
     $to=1;
     
-    if($_SERVER["REQUEST_METHOD"]== 'POST' && isset($_POST['submit'])){
-        $search=$_POST['keyword'];
+    if($_SERVER["REQUEST_METHOD"]== 'GET' && isset($_GET['submit'])){
+        $search=$_GET['keyword'];
         
         $_SESSION['search']=$search;
         
