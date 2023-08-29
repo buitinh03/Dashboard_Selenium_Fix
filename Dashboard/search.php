@@ -556,6 +556,11 @@
         $to=$trangthu+4; if($to>$trang){$to=$trang;}
         $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
+    }else{        
+        $from=$trangthu-4; if($trangthu<4){$from=1;}
+        $to=$trangthu+4; if($to>$trang){$to=$trang;}
+        $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
+        $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
    
