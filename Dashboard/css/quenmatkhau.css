@@ -13,7 +13,7 @@ body {
 	padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background: url('../images/bg.jpg'); */
-    background: linear-gradient(135deg, #cfcccc, #fff);
+    background: linear-gradient(135deg,#d0f3ee, #d1e9c9);
     filter: blur(50%);
 }
 
