@@ -173,7 +173,7 @@ def caogia(trangnt):
 
     if(int(trangnt)!=0):
         trangbt=int(trangnt)
-        num_pages_to_scrape = (trangbt + 1)
+        num_pages_to_scrape = (trangbt + 9)
     else :
         trangbt=1
         num_pages_to_scrape = 1000
@@ -182,7 +182,7 @@ def caogia(trangnt):
     for page_num in range(trangbt, num_pages_to_scrape + 1):
         url = f"https://thuocsi.vn/products?page={page_num}"
         driver.get(url)
-        
+
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
 

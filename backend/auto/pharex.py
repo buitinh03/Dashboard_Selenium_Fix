@@ -101,7 +101,7 @@ def caogia(trangnt):
 
     if(int(trangnt)!=0):
         trangbt=int(trangnt)
-        num_pages_to_scrape = (trangbt + 1)
+        num_pages_to_scrape = (trangbt + 9)
     else :
         trangbt=1
         num_pages_to_scrape = 1000

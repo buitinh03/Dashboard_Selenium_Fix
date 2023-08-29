@@ -369,8 +369,19 @@
                                         <span class="checkmark"></span>
                                         </label>
 
+                                        
+                                        <label class="containerr" style="font-weight: 400;">Pharmacity.vn
+                                        <input type="checkbox" name='pharmacity' value="pharmacity" id="checkbox-5">
+                                        <span class="checkmark"></span>
+                                        </label>
+
+                                        <label class="containerr" style="font-weight: 400;">NhathuocLongchau.com.vn
+                                        <input type="checkbox" name='longchau' value="longchau" id="checkbox-6">
+                                        <span class="checkmark"></span>
+                                        </label>
+
                                         <label class="containerr" style="font-weight: 400;">Tất cả
-                                        <input type="checkbox" name="alll" value='alll' id="checkbox-5">
+                                        <input type="checkbox" name="alll" value='alll' id="checkbox-7">
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button><br>
@@ -381,19 +392,21 @@
                                         const chk3=document.getElementById("checkbox-3");
                                         const chk4=document.getElementById("checkbox-4");
                                         const chk5=document.getElementById("checkbox-5");
+                                        const chk6=document.getElementById("checkbox-6");
+                                        const chk7=document.getElementById("checkbox-7");
                                         chk1.addEventListener('change',function(){  
                                                                                     
                                             if (chk1.checked) {                                            
-                                                chk5.disabled = true;
+                                                chk7.disabled = true;
                                             } else {                                            
-                                                chk5.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         // //
                                         chk2.addEventListener('change',function(){ 
                                                                                        
                                             if (chk2.checked) {                                            
-                                                chk5.disabled = true;
+                                                chk7.disabled = true;
                                             } else {                                            
                                                 chk2.disabled = false;
                                             }
@@ -402,7 +415,7 @@
                                         chk3.addEventListener('change',function(){ 
                                                                                       
                                             if (chk3.checked) {                                            
-                                                chk5.disabled = true;
+                                                chk7.disabled = true;
                                             } else {                                            
                                                 chk3.disabled = false;
                                             }
@@ -410,24 +423,44 @@
                                         chk4.addEventListener('change',function(){ 
                                                                                       
                                             if (chk4.checked) {                                            
-                                                chk5.disabled = true;
+                                                chk7.disabled = true;
                                             } else {                                            
                                                 chk4.disabled = false;
                                             }
                                         })
+                                        chk5.addEventListener('change',function(){ 
+                                            
+                                            if (chk5.checked) {                                            
+                                                chk7.disabled = true;
+                                            } else {                                            
+                                                chk5.disabled = false;
+                                            }
+                                        })
+                                        chk6.addEventListener('change',function(){ 
+                                                                                    
+                                            if (chk6.checked) {                                            
+                                                chk7.disabled = true;
+                                            } else {                                            
+                                                chk6.disabled = false;
+                                            }
+                                        })
                                         //
-                                        chk5.addEventListener('change',function(){  
+                                        chk7.addEventListener('change',function(){  
                                                                                       
-                                        if(chk4.checked){
+                                        if(chk7.checked){
                                             chk1.disabled=true;
                                             chk2.disabled=true;
                                             chk3.disabled=true;
                                             chk4.disabled=true;
+                                            chk5.disabled=true;
+                                            chk6.disabled=true;
                                         }else{
                                             chk1.disabled=false;
                                             chk2.disabled=false;
                                             chk3.disabled=false;
-                                            chk4.disabled=false;                                        
+                                            chk4.disabled=false; 
+                                            chk5.disabled=false;
+                                            chk6.disabled=false;                                                                               
                                         }
                                     })
                                        
@@ -440,7 +473,7 @@
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0"'))){
+                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0" && python ../backend/auto/longchau.py "0" && python ../backend/auto/pharmacity.py "0"'))){
                                                     echo "<script>
                                                 swal({
                                                     title: 'Thông báo',
@@ -477,6 +510,12 @@
                                                 }
                                                 if(isset($_POST['pharex'])){
                                                     system('python ../backend/auto/pharex.py "0"');
+                                                }
+                                                if(isset($_POST['longchau'])){
+                                                    system('python ../backend/auto/longchau.py "0"');
+                                                }
+                                                if(isset($_POST['pharmacity'])){
+                                                    system('python ../backend/auto/pharmacity.py "0"');
                                                 }
                                                 echo "<script>
                                                     swal({
@@ -745,6 +784,16 @@
                                     .nguond .thea:hover {
                                         color:#acc0f3;
                                     }
+                                    .nguone .thea {
+                                        transition: all .5s ease;
+                                        color:#5dac46;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguone .thea:hover {
+                                        color:#0f62f9;
+                                    }
                         </style>
                         <?php 
                         $format = new Format();
@@ -837,6 +886,10 @@
                                                 ?>
                                                 <td class="nguond"><a href="<?php echo $set['link'];?>" class="thea">longchau.vn</a></td>
                                                 <?php 
+                                            }elseif($set['nguon'] == 'pharmacity.vn'){
+                                                ?>
+                                                <td class="nguone"><a href="<?php echo $set['link'];?>" class="thea">pharmacity.vn</a></td>
+                                                <?php  
                                             }else{
                                                 echo "";
                                             }

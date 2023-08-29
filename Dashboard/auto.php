@@ -25,6 +25,10 @@
         system('python ../backend/auto/ankhang.py "'. (int)($_SESSION['sotrang'] / 10).'"');
         sleep(1);
         system('python ../backend/auto/pharex.py "'.$_SESSION['sotrang'].'"');
+        sleep(1);
+        system('python ../backend/auto/longchau.py "'. (int)($_SESSION['sotrang'] / 10).'"');
+        sleep(1);
+        system('python ../backend/auto/pharmacity.py "'. (int)($_SESSION['sotrang'] / 10).'"');
         $_SESSION['sotrang']=$_SESSION['sotrang']+10;
     }
     $_SESSION['sotrang']=$_SESSION['sotrang']-1;
