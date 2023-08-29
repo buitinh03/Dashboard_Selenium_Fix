@@ -1,4 +1,4 @@
-<?php include_once('../connect.php');
+<?php include_once('connect.php');
     include_once('format/format.php');
 ?>
 

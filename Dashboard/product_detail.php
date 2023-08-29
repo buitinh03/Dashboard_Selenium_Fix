@@ -1,7 +1,7 @@
 <?php 
 include_once('inc/header.php');
 // include_once('inc/deshboad.php');
-include_once('../connect.php');
+include_once('connect.php');
 include_once('format/format.php');
     $product = new product();
 ?>

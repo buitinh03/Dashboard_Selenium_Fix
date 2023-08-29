@@ -1,6 +1,6 @@
 <?php include_once('lib/session.php'); ?>
 <!--  -->
-<?php include_once('../connect.php'); ?>
+<?php include_once('connect.php'); ?>
 <?php include_once('format/format.php'); ?>
 <?php
 
