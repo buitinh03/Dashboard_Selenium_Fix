@@ -7,6 +7,41 @@
 
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+var loader = function() {
+    setTimeout(function() {
+        $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
+    }, 2500);
+};
+$(function(){
+    loader();
+});
+</script>
+<section id="loader">
+        <div class="loader">
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+            <span style="--i:4;"></span>
+            <span style="--i:5;"></span>
+            <span style="--i:6;"></span>
+            <span style="--i:7;"></span>
+            <span style="--i:8;"></span>
+            <span style="--i:9;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+        </div>
+    </section>
                 <?php 
                 $numpage=1;
                 if(isset($_GET['trang'])){
