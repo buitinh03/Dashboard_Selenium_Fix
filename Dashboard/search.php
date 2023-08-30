@@ -362,27 +362,27 @@
                                         <?php 
                                             if($set['nguon'] == 'thuocsi.vn'){
                                         ?>
-                                         <td class="nguon"><a href="<?php echo $set['link'];?>" class="thea1"><?php echo $set['nguon'];?></a></td>
+                                         <td class="nguon"><a href="<?php echo $set['link'];?>" target="_blank" class="thea1"><?php echo $set['nguon'];?></a></td>
                                         <?php 
                                             }elseif($set['nguon'] == 'chosithuoc.com'){
                                         ?>
-                                        <td class="nguona"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                        <td class="nguona"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
                                         <?php 
                                             }elseif($set['nguon'] == 'ankhang.com'){
                                         ?>
-                                        <td class="nguonb"><a href="<?php echo $set['link'];?>" class="thea"><?php echo $set['nguon'];?></a></td>
+                                        <td class="nguonb"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
                                         <?php 
                                             }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
                                                 ?>
-                                                <td class="nguonc"><a href="<?php echo $set['link'];?>" class="thea">pharex.vn</a></td>
+                                                <td class="nguonc"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharex.vn</a></td>
                                                 <?php 
                                             }elseif($set['nguon'] == 'longchau.vn'){
                                                 ?>
-                                                <td class="nguond"><a href="<?php echo $set['link'];?>" class="thea">longchau.vn</a></td>
+                                                <td class="nguond"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">longchau.vn</a></td>
                                                 <?php 
                                             }elseif($set['nguon'] == 'pharmacity.vn'){
                                                 ?>
-                                                <td class="nguone"><a href="<?php echo $set['link'];?>" class="thea">pharmacity.vn</a></td>
+                                                <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
                                                 <?php  
                                             }else{
                                                 echo "";
@@ -480,7 +480,7 @@
                 if($checkLoginAdmin == 0){
             
             ?>
-                <div class="recent-order sosanh">
+                <div class="recent-order sosanh"  style="padding-top:1rem;">
                     <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 88%; margin-bottom: 3rem;"></canvas>
                       
