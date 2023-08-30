@@ -480,7 +480,7 @@
                 if($checkLoginAdmin == 0){
             
             ?>
-                <div class="recent-order sosanh">
+                <div class="recent-order sosanh"  style="padding-top:1rem;">
                     <h2>BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 88%; margin-bottom: 3rem;"></canvas>
                       
