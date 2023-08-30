@@ -440,8 +440,8 @@ $pd = new product();
                                         <input type="checkbox" name="alll" value='alll' id="checkbox-7">
                                         <span class="checkmark"></span>
                                         </label>
-                                    <button type="submit" name="runpython" id="runButton">Xác nhận</button><br>
-                                    <label for="">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" style="color:#2196F3;">Click</a></label>
+                                    <button type="submit" name="runpython" id="runButton">Xác nhận</button><br><br>
+                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" style="color:#2196F3;">Click</a></label>
                                     <script>
                                         const chk1=document.getElementById("checkbox-1");
                                         const chk2=document.getElementById("checkbox-2");
