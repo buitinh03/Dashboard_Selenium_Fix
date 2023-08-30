@@ -50,7 +50,8 @@ $(function(){
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
-                
+       
+ 
                 <style>
                         #pagination {
                             display: flex;
@@ -72,14 +73,7 @@ $(function(){
                                                 
                     </style>
                     <style>
-                        .boloc {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-}
+                        
 
 .select-wrapper {
   position: relative;
@@ -120,23 +114,52 @@ $(function(){
 }
 
                     </style>
-                    <form method="POST" action="index.php" class="boloc" >
-                        <select  name="myComboBox" onchange="this.form.submit()">
-                            <option>Bộ lọc</option>
-                            <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option>
-                            <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option>                           
-                        </select>                 
-                        <noscript><button type="submit">Submit</button></noscript>                        
-                        <?php
-                        
-                        if (isset($_POST['myComboBox'])) {
-                            $selectedValue = $_POST['myComboBox'];
-                            unset($_SESSION['selectedValue']);
-                            $_SESSION['selectedValue'] = $selectedValue;
-                        }else $selectedValue='option1';
-                        ?>
-                    </form>
-
+                    <div class="bloc">
+                        <h2>Bộ lọc: 
+                        <form method="POST" action="index.php" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }else $selectedValue='option1';
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></h2>
+                    </div>
+                    
+                    <style>
+                        .bloc h2{
+                            position: absolute;
+                            margin-left: 70rem;
+                            color: chocolate;
+                            
+                        }
+                        .bloc h2 select{
+                            width: 6rem;
+                            margin-left: .5rem;
+                            padding: .5rem;
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                            border-radius: 3px;
+                            background: bisque;
+                            color: #7380ec;
+                            margin-top: -.3rem;
+                        }
+                        .bloc h2 i{
+                            position: absolute;
+                            margin-top: -1.6rem;
+                            margin-left: 5rem;
+                        }
+                    </style>
                     <?php
                     $sotrang=1;
                          $tongsanpham =  $pd->tongsanpham();
