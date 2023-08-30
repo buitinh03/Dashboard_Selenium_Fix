@@ -108,6 +108,8 @@ form.sign-up-form {
     font-weight: 600;
     font-size: 1.1rem;
     color: #333;
+    border-top-right-radius: 55px;
+    border-bottom-right-radius: 55px;
 }
 
 /* .input-field input:focus {
