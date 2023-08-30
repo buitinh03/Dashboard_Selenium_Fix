@@ -56,7 +56,7 @@
                         cursor: pointer;
         }
                     </style>
-                    <form action="search.php" method="post" class="search-box">
+                    <form action="search.php" method="get" class="search-box">
                                 <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
                                 <button type="submit" name="submit">Tìm kiếm</button>
                     </form>
