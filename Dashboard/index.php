@@ -32,14 +32,14 @@ $(function(){
             <span style="--i:10;"></span>
             <span style="--i:11;"></span>
             <span style="--i:12;"></span>
-            <span style="--i:13;"></span>
+<!--             <span style="--i:13;"></span>
             <span style="--i:14;"></span>
             <span style="--i:15;"></span>
             <span style="--i:16;"></span>
             <span style="--i:17;"></span>
             <span style="--i:18;"></span>
             <span style="--i:19;"></span>
-            <span style="--i:20;"></span>
+            <span style="--i:20;"></span> -->
         </div>
     </section>
                 <?php 
@@ -72,6 +72,7 @@ $(function(){
         .search-box input[type="text"] {
             width: 85%;
             padding: 10px;
+            margin-right: 10px;
             border: none;
             border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -89,6 +90,7 @@ $(function(){
             font-size: 14px;
             font-family: Arial, sans-serif;
             cursor: pointer;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     </style>
                     <form action="search.php" method="get" class="search-box">

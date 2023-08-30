@@ -55,14 +55,6 @@
     padding-right: 100px;
     padding-bottom: 25px;
 }
-.chitiet a{
-    /* font-weight: bold; */
-    transition: 1s all ease;
-}
-
-.chitiet a:hover{
-    color: red;
-}
 
 .recent-order tbody tr td:nth-child(2){
     cursor: pointer;
@@ -808,27 +800,6 @@ gap: 0.6rem;
 
 }
 
-.recent-order tbody tr td:nth-child(9) a{
-    /* font-weight: bold; */
-    transition: 1s all ease;
-}
-
-.recent-order tbody tr td:nth-child(9) a:hover{
-    color: red;
-    font-size: 14px;
-}
-
-.recent-order tbody tr td:nth-child(2){
-    cursor: pointer;
-    color: rgb(221, 94, 94);
-    transition: .5s all ease;
-}
-
-.recent-order tbody tr td:nth-child(2):hover {
-    color: rgb(221, 50, 50);
-    font-size: 14px;
-}
-
 .icon img {
     width:30px;
     height: 30px;
@@ -876,13 +847,11 @@ gap: 0.6rem;
     padding-bottom: 25px;
 }
 .chitiet a{
-    /* font-weight: bold; */
     transition: 1s all ease;
 }
 
 .chitiet a:hover{
     color: red;
-    font-size: 12px;
 }
 
 .recent-order tbody tr td:nth-child(2){
@@ -1155,7 +1124,7 @@ gap: 0.6rem;
 
  .recent-order h2 {
     margin-left: 4rem;
-    margin-top: 0rem;
+    padding-top: 2rem;
  }
 
   .recent-order h2 span i {
