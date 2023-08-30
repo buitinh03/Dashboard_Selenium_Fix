@@ -28,18 +28,18 @@
                     <!END OF INCOME>
                 </div>
                 <div class="recent-order">
-                    <h2>Cập nhật người dùng</h2>
-                    <span style="font-size: 1.3em;"><?php
+                    <h2 style="margin-left:10rem; font-size:1.5rem">Cập nhật người dùng</h2>
+                    <?php
                         if(isset($update)){
                             echo $update;
                         }
-                    ?></span>
+                    ?>
                     <div class="recent-order-forms">
                     <style>
                         .recent-order-forms {
                             background-color: #fff;
                             font-size: 15px;
-                            margin: 10px 0;
+                            margin: 10px 10rem;
                             border-radius: 10px;
                         }
 
@@ -60,7 +60,7 @@
                         .recent-order-forms .submit {
                             font-size: 20px;
                             margin-left: 45%;
-                            margin-top: 10px;
+                            margin-top: 25px;
                             width: 150px;
                             height: 30px;
                             margin-bottom: 10px;
@@ -69,7 +69,8 @@
                             border-radius: 3px;
                             transition: 1s all ease;
                             cursor: pointer;
-                        
+                            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            font-weight: 900;
                         }
 
                         .recent-order-forms .submit:hover {
@@ -94,23 +95,25 @@
 
                         .recent-order-form input {
                             border: 1px solid #333;
-                            margin-right: 100px;
+                            margin-right: 10rem;
                             margin-top: 15px;
                             padding:5px 3px;
-                            width: 400px;
+                            width: 480px;
                             font-size: 18px;
                         }
 
                         .recent-order-form label {
                             margin-top: 10px;
-                            margin-left: 20px;
+                            margin-left: 10rem;
+                            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            font-weight: 900;
                         }
                         .recent-order-form select {
-                            margin-right: 100px;
-                            margin-top: 15px;
                             border: 1px solid #333;
-                            width: 400px;
-                            padding: 5px;
+                            margin-right: 10rem;
+                            margin-top: 15px;
+                            padding:5px 3px;
+                            width: 480px;
                             font-size: 18px;
                         }
 
@@ -131,7 +134,7 @@
                             display: flex;
                         }
                         
-                        .div a{
+                        .div .back{
                          
                             margin-bottom: .9em;
                             padding-bottom: .5em;
@@ -153,7 +156,7 @@
                             display: block;
                             margin-top: 1em;
                         }
-                      
+                        
                     </style>
                      <?php
                     $show_customerbyid = $customer->getcustomerbyid($id);
@@ -213,10 +216,16 @@
                             }
                          ?>
                          <div class="div">
-                               <a href="views_user.php">< Quay lại</a>
+                               <a href="views_user.php" class="back" style="margin: 1rem 0 1rem 10rem">< Quay lại</a>
                         </div>
                        
                     </div>
+                    <div class="kjasj"></div>
+                    <style>
+                        .kjasj{
+                            height: 2rem;
+                        }
+                    </style>
                     <a href="#"></a>
                 </div>
             </main>

@@ -19,8 +19,8 @@
                     <!END OF INCOME>
                 </div>
                 <div class="recent-order">
-                    <h2>Tài Khoản Người Dùng</h2>
-                    <span style="font-size: 1.3em;"> <?php
+                    <h2 style="margin-left:5rem">Tài Khoản Người Dùng</h2>
+                    <span style="font-size: 1.3em; margin:5rem"> <?php
                     if(isset($deletecustomer)){
                         echo $deletecustomer;
                     }
@@ -103,6 +103,12 @@
                       
                         </tbody>
                     </table>
+                    <div class="kjasj"></div>
+                    <style>
+                        .kjasj{
+                            height: 2rem;
+                        }
+                    </style>
                     <a href="#"></a>
                 </div>
             </main>

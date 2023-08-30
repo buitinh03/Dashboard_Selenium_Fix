@@ -1,152 +1,11 @@
-<?php include_once('inc/header.php');
-    include_once('format/format.php');
 
-?>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
-                <?php 
-                $numpage=1;
-                if(isset($_GET['trang'])){
-                    $numpage=$_GET['trang'];
-                }
-                 ?>
-                </div>
-                
-                <style>
-                    main .recent-order .a{
-                        text-align: start;
-                        display:contents;
-                        color: green;
-                    }
-                </style>
-                <div class="recent-updates">
-                <h2>Tìm kiếm sản phẩm</h2>
-                <div class="updates">
-                    
-                    <style>
-                    .search-box {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 4vh;
-                    }
-
-                    .search-box input[type="text"] {
-                        width: 85%;
-                        padding: 10px;
-                        border: none;
-                        border-radius: 20px;
-                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-                        font-size: 14px;
-                        font-family: Arial, sans-serif;
-                    }
-
-                    .search-box button {
-                        width: 100;
-                        padding: 7px 7px;
-                        background-color:orange;
-                        color:aliceblue;
-                        border: none;
-                        border-radius: 20px;
-                        font-size: 14px;
-                        font-family: Arial, sans-serif;
-                        cursor: pointer;
-        }
-                    </style>
-                    <form action="search.php" method="get" class="search-box">
-                                <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
-                                <button type="submit" name="submit">Tìm kiếm</button>
-                    </form>
-                </div>
-            </div>
-    </main>
-    <?php
-
-    $pd = new product();
-    $fm = new Format();
-
-?>
-<! END OF MAIN>
-            <div class="right">
-                <div class="top">
-                    <button id="menu-btn"><span class="material-icons-sharp">
-                        menu</span>
-                    </button>
-                    <div class="theme-logger">
-                        <span class="material-icons-sharp active"> light_mode</span>
-                        <span class="material-icons-sharp">dark_mode</span>
-                    </div>
-                    <div class="profile">
-                        <div class="info">
-                            <p>Chào,<b><?php echo Session::get('adminName');?></b></p>
-                            <?php $chucvu = Session::get('adminType');?>
-                            <small class="text-muted"><?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?></small>
-                        </div>
-                    </div>
-                    <div class="profile-photo">
-                        <!-- <img src="./images/profile-1.jpg" > -->
-                    </div>    
-                </div>
-            
-            <! END OF TOP>
-            <!-- <div class="recent-updates">
-                <h2>Tìm kiếm sản phẩm</h2>
-                <div class="updates"> -->
-                    
-                    <style>
-        .search-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 4vh;
-        }
-
-        .search-box input[type="text"] {
-            width: 70%;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-        }
-
-        .search-box button {
-            width: 100;
-            padding: 7px 7px;
-            background-color:orange;
-            color:aliceblue;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
-        }
-    </style>
-                    <!-- <form action="search.php" method="post" class="search-box">
-                                <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
-                                <button type="submit" name="submit">Tìm kiếm</button>
-                    </form>
-                </div>
-            </div> -->
-            <!END OF RECENT>
-             <div class="sales-analytics">
-                    <h2>Sản phẩm bán chạy</h2>
-                    <div class="item online" >
-                        <div class="icon" style="background-color: #f97e0e;">
-                         <span class="material-icons-sharp"><img src="images/vuongmien1.jpg" alt="" class="img"></span>
-                     </div>
-                
-                        <div class="right">
-                  
-                         <?php
-                         $tongsanpham =  $pd->tongsanpham();
-                         if($tongsanpham){
-                             while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){
  
+<<<<<<< HEAD
                    
                          ?>
                          <style>
@@ -570,6 +429,8 @@
               
             </div>
        </div> 
+=======
+>>>>>>> e7134892d8056cfe30cc588acaa7292d9bc896f4
       <?php $fm = new Format();
     $product=new product();
     $trangthu=1;
@@ -1115,37 +976,5 @@
          
 
             </div>   <script src="js/time.js"></script>
-            <style>
-        footer {
-            background-color: #719c9c;
-            color: #fff;
-            padding: 40px 0;
-            font-size: 14px;
-            font-family: sans-serif;
-        }
-        
-        .container-footer {
-            max-width: 1200px;
-            color: #fff;
-            margin: 0 auto;
-        }
-        
-        .copyright {
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            font-weight: 700;
-        }
-    </style>
-                <div class="footer-index">
-                    <div class="footer-index-content">
-                <footer>
-                        <div class="container-footer">
-                        
-                            <div class="copyright">
-                            © 2023 Công ty Cổ phần HB Pharma. All rights reserved.
-                            </div>
-                        </div>
-                </footer>
-
+            <?php include_once('inc/footer.php');
                

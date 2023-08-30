@@ -1,13 +1,12 @@
-<?php include_once('inc/header.php');
-    include_once('format/format.php');
+<?php 
+        include_once('inc/deshboad.php');
 
 ?>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
             <! END OF ASIDE>
-<?php  include ('inc/deshboad.php'); ?>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
+            <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 var loader = function() {
     setTimeout(function() {
@@ -42,6 +41,7 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
+<<<<<<< HEAD
                 <?php 
                 $numpage=1;
                 if(isset($_GET['trang'])){
@@ -608,6 +608,10 @@ $(function(){
        </div> 
        <div class="recent-order" style="margin-top: -2rem; padding-top:0px;">
  <h2 style="padding-top:0px;">SẢN PHẨM - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
+=======
+       <div class="recent-order">
+ <h2>SẢN PHẨM - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
+>>>>>>> e7134892d8056cfe30cc588acaa7292d9bc896f4
  <a href="https://thuocsi.vn/products" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
  <i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
@@ -1177,37 +1181,5 @@ $(function(){
                 <!-- <button class="quaylai" onclick="scrollUp()">Quay lại đầu trang</button> -->
                 <div class="abc" style="margin-bottom: 1rem; height:1rem;"></div>
 
-                <style>
-                footer {
-                    background-color: #719c9c;
-                    color: #fff;
-                    padding: 40px 0;
-                    font-size: 14px;
-                    font-family: sans-serif;
-                }
-                
-                .container-footer {
-                    max-width: 1200px;
-                    color: #fff;
-                    margin: 0 auto;
-                }
-                
-                .copyright {
-                    width: 100%;
-                    text-align: center;
-                    color: #fff;
-                    font-weight: 700;
-                }
-            </style>
-                <div class="footer-index">
-                    <div class="footer-index-content">
-                <footer>
-                        <div class="container-footer">
-                        
-                            <div class="copyright">
-                            © 2023 Công ty Cổ phần HB Pharma. All rights reserved.
-                            </div>
-                        </div>
-                </footer>
-                <script src="js/time.js"></script>
+                <?php include_once("inc/footer.php");?>
                
