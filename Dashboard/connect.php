@@ -32,16 +32,36 @@
             return $result;
         }
 
-        function getListproduct($start=1,$limit=0){
+        function getListproduct($value='option1',$start=1,$limit=0){
             $db=new connect();
+            if($value=='option1'){
             $select="SELECT *,
-        CASE
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
-            ELSE 0
-            END AS gialech   
-        FROM thuocsi_vn ORDER BY gialech desc ";
+                CASE
+                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                    ELSE 0
+                    END AS gialech   
+                FROM thuocsi_vn ORDER BY gialech desc ";
+                if($limit!=0){
+                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                }           
+        }else {
+                $select="SELECT *          
+                FROM thuocsi_vn ORDER BY ngaymoi desc ";
+                if($limit!=0){
+                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                }                    
+            }
+            $result=$db->getList($select);
+                    return $result; 
+        }
+
+        //bộ lọc
+        function getListproduct2($start=1,$limit=0){
+            $db=new connect();
+            $select="SELECT *,          
+        FROM thuocsi_vn ORDER BY ngaymoi desc ";
         if($limit!=0){
             $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
         }

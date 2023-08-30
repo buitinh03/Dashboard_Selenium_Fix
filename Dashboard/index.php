@@ -421,7 +421,7 @@ $(function(){
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button><br>
-                                    <label for="">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" style="color:#2196F3;">Click</a></label>
+                                    <label for="" style="margin: 10px; padding: 10px;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" style="color:#2196F3;">Click</a></label>
                                     <script>
                                         const chk1=document.getElementById("checkbox-1");
                                         const chk2=document.getElementById("checkbox-2");
@@ -634,7 +634,74 @@ $(function(){
                             color: #0000BB;
                             background: #fff;
                         }
+                                                
                     </style>
+                    <style>
+                        .boloc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.select-dropdown {
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+}
+
+.select-dropdown:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2196F3;
+  color: #fff;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #1565C0;
+}
+
+                    </style>
+                    <form method="POST" action="index.php" class="boloc" >
+                        <select  name="myComboBox" onchange="this.form.submit()">
+                            <option>Bộ lọc</option>
+                            <option value="option1">Giá lệch</option>
+                            <option value="option2">Thời gian</option>                           
+                        </select>                 
+                        <noscript><button type="submit">Submit</button></noscript>                        
+                        <?php
+                        
+                        if (isset($_POST['myComboBox'])) {
+                            $selectedValue = $_POST['myComboBox'];
+                            unset($_SESSION['selectedValue']);
+                            $_SESSION['selectedValue'] = $selectedValue;
+                        }
+                        ?>
+                    </form>
+
                     <?php
                     $sotrang=1;
                          $tongsanpham =  $pd->tongsanpham();
@@ -658,7 +725,7 @@ $(function(){
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
                         }
-                        $result = $pro ->getListproduct($trangthu,100);
+                        $result = $pro ->getListproduct($selectedValue,$trangthu,100);
                         ?>  
                     
                     <?php
@@ -693,6 +760,11 @@ $(function(){
                         <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                         <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                        <!-- <select name="filter">
+                        <option value="ngay">Theo ngày</option>
+                        <option value="gia-lech">Theo giá lệch</option>
+                        </select> -->
+                        
                     </div>
                             <table id="mytable">                    
                                 <thead>
@@ -890,11 +962,11 @@ $(function(){
                                             $gialech=round($gialech,2);
                                             if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
                                         ?>
-                                        <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                        <td class="primary" style="text-align: center; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                         <?php } elseif($set['giamoi']<$set['giacu']){ ?>
-                                            <td class="primary" style="text-align: right; color:red"><?php echo "-".$gialech."%" ?></td>
+                                            <td class="primary" style="text-align: center; color:red"><?php echo "-".$gialech."%" ?></td>
                                         <?php } else { ?>
-                                            <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
+                                            <td class="primary" style="text-align: center; color:blue"><?php echo $gialech."%" ?></td>
                                         <?php } ?>
                                         <?php
                                         }else{
