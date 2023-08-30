@@ -762,7 +762,6 @@
 
                             .recent-order tbody tr td:nth-child(2):hover a{
                                 color: rgb(221, 50, 50);
-                                font-size: 13px;
                             }
                             .nguonc .thea {
                                         transition: all .5s ease;
