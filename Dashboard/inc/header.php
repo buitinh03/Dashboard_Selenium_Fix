@@ -117,16 +117,17 @@ $check = Session::get('adminlogin');
                         <!-- <a href="#" id="nextPageButton">Xem thêm</a> -->
                         
                         <?php
-                            if(isset($_GET['action']) && $_GET['action'] == 'logout') {
-                                Session::destroy();
-                                ob_end_flush();
-                            }
+                            // if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+                            //     Session::destroy();
+                            //     ob_end_flush();
+                            // }
                         ?>
-                        <a href="?action=logout">
-                            <span class="material-icons-sharp">logout</span>
-                            <h3>Đăng xuất</h3>
+                        <a href="#">
+                            <span class="material-icons-sharp"></span>
+                            <h3></h3>
                         </a>
                         
                     </div>
                 
             </aside>
+            
