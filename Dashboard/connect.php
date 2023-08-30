@@ -55,20 +55,7 @@
             }
             $result=$db->getList($select);
                     return $result; 
-        }
-
-        //bộ lọc
-        function getListproduct2($start=1,$limit=0){
-            $db=new connect();
-            $select="SELECT *,          
-        FROM thuocsi_vn ORDER BY ngaymoi desc ";
-        if($limit!=0){
-            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
-        }
-            $result=$db->getList($select);
-            return $result;
-        }
-        
+        }        
         function analysischart(){
             $db=new connect();
             $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn";
