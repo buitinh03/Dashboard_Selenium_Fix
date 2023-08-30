@@ -149,7 +149,7 @@ $(function(){
                             position: absolute;
                             margin-left: 70rem;
                             color: chocolate;
-                            
+                            margin-top: .6rem;
                         }
                         .bloc h2 select{
                             width: 6rem;
@@ -166,7 +166,7 @@ $(function(){
                         .bloc h2 i{
                             position: absolute;
                             margin-top: -1.6rem;
-                            margin-left: 5rem;
+                             margin-left: 5.3rem;
                         }
                     </style>
                     <?php
