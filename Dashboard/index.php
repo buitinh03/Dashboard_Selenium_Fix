@@ -707,7 +707,12 @@ $(function(){
                                         <th>Giá lệch</th>
                                         <?php
                                         }else{
-                                            echo "";
+                                        ?>
+                                        <th>Giá cũ</th>
+                                        <th>Thời gian</th>
+                                        <th>Giá mới</th>
+                                        <th>Thời gian</th>
+                                        <?php
                                         }
                                         ?>
                                         <th>Nguồn</th>
@@ -891,7 +896,62 @@ $(function(){
                                         <?php } ?>
                                         <?php
                                         }else{
-                                            echo "";
+                                        ?>
+                                            <?php 
+                                        if($sorow==0){
+                                        ?>
+                                        <td class="primary" style="text-align: center;">-</td>
+                                        <td class="primary" style="text-align: center;">-</td>
+                                        <?php   
+                                        }else{
+                                        ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
+                                        $priceString = (string) $set['giacu'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 2;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asterisksString; ?>đ</td>
+                                        <?php } ?>
+                                            
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral;width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
+                                        $priceString = (string) $set['giamoi'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 2;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asterisksString;?>đ</td>
+                                        <?php } ?>
+
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral; width: 10%;"><?php echo $set['ngaymoi']; ?></td>
+                                        <?php
+                                        
                                         }
                                         ?>
                                         <?php 
