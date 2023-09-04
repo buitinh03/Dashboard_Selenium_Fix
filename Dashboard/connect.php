@@ -32,8 +32,9 @@
             return $result;
         }
 
-        function getListproduct($value='option1',$start=1,$limit=0){
+        function getListproduct($theloai='tatcasanpham',$value='option1',$start=1,$limit=0){
             $db=new connect();
+            if($theloai=='tatcasanpham'){
             if($value=='option1'){
             $select="SELECT *,
                 CASE
@@ -52,7 +53,47 @@
                 if($limit!=0){
                     $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                 }                    
-            }
+            }}elseif($theloai=='bansi'){
+                if($value=='option1'){
+                    $select="SELECT *,
+                        CASE
+                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                            ELSE 0
+                            END AS gialech   
+                        FROM thuocsi_vn WHERE nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' ORDER BY gialech desc ";
+                        if($limit!=0){
+                            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                        }           
+                }else {
+                        $select="SELECT *          
+                        FROM thuocsi_vn ORDER BY ngaymoi desc ";
+                        if($limit!=0){
+                            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                        }      }}              
+                    elseif($theloai=='banle'){
+                        if($value=='option1'){
+                            $select="SELECT *,
+                                CASE
+                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                    ELSE 0
+                                    END AS gialech   
+                                FROM thuocsi_vn WHERE nguon='ankhang.com' or nguon='longchau.vn' ORDER BY gialech desc ";
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }           
+                        }else {
+                                $select="SELECT *          
+                                FROM thuocsi_vn ORDER BY ngaymoi desc ";
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }                    
+                            }
+                    }
+
             $result=$db->getList($select);
                     return $result; 
         }        
@@ -203,9 +244,18 @@
             return $result;
         }
 
-        function tongsanpham(){
+        function tongsanpham($theloaiban='tatcasanpham'){
             $db=new connect();
-            $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn";
+            if($theloaiban=='tatcasanpham'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn ";
+            }elseif($theloaiban=='bansi'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where  nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn'";
+
+            }elseif($theloaiban=='banle'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='ankhang.com' or nguon='longchau.vn'";
+
+            }
+            
             $result = $db->getList($query);
             return $result;
 

@@ -105,11 +105,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['xacnhan'])){
         <div class="panels-container">
                 <div class="panel left-panel">
                     <div class="content">
-                        <h3>Lưu Ý ?</h3>
+                        <h3>Lưu ý ?</h3>
                         <p>Đảm bảo rằng bạn có kết nối internet ổn định và bạn đang cố gắng đăng nhập vào đúng trang web.</p>
                             <!-- <button class="btn transparent" id="sign-up-btn">ĐĂNG KÝ</button> -->
                     </div>
-                    <img src="images/signin1.svg" alt="" class="image">
+                    <img src="images/logo1.png" alt="" class="image">
                 </div>
 
                 <div class="panel right-panel">

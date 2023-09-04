@@ -44,7 +44,7 @@ $pd = new product();
                         }
                     </style>
                 <?php
-                        $tongsanpham =  $pd->tongsanpham();
+                        $tongsanpham =  $pd->tongsanpham('tatcasanpham');
                         if($tongsanpham){
                             while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){
 
@@ -200,7 +200,7 @@ $pd = new product();
                         <div class="right">
                   
                          <?php
-                         $tongsanpham =  $pd->tongsanpham();
+                         $tongsanpham =  $pd->tongsanpham('tatcasanpham');
                          if($tongsanpham){
                              while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){
  

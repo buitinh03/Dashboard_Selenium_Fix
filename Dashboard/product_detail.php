@@ -32,10 +32,10 @@ include_once('format/format.php');
         while($result = $detailPro->fetch()){
     ?>
     <div class="nguon-trang">
-        <h1>NGUỒN TRANG: <span><?php echo $result['nguon'] ?></span></h1>
+        <h1><span><?php echo $result['nguon'] ?></span></h1>
     </div><br>
-    <div class="container">
-<div class="product">
+    <div class="container1">
+<!-- <div class="product"> -->
  
     <div class="product-image">
        <img src="<?php echo $result['photo'] ?>" alt="">
@@ -67,19 +67,9 @@ include_once('format/format.php');
       
 
     </div>
-    <div class="container-content-left">
-        <h2>HBPHARMA<span></span></h2>
-        <div class="container-content-left-thuocsi">
-            <a href="" class="a">-------</a>
-        </div>
-        <div class="container-content-left-thuocsi">
-        <a href="" class="a">-------</a>
-        </div>
-        <div class="container-content-left-thuocsi">
-        <a href="" class="a">-------</a>
-        </div>
-    </div>
-     
+    
+    </div> 
+    <!-- </div> -->
         <div class="product_thongtin">
             <h2>Thông tin sản phẩm</h2>
             <p><?php echo $result['thong_tin_san_pham'] ?> </p>
@@ -278,7 +268,7 @@ include_once('format/format.php');
                         ?>
 
       
-    </div>
+    
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
           

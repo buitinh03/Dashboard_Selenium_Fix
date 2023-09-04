@@ -41,8 +41,51 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
+    <style>
+        #theloaiban{
+            position: relative;
+            width: 6rem;
+            margin-left: .5rem;
+            padding: .5rem;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            border-radius: 3px;
+            background: bisque;
+            color: #7380ec;
+            /* margin-top: -.3rem;
+            top: -2.5rem;
+            left: 11rem; */
+        }
+        #xeptheotheloai i{
+            position: relative;
+            top: -2rem;
+            left: 4.5rem;
+            color: chocolate;
+        }
+    </style>
        <div class="recent-order">
- <h2>SẢN PHẨM - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
+ <h2>SẢN PHẨM     <form action="#" method="post" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+        <option value="tatcasanpham"  <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
+        <option value="bansi" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
+        <option value="banle" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
+        <noscript><button type="submit">Submit</button></noscript> 
+        <?php 
+        if(isset($_POST['theloaiban'])){
+            unset($_SESSION['theloai']);
+            $_SESSION['theloai']=$_POST['theloaiban'];
+            $theloaiban=$_POST['theloaiban'];
+            
+        }elseif(isset($_SESSION['theloai'])){
+            $theloaiban=$_SESSION['theloai'];
+        }else $theloaiban='tatcasanpham';
+         ?>
+         <i class="fa fa-caret-down dropdown__caret"></i>
+ </form>
+ <?php 
+ if($theloaiban=='tatcasanpham'){
+    ?>
+  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
  <i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
@@ -50,6 +93,25 @@ $(function(){
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+  <?php
+ }elseif($theloaiban=='bansi'){
+    ?>
+  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+ <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+  <?php
+ }elseif($theloaiban=='banle'){
+    ?>
+  - <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span></h2>
+  <?php
+ }
+ 
+  ?>
        
  
                 <style>
@@ -157,12 +219,12 @@ $(function(){
                         .bloc h2 i{
                             position: absolute;
                             margin-top: -1.6rem;
-                            margin-left: 5.3rem;
+                             margin-left: 5.3rem;
                         }
                     </style>
                     <?php
                     $sotrang=1;
-                         $tongsanpham =  $pd->tongsanpham();
+                         $tongsanpham =  $pd->tongsanpham($theloaiban);
                          if($tongsanpham){
                              while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){                   
                             $tong= $result['quantity'];
@@ -183,7 +245,7 @@ $(function(){
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
                         }
-                        $result = $pro ->getListproduct($selectedValue,$trangthu,100);
+                        $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);
                         ?>  
                     
                     <?php
@@ -362,6 +424,7 @@ $(function(){
                                     color: green;
                                     font-weight: bold;
                                     text-align: left;
+                                    
                                 }
                                 </style>
                                 
@@ -374,7 +437,7 @@ $(function(){
                             <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -382,32 +445,32 @@ $(function(){
                                         <?php 
                                         if($sorow==0){
                                         ?>
-                                        <td class="primary" style="text-align: center;">-</td>
-                                        <td class="primary" style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
                                         <?php   
                                         }else{
                                         ?>
                                         <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral;width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
                                         <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral; width: 10%;"><?php echo $set['ngaymoi']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px;  width: 10%;"><?php echo $set['ngaymoi']; ?></td>
 
                                         
                                         <?php
@@ -420,11 +483,11 @@ $(function(){
                                             $gialech=round($gialech,2);
                                             if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
                                         ?>
-                                        <td class="primary" style="text-align: center; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                        <td class="primary" style="text-align: center; width: 7%; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                         <?php } elseif($set['giamoi']<$set['giacu']){ ?>
-                                            <td class="primary" style="text-align: center; color:red"><?php echo "-".$gialech."%" ?></td>
+                                            <td class="primary" style="text-align: center; width: 7%; color:red"><?php echo "-".$gialech."%" ?></td>
                                         <?php } else { ?>
-                                            <td class="primary" style="text-align: center; color:blue"><?php echo $gialech."%" ?></td>
+                                            <td  style="text-align: center; width: 7%;"><?php echo $gialech."%" ?></td>
                                         <?php } ?>
                                         <?php
                                         }else{
@@ -432,17 +495,17 @@ $(function(){
                                             <?php 
                                         if($sorow==0){
                                         ?>
-                                        <td class="primary" style="text-align: center;">-</td>
-                                        <td class="primary" style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
                                         <?php   
                                         }else{
                                         ?>
                                         <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
                                         $priceString = (string) $set['giacu'];
 
                                         // Lấy số ký tự đầu tiên của giá trị
@@ -457,16 +520,16 @@ $(function(){
                                         echo $maskedValue . $asterisksString; ?>đ</td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral;width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
                                         <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
                                         $priceString = (string) $set['giamoi'];
 
                                         // Lấy số ký tự đầu tiên của giá trị
@@ -481,7 +544,7 @@ $(function(){
                                         echo $maskedValue . $asterisksString;?>đ</td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral; width: 10%;"><?php echo $set['ngaymoi']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
                                         <?php
                                         
                                         }
@@ -518,7 +581,7 @@ $(function(){
 
                                         
 
-                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
+                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                         <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                         <?php

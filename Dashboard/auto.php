@@ -9,7 +9,7 @@
         $_SESSION['sotrang']=0;
     }
     $start_time = time();
-    $end_time = time() + 5*60*60;
+    $end_time = time() + 5*60;
     $_SESSION['sotrang']=$_SESSION['sotrang']+1;
     if($datee['mday']==3){
             ini_set('max_execution_time', (3600*24*7));

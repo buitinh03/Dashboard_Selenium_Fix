@@ -124,6 +124,13 @@ body{
     gap:1.8rem;
     grid-template-columns: 14rem auto 23rem;
 }
+.container1{
+    display: grid;
+    width: 96%;
+    margin:0 auto;
+    gap:1.8rem;
+    grid-template-columns: 20rem auto ;
+}
 
 a{color:var(--color-dark)}
 img{display:block;width: 100%;}
@@ -403,8 +410,8 @@ box-shadow: none;
  table tbody td{
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
-    color: var(--color-dark-variant);
-    
+    /* color: var(--color-dark-variant); */
+    color: black;
 }
 
  table tbody tr:last-child td{
@@ -856,12 +863,12 @@ gap: 0.6rem;
 
 .recent-order tbody tr td:nth-child(2){
     cursor: pointer;
-    color: rgb(221, 94, 94);
+    color: black;
     transition: .5s all ease;
 }
 
 .recent-order tbody tr td:nth-child(2):hover {
-    color: rgb(221, 50, 50);
+    color: black;
     font-size: 14px;
 }
 

@@ -1,17 +1,11 @@
 
 <?php
-    include "connect.php";
+    include_once "connect.php";
 ?>
 <?php 
 
 include_once('lib/session.php');
 Session::checkSession();
-if(isset($_SESSION['sotrang'])){
-    $numpagecao=$_SESSION['sotrang'];
-}else {
-    $numpagecao=0;
-    $_SESSION['sotrang']=0;
-};
 
 $checkLoginAdmin = Session::get('adminType');
 $check = Session::get('adminlogin');
@@ -31,6 +25,10 @@ $check = Session::get('adminlogin');
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
         <link rel="stylesheet" href="./style.css">    
         <link rel="stylesheet" href="css/detail.css">
+        <!-- <script>window.history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function(event) {
+  window.history.pushState(null, null, document.URL);
+});</script> -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

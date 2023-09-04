@@ -107,7 +107,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                         <p>Tên tài khoản của bạn sẽ được sử dụng để đăng nhập vào tài khoản của bạn, vì vậy hãy đảm bảo rằng bạn có thể nhớ nó.</p>
                             <button class="btn transparent" id="sign-up-btn">ĐĂNG KÝ</button>
                     </div>
-                    <img src="images/signin1.svg" alt="" class="image">
+                    <img src="images/logo1.png" alt="" class="image">
                 </div>
 
                 <div class="panel right-panel">
@@ -116,7 +116,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                         <p>Một số hướng dẫn cần chú ý khi đăng ký tài khoản ?</p>
                             <button class="btn transparent" id="sign-in-btn">Lưu Ý</button>
                     </div>
-                    <img src="images/signup1.svg" alt="" class="image">
+                    <img src="images/logo1.png" alt="" class="image">
                 </div>
         </div>
     </div>
