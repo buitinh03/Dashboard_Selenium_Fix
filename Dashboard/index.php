@@ -45,7 +45,6 @@ $(function(){
  <h2>SẢN PHẨM - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
  <i class="fa fa-caret-down dropdown__caret"></i>
-<<<<<<< HEAD
  <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
@@ -53,14 +52,6 @@ $(function(){
  <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
        
  
-=======
- <a href="https://chosithuoc.com/" target="_blank" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" target="_blank" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" target="_blank" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" target="_blank" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" target="_blank" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
-                
->>>>>>> bae8478773e378c1de677961f0699a7cfa771960
                 <style>
                         #pagination {
                             display: flex;
@@ -149,7 +140,7 @@ $(function(){
                             position: absolute;
                             margin-left: 70rem;
                             color: chocolate;
-                            
+                            margin-top: .6rem;
                         }
                         .bloc h2 select{
                             width: 6rem;
@@ -166,7 +157,7 @@ $(function(){
                         .bloc h2 i{
                             position: absolute;
                             margin-top: -1.6rem;
-                            margin-left: 5rem;
+                            margin-left: 5.3rem;
                         }
                     </style>
                     <?php
