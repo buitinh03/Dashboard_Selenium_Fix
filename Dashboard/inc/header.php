@@ -6,12 +6,18 @@
 
 include_once('lib/session.php');
 Session::checkSession();
-if(isset($_SESSION['sotrang'])){
-    $numpagecao=$_SESSION['sotrang'];
- }else {
+// if(isset($_SESSION['sotrang'])){
+//     $numpagecao=$_SESSION['sotrang'];
+//  }else {
+//     $numpagecao=0;
+//     $_SESSION['sotrang']=0;
+//  };
+if(Session::get('sotrang')){
+    $numpagecao=Session::get('sotrang');
+}else{
     $numpagecao=0;
-    $_SESSION['sotrang']=0;
- };
+    Session::set('sotrang',0);
+}
 $checkLoginAdmin = Session::get('adminType');
 $check = Session::get('adminlogin');
 ?>

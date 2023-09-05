@@ -44,31 +44,30 @@ $(function(){
     <style>
         #theloaiban{
             position: relative;
-            width: 6rem;
-            margin-left: .5rem;
-            padding: .5rem;
+            width: 5.1rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem;
             align-items: center;
             display: flex;
             justify-content: center;
             border-radius: 3px;
             background: bisque;
             color: #7380ec;
-            /* margin-top: -.3rem;
-            top: -2.5rem;
-            left: 11rem; */
         }
         #xeptheotheloai i{
             position: relative;
-            top: -2rem;
-            left: 4.5rem;
+            top: -1.9rem;
+            left: 4.35rem;
             color: chocolate;
         }
     </style>
        <div class="recent-order">
- <h2>SẢN PHẨM     <form action="#" method="post" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
-        <option value="tatcasanpham"  <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
-        <option value="bansi" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
-        <option value="banle" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
+ <h2>SẢN PHẨM     <form action="#" method="post" id='xeptheotheloai' style="height: 1.5rem;">
+        <select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+            <option value="tatcasanpham"  <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
+            <option value="bansi" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
+            <option value="banle" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
         <noscript><button type="submit">Submit</button></noscript> 
         <?php 
         if(isset($_POST['theloaiban'])){
@@ -298,8 +297,8 @@ $(function(){
                         <form method="POST" action="index.php" class="boloc" >
                         <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
                             <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
                             </select>                 
                             <noscript><button type="submit">Submit</button></noscript>                        
                             <?php
@@ -308,7 +307,9 @@ $(function(){
                                 $selectedValue = $_POST['myComboBox'];
                                 unset($_SESSION['selectedValue']);
                                 $_SESSION['selectedValue'] = $selectedValue;
-                            }else $selectedValue='option1';
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
                             ?>
                             <i class="fa fa-caret-down dropdown__caret"></i>
                         </form></p>

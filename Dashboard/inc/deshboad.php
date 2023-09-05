@@ -137,7 +137,7 @@ $pd = new product();
                              <p>Chào,<b><?php echo Session::get('adminName');?><span style="font-size: .88rem;">(<?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?>)</span></b></p>
                           <?php
                           if(isset($_GET['action'])&&$_GET['action']=='logout'){
-                            Session::destroy();
+                            Session::unset();
                           }
                           ?>
                             <small class="text-muted" ><a style='color: red; font-size:1rem;' href="?action=logout">Đăng xuất</a></small>

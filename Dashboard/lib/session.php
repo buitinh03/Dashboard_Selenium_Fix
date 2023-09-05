@@ -30,7 +30,7 @@ class Session{
  public static function checkSession(){
     self::init();
     if (self::get("adminlogin")== false) {
-     self::destroy();
+     self::unset();
      header("Location:login.php");
     }
  }
@@ -48,7 +48,11 @@ class Session{
  }
 
  public static function unset(){
-   session_unset();
+   unset($_SESSION['adminlogin']);
+   unset($_SESSION['adminId']);
+   unset($_SESSION['adminName']);
+   unset($_SESSION['adminUser']);
+   unset($_SESSION['adminType']);
    header("Location:login.php");
   }
 
