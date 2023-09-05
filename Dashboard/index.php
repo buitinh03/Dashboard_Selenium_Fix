@@ -63,17 +63,16 @@ $(function(){
         }
     </style>
        <div class="recent-order">
- <h2>SẢN PHẨM     <form action="#" method="post" id='xeptheotheloai' style="height: 1.5rem;">
-        <select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
-            <option value="tatcasanpham"  <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
-            <option value="bansi" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
-            <option value="banle" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
+ <h2>SẢN PHẨM     <form action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+        <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
+        <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
+        <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
         <noscript><button type="submit">Submit</button></noscript> 
         <?php 
-        if(isset($_POST['theloaiban'])){
+        if(isset($_GET['theloaiban'])){
             unset($_SESSION['theloai']);
-            $_SESSION['theloai']=$_POST['theloaiban'];
-            $theloaiban=$_POST['theloaiban'];
+            $_SESSION['theloai']=$_GET['theloaiban'];
+            $theloaiban=$_GET['theloaiban'];
             
         }elseif(isset($_SESSION['theloai'])){
             $theloaiban=$_SESSION['theloai'];
