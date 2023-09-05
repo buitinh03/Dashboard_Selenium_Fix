@@ -53,11 +53,6 @@ class Session{
   }
 
 }
-if(isset($_SESSION['sotrang'])){
-   $numpagecao=$_SESSION['sotrang'];
-}else {
-   $numpagecao=0;
-   $_SESSION['sotrang']=0;
-};
+
 
 ?>
