@@ -6,6 +6,11 @@ body {
      font-size: 0.88rem;
 }
 
+.container1 {
+    width: 112%;
+    margin-left: 2cqb;
+}
+
 .product {
     position: static;
     display: flex;
@@ -14,7 +19,7 @@ body {
     margin-bottom: 20px;
 }
 .product-image {
-    width: 90%;
+    width: 140%;
     height: auto;
     background-color: #ffffff;
     cursor: pointer;
@@ -43,8 +48,8 @@ body {
     transform: translateY(-10px);
 }
 .product-details {
-    width: 100%;
-    margin-left: 30px;
+    width: 82%;
+    margin-left: 10rem;
     margin-right: 50px;
     padding-right: 100;
 }
@@ -64,7 +69,7 @@ p {
 }
 
 .product_thongtin {
-    width: 100%;
+    width: 112%;
 }
 
 .product_thongtin p {
@@ -178,11 +183,11 @@ p {
 
 .warranty-policy {
     position: static;
-    max-width: 100%;
+    max-width: 110%;
     
 }
 .warranty-policy-h1 {
-    max-width: 95%;
+    max-width: 110%;
     border: 1px solid #333;
     height: 40px;
     font-size: 30px;
@@ -203,7 +208,7 @@ p {
 .warranty-policy-content {
     /* display:flex; */
     flex-wrap: wrap;
-    max-width: 95%;
+    max-width: 110%;
     justify-content: space-between;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -221,7 +226,7 @@ p {
     margin-left: 10px;
     margin-right: 20px;
     font-size: 18px;
-    max-width: 100%;
+    max-width: 110%;
 }
 
 .recent-order {
@@ -274,7 +279,7 @@ p {
 
 
 .nguon-trang {
-    width: 100%;
+    width: 112%;
     text-align: center;
     margin-top: 1rem;
     background-color: #ebebf7;
