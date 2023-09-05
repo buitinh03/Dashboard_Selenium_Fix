@@ -29,6 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/54f0cb7e4a.js"> crossorigin="anonymous" </script>
     <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png"/>
     <title>Đăng nhập & Đăng ký</title>
 </head>
 <body>
@@ -102,21 +103,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
         <!--  -->
         <div class="panels-container">
                 <div class="panel left-panel">
+                    <img src="images/logo1.png" alt="" class="image">
                     <div class="content">
                         <h3>Đăng Ký Tại Đây !</h3>
                         <p>Tên tài khoản của bạn sẽ được sử dụng để đăng nhập vào tài khoản của bạn, vì vậy hãy đảm bảo rằng bạn có thể nhớ nó.</p>
                             <button class="btn transparent" id="sign-up-btn">ĐĂNG KÝ</button>
                     </div>
-                    <img src="images/logo1.png" alt="" class="image">
+                    
                 </div>
 
                 <div class="panel right-panel">
+                    <img src="images/logo1.png" alt="" class="image">
                     <div class="content">
                         <h3>Hướng dẫn đăng ký tài khoản ?</h3>
                         <p>Một số hướng dẫn cần chú ý khi đăng ký tài khoản ?</p>
                             <button class="btn transparent" id="sign-in-btn">Lưu Ý</button>
                     </div>
-                    <img src="images/logo1.png" alt="" class="image">
+                    
                 </div>
         </div>
     </div>

@@ -19,7 +19,7 @@ def caogia(trangnt):
 
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--window-size=5120x2880")
     driver = webdriver.Chrome(options=chrome_options)
     url = "https://thuocsi.vn/products"
