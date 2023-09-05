@@ -132,96 +132,75 @@ $(function(){
                             color: #0000BB;
                             background: #fff;
                         }
+                        .bloc p{
+                            /* position:relative; */
+                            color: chocolate;
+                            /* margin-top: .5rem;                         
+                            margin-left: .5rem; */
+                        }
+                        #pagination .bloc select{
+                                
+                                text-align: center;
+                                padding: 7px 20px 7px 8px;
+                             
+                                background: bisque;
+                                border-radius: 3px;
+                              
+                                color: #7380ec;
+                                margin-left: 5px; 
+                        }
+                        
+                        #pagination .bloc i{
+                            position: relative;
+                            left: -1.3rem;
+                            color: chocolate;
+                        }
                                                 
                     </style>
-                    <style>
-                        
+                    <style>                       
+                            .select-wrapper {
+                            position: relative;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                            }
 
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 10px;
-}
+                            .select-dropdown {
+                            width: 200px;
+                            height: 40px;
+                            padding: 10px;
+                            font-size: 16px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            appearance: none;
+                            -webkit-appearance: none;
+                            background-color: #fff;
+                            }
 
-.select-dropdown {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #fff;
-}
+                            .select-dropdown:focus {
+                            outline: none;
+                            border-color: #2196F3;
+                            box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+                            }
 
-.select-dropdown:focus {
-  outline: none;
-  border-color: #2196F3;
-  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
-}
+                            .submit-btn {
+                            padding: 10px 20px;
+                            font-size: 16px;
+                            border: none;
+                            border-radius: 4px;
+                            background-color: #2196F3;
+                            color: #fff;
+                            cursor: pointer;
+                            }
 
-.submit-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #2196F3;
-  color: #fff;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  background-color: #1565C0;
-}
-
-                    </style>
-                    <div class="bloc">
-                        <h2>Bộ lọc: 
-                        <form method="POST" action="index.php" class="boloc" >
-                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
-                            <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
-                            </select>                 
-                            <noscript><button type="submit">Submit</button></noscript>                        
-                            <?php
+                            .submit-btn:hover {
+                            background-color: #1565C0;
+                            }
                             
-                            if (isset($_POST['myComboBox'])) {
-                                $selectedValue = $_POST['myComboBox'];
-                                unset($_SESSION['selectedValue']);
-                                $_SESSION['selectedValue'] = $selectedValue;
-                            }else $selectedValue='option1';
-                            ?>
-                            <i class="fa fa-caret-down dropdown__caret"></i>
-                        </form></h2>
-                    </div>
-                    
-                    <style>
-                        .bloc h2{
-                            position: absolute;
-                            margin-left: 70rem;
-                            color: chocolate;
-                            margin-top: .6rem;
-                        }
-                        .bloc h2 select{
-                            width: 6rem;
-                            margin-left: .5rem;
-                            padding: .5rem;
-                            align-items: center;
-                            display: flex;
-                            justify-content: center;
-                            border-radius: 3px;
-                            background: bisque;
-                            color: #7380ec;
-                            margin-top: -.3rem;
-                        }
-                        .bloc h2 i{
-                            position: absolute;
-                            margin-top: -1.6rem;
-                             margin-left: 5.3rem;
-                        }
+
                     </style>
+                    
+                    
+                    
                     <?php
                     $sotrang=1;
                          $tongsanpham =  $pd->tongsanpham($theloaiban);
@@ -245,7 +224,7 @@ $(function(){
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
                         }
-                        $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);
+                        
                         ?>  
                     
                     <?php
@@ -280,11 +259,62 @@ $(function(){
                         <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                         <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
-                        <!-- <select name="filter">
-                        <option value="ngay">Theo ngày</option>
-                        <option value="gia-lech">Theo giá lệch</option>
-                        </select> -->
+                        <!-- <style>
+                        .bloc p{
+                            /* position:relative; */
+                            color: chocolate;
+                            /* margin-top: .5rem;                         
+                            margin-left: .5rem; */
+                        }
+                        .bloc p select{
+                            /* width: 6rem;
+                            margin-left: .5rem;
+                            padding: .5rem;
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                            border-radius: 3px;
+                            
+                            
+                            margin-top: .3rem; */
+                            display: flex;
+                            color: #7380ec;
+                                                
+                            text-align: center;
+                            padding: 5px 8px;
+                            margin: 5px;
+                            background: bisque;
+                            border-radius: 3px;
+
+                        }
+                        .bloc h2 i{
+                            /* position: absolute; */
+                            margin-top: -1.5rem;
+                             margin-left: 1.5rem;
+                        }
+                    </style> -->
+                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+                        <p>Sắp xếp theo: 
+                        <form method="POST" action="index.php" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }else $selectedValue='option1';
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></p>
                         
+                    </div>
+                    <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
                     </div>
                             <table id="mytable">                    
                                 <thead>
