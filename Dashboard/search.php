@@ -187,52 +187,50 @@
                             color:#FFCC33;
                             font-weight: bold;
                             text-align: left;
-                        } 
-
+                            } 
+        
                         .nguonb .thea:hover {
                             color: #00DD00;
                         }
                         
                             .recent-order tbody tr td:nth-child(2) a{
-                            cursor: pointer;
-                            color: rgb(221, 94, 94);
-                            transition: .5s all ease;
-                            text-align: left;
-                            }
+                        text-align: left;
+                        color: #333;
+                        }
 
                             .recent-order tbody tr td:nth-child(2):hover a{
                                 color: rgb(221, 50, 50);
                             }
                             .nguonc .thea {
-                                        transition: all .5s ease;
-                                        color:#17a2b8;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
+                                transition: all .5s ease;
+                                color:#17a2b8;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
 
-                                    .nguonc .thea:hover {
-                                        color:#0000BB;
-                                    }
-                                    .nguond .thea {
-                                        transition: all .5s ease;
-                                        color:#1250dc;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
+                            .nguonc .thea:hover {
+                                color:#0000BB;
+                            }
+                            .nguond .thea {
+                                transition: all .5s ease;
+                                color:#1250dc;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
 
-                                    .nguond .thea:hover {
-                                        color:#acc0f3;
-                                    }
-                                    .nguone .thea {
-                                        transition: all .5s ease;
-                                        color:#5dac46;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
+                            .nguond .thea:hover {
+                                color:#acc0f3;
+                            }
+                            .nguone .thea {
+                                transition: all .5s ease;
+                                color:#5dac46;
+                                font-weight: bold;
+                                text-align: left;
+                            } 
 
-                                    .nguone .thea:hover {
-                                        color:#0f62f9;
-                                    }
+                            .nguone .thea:hover {
+                                color:#0f62f9;
+                            }
                         </style>
                         <?php 
                         $format = new Format();
@@ -245,9 +243,9 @@
                                 $j++
                         ?>
                              <tbody>
-                                    <tr onclick="handleClick(event)" id="tbody" class="tr">
+                                     <tr onclick="handleClick(event)" id="tbody" class="tr">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title" style="color: #333; font-weight: bold;"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -261,26 +259,26 @@
                                         }else{
                                         ?>
                                         <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaycu']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:#333;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
                                         <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;">Liên hệ</td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px;"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:coral"><?php echo $set['ngaymoi']; ?></td>
+                                        <td class="primary" style="text-align: center; padding-left: 5px; color:#333;"><?php echo $set['ngaymoi']; ?></td>
 
                                         
                                         <?php
@@ -293,11 +291,11 @@
                                             $gialech=round($gialech,2);
                                             if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
                                         ?>
-                                        <td class="primary" style="text-align: right; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                        <td class="primary" style="text-align: right; color:#00CC00; text-align:center;"><?php echo "+".$gialech."%" ?></td>
                                         <?php } elseif($set['giamoi']<$set['giacu']){ ?>
-                                            <td class="primary" style="text-align: right; color:red"><?php echo "-".$gialech."%" ?></td>
+                                            <td class="primary" style="text-align: right; color:red; text-align:center;"><?php echo "-".$gialech."%" ?></td>
                                         <?php } else { ?>
-                                            <td class="primary" style="text-align: right; color:blue"><?php echo $gialech."%" ?></td>
+                                            <td class="primary" style="text-align: right; color:blue; text-align:center;"><?php echo $gialech."%" ?></td>
                                         <?php } ?>
                                         <?php
                                         }else{
