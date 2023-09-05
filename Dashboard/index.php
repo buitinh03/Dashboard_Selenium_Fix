@@ -181,8 +181,8 @@ $(function(){
                         <form method="POST" action="index.php" class="boloc" >
                         <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
                             <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
                             </select>                 
                             <noscript><button type="submit">Submit</button></noscript>                        
                             <?php
@@ -191,6 +191,8 @@ $(function(){
                                 $selectedValue = $_POST['myComboBox'];
                                 unset($_SESSION['selectedValue']);
                                 $_SESSION['selectedValue'] = $selectedValue;
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
                             }else $selectedValue='option1';
                             ?>
                             <i class="fa fa-caret-down dropdown__caret"></i>
