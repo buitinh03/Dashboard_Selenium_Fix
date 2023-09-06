@@ -171,16 +171,16 @@
                                 <input type="text" name="customername" id="productid" value="<?php echo $result['fullname'] ?>" placeholder="Họ và tên" class="productid">
                             </div>
                             <div class="recent-order-form">
-                                <label for="productname">Email:</label>
-                                <input type="text" name="email" id="productname" value="<?php echo $result['email'] ?>" placeholder="Email" class="productname">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email" id="email" value="<?php echo $result['email'] ?>" placeholder="Email" class="productname">
                             </div>
                             <div class="recent-order-form">
-                                <label for="productname">Tên đăng nhập:</label>
-                                <input type="text" name="username" id="productname" value="<?php echo $result['username'] ?>" placeholder="Tên đăng nhập" class="productname">
+                                <label for="username">Tên đăng nhập:</label>
+                                <input type="text" name="username" id="username" value="<?php echo $result['username'] ?>" placeholder="Tên đăng nhập" class="productname">
                             </div>
                             <div class="recent-order-form">
-                                <label for="productname">Mật khẩu:</label>
-                                <input type="text" name="password" id="productname" value="<?php echo $result['password'] ?>" placeholder="Mật khẩu" class="productname">
+                                <label for="password">Mật khẩu:</label>
+                                <input type="text" name="password" id="password" value="<?php echo $fm->textShorten($result['password'], 30) ?>" placeholder="Mật khẩu" class="productname">
                             </div>
              
                             <div class="recent-order-form">
