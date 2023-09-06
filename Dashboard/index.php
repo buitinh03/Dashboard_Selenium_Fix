@@ -90,7 +90,8 @@ $(function(){
  <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
     ?>
@@ -99,7 +100,8 @@ $(function(){
  <i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='banle'){
     ?>
@@ -437,6 +439,16 @@ $(function(){
                                     .nguone .thea:hover {
                                         color:#0f62f9;
                                     }
+                                    .nguonf .thea {
+                                        transition: all .5s ease;
+                                        color:#F60B8A;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguonf .thea:hover {
+                                        color:#fd7e14;
+                                    }
                                     .recent-order tbody tr td:nth-child(2) a{
                                     cursor: pointer;
                                     color: rgb(221, 94, 94);
@@ -603,6 +615,10 @@ $(function(){
                                                 }elseif($set['nguon'] == 'pharmacity.vn'){
                                                     ?>
                                                     <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
+                                                    <?php
+                                                }elseif($set['nguon'] == 'medigoapp.com'){
+                                                    ?>
+                                                    <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
                                                     <?php  
                                             }else{
                                                 echo "";

@@ -231,6 +231,16 @@
                             .nguone .thea:hover {
                                 color:#0f62f9;
                             }
+                            .nguonf .thea {
+                                        transition: all .5s ease;
+                                        color:#F60B8A;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguonf .thea:hover {
+                                        color:#fd7e14;
+                                    }
                         </style>
                         <?php 
                         $format = new Format();
@@ -381,6 +391,10 @@
                                             }elseif($set['nguon'] == 'pharmacity.vn'){
                                                 ?>
                                                 <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
+                                                <?php 
+                                            }elseif($set['nguon'] == 'medigoapp.com'){
+                                                ?>
+                                                <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
                                                 <?php  
                                             }else{
                                                 echo "";

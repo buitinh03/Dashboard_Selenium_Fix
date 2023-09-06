@@ -436,8 +436,13 @@ $pd = new product();
                                         <span class="checkmark"></span>
                                         </label>
 
+                                        <label class="containerr" style="font-weight: 400;">medigoapp.com
+                                        <input type="checkbox" name='medigoapp' value="medigoapp" id="checkbox-7">
+                                        <span class="checkmark"></span>
+                                        </label>
+
                                         <label class="containerr" style="font-weight: 400;">Tất cả
-                                        <input type="checkbox" name="alll" value='alll' id="checkbox-7">
+                                        <input type="checkbox" name="alll" value='alll' id="checkbox-8">
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button><br><br>
@@ -450,10 +455,11 @@ $pd = new product();
                                         const chk5=document.getElementById("checkbox-5");
                                         const chk6=document.getElementById("checkbox-6");
                                         const chk7=document.getElementById("checkbox-7");
+                                        const chk8=document.getElementById("checkbox-8");
                                         chk1.addEventListener('change',function(){  
                                                                                     
                                             if (chk1.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk7.disabled = false;
                                             }
@@ -462,7 +468,7 @@ $pd = new product();
                                         chk2.addEventListener('change',function(){ 
                                                                                        
                                             if (chk2.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk2.disabled = false;
                                             }
@@ -471,7 +477,7 @@ $pd = new product();
                                         chk3.addEventListener('change',function(){ 
                                                                                       
                                             if (chk3.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk3.disabled = false;
                                             }
@@ -479,7 +485,7 @@ $pd = new product();
                                         chk4.addEventListener('change',function(){ 
                                                                                       
                                             if (chk4.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk4.disabled = false;
                                             }
@@ -487,7 +493,7 @@ $pd = new product();
                                         chk5.addEventListener('change',function(){ 
                                             
                                             if (chk5.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk5.disabled = false;
                                             }
@@ -495,28 +501,38 @@ $pd = new product();
                                         chk6.addEventListener('change',function(){ 
                                                                                     
                                             if (chk6.checked) {                                            
-                                                chk7.disabled = true;
+                                                chk8.disabled = true;
                                             } else {                                            
                                                 chk6.disabled = false;
                                             }
                                         })
+                                        chk7.addEventListener('change',function(){ 
+                                                                                    
+                                            if (chk7.checked) {                                            
+                                                chk8.disabled = true;
+                                            } else {                                            
+                                                chk7.disabled = false;
+                                            }
+                                        })
                                         //
-                                        chk7.addEventListener('change',function(){  
+                                        chk8.addEventListener('change',function(){  
                                                                                       
-                                        if(chk7.checked){
+                                        if(chk8.checked){
                                             chk1.disabled=true;
                                             chk2.disabled=true;
                                             chk3.disabled=true;
                                             chk4.disabled=true;
                                             chk5.disabled=true;
                                             chk6.disabled=true;
+                                            chk7.disabled=true;
                                         }else{
                                             chk1.disabled=false;
                                             chk2.disabled=false;
                                             chk3.disabled=false;
                                             chk4.disabled=false; 
                                             chk5.disabled=false;
-                                            chk6.disabled=false;                                                                               
+                                            chk6.disabled=false;    
+                                            chk7.disabled=false;                                                                           
                                         }
                                     })
                                        
@@ -529,7 +545,7 @@ $pd = new product();
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0" && python ../backend/auto/longchau.py "0" && python ../backend/auto/pharmacity.py "0"'))){
+                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0" && python ../backend/auto/longchau.py "0" && python ../backend/auto/pharmacity.py "0" && python ../backend/auto/medigoapp.py "0"'))){
                                                     echo "<script>
                                                 swal({
                                                     title: 'Thông báo',
@@ -572,6 +588,9 @@ $pd = new product();
                                                 }
                                                 if(isset($_POST['pharmacity'])){
                                                     system('python ../backend/auto/pharmacity.py "0"');
+                                                }
+                                                if(isset($_POST['medigoapp'])){
+                                                    system('python ../backend/auto/medigoapp.py "0"');
                                                 }
                                                 echo "<script>
                                                     swal({
