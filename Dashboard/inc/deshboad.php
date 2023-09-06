@@ -144,13 +144,14 @@ $pd = new product();
                             .text-muted {
                                 border-radius: 1rem;
                                 /* background: linear-gradient(#fff, #ddd); */
-                                background: red;
+                                background-color: #fff;
                                 padding: .3rem .5rem .3rem .5rem;
                                 font-weight: 500;
                             }
 
                             .text-muted a {
-                                color: #fff; 
+                                padding: .3rem .5rem .3rem .5rem;
+                                color: red;
                             }
                           </style>
                             <small class="text-muted" ><a style='font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
