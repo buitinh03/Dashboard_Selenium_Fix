@@ -116,12 +116,12 @@ include_once('format/format.php');
                                 for($j=0;$j<12;$j++){
                                     if($result[$month[$j]]!=""){
                                         ?>
-                                         <td class="primary" style="text-align: right;"><?php echo number_format( $result[$month[$j]]); ?><sup>đ</sup></td>
+                                         <td class="primary" style="text-align: right; width: 8%;"><?php echo number_format( $result[$month[$j]]); ?><sup>đ</sup></td>
                                         <?php
                                     }
                                     else {
                                         ?>
-                                        <td class="primary" style="text-align:center;">-</td>
+                                        <td class="primary" style="text-align:center; width: 8%;">-</td>
                                         <?php
                                     }
                                 }
