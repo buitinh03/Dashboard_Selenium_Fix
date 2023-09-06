@@ -11,7 +11,12 @@
     $customer = new Login();
    $product = new product();
    $forgotpass = new Customer();
-
+   if(Session::get('sotrang')){
+    $numpagecao=Session::get('sotrang');
+}else{
+    $numpagecao=0;
+    Session::set('sotrang',0);
+}
 ?>
 
 <?php

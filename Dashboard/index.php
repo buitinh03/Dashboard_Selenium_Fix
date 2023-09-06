@@ -44,37 +44,35 @@ $(function(){
     <style>
         #theloaiban{
             position: relative;
-            width: 6rem;
-            margin-left: .5rem;
-            padding: .5rem;
+            width: 5.1rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem;
             align-items: center;
             display: flex;
             justify-content: center;
             border-radius: 3px;
             background: bisque;
             color: #7380ec;
-            /* margin-top: -.3rem;
-            top: -2.5rem;
-            left: 11rem; */
         }
         #xeptheotheloai i{
             position: relative;
-            top: -2rem;
-            left: 4.5rem;
+            top: -1.9rem;
+            left: 4.35rem;
             color: chocolate;
         }
     </style>
        <div class="recent-order">
- <h2>SẢN PHẨM     <form action="#" method="post" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
-        <option value="tatcasanpham"  <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
-        <option value="bansi" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
-        <option value="banle" <?php if(isset($_POST['theloaiban']) && $_POST['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
+ <h2>SẢN PHẨM     <form action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+        <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
+        <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
+        <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
         <noscript><button type="submit">Submit</button></noscript> 
         <?php 
-        if(isset($_POST['theloaiban'])){
+        if(isset($_GET['theloaiban'])){
             unset($_SESSION['theloai']);
-            $_SESSION['theloai']=$_POST['theloaiban'];
-            $theloaiban=$_POST['theloaiban'];
+            $_SESSION['theloai']=$_GET['theloaiban'];
+            $theloaiban=$_GET['theloaiban'];
             
         }elseif(isset($_SESSION['theloai'])){
             $theloaiban=$_SESSION['theloai'];
@@ -92,7 +90,8 @@ $(function(){
  <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
     ?>
@@ -101,7 +100,8 @@ $(function(){
  <i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span></h2>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='banle'){
     ?>
@@ -299,8 +299,8 @@ $(function(){
                         <form method="POST" action="index.php" class="boloc" >
                         <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
                             <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') echo "selected"; ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') echo "selected"; ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
                             </select>                 
                             <noscript><button type="submit">Submit</button></noscript>                        
                             <?php
@@ -309,7 +309,9 @@ $(function(){
                                 $selectedValue = $_POST['myComboBox'];
                                 unset($_SESSION['selectedValue']);
                                 $_SESSION['selectedValue'] = $selectedValue;
-                            }else $selectedValue='option1';
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
                             ?>
                             <i class="fa fa-caret-down dropdown__caret"></i>
                         </form></p>
@@ -437,6 +439,16 @@ $(function(){
 
                                     .nguone .thea:hover {
                                         color:#0f62f9;
+                                    }
+                                    .nguonf .thea {
+                                        transition: all .5s ease;
+                                        color:#F60B8A;
+                                        font-weight: bold;
+                                        text-align: left;
+                                    } 
+
+                                    .nguonf .thea:hover {
+                                        color:#fd7e14;
                                     }
                                     .recent-order tbody tr td:nth-child(2) a{
                                     cursor: pointer;
@@ -604,6 +616,10 @@ $(function(){
                                                 }elseif($set['nguon'] == 'pharmacity.vn'){
                                                     ?>
                                                     <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
+                                                    <?php
+                                                }elseif($set['nguon'] == 'medigoapp.com'){
+                                                    ?>
+                                                    <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
                                                     <?php  
                                             }else{
                                                 echo "";

@@ -9,7 +9,7 @@
         $_SESSION['sotrang']=0;
     }
     $start_time = time();
-    $end_time = time() + 5*60;
+    $end_time = time() + 2*60;
     $_SESSION['sotrang']=$_SESSION['sotrang']+1;
     if($datee['mday']==3){
             ini_set('max_execution_time', (3600*24*7));
@@ -20,15 +20,17 @@
         while (time() < $end_time) {
         ini_set('max_execution_time', (3600*24*7));
         ignore_user_abort(true);
-        system('python ../backend/auto/thuocsi.py "'.$_SESSION['sotrang'].'"');
+        // system('python ../backend/auto/thuocsi.py "'.$_SESSION['sotrang'].'"');
+        // sleep(1);
+        // system('python ../backend/auto/ankhang.py "'. (int)($_SESSION['sotrang'] / 10).'"');
+        // sleep(1);
+        // system('python ../backend/auto/pharex.py "'.$_SESSION['sotrang'].'"');
+        // sleep(1);
+        // system('python ../backend/auto/longchau.py "'. (int)($_SESSION['sotrang'] / 10).'"');
         sleep(1);
-        system('python ../backend/auto/ankhang.py "'. (int)($_SESSION['sotrang'] / 10).'"');
+        system('python ../backend/auto/pharmacity.py "'. $_SESSION['sotrang'].'"');
         sleep(1);
-        system('python ../backend/auto/pharex.py "'.$_SESSION['sotrang'].'"');
-        sleep(1);
-        system('python ../backend/auto/longchau.py "'. (int)($_SESSION['sotrang'] / 10).'"');
-        sleep(1);
-        system('python ../backend/auto/pharmacity.py "'. (int)($_SESSION['sotrang'] / 10).'"');
+        system('python ../backend/auto/medigoapp.py "'. $_SESSION['sotrang'].'"');
         $_SESSION['sotrang']=$_SESSION['sotrang']+10;
     }
     $_SESSION['sotrang']=$_SESSION['sotrang']-1;
