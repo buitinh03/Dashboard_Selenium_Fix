@@ -20,7 +20,7 @@ def caogia(trangnt):
 
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
     chrome_options.add_argument("--window-size=5120x2880")
     driver = webdriver.Chrome(options=chrome_options)
     url = "https://www.pharmacity.vn/"
@@ -220,4 +220,5 @@ def caogia(trangnt):
             print("Cào sản phẩm thất bại")
 
     driver.quit()
-caogia(sys.argv[1])
+# caogia(sys.argv[1])
+caogia(0)

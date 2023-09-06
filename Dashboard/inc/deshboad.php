@@ -452,8 +452,9 @@ $pd = new product();
                                         const chk7=document.getElementById("checkbox-7");
                                         chk1.addEventListener('change',function(){  
                                                                                     
-                                            if (chk1.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
+
                                             } else {                                            
                                                 chk7.disabled = false;
                                             }
@@ -461,43 +462,43 @@ $pd = new product();
                                         // //
                                         chk2.addEventListener('change',function(){ 
                                                                                        
-                                            if (chk2.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
                                             } else {                                            
-                                                chk2.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         //
                                         chk3.addEventListener('change',function(){ 
                                                                                       
-                                            if (chk3.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
                                             } else {                                            
-                                                chk3.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk4.addEventListener('change',function(){ 
                                                                                       
-                                            if (chk4.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
                                             } else {                                            
-                                                chk4.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk5.addEventListener('change',function(){ 
                                             
-                                            if (chk5.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
                                             } else {                                            
-                                                chk5.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk6.addEventListener('change',function(){ 
                                                                                     
-                                            if (chk6.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
                                                 chk7.disabled = true;
                                             } else {                                            
-                                                chk6.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         //

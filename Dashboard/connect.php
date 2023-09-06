@@ -68,7 +68,7 @@
                         }           
                 }else {
                         $select="SELECT *          
-                        FROM thuocsi_vn ORDER BY ngaymoi desc ";
+                        FROM thuocsi_vn WHERE nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' ORDER BY ngaymoi desc ";
                         if($limit!=0){
                             $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                         }      }}              
@@ -87,7 +87,7 @@
                                 }           
                         }else {
                                 $select="SELECT *          
-                                FROM thuocsi_vn ORDER BY ngaymoi desc ";
+                                FROM thuocsi_vn  WHERE nguon='ankhang.com' or nguon='longchau.vn' ORDER BY ngaymoi desc ";
                                 if($limit!=0){
                                     $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                                 }                    

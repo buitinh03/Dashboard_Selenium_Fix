@@ -217,6 +217,7 @@ $(function(){
                                 $trangthu=1;
                                 $from=1;
                                 $to=6;
+                                $nextpage=2;
                         if(isset($_GET['trang'])){
                             $trangthu=$_GET['trang'];
                             $from=$trangthu-4; if($from<3){$from=1;}
