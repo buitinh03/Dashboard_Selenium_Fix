@@ -150,7 +150,7 @@ $pd = new product();
                             }
 
                             .text-muted a {
-                                padding: .3rem .5rem .3rem .5rem;
+                                padding: 1rem .5rem 1rem .5rem;
                                 color: red;
                             }
                           </style>
