@@ -140,7 +140,20 @@ $pd = new product();
                             Session::unset();
                           }
                           ?>
-                            <small class="text-muted" ><a style='color: red; font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
+                            <style>
+                            .text-muted {
+                                border-radius: 1rem;
+                                /* background: linear-gradient(#fff, #ddd); */
+                                background: red;
+                                padding: .3rem .5rem .3rem .5rem;
+                                font-weight: 500;
+                            }
+
+                            .text-muted a {
+                                color: #fff; 
+                            }
+                          </style>
+                            <small class="text-muted" ><a style='font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
                         </div>
                     </div>
                     <div class="profile-photo">
