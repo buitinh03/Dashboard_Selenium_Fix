@@ -655,7 +655,7 @@ $pd = new product();
 
                         </script>
                     </div>
-                    <label style='font-size: 15px;display: flex;align-items: center;justify-content: center;'>Số trang đã cào Auto được: <?php echo $numpagecao?></label>
+                   
                     <?php
                     }else{
                         echo "";
