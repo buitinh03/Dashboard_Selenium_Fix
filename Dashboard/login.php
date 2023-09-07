@@ -23,7 +23,7 @@
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signin'])){
       
-    $username = $_POST['username'];
+    $username = $_POST['email'];
     $hash = $_POST['password'];
     $password = hash('sha256', $hash);
  
@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['xacnhan'])){
              
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username" placeholder="Email đăng nhập"  id="">
+                        <input type="text" name="email" placeholder="Email đăng nhập"  id="">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i> 

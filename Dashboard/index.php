@@ -240,7 +240,7 @@ $(function(){
                             <?php if($trangthu==1){ ?> 
                             <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr"><</a>
                             <?php } 
                             ?>
                             <a href="index.php?&trang=<?=(1)?>" id="start">1</a>
@@ -274,7 +274,7 @@ $(function(){
                         <?php if($trangthu>=$trang){ ?> 
                             <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">></a>
                         <?php } ?>
                         
                         <!-- <style>

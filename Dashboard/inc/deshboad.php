@@ -340,7 +340,7 @@ $pd = new product();
                         <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
                         <div class="adress-form">
                             <div class="adress-form-content">
-                                <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2><br>
+                                <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2>
                                     <form action="#" method="post">
                                    <p style="font-weight: bolder;">Chọn website bạn muốn thực hiện cào</p>
                                    <style>
