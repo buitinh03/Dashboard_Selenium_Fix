@@ -2,8 +2,8 @@
     return [
         'host' => 'localhost',
         'port' => '5432',
-        'database' => 'thuocsi',
+        'database' => 'Auto',
         'user' => 'postgres',
-        'password' => '123456789a'
+        'password' => 'Hoang.9112003'
     ]
 ?>

@@ -472,91 +472,67 @@ $pd = new product();
                                         const chk8=document.getElementById("checkbox-8");
                                         chk1.addEventListener('change',function(){  
                                                                                     
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-
-=======
-                                            if (chk1.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         // //
                                         chk2.addEventListener('change',function(){ 
                                                                                        
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-=======
-                                            if (chk2.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         //
                                         chk3.addEventListener('change',function(){ 
                                                                                       
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-=======
-                                            if (chk3.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         chk4.addEventListener('change',function(){ 
                                                                                       
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-=======
-                                            if (chk4.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         chk5.addEventListener('change',function(){ 
                                             
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-=======
-                                            if (chk5.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         chk6.addEventListener('change',function(){ 
                                                                                     
-<<<<<<< HEAD
-                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
-                                                chk7.disabled = true;
-=======
-                                            if (chk6.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
->>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         chk7.addEventListener('change',function(){ 
                                                                                     
-                                            if (chk7.checked) {                                            
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked||chk7.checked) {                                            
                                                 chk8.disabled = true;
+
                                             } else {                                            
-                                                chk7.disabled = false;
+                                                chk8.disabled = false;
                                             }
                                         })
                                         //
@@ -590,7 +566,7 @@ $pd = new product();
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py "0" && python ../backend/auto/ankhang.py "0" && python ../backend/auto/pharex.py "0" && python ../backend/auto/longchau.py "0" && python ../backend/auto/pharmacity.py "0" && python ../backend/auto/medigoapp.py "0"'))){
+                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py && python ../backend/auto/pharex.py && python ../backend/auto/longchau.py && python ../backend/auto/pharmacity.py && python ../backend/auto/medigo.py'))){
                                                     echo "<script>
                                                 swal({
                                                     title: 'Thông báo',
@@ -617,25 +593,25 @@ $pd = new product();
                                                 </script>";
                                             }else{
                                                 if(isset($_POST['thuocsi'])){
-                                                    system('python ../backend/auto/thuocsi.py "0"');
+                                                    system('python ../backend/auto/thuocsi.py');
                                                 }
                                                 if(isset($_POST['chosithuoc'])){
                                                     system('python ../backend/auto/run_chosithuoc.py');
                                                 }
                                                 if(isset($_POST['ankhang'])){
-                                                    system('python ../backend/auto/ankhang.py "0"');
+                                                    system('python ../backend/auto/ankhang.py');
                                                 }
                                                 if(isset($_POST['pharex'])){
-                                                    system('python ../backend/auto/pharex.py "0"');
+                                                    system('python ../backend/auto/pharex.py');
                                                 }
                                                 if(isset($_POST['longchau'])){
-                                                    system('python ../backend/auto/longchau.py "0"');
+                                                    system('python ../backend/auto/longchau.py');
                                                 }
                                                 if(isset($_POST['pharmacity'])){
-                                                    system('python ../backend/auto/pharmacity.py "0"');
+                                                    system('python ../backend/auto/pharmacity.py');
                                                 }
                                                 if(isset($_POST['medigoapp'])){
-                                                    system('python ../backend/auto/medigoapp.py "0"');
+                                                    system('python ../backend/auto/medigo.py');
                                                 }
                                                 echo "<script>
                                                     swal({
