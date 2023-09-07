@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
               
                     <h2 class="title">Điều Khoản Đăng Ký</h2>
                     
-                   <p class="social-text">Khi đăng ký tài khoản trên Dịch vụ, bạn sẽ được yêu cầu cung cấp một số thông tin cá nhân, bao gồm tên, địa chỉ email và mật khẩu. Bạn phải chịu trách nhiệm về tính chính xác và đầy đủ của tất cả thông tin mà bạn cung cấp trong quá trình đăng ký. Bạn cũng phải chịu trách nhiệm bảo mật mật khẩu của mình và không được tiết lộ cho bất kỳ ai khác.</p>
+                   <p class="social-text">Khi đăng ký tài khoản trên Dịch vụ, bạn sẽ được yêu cầu cung cấp một số thông tin cá nhân, bao gồm tên, địa chỉ email và mật khẩu. Mỗi email chỉ đăng kí được duy nhất một tài khoản và bạn phải chịu trách nhiệm về tính chính xác và đầy đủ của tất cả thông tin mà bạn cung cấp trong quá trình đăng ký. Bạn cũng phải chịu trách nhiệm bảo mật mật khẩu của mình và không được tiết lộ cho bất kỳ ai khác.</p>
                 
                     <!-- <input type="submit" name="signin" value="Đăng nhập" class="btn solid"> -->
                     <p class="social-text"><a href="index.php">Quay lại trang chủ</a></p>
@@ -163,7 +163,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     <img src="images/logo1.png" alt="" class="image">
                     <div class="content">
                         <h3>Đăng Ký Tại Đây !</h3>
-                        <p>Tên tài khoản của bạn sẽ được sử dụng để đăng nhập vào tài khoản của bạn, vì vậy hãy đảm bảo rằng bạn có thể nhớ nó.</p>
+                        <p>Email của bạn sẽ được sử dụng để đăng nhập vào tài khoản của bạn, vì vậy hãy đảm bảo rằng bạn có thể nhớ nó.</p>
                             <button class="btn transparent" id="sign-up-btn">ĐĂNG KÝ</button>
                     </div>
                     
