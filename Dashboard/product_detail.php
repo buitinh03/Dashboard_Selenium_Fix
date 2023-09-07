@@ -203,7 +203,7 @@ include_once('format/format.php');
                         <h1>BIỂU ĐỒ SO SÁNH GIÁ QUA CÁC THÁNG</h1>
                     </div>
                     <div class="warranty-policy-content">
-                    <canvas id="myChart"  style="height: 150px; width: 100%;"></canvas>
+                    <canvas id="myChart"  style="height: 200px; width: 120%;"></canvas>
                         
                         
                     <script>

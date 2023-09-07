@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
     <title>Đăng nhập & Đăng ký</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container sign-up-mode" >
         <div class="forms-container">
             <div class="signin-signup">
                              <!--------- Dang Nhap -------->

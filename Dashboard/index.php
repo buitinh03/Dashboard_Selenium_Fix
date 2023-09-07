@@ -63,7 +63,7 @@ $(function(){
         }
     </style>
        <div class="recent-order">
- <h2>SẢN PHẨM     <form action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+ <h2>SẢN PHẨM     <form style="height: 1rem;" action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
         <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
         <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
         <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
@@ -215,12 +215,13 @@ $(function(){
                                 $format = new Format();
                                 $pro = new product();
                                 $trangthu=1;
-                                $from=1;
+                                $from=2;
                                 $to=6;
+                                $nextpage=2;
                         if(isset($_GET['trang'])){
                             $trangthu=$_GET['trang'];
-                            $from=$trangthu-4; if($from<3){$from=1;}
-                            $to=$trangthu+4; if($to>$trang){$to=$trang;}
+                            $from=$trangthu-4; if($from<3){$from=2;}
+                            $to=$trangthu+4; if($to>=$trang){$to=$trang-1;}
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
                         }
@@ -235,30 +236,47 @@ $(function(){
                             $sorow=$demd['sothu'];
                         ?>
                         <div id="pagination">
-                            <a href="index.php?&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
                                 <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
+                            ?>
+                            <a href="index.php?&trang=<?=(1)?>" id="start">1</a>
+                            <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="pa".($i);
                             }
                             $next=1; 
+                            if(($from-1)>1){
+                                ?>
+                            <a href="#">...</a>
+                            
+                            <?php    
+                            }
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
+                            
                             <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
-                            
                         } ?>
+                            <?php
+                            if(($trang-$to)>1){
+                                ?>
+                            <a href="#">...</a>
+                            <?php
+                            } ?>
+                            
+                        <a href="index.php?&trang=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
-                        <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                        
                         <!-- <style>
                         .bloc p{
                             /* position:relative; */
@@ -583,7 +601,7 @@ $(function(){
                                         $asterisksString = str_repeat('*', $numberOfAsterisks);
                                         
                                         // Hiển thị kết quả
-                                        echo $maskedValue . $asterisksString;?>đ</td>
+                                        echo $maskedValue . $asteriskgoappsString;?>đ</td>
                                         <?php } ?>
 
                                         <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
@@ -646,30 +664,45 @@ $(function(){
                                 </tbody>
                             </table>
                             <div id="pagination" >
-                            <a href="index.php?&trang=<?=(1)?>" id="start">Trang đầu</a>
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" >Trước</a>
+                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
                                 <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
+                            ?>
+                            <a href="index.php?&trang=<?=(1)?>" id="start1">1</a>
+                            <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="p".($i);
                             }
                             $next=1; 
+                            if(($from-1)>1){
+                                ?>
+                            <a href="#">...</a>
+                            
+                            <?php    
+                            }
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
+                            
                             <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
-                            
                         } ?>
+                            <?php
+                            if(($trang-$to)>1){
+                                ?>
+                            <a href="#">...</a>
+                            <?php
+                            } ?>
+                            
+                        <a href="index.php?&trang=<?=($trang)?>" id="end1"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
-                        <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
                     </div>
                  
                     <script>
@@ -713,6 +746,14 @@ $(function(){
                         <script>
                         // document.querySelector("#ne").style.background = '#C0C0C0';
                         // document.querySelector("#ne").style.color = 'black';
+                        if(<?php echo $numpage?>==1){
+                            document.querySelector("#start").style.background = '#fff';  
+                            document.querySelector("#start1").style.background = '#fff';  
+                        }
+                        if(<?php echo $numpage?>==<?php echo $trang?>){
+                            document.querySelector("#end").style.background = '#fff';  
+                            document.querySelector("#end1").style.background = '#fff';
+                        }
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>

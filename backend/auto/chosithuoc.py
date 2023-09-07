@@ -63,7 +63,7 @@ class LaptopSpider(scrapy.Spider):
 
     def start_requests(self):
         categories = {
-            'hoa-my-pham': 1,
+            'hoa-my-pham': 74,
             'thuoc-tan-duoc': 341,
             'thuoc-xuong-khop': 2,
             'thuoc-giam-can': 9,
@@ -104,6 +104,7 @@ class LaptopSpider(scrapy.Spider):
         if next_page:
             yield scrapy.Request(url=next_page, callback=self.parse_page,
                                  meta={'page_number': response.meta['page_number'] + 1, 'category': response.meta['category']})
+
     def parse_detail(self, response):
         name = response.meta.get('name')
         giacu_text = response.meta.get('gia')

@@ -26,13 +26,13 @@
 
     if(isset($_GET['trang'])){
         $trangthu=$_GET['trang'];
-        $from=$trangthu-4; if($from<3){$from=1;}
-        $to=$trangthu+4; if($to>$trang){$to=$trang;}
+        $from=$trangthu-4; if($from<3){$from=2;}
+        $to=$trangthu+4; if($to>$trang){$to=$trang-1;}
         $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }else{        
-        $from=$trangthu-4; if($trangthu<4){$from=1;}
-        $to=$trangthu+4; if($to>$trang){$to=$trang;}
+        $from=$trangthu-4; if($trangthu<4){$from=2;}
+        $to=$trangthu+4; if($to>$trang){$to=$trang-1;}
         $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
@@ -69,18 +69,29 @@
                         }
                     </style>
                     <h2>TỪ KHÓA TÌM KIẾM: <?php if(isset($_SESSION['search'])){echo $_SESSION['search']; } elseif(isset($search)) {echo $search;}?> </h2>
+                    <?php if($trang>1){
+                    ?>
                     <div id="pagination">
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">Trang đầu</a>
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
                                 <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
+                            ?>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">1</a>
+
+                            <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="pa".($i);
                             }
                             $next=1; 
+                            if(($from-1)>1){
+                                ?>
+                            <a href="#">...</a>
+                            
+                            <?php    
+                            }
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
@@ -88,13 +99,21 @@
                             <?php
                             
                         } ?>
+                        <?php
+                            if(($trang-$to)>1){
+                                ?>
+                            <a href="#">...</a>
+                            <?php
+                            } ?> 
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
-                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                       
                     </div>
+                    <?php } ?>
                     <table>
                     <!-- <?php
                         $pro = new product();
@@ -421,18 +440,26 @@
                             
                             </tbody>
                     </table>
+                    <?php if($trang>1){
+                    ?>
                     <div id="pagination">
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
                                 <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
-                            <?php } 
+                            <?php } ?><a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start1">1</a><?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="p".($i);
                             }
                             $next=1; 
+                            if(($from-1)>1){
+                                ?>
+                            <a href="#">...</a>
+                            
+                            <?php    
+                            }
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
@@ -440,18 +467,34 @@
                             <?php
                             
                         } ?>
+                        <?php
+                            if(($trang-$to)>1){
+                                ?>
+                            <a href="#">...</a>
+                            <?php
+                            } ?>
+                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end1"><?php echo $trang;?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
-                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end">Trang cuối</a>
+                        
                     </div>
+                    <?php } ?>
                     <!-- <a href="#">Show All</a> -->
                 </div>
                 <script>
                         // document.querySelector("#ne").style.background = '#C0C0C0';
                         // document.querySelector("#ne").style.color = 'black';
+                        if(<?php echo $numpage?>==1){
+                            document.querySelector("#start").style.background = '#fff';  
+                            document.querySelector("#start1").style.background = '#fff';  
+                        }
+                        if(<?php echo $numpage?>==<?php echo $trang?>){
+                            document.querySelector("#end").style.background = '#fff';  
+                            document.querySelector("#end1").style.background = '#fff';
+                        }
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
@@ -486,6 +529,9 @@
                         margin-top: 2rem;
                         height: 1rem;
                     }
+                    .chart-label {
+                        white-space: normal;
+                        }
                     
                 </style>
             <?php
