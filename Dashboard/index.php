@@ -216,11 +216,11 @@ $(function(){
                                 $pro = new product();
                                 $trangthu=1;
                                 $from=1;
-                                $to=6;
+                                $to=5;
                                 $nextpage=2;
                         if(isset($_GET['trang'])){
                             $trangthu=$_GET['trang'];
-                            $from=$trangthu-4; if($from<3){$from=1;}
+                            $from=$trangthu-4; if($from<4){$from=1;}
                             $to=$trangthu+4; if($to>$trang){$to=$trang;}
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
                             $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
@@ -236,11 +236,11 @@ $(function(){
                             $sorow=$demd['sothu'];
                         ?>
                         <div id="pagination">
-                            <a href="index.php?&trang=<?=(1)?>" id="start">Trang đầu</a>
+                            <a href="index.php?&trang=<?=(1)?>" id="start">1</a>
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" ">Trước</a>
+                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none" "><</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr"><</a>
                             <?php } 
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
@@ -255,45 +255,12 @@ $(function(){
                             
                         } ?>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">Sau</a>
+                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none" ">></a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">></a>
                         <?php } ?>
-                        <a href="index.php?&trang=<?=($trang)?>" id="end">Trang cuối</a>
-                        <!-- <style>
-                        .bloc p{
-                            /* position:relative; */
-                            color: chocolate;
-                            /* margin-top: .5rem;                         
-                            margin-left: .5rem; */
-                        }
-                        .bloc p select{
-                            /* width: 6rem;
-                            margin-left: .5rem;
-                            padding: .5rem;
-                            align-items: center;
-                            display: flex;
-                            justify-content: center;
-                            border-radius: 3px;
-                            
-                            
-                            margin-top: .3rem; */
-                            display: flex;
-                            color: #7380ec;
-                                                
-                            text-align: center;
-                            padding: 5px 8px;
-                            margin: 5px;
-                            background: bisque;
-                            border-radius: 3px;
-
-                        }
-                        .bloc h2 i{
-                            /* position: absolute; */
-                            margin-top: -1.5rem;
-                             margin-left: 1.5rem;
-                        }
-                    </style> -->
+                        <a href="index.php?&trang=<?=($trang)?>" id="end"><?php echo $trang ?></a>
+                       
                         <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
                         <p>Sắp xếp theo: 
                         <form method="POST" action="index.php" class="boloc" >

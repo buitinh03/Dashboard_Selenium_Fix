@@ -125,34 +125,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                 </form>
             </div>
         </div>
-        <script>
-    var phpMessage = "<?php echo $insert_customer; ?>";
-if (phpMessage !== 'Đăng ký tài khoản thành công !') {
-  window.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('sign-up-btn');
-    btn.click();
-
-    var nameInput = document.getElementById("login-fullname");
-    nameInput.value = "<?php echo $_SESSION['login-fullname']; ?>";
-    var emailInput = document.getElementById("login-email");
-    emailInput.value = "<?php echo $login_email; ?>";
-    emailInput.style.color = "#FF0000";
-    emailInput.style.caretColor = "black";
-    emailInput.focus();
-    var userInput = document.getElementById("login-signupuser");
-    userInput.value = "<?php echo $_SESSION['login-signupuser']; ?>";
-    var passInput = document.getElementById("hiiddenpassword");
-    passInput.value = "<?php echo $_SESSION['login-password']; ?>";
-  });
-} else {
-  window.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('sign-up-btn');
-    btn.click();
-  });
-}
-
-
+<!--        
+//             var tb='Đăng ký tài khoản thành công !';
+//     var phpMessage = "<?php echo $insert_customer; ?>";
+// if (phpMessage !=tb ) {
+//   var
+// } else {
+//   window.addEventListener('DOMContentLoaded', function() {
+//     var btn = document.getElementById('sign-up-btn');
+//     btn.click();
+//     var nameInput = document.getElementById("login-fullname");
+//     nameInput.value = "<?php echo $_SESSION['login-fullname']; ?>";
+//     var emailInput = document.getElementById("login-email");
+//     emailInput.value = "<?php echo $login_email; ?>";
+//     emailInput.style.color = "black";
     
+//     var userInput = document.getElementById("login-signupuser");
+//     userInput.value = "<?php echo $_SESSION['login-signupuser']; ?>";
+//     var passInput = document.getElementById("hiiddenpassword");
+//     passInput.value = "<?php echo $_SESSION['login-password']; ?>";
+//   });
+// } -->
+
+
+  <script>   
  </script>
         <script language="javascript" type="text/javascript">
             function limitText(limitField, limitNum) {

@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import WebDriverException, NoSuchElementException, TimeoutException
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.common.by import By
@@ -9,11 +9,12 @@ import datetime
 from dotenv import load_dotenv
 import os
 import time
+from bs4 import BeautifulSoup
 
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -31,10 +32,9 @@ connection = psycopg2.connect(
     password=os.getenv("DB_PASSWORD")
 )
 
-# Tạo bảng nếu chưa tồn tại
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS goapp (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn (
             title TEXT,
             giacu TEXT,
             ngaycu DATE,
@@ -65,45 +65,49 @@ with connection.cursor() as cursor:
 # Mở trang web
 driver.get(base_url)
 
-# Lấy danh sách các link sản phẩm từ nhiều trang
-num_pages_to_scrape = 1
+num_pages_to_scrape = 8000
 all_product_links = []
 
 for page_num in range(1, num_pages_to_scrape + 1):
     url = f"{base_url}?page={page_num}"
-    driver.get(url)
-    
-    # Lấy danh sách các liên kết sản phẩm trên trang hiện tại
+    try:
+        driver.get(url)
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        search_info_div = soup.find("h6", class_="mb-4")
+        if search_info_div and "Không tìm thấy sản phẩm" in search_info_div.get_text():
+            break
+    except WebDriverException as e:
+        pass
+
     link_elements = driver.find_elements(By.CSS_SELECTOR, ".grid-products:nth-child(2) .custom-link")
     links = [link.get_attribute('href') for link in link_elements]
-    
+
     all_product_links.extend(links)
 
+
 def check_product_exist(cursor, product_name):
-    cursor.execute("SELECT EXISTS(SELECT 1 FROM goapp WHERE title = %s)", (product_name,))
+    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
-# Duyệt qua từng sản phẩm
+
 for a in all_product_links:
     driver.get(a)
     try:
-            button_element = driver.find_element(By.CSS_SELECTOR, "button.ml-2:nth-child(1)")
-            button_element.click()
-            time.sleep(1)
-            
-            # Tiếp tục cào dữ liệu từ trang mới được mở ra sau khi nhấp nút
+        button_element = driver.find_element(By.CSS_SELECTOR, "button.ml-2:nth-child(1)")
+        button_element.click()
+        time.sleep(1)
+
     except NoSuchElementException:
-            pass
-    
+        pass
+
     try:
-        # Nhấp vào nút "Xem thêm"
         button_xemthem = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, ".cursor-pointer > strong"))
         )
         driver.execute_script("arguments[0].click();", button_xemthem)
         time.sleep(2)
-        
-        # Lấy thông tin sản phẩm
+
         ten = driver.find_element(By.CSS_SELECTOR, "h1.product-name").text
         try:
             gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".price > span")
@@ -120,30 +124,19 @@ for a in all_product_links:
         else:
             gia_sales = 0
 
-
         try:
             thong_tin_san_pham_element = driver.find_element(By.CSS_SELECTOR, "p:nth-child(4) > .html-in-cms > div")
             thong_tin_san_pham = thong_tin_san_pham_element.text
         except NoSuchElementException:
             thong_tin_san_pham = "Không dề cập"
 
-        import re
-
-        import re
-
         try:
             hamluong_thanhphan_element = driver.find_element(By.CSS_SELECTOR, "p:nth-child(2) > .html-in-cms > div")
             hamluong_thanhphan = hamluong_thanhphan_element.text
 
-            # Loại bỏ dấu "-" ở đầu chuỗi
-            # hamluong_thanhphan = re.sub(r'^-*\s*', '', hamluong_thanhphan)
 
-            # # Loại bỏ các chuỗi "Mỗi viên chứa:" hoặc "Mỗi viên nén bao phim chứa:"
-            # hamluong_thanhphan = re.sub(r'(Mỗi viên chứa:|Mỗi viên nén bao phim chứa:|Điều trị các nhiễm khuẩn do vi khuẩn nhạy cảm, bao gồm:)', '', hamluong_thanhphan).strip()
         except NoSuchElementException:
             hamluong_thanhphan = "không đề cập"
-
-
 
         try:
             nha_san_xuat_element = driver.find_element(By.CSS_SELECTOR, "tr.mb-2:nth-child(5)")
@@ -152,15 +145,8 @@ for a in all_product_links:
             else:
                 raise NoSuchElementException("Không tìm thấy 'Thương hiệu:' trong tr.mb-2:nth-child(5)")
         except NoSuchElementException:
-            # try:
-            #     nha_san_xuat_alt_element = driver.find_element(By.CSS_SELECTOR, "tbody > .d-flex:nth-child(4)")
-            #     if "Thương hiệu:" in nha_san_xuat_alt_element.text:
-            #         nha_san_xuat = nha_san_xuat_alt_element.text.replace("Thương hiệu:", "").strip()
-            #     else:
-            #         raise NoSuchElementException("Không tìm thấy 'Thương hiệu:' trong tbody > .d-flex:nth-child(4)")
-        # except NoSuchElementException:
-                nha_san_xuat = "Không đề cập"
-        
+            nha_san_xuat = "Không đề cập"
+
         try:
             nuoc_san_xuat_element = driver.find_element(By.CSS_SELECTOR, "tr.mb-2:nth-child(7)")
             if "Nước sản xuất:" in nuoc_san_xuat_element.text:
@@ -177,31 +163,31 @@ for a in all_product_links:
             except NoSuchElementException:
                 nuoc_san_xuat = "Không đề cập"
 
+        photo = driver.find_element(By.CSS_SELECTOR, ".col-5 .custom-image-magnifiers > .img-fluid").get_attribute(
+            "set")
 
-        photo = driver.find_element(By.CSS_SELECTOR, ".col-5 .custom-image-magnifiers > .img-fluid").get_attribute("srcset")
-        
         ngay = datetime.datetime.now().date()
         current_month = datetime.datetime.now().month
 
         with connection.cursor() as cursor:
             if check_product_exist(cursor, ten):
                 cursor.execute(f'''
-                    UPDATE goapp
+                    UPDATE thuocsi_vn
                     SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
                         hamluong_thanhphan = %s, photo = %s, link = %s,
                         giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
                     WHERE title = %s;
                 ''', (
                     gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan, photo, a,
-                    gia_sales, ngay, 'longchau.vn', ten))
+                    gia_sales, ngay, 'medigoapp.com', ten))
             else:
                 cursor.execute(f'''
-                    INSERT INTO goapp (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                    INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
                     nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                 ''', (
                     ten, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
-                    hamluong_thanhphan, thong_tin_san_pham, a, 'longchau.vn'))
+                    hamluong_thanhphan, thong_tin_san_pham, a, 'medigoapp.com'))
                 connection.commit()
 
     except Exception as e:
