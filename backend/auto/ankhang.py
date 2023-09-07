@@ -34,7 +34,7 @@ connection = psycopg2.connect(
 
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS thuocsi_vn1 (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn (
             title TEXT,
             giacu TEXT,
             ngaycu DATE,
