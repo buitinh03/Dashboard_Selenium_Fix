@@ -140,7 +140,21 @@ $pd = new product();
                             Session::unset();
                           }
                           ?>
-                            <small class="text-muted" ><a style='color: red; font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
+                            <style>
+                            .text-muted {
+                                border-radius: 1rem;
+                                /* background: linear-gradient(#fff, #ddd); */
+                                background-color: #fff;
+                                padding: .3rem .5rem .3rem .5rem;
+                                font-weight: 500;
+                            }
+
+                            .text-muted a {
+                                padding: 1rem .5rem 1rem .5rem;
+                                color: red;
+                            }
+                          </style>
+                            <small class="text-muted" ><a style='font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
                         </div>
                     </div>
                     <div class="profile-photo">
@@ -446,7 +460,7 @@ $pd = new product();
                                         <span class="checkmark"></span>
                                         </label>
                                     <button type="submit" name="runpython" id="runButton">Xác nhận</button><br><br>
-                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ <a href="https://www.youtube.com/watch?v=WYduvea9Qgc" target="_blank" style="color:#2196F3;">Click</a></label>
+                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
                                     <script>
                                         const chk1=document.getElementById("checkbox-1");
                                         const chk2=document.getElementById("checkbox-2");
@@ -458,8 +472,14 @@ $pd = new product();
                                         const chk8=document.getElementById("checkbox-8");
                                         chk1.addEventListener('change',function(){  
                                                                                     
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+
+=======
                                             if (chk1.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
                                                 chk7.disabled = false;
                                             }
@@ -467,43 +487,68 @@ $pd = new product();
                                         // //
                                         chk2.addEventListener('change',function(){ 
                                                                                        
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+=======
                                             if (chk2.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
-                                                chk2.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         //
                                         chk3.addEventListener('change',function(){ 
                                                                                       
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+=======
                                             if (chk3.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
-                                                chk3.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk4.addEventListener('change',function(){ 
                                                                                       
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+=======
                                             if (chk4.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
-                                                chk4.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk5.addEventListener('change',function(){ 
                                             
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+=======
                                             if (chk5.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
-                                                chk5.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk6.addEventListener('change',function(){ 
                                                                                     
+<<<<<<< HEAD
+                                            if (chk1.checked||chk2.checked||chk3.checked||chk4.checked||chk5.checked||chk6.checked) {                                            
+                                                chk7.disabled = true;
+=======
                                             if (chk6.checked) {                                            
                                                 chk8.disabled = true;
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                             } else {                                            
-                                                chk6.disabled = false;
+                                                chk7.disabled = false;
                                             }
                                         })
                                         chk7.addEventListener('change',function(){ 

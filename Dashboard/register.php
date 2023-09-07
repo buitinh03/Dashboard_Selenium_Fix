@@ -41,11 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                 <form action="" method="post" class="sign-in-form">
               
                     <h2 class="title">Điều Khoản Đăng Ký</h2>
-                    <?php
-                    if(isset($insert_customer)){
-                        echo $insert_customer;
-                    }
-                   ?>
+                    
                    <p class="social-text">Khi đăng ký tài khoản trên Dịch vụ, bạn sẽ được yêu cầu cung cấp một số thông tin cá nhân, bao gồm tên, địa chỉ email và mật khẩu. Bạn phải chịu trách nhiệm về tính chính xác và đầy đủ của tất cả thông tin mà bạn cung cấp trong quá trình đăng ký. Bạn cũng phải chịu trách nhiệm bảo mật mật khẩu của mình và không được tiết lộ cho bất kỳ ai khác.</p>
                 
                     <!-- <input type="submit" name="signin" value="Đăng nhập" class="btn solid"> -->
@@ -58,13 +54,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     <!--------- Dang Ky -------->
                 <form action="" method="post" class="sign-up-form">
                     <h2 class="title">ĐĂNG KÝ</h2>
+                    <?php
+                    if(isset($insert_customer)){
+                        echo $insert_customer;
+                        unset($_SESSION['insert_customer']) ;
+                        $_SESSION['insert_customer']= $insert_customer;                      
+                    }
+                   ?>
+                   <!-- $_SESSION['insert_customer'] -->
+                   
+                   
                     <div class="input-field">
                         <i class="fas fa-user-circle"></i>
-                        <input type="text" name="fullname" placeholder="Họ và tên" required id="">
+                        <input type="text" name="fullname" placeholder="Họ và tên" required id="login-fullname">
+                        
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" required id="">
+                        <input type="email" name="email" placeholder="Email" required id="login-email">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-address-card"></i>
@@ -76,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                  
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="signupuser" placeholder="Tên đăng nhập" required id="">
+                        <input type="text" name="signupuser" placeholder="Tên đăng nhập" required id="login-signupuser">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -88,11 +95,65 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
                     <input type="submit" name="signup" value="Đăng ký" class="btn solid">
                     <p class="social-text"><a href="index.php">Quay lại trang chủ</a></p>
                     <div class="social-media">
-                   
+                    <?php 
+                    if (isset($_POST['fullname'])) {
+                        $login_fullname = $_POST['fullname'];
+                        unset($_SESSION['login-fullname']);
+                        $_SESSION['login-fullname'] = $login_fullname;
+                    }elseif(isset($_SESSION['login-fullname'])){
+                        $login_fullname=$_SESSION['login-fullname'];
+                    }
+                    if (isset($_POST['email'])) {                        
+                        $login_email = $_POST['email'];
+                        unset($_SESSION['login-email']);
+                        $_SESSION['login-email'] = $login_email;
+                    }elseif(isset($_SESSION['login-email'])){
+                        $login_fullname=$_SESSION['login-email'];
+                    } 
+                    if (isset($_POST['signupuser'])) {                        
+                        $login_signupuser = $_POST['signupuser'];
+                        unset($_SESSION['signupuser']);
+                        $_SESSION['login-signupuser'] = $login_signupuser;
+                    } 
+                    if (isset($_POST['password'])) {                        
+                        $login_password = $_POST['password'];
+                        unset($_SESSION['login-password']);
+                        $_SESSION['login-password'] = $login_password;
+                    } 
+                     ?>
                     </div>
                 </form>
             </div>
         </div>
+        <script>
+    var phpMessage = "<?php echo $insert_customer; ?>";
+if (phpMessage !== 'Đăng ký tài khoản thành công !') {
+  window.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('sign-up-btn');
+    btn.click();
+
+    var nameInput = document.getElementById("login-fullname");
+    nameInput.value = "<?php echo $_SESSION['login-fullname']; ?>";
+    var emailInput = document.getElementById("login-email");
+    emailInput.value = "<?php echo $login_email; ?>";
+    emailInput.style.color = "#FF0000";
+    emailInput.style.caretColor = "black";
+    emailInput.focus();
+    var userInput = document.getElementById("login-signupuser");
+    userInput.value = "<?php echo $_SESSION['login-signupuser']; ?>";
+    var passInput = document.getElementById("hiiddenpassword");
+    passInput.value = "<?php echo $_SESSION['login-password']; ?>";
+  });
+} else {
+  window.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('sign-up-btn');
+    btn.click();
+  });
+}
+
+
+    
+ </script>
         <script language="javascript" type="text/javascript">
             function limitText(limitField, limitNum) {
                 if (limitField.value.length > limitNum) {

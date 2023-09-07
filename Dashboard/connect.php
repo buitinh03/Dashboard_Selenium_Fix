@@ -68,7 +68,11 @@
                         }           
                 }else {
                         $select="SELECT *          
+<<<<<<< HEAD
+                        FROM thuocsi_vn WHERE nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' ORDER BY ngaymoi desc ";
+=======
                         FROM thuocsi_vn WHERE nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' or nguon='medigoapp.com' ORDER BY ngaymoi desc ";
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                         if($limit!=0){
                             $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                         }      }}              
@@ -87,7 +91,11 @@
                                 }           
                         }else {
                                 $select="SELECT *          
+<<<<<<< HEAD
+                                FROM thuocsi_vn  WHERE nguon='ankhang.com' or nguon='longchau.vn' ORDER BY ngaymoi desc ";
+=======
                                 FROM thuocsi_vn WHERE nguon='ankhang.com' or nguon='longchau.vn' ORDER BY ngaymoi desc ";
+>>>>>>> 186cb1380389b957237e14e77a0c45a12aeb95f7
                                 if($limit!=0){
                                     $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                                 }                    
