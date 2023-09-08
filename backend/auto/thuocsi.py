@@ -35,7 +35,7 @@ connection = psycopg2.connect(
 
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS thuocsi1 (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn (
             title TEXT,
             giacu TEXT,
             ngaycu date,
@@ -76,8 +76,8 @@ try:
     password_input = wait.until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
-    username_input.send_keys("0903119308")
-    password_input.send_keys("123")
+    username_input.send_keys(os.getenv('USERNAMET'))
+    password_input.send_keys(os.getenv('PASSWORD'))
 
     login_button = wait.until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_register__zCg7F > .MuiButton-label")))
@@ -121,7 +121,7 @@ for page_num in range(1, num_pages_to_scrape + 1):
 
 
 def check_product_exist(cursor, product_name):
-    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi1 WHERE title = %s)", (product_name,))
+    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
 
@@ -218,7 +218,7 @@ for a in link:
             if check_product_exist(cursor, product_name):
 
                 cursor.execute(f'''
-                    UPDATE thuocsi1
+                    UPDATE thuocsi_vn
                     SET photo = %s, nha_san_xuat = %s, nuoc_san_xuat = %s, thong_tin_san_pham = %s, hamluong_thanhphan = %s,
                         month_{current_month} = %s, link = %s,
                         giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s
@@ -228,7 +228,7 @@ for a in link:
                     price, ngay, product_name))
             else:
                 cursor.execute(f'''
-                    INSERT INTO thuocsi1 (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
+                    INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, photo, nha_san_xuat, nuoc_san_xuat, 
                     thong_tin_san_pham, hamluong_thanhphan, month_{current_month}, link,nguon)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s);
                 ''', (
