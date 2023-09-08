@@ -63,23 +63,33 @@ include_once('format/format.php');
             </ul>
         </div>
 
-        <p class="price">Giá:<span ><?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+        <p class="price">Giá:  <span ><?php   echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
       
 
-    </div>
+    </div></div> 
+    <div class="product_hamluong">
+                <h2>Thành phần - Hàm lượng</h2>
+                <?php $hltp= $result['hamluong_thanhphan'] ;
+          
+                    if($result['nguon']=='thuocsi.vn'||$result['nguon']=='thuocsi.pharex.vn'){
+                        $hltp=substr($hltp,2,-2);
+
+                    }
+                ?>
+                <p><?php                 
+                    echo $hltp;                
+                ?></p>
+            </div>
     
-    </div> 
+    
     <!-- </div> -->
         <div class="product_thongtin">
             <h2>Thông tin sản phẩm</h2>
             <p><?php echo $result['thong_tin_san_pham'] ?> </p>
-            <div class="product_hamluong">
-                <h2>Thành phần - Hàm lượng</h2>
-                <p><?php echo $result['hamluong_thanhphan'] ?></p>
-            </div>
+            
             <div class="product_link">
                 <h2>Sản phẩm</h2>
-                <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>"><ins>bấm vào đây !</ins></a></p>
+                <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>" target="_blank"><ins>bấm vào đây !</ins></a></p>
             </div>
              <?php
                 if($checkLoginAdmin == 0){

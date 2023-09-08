@@ -11,7 +11,7 @@
 var loader = function() {
     setTimeout(function() {
         $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
-    }, 2500);
+    }, 50);
 };
 $(function(){
     loader();
@@ -337,35 +337,35 @@ $(function(){
                     <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
                     </div>
                             <table id="mytable">                    
-                                <thead>
+                                <thead style="color:#FF8247;">
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên sản phẩm</th>
+                                        <th>TÊN SẢN PHẨM</th>
                                         <?php
                                         if($checkLoginAdmin == 0){
                                         ?>
-                                        <th>Giá cũ</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá mới</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá lệch</th>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ LỆCH</th>
                                         <?php
                                         }else{
                                         ?>
-                                        <th>Giá cũ</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá mới</th>
-                                        <th>Thời gian</th>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
                                         <?php
                                         }
                                         ?>
-                                        <th>Nguồn</th>
-                                        <th>Ảnh</th>
-                                        <th>Chức năng</th>
+                                        <th>NGUỒN</th>
+                                        <th>ẢNH</th>
+                                        <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
                                                 ?>
-                                                <th hidden>month_<?php echo $k ?></th>
+                                                <th hidden>MONTH_<?php echo $k ?></th>
                                         <?php
                                             }
                                         ?>
@@ -495,7 +495,7 @@ $(function(){
                                         $j++
                                 ?>
                             <tbody>
-                                    <tr onclick="handleClick(event)" id="tbody" class="tr">
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
                                         <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         

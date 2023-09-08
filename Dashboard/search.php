@@ -121,35 +121,41 @@
                             $demd = $demcol->fetch();
                             $sorow=$demd['sothu'];
                      ?> -->
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên sản phẩm</th>
-                             <?php
-                            if($checkLoginAdmin == 0){
-
-                            ?>    
-                                <th>Giá cũ</th>
-                                <th>Thời gian</th>
-                                <th>Giá mới</th>
-                                <th>Thời gian</th>
-                                <th>Giá lệch</th>
-                                <?php
-                                }else{
-                                ?>
-                                <th>Giá cũ</th>
-                                <th>Thời gian</th>
-                                <th>Giá mới</th>
-                                <th>Thời gian</th>
-                                <?php
-                                }
-                                ?>
-                                <th>Nguồn</th>
-                                <th>Ảnh</th>
-                                <th>Chức năng</th>
-                                
-                            </tr>
-                        </thead>
+                        <thead style="color:#FF8247;">
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>TÊN SẢN PHẨM</th>
+                                        <?php
+                                        if($checkLoginAdmin == 0){
+                                        ?>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ LỆCH</th>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
+                                        <?php
+                                        }
+                                        ?>
+                                        <th>NGUỒN</th>
+                                        <th>ẢNH</th>
+                                        <th>CHỨC NĂNG</th>
+                                        <?php
+                                            for($k=1;$k<=12;$k++){
+                                                ?>
+                                                <th hidden>MONTH_<?php echo $k ?></th>
+                                        <?php
+                                            }
+                                        ?>
+                                        
+                                    </tr>
+                                </thead>
                         <style>
                              .primary {
                                 text-align: right;
@@ -271,10 +277,10 @@
                                 $nguonbd[$j]=$set['nguon'];
                                 $j++
                         ?>
-                             <tbody>
-                                     <tr onclick="handleClick(event)" id="tbody" class="tr">
+                                                         <tbody>
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
-                                        <td class="title" style="color: #333; font-weight: bold;"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -282,32 +288,32 @@
                                         <?php 
                                         if($sorow==0){
                                         ?>
-                                        <td class="primary" style="text-align: center;">-</td>
-                                        <td class="primary" style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
                                         <?php   
                                         }else{
                                         ?>
                                         <?php if($set['giacu'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral">Liên hệ</td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
                                             
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:#333;"><?php echo $set['ngaycu']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
                                         <?php
                                         }
                                         ?>
                                         <?php if($set['giamoi'] == 0){?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral">Liên hệ</td>
+                                        <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
                                         }else{
                                         ?>
-                                        <td class="primary" style="text-align: right; padding-left: 5px; color:coral"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
-                                        <td class="primary" style="text-align: center; padding-left: 5px; color:#333;"><?php echo $set['ngaymoi']; ?></td>
+                                        <td  style="text-align: center; padding-left: 5px;  width: 10%;"><?php echo $set['ngaymoi']; ?></td>
 
                                         
                                         <?php
@@ -320,72 +326,72 @@
                                             $gialech=round($gialech,2);
                                             if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
                                         ?>
-                                        <td class="primary" style="text-align: right; color:#00CC00; text-align:center;"><?php echo "+".$gialech."%" ?></td>
+                                        <td class="primary" style="text-align: center; width: 7%; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
                                         <?php } elseif($set['giamoi']<$set['giacu']){ ?>
-                                            <td class="primary" style="text-align: right; color:red; text-align:center;"><?php echo "-".$gialech."%" ?></td>
+                                            <td class="primary" style="text-align: center; width: 7%; color:red"><?php echo "-".$gialech."%" ?></td>
                                         <?php } else { ?>
-                                            <td class="primary" style="text-align: right; color:blue; text-align:center;"><?php echo $gialech."%" ?></td>
+                                            <td  style="text-align: center; width: 7%;"><?php echo $gialech."%" ?></td>
                                         <?php } ?>
                                         <?php
                                         }else{
-                                            ?>
-                                                <?php 
-                                            if($sorow==0){
-                                            ?>
-                                            <td class="primary" style="text-align: center;">-</td>
-                                            <td class="primary" style="text-align: center;">-</td>
-                                            <?php   
-                                            }else{
-                                            ?>
-                                            <?php if($set['giacu'] == 0){?>
-                                            <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
-                                            <?php
-                                            }else{
-                                            ?>
-                                            <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
-                                            $priceString = (string) $set['giacu'];
-    
-                                            // Lấy số ký tự đầu tiên của giá trị
-                                            $numberOfCharactersToMask = 2;
-                                            $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        ?>
+                                            <?php 
+                                        if($sorow==0){
+                                        ?>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <?php   
+                                        }else{
+                                        ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
+                                        $priceString = (string) $set['giacu'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 2;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asterisksString; ?>đ</td>
+                                        <?php } ?>
                                             
-                                            // Tạo chuỗi dấu "*"
-                                            $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
-                                            $asterisksString = str_repeat('*', $numberOfAsterisks);
-                                            
-                                            // Hiển thị kết quả
-                                            echo $maskedValue . $asterisksString; ?>đ</td>
-                                            <?php } ?>
-                                                
-                                            <td class="primary" style="text-align: center; padding-left: 5px; color:coral;width: 10%;"><?php echo $set['ngaycu']; ?></td>
-                                            <?php
-                                            }
-                                            ?>
-                                            <?php if($set['giamoi'] == 0){?>
-                                            <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
-                                            <?php
-                                            }else{
-                                            ?>
-                                            <td class="primary" style="text-align: right; padding-left: 5px; width: 10%;"><?php 
-                                            $priceString = (string) $set['giamoi'];
-    
-                                            // Lấy số ký tự đầu tiên của giá trị
-                                            $numberOfCharactersToMask = 2;
-                                            $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
-                                            
-                                            // Tạo chuỗi dấu "*"
-                                            $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
-                                            $asterisksString = str_repeat('*', $numberOfAsterisks);
-                                            
-                                            // Hiển thị kết quả
-                                            echo $maskedValue . $asterisksString;?>đ</td>
-                                            <?php } ?>
-    
-                                            <td class="primary" style="text-align: center; padding-left: 5px; color:coral; width: 10%;"><?php echo $set['ngaymoi']; ?></td>
-                                            <?php
-                                            
-                                            }
-                                            ?>
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
+                                        $priceString = (string) $set['giamoi'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 2;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asteriskgoappsString;?>đ</td>
+                                        <?php } ?>
+
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
+                                        <?php
+                                        
+                                        }
+                                        ?>
                                         <?php 
                                             if($set['nguon'] == 'thuocsi.vn'){
                                         ?>
@@ -402,19 +408,19 @@
                                             }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
                                                 ?>
                                                 <td class="nguonc"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharex.vn</a></td>
-                                                <?php 
-                                            }elseif($set['nguon'] == 'longchau.vn'){
-                                                ?>
-                                                <td class="nguond"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">longchau.vn</a></td>
-                                                <?php 
-                                            }elseif($set['nguon'] == 'pharmacity.vn'){
-                                                ?>
-                                                <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
-                                                <?php 
-                                            }elseif($set['nguon'] == 'medigoapp.com'){
-                                                ?>
-                                                <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
-                                                <?php  
+                                                <?php
+                                                }elseif($set['nguon'] == 'longchau.vn'){
+                                                    ?>
+                                                    <td class="nguond"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">longchau.vn</a></td>
+                                                    <?php  
+                                                }elseif($set['nguon'] == 'pharmacity.vn'){
+                                                    ?>
+                                                    <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
+                                                    <?php
+                                                }elseif($set['nguon'] == 'medigoapp.com'){
+                                                    ?>
+                                                    <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
+                                                    <?php  
                                             }else{
                                                 echo "";
                                             }
@@ -422,7 +428,7 @@
 
                                         
 
-                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 12%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:30%; text-align:center; margin: 0 auto;"></td>
+                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                         <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                         <?php
@@ -438,7 +444,7 @@
                                         }
                                     ?>
                             
-                            </tbody>
+                                </tbody>
                     </table>
                     <?php if($trang>1){
                     ?>

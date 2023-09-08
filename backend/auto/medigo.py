@@ -65,7 +65,7 @@ with connection.cursor() as cursor:
 # Mở trang web
 driver.get(base_url)
 
-num_pages_to_scrape = 8000
+num_pages_to_scrape = 20
 all_product_links = []
 
 for page_num in range(1, num_pages_to_scrape + 1):
