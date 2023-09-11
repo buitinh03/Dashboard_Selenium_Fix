@@ -601,7 +601,7 @@ $(function(){
                                         $asterisksString = str_repeat('*', $numberOfAsterisks);
                                         
                                         // Hiển thị kết quả
-                                        echo $maskedValue . $asteriskgoappsString;?>đ</td>
+                                        echo $maskedValue . $asterisksString;?>đ</td>
                                         <?php } ?>
 
                                         <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
