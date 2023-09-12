@@ -63,7 +63,12 @@ include_once('format/format.php');
             </ul>
         </div>
 
-        <p class="price">Giá:  <span ><?php   echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+       <p class="price">Giá:  <span ><?php if($result['giamoi'] == "" ){ ?>
+
+       Liên hệ</span> </p>
+       <?php }else{ ?>
+        <?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+        <?php }?>
       
 
     </div></div> 
