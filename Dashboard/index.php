@@ -11,7 +11,7 @@
 var loader = function() {
     setTimeout(function() {
         $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
-    }, 2500);
+    }, 50);
 };
 $(function(){
     loader();
@@ -218,8 +218,8 @@ $(function(){
                                 $from=2;
                                 $to=6;
                                 $nextpage=2;
-                        if(isset($_GET['trang'])){
-                            $trangthu=$_GET['trang'];
+                        if(isset($_GET['page'])){
+                            $trangthu=$_GET['page'];
                             $from=$trangthu-4; if($from<3){$from=2;}
                             $to=$trangthu+4; if($to>=$trang){$to=$trang-1;}
                             $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
@@ -236,12 +236,12 @@ $(function(){
                         <div id="pagination">
                             
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr"><</a>
+                                <a href="index.php?&page=<?=($previouspage)?>" id="pr"><</a>
                             <?php } 
                             ?>
-                            <a href="index.php?&trang=<?=(1)?>" id="start">1</a>
+                            <a href="index.php?&page=<?=(1)?>" id="start">1</a>
                             <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
@@ -258,7 +258,7 @@ $(function(){
                                                      
                             ?>
                             
-                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                         } ?>
                             <?php
@@ -268,11 +268,11 @@ $(function(){
                             <?php
                             } ?>
                             
-                        <a href="index.php?&trang=<?=($trang)?>" id="end"><?php echo $trang?></a>
+                        <a href="index.php?&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">></a>
+                        <a href="index.php?&page=<?=($nextpage)?>" id="next">></a>
                         <?php } ?>
                         
                         <!-- <style>
@@ -335,35 +335,35 @@ $(function(){
                     <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
                     </div>
                             <table id="mytable">                    
-                                <thead>
+                                <thead style="color:#FF8247;">
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên sản phẩm</th>
+                                        <th>TÊN SẢN PHẨM</th>
                                         <?php
                                         if($checkLoginAdmin == 0){
                                         ?>
-                                        <th>Giá cũ</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá mới</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá lệch</th>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ LỆCH</th>
                                         <?php
                                         }else{
                                         ?>
-                                        <th>Giá cũ</th>
-                                        <th>Thời gian</th>
-                                        <th>Giá mới</th>
-                                        <th>Thời gian</th>
+                                        <th>GIÁ CŨ</th>
+                                        <th>THỜI GIAN</th>
+                                        <th>GIÁ MỚI</th>
+                                        <th>THỜI GIAN</th>
                                         <?php
                                         }
                                         ?>
-                                        <th>Nguồn</th>
-                                        <th>Ảnh</th>
-                                        <th>Chức năng</th>
+                                        <th>NGUỒN</th>
+                                        <th>ẢNH</th>
+                                        <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
                                                 ?>
-                                                <th hidden>month_<?php echo $k ?></th>
+                                                <th hidden>MONTH_<?php echo $k ?></th>
                                         <?php
                                             }
                                         ?>
@@ -495,7 +495,7 @@ $(function(){
                                 <?php 
                             ?>
                             <tbody>
-                                    <tr onclick="handleClick(event)" id="tbody" class="tr">
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
                                         <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
@@ -525,8 +525,10 @@ $(function(){
                                         <?php if($set['giamoi'] == 0){?>
                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
-                                        }else{
+                                        }elseif($set['giamoi'] == ""){
                                         ?>
+                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
+                                         <?php }else{ ?>
                                         <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 
@@ -569,7 +571,7 @@ $(function(){
                                         $priceString = (string) $set['giacu'];
 
                                         // Lấy số ký tự đầu tiên của giá trị
-                                        $numberOfCharactersToMask = 2;
+                                        $numberOfCharactersToMask = 1;
                                         $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
                                         
                                         // Tạo chuỗi dấu "*"
@@ -593,7 +595,7 @@ $(function(){
                                         $priceString = (string) $set['giamoi'];
 
                                         // Lấy số ký tự đầu tiên của giá trị
-                                        $numberOfCharactersToMask = 2;
+                                        $numberOfCharactersToMask = 1;
                                         $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
                                         
                                         // Tạo chuỗi dấu "*"
@@ -665,12 +667,12 @@ $(function(){
                             </table>
                             <div id="pagination" >
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="index.php?&page=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             ?>
-                            <a href="index.php?&trang=<?=(1)?>" id="start1">1</a>
+                            <a href="index.php?&page=<?=(1)?>" id="start1">1</a>
                             <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
@@ -687,7 +689,7 @@ $(function(){
                                                      
                             ?>
                             
-                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                         } ?>
                             <?php
@@ -697,65 +699,26 @@ $(function(){
                             <?php
                             } ?>
                             
-                        <a href="index.php?&trang=<?=($trang)?>" id="end1"><?php echo $trang?></a>
+                        <a href="index.php?&page=<?=($trang)?>" id="end1"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="index.php?&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                     </div>
                  
-                    <script>
-                     
-                            function changeColor(element) {
-                                element.style.color="red";                                
-                            }
-                            // Thêm một sự kiện lắng nghe cho liên kết "Previous"
-                            const pr =document.getElementById("pr");
-                            pr.addEventListener("click",function(){                                
-                              <?php if($trangthu>1){
-                                $trangthu--;
-                              } ?>
-                              changeColor();                              
-                            });
-                            <?php 
-                            
-                            for($i=0;$i<$trang;$i++){
-                            ?>
-                            const <?php echo $page[$i] ?> =document.getElementById(<?php echo '"'.$page[$i].'"' ?>);
-                                <?php echo $page[$i] ?>.addEventListener("click",function(){
-                                    <?php $trangthu=($i+1); ?> 
-                                    changeColor(document.getElementById(<?php echo '"'.$page[$i].'"' ?>));                                   
-                                })
-                                 
-                            <?php
-                                
-                            }?>
-                            // Thêm một sự kiện cho liên kết "Next"
-                            const next =document.getElementById("next");
-                            next.addEventListener("click",function(){                                
-                                <?php if($trangthu<$trang)
-                                    $trangthu++;
-                                ?>
-                                changeColor(); 
-                            }
-                            );
-
-                   
-                     </script>
+                    
                         <script>
-                        // document.querySelector("#ne").style.background = '#C0C0C0';
-                        // document.querySelector("#ne").style.color = 'black';
-                        if(<?php echo $numpage?>==1){
+                        if(<?php echo $trangthu?>==1){
                             document.querySelector("#start").style.background = '#fff';  
                             document.querySelector("#start1").style.background = '#fff';  
                         }
-                        if(<?php echo $numpage?>==<?php echo $trang?>){
+                        if(<?php echo $trangthu?>==<?php echo $trang?>){
                             document.querySelector("#end").style.background = '#fff';  
                             document.querySelector("#end1").style.background = '#fff';
                         }
-                        document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
-                        document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
+                        document.querySelector("#p<?php echo $trangthu?>").style.background = '#fff';
+                        document.querySelector("#pa<?php echo $trangthu?>").style.background = '#fff';
                     </script>
                 </div>
                <style>

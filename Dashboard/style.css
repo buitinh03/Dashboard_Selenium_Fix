@@ -110,7 +110,7 @@ body{
     width: 100vw;
     height: 100vh;
     font-family: poppins,sans-serif;
-    font-size: 0.88rem;
+    font-size: 1rem;
     background:var(--color-background);    
     overflow-x: hidden;
     color:var(--color-dark);
@@ -677,7 +677,7 @@ gap: 0.6rem;
 
     main .recent-order {
         width: 87%;
-        left:none;
+        /* left:none; */
     }
    .container{
     max-width: 100%;
@@ -772,9 +772,9 @@ gap: 0.6rem;
         left: 66%;
     }
 
-    .right .profile .info{
+    /* .right .profile .info{
         display: none;
-    }
+    } */
     .right .top button{
         display: inline-block;
         background: transparent;
@@ -790,20 +790,32 @@ gap: 0.6rem;
     }
 
     .updates {
-        max-width: 87%;
+        width: 200%;
     }
 
     .right .item.customers {
-        max-width: 87%;  
+        width: 200%;  
     }
 
     .right .item.online {
-        max-width: 87%;  
+        width: 200%;  
     }
 
     .right .sales-analytics .add-product {
-        max-width: 87%; 
+        width: 200%; 
     }
+
+    footer {
+       width: 200vw;
+     }
+
+     .sapxeptheo {
+        font-size: .6rem;
+     }
+
+     #pagination {
+        margin-left: 50%;
+     }
 
 }
 
@@ -987,9 +999,9 @@ gap: 0.6rem;
          left: 66%;
      }
  
-     .right .profile .info{
+     /* .right .profile .info{
          display: none;
-     }
+     } */
      .right .top button{
          display: inline-block;
          background: transparent;
@@ -1006,6 +1018,14 @@ gap: 0.6rem;
 
      .search-box input[type="text"] {
         width: 90%;
+     }
+
+     .footer {
+        width: 250vw;
+     }
+
+     .quaylai {
+        margin-left: 30%;
      }
  }
 
@@ -1094,9 +1114,9 @@ gap: 0.6rem;
          left: 66%;
      }
  
-     .right .profile .info{
+     /* .right .profile .info{
          display: none;
-     }
+     } */
      .right .top button{
          display: inline-block;
          background: transparent;

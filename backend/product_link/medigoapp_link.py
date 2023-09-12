@@ -12,7 +12,6 @@ import time
 import codecs
 import sys
 from bs4 import BeautifulSoup
-
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')

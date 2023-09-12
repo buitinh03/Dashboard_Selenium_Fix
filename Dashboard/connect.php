@@ -36,14 +36,14 @@
             $db=new connect();
             if($theloai=='tatcasanpham'){
             if($value=='option1'){
-            $select="SELECT *,
-                CASE
-                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
-                    ELSE 0
-                    END AS gialech   
-                FROM thuocsi_vn ORDER BY gialech desc ";
+            $select=" SELECT *,
+                            CASE
+                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                ELSE 0
+                                END AS gialech   
+                            FROM thuocsi_vn ORDER BY gialech desc" ;
                 if($limit!=0){
                     $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
                 }           
@@ -57,9 +57,9 @@
                 if($value=='option1'){
                     $select="SELECT *,
                         CASE
-                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-                            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
                             ELSE 0
                             END AS gialech   
                         FROM thuocsi_vn WHERE nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' or nguon='medigoapp.com' ORDER BY gialech desc ";
@@ -76,9 +76,9 @@
                         if($value=='option1'){
                             $select="SELECT *,
                                 CASE
-                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-                                    WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
                                     ELSE 0
                                     END AS gialech   
                                 FROM thuocsi_vn WHERE nguon='ankhang.com' or nguon='longchau.vn' ORDER BY gialech desc ";
@@ -209,9 +209,9 @@
             $db =  new connect();
             $query="SELECT *,
         CASE
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-            WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
         FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 

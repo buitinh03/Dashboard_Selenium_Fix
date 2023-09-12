@@ -348,9 +348,15 @@ form.sign-up-form {
         font-size: 0.7rem;
     }
 
+    .signin-signup form .title {
+        font-size: 1.5rem;
+        margin-top: 100px;
+    }
+
     .image {
         width: 200px;
         transition: 0.9s 0.6s ease-in-out;
+        margin-top: -90%;
     }
 
     .right-panel .content, .left-panel .image {
@@ -368,9 +374,18 @@ form.sign-up-form {
     }
 
     .container.sign-up-mode .signin-signup {
-        top: 5%;
+        top: -16%;
         transform: translate(-50%, 0);
         left: 50%;
+    }
+
+    #eye::before {
+        position: absolute;
+        margin-top: 0%;
+    }
+
+    .content {
+        margin-top: 5%;
     }
 }
 
@@ -395,6 +410,40 @@ form.sign-up-form {
     .container.sign-up-mode::before {
         bottom: 28%;
         left: 50%;
+    }
+
+    #eye::before {
+        position: absolute;
+        margin-top: -2%;
+    }
+}
+
+@media (max-width:370px){
+    form {
+        padding: 0 1.5rem;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .panel .content {
+        padding: 0.5rem 1rem;
+    }
+
+    .container::before {
+        bottom: 72%;
+        left: 50%;
+    }
+
+    .container.sign-up-mode::before {
+        bottom: 28%;
+        left: 50%;
+    }
+
+    #eye::before {
+        position: absolute;
+        margin-top: -5%;
     }
 }
 
