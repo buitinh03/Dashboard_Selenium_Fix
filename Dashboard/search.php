@@ -73,12 +73,12 @@
                     ?>
                     <div id="pagination">
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="search.php?&word=<?=($search)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start">1</a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="start">1</a>
 
                             <?php
                             $page=array();                        
@@ -95,7 +95,7 @@
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                             
                         } ?>
@@ -105,11 +105,11 @@
                             <a href="#">...</a>
                             <?php
                             } ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end"><?php echo $trang?></a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                        
                     </div>
@@ -153,7 +153,7 @@
                                         <?php
                                             }
                                         ?>
-                                        
+                                        <th>MÃ SP</th>
                                     </tr>
                                 </thead>
                         <style>
@@ -296,7 +296,10 @@
                                         <?php if($set['giacu'] == 0){?>
                                         <td  style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
-                                        }else{
+                                        }elseif($set['giacu'] == ''){
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson">-</td>
+                                        <?php } else {
                                         ?>
                                         <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
                                         <?php } ?>
@@ -308,7 +311,10 @@
                                         <?php if($set['giamoi'] == 0){?>
                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
-                                        }else{
+                                        }elseif($set['giamoi'] == ''){
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson">-</td>
+                                        <?php } else {
                                         ?>
                                         <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
@@ -317,7 +323,7 @@
 
                                         
                                         <?php
-                                            if($set['giamoi']!=0&&$set['giacu']!=0){
+                                            if($set['giamoi']!=0&&$set['giamoi']!=''&&$set['giacu']!=0&&$set['giacu']!=''){
                                                 if( $set['giamoi']>$set['giacu']){
                                                 $gialech=($set['giamoi']/$set['giacu']*100)-100;
                                                 }
@@ -431,6 +437,7 @@
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                         <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                        <td style="display:flex;"><form action="" style="display:flex;"><input type="text" placeholder="Đặt mã sản phẩm" name="masp" value="<?php echo $set['masp']; ?>" ><button>Lưu</button></form></td>
                                         <?php
                                             for($k=1;$k<=12;$k++){
                                                 ?>
@@ -451,10 +458,10 @@
                     <div id="pagination">
                             
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="search.php?&word=<?=($search)?>&trang=<?=($previouspage)?>" id="pr">Trước</a>
-                            <?php } ?><a href="search.php?&word=<?=($search)?>&trang=<?=(1)?>" id="start1">1</a><?php
+                                <a href="search.php?&word=<?=($search)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } ?><a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="start1">1</a><?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="p".($i);
@@ -469,7 +476,7 @@
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                             
                         } ?>
@@ -479,11 +486,11 @@
                             <a href="#">...</a>
                             <?php
                             } ?>
-                        <a href="search.php?&word=<?=($search)?>&trang=<?=($trang)?>" id="end1"><?php echo $trang;?></a>
+                        <a href="search.php?&word=<?=($search)?>&page=<?=($trang)?>" id="end1"><?php echo $trang;?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="search.php?&word=<?=($search)?>&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                         
                     </div>

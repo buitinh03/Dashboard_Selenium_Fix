@@ -558,28 +558,106 @@ $pd = new product();
                                     })
                                        
                                     </script>
+                                    <script>
+                   document.getElementById("runButton").addEventListener("click",function(){
+                        var fun=[a,b]
+                        for(var i=0;i<fun.length;i++){
+                            fun[i]();
+                        }
+                    })
+                    function a(){
+                    // Thực hiện một yêu cầu HTTP (AJAX) để chạy file Python
+                    setTimeout(function(){
+                        document.querySelector('.adress-form').style.display = "none";
+                        
+                    },5000)
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "/run-python", true); // Đổi "/run-python" thành URL tương ứng với file Python của bạn
+                    xhr.send();
+                    
+                    // Xử lý kết quả từ server (nếu cần thiết)
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = xhr.responseText;                       
+                        }                        
+                    }; 
+                                 
+                    };
+                    function b(){                        
+                        swal({
+                        title: "Thông báo",
+                        text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
+                        icon: "success",
+                        timer: 3000, 
+                        buttons: false,
+                        });
+                        setTimeout(function() {   <?php sleep(1)?>                             
+                            }, 4000);
+                            
+                    }
+                    </script>
+                                    
                                     <?php
-                                    if($_SERVER['REQUEST_METHOD']=='POST'){
-                                        
-                                        if (isset($_POST['runpython'])){
+                                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                        if (isset($_POST['runpython'])) {
                                             echo '<div class="loading"></div>';
-                                            ini_set('max_execution_time', (3600*24*7));
+                                            ini_set('max_execution_time', (3600 * 24 * 7));
                                             ignore_user_abort(true);
-                                            if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py && python ../backend/auto/pharex.py && python ../backend/auto/longchau.py && python ../backend/auto/pharmacity.py && python ../backend/auto/medigo.py'))){
+                                            if (isset($_POST['alll'])) {
+                                                if (file_exists('../backend/auto/chosithuoc.py') &&
+                                                    file_exists('../backend/auto/thuocsi.py') &&
+                                                    file_exists('../backend/auto/ankhang.py') &&
+                                                    file_exists('../backend/auto/pharex.py') &&
+                                                    file_exists('../backend/auto/longchau.py') &&
+                                                    file_exists('../backend/auto/pharmacity.py') &&
+                                                    file_exists('../backend/auto/medigo.py')) {
+                                    
+                                                    if (empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py && python ../backend/auto/pharex.py && python ../backend/auto/longchau.py && python ../backend/auto/pharmacity.py && python ../backend/auto/medigo.py'))) {
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Quá trình cào giá đã hoàn tất',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.location = 'index.php';
+                                                            }, 4000);
+                                                            </script>";
+                                                    } else {
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Có lỗi xảy ra! Không thể thực hiện quá trình cào giá',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.location = 'index.php';
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                } else {
                                                     echo "<script>
-                                                swal({
-                                                    title: 'Thông báo',
-                                                    text: 'Quá trình cào giá đã hoàn tất',
-                                                    icon: 'success',
-                                                    timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                    buttons: false,  // Ẩn nút Close
-                                                    });
-                                                    setTimeout(function () {
-                                                        window.location='index.php'
-                                                      }, 4000);
-                                                </script>";
-                                                }else echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'File không tồn tại!',
+                                                            icon: 'error',
+                                                            timer: 3000,
+                                                            buttons: false,
+                                                        });
+                                                        setTimeout(function() {
+                                                            window.location = 'index.php';
+                                                        }, 4000);
+                                                        </script>";
+                                                }
+                                            } else {
+                                                // Thêm phần xử lý cho các đường dẫn khác ở đây
+                                                if (isset($_POST['thuocsi'])) {
+                                                 if(file_exists('../backend/auto/thuocsi.py')){system('python ../backend/auto/thuocsi.py');
+                                                    echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
                                                         text: 'Quá trình cào giá đã hoàn tất',
@@ -588,48 +666,202 @@ $pd = new product();
                                                         buttons: false,  // Ẩn nút Close
                                                         });
                                                         setTimeout(function () {
-                                                            window.location='index.php'
+                                                            window.location = 'index.php';
                                                           }, 4000);
-                                                </script>";
-                                            }else{
-                                                if(isset($_POST['thuocsi'])){
-                                                    system('python ../backend/auto/thuocsi.py');
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File thuocsi.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
                                                 }
                                                 if(isset($_POST['chosithuoc'])){
-                                                    system('python ../backend/auto/run_chosithuoc.py');
-                                                }
-                                                if(isset($_POST['ankhang'])){
-                                                    system('python ../backend/auto/ankhang.py');
-                                                }
-                                                if(isset($_POST['pharex'])){
-                                                    system('python ../backend/auto/pharex.py');
-                                                }
-                                                if(isset($_POST['longchau'])){
-                                                    system('python ../backend/auto/longchau.py');
-                                                }
-                                                if(isset($_POST['pharmacity'])){
-                                                    system('python ../backend/auto/pharmacity.py');
-                                                }
-                                                if(isset($_POST['medigoapp'])){
-                                                    system('python ../backend/auto/medigo.py');
-                                                }
-                                                echo "<script>
+                                                    if(file_exists('../backend/auto/chosithuoc.py')){system('python ../backend/auto/chosithuoc.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location='index.php'
-                                                          }, 4000);
-                                                </script>";
+                                                        text: 'File chosithuoc.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                if(isset($_POST['ankhang'])){
+                                                    if(file_exists('../backend/auto/ankhang.py')){system('python ../backend/auto/ankhang.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File ankhang.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                if(isset($_POST['pharex'])){
+                                                    if(file_exists('../backend/auto/pharex.py')){system('python ../backend/auto/pharex.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File pharex.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                  
+                                                if(isset($_POST['longchau'])){
+                                                    if(file_exists('../backend/auto/longchau.py')){system('python ../backend/auto/longchau.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File longchau.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                if(isset($_POST['pharmacity'])){
+                                                    if(file_exists('../backend/auto/pharmacity.py')){system('python ../backend/auto/pharmacity.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File pharmacity không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                if(isset($_POST['medigoapp'])){
+                                                    if(file_exists('../backend/auto/medigo.py')){system('python ../backend/auto/medigo.py');
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Quá trình cào giá đã hoàn tất',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            setTimeout(function () {
+                                                                window.location='index.php'
+                                                              }, 4000);
+                                                    </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File medigo.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'index.php';
+                                                    }, 4000);
+                                                    </script>";}
+                                                }
+                                                // echo "<script>
+                                                    
+                                                //         setTimeout(function () {
+                                                //             window.location='index.php'
+                                                //           }, 4000);
+                                                // </script>";
                                             }
-                                            
                                         }
-
                                     }
+                                    
                                     
                                     ?>
                                 </form>

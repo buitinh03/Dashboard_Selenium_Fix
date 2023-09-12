@@ -19,7 +19,7 @@ if sys.stdout.encoding != 'utf-8':
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=5120x2880")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.pharmacity.vn/"
@@ -35,7 +35,7 @@ connection = psycopg2.connect(
 with connection.cursor() as cursor:
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS thuocsi_vn (
-            title TEXT,
+            title TEXT primary key,
             giacu TEXT,
             ngaycu DATE,
             giamoi TEXT,
@@ -74,13 +74,13 @@ def extract_product_info():
 
 link_lists = [
     "duoc-pham",
-    "cham-soc-ca-nhan",
-    "cham-soc-suc-khoe",
-    "san-pham-tien-loi",
-    "thuc-pham-chuc-nang",
-    "me-va-be",
-    "cham-soc-sac-dep",
-    "thiet-bi-y-te-2",
+    # "cham-soc-ca-nhan",
+    # "cham-soc-suc-khoe",
+    # "san-pham-tien-loi",
+    # "thuc-pham-chuc-nang",
+    # "me-va-be",
+    # "cham-soc-sac-dep",
+    # "thiet-bi-y-te-2",
 ]
 base_url = "https://www.pharmacity.vn/"
 link = []
@@ -88,7 +88,7 @@ for url_suffix in link_lists:
     full_url = f"{base_url}/{url_suffix}"
     driver.get(full_url)
 
-    num_pages_to_scrape = 1000
+    num_pages_to_scrape = 2
     for page_num in range(1, num_pages_to_scrape + 1):
         url = f"{base_url}/{url_suffix}?page={page_num}"
         driver.get(url)
@@ -113,8 +113,8 @@ for url_suffix in link_lists:
                 link.append(lin)
 
 
-def check_product_exist(cursor, ten):
-    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (ten,))
+def check_product_exist(cursor, product_name):
+    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
 
@@ -128,18 +128,15 @@ for a in link:
         nha_san_xuat = "Không đề cập"
         tp_element = "Không đề cập"
 
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".ProductContent_product-title__Li_7c"))
+        )
         try:
             html = driver.page_source
             product_name = extract_product_info()
         except NoSuchElementException:
             pass
 
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, ".ProductContent_product-title__Li_7c"))
-        )
         try:
             ten = driver.find_element(By.CSS_SELECTOR, ".ProductContent_product-title__Li_7c").text
         except NoSuchElementException:
@@ -163,7 +160,6 @@ for a in link:
 
         if tt is None or tt.strip() == "":
             tt = "Không đề cập"
-
 
         try:
             tp_element = driver.find_element(By.CSS_SELECTOR,
@@ -205,35 +201,32 @@ for a in link:
         except NoSuchElementException:
             nuoc_san_xuat = 'Không đề cập'
 
-        print(f"Nước sản xuất: {nuoc_san_xuat}")
-        print(f"Giá: {gia}")
-        print(f"Tên: {ten}")
-        print(f"Thông tin: {tt}")
-        print(f"Thành phần: {tp_element}")
-        print(f"Img: {img_url}")
         print(f"Link :{a}")
 
         ngay = datetime.datetime.now().date()
         current_month = datetime.datetime.now().month
 
         with connection.cursor() as cursor:
-            if check_product_exist(cursor, ten):
-                cursor.execute(f'''
-                                        UPDATE thuocsi_vn
-                                        SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                                            hamluong_thanhphan = %s, photo = %s, link = %s,
-                                            giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
-                                        WHERE title = %s;
-                                    ''', (
-                    gia, tt, nsx, nuoc_san_xuat, tp_element, img_url, a, gia, ngay, 'pharmacity.vn', ten))
-            else:
-                cursor.execute(f'''
-                                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
-                                        nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
-                                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-                                    ''', (
-                    ten, gia, ngay, gia, img_url, nsx, nuoc_san_xuat, tp_element, tt, a, 'pharmacity.vn'))
-                connection.commit()
+            cursor.execute(f'''
+                INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (title) DO UPDATE
+                    SET month_{current_month} = excluded.month_{current_month},
+                    thong_tin_san_pham = excluded.thong_tin_san_pham,
+                    nha_san_xuat = excluded.nha_san_xuat,
+                    nuoc_san_xuat = excluded.nuoc_san_xuat,
+                    hamluong_thanhphan = excluded.hamluong_thanhphan,
+                    photo = excluded.photo,
+                    link = excluded.link,
+                    giacu = excluded.giamoi,
+                    ngaycu = excluded.ngaymoi,
+                    giamoi = excluded.giamoi,
+                    ngaymoi = excluded.ngaymoi,
+                    nguon = excluded.nguon;
+            ''', (
+                product_name, gia, ngay, gia, img_url, nsx, nuoc_san_xuat, tp_element, tt, a, 'pharmacity.vn'))
+            connection.commit()
 
     except (NoSuchElementException, TimeoutException) as e:
         print("Cào sản phẩm thất bại")

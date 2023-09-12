@@ -238,12 +238,12 @@ $(function(){
                         <div id="pagination">
                             
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr"><</a>
+                                <a href="index.php?&page=<?=($previouspage)?>" id="pr"><</a>
                             <?php } 
                             ?>
-                            <a href="index.php?&trang=<?=(1)?>" id="start">1</a>
+                            <a href="index.php?&page=<?=(1)?>" id="start">1</a>
                             <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
@@ -260,7 +260,7 @@ $(function(){
                                                      
                             ?>
                             
-                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                         } ?>
                             <?php
@@ -270,11 +270,11 @@ $(function(){
                             <?php
                             } ?>
                             
-                        <a href="index.php?&trang=<?=($trang)?>" id="end"><?php echo $trang?></a>
+                        <a href="index.php?&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">></a>
+                        <a href="index.php?&page=<?=($nextpage)?>" id="next">></a>
                         <?php } ?>
                         
                         <!-- <style>
@@ -601,7 +601,7 @@ $(function(){
                                         $asterisksString = str_repeat('*', $numberOfAsterisks);
                                         
                                         // Hiển thị kết quả
-                                        echo $maskedValue . $asteriskgoappsString;?>đ</td>
+                                        echo $maskedValue . $asterisksString;?>đ</td>
                                         <?php } ?>
 
                                         <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
@@ -665,12 +665,12 @@ $(function(){
                             </table>
                             <div id="pagination" >
                             <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&trang=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="index.php?&trang=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="index.php?&page=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             ?>
-                            <a href="index.php?&trang=<?=(1)?>" id="start1">1</a>
+                            <a href="index.php?&page=<?=(1)?>" id="start1">1</a>
                             <?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
@@ -687,7 +687,7 @@ $(function(){
                                                      
                             ?>
                             
-                            <a href="index.php?&trang=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                         } ?>
                             <?php
@@ -697,55 +697,16 @@ $(function(){
                             <?php
                             } ?>
                             
-                        <a href="index.php?&trang=<?=($trang)?>" id="end1"><?php echo $trang?></a>
+                        <a href="index.php?&page=<?=($trang)?>" id="end1"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&trang=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="index.php?&trang=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="index.php?&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                     </div>
                  
-                    <script>
-                     
-                            function changeColor(element) {
-                                element.style.color="red";                                
-                            }
-                            // Thêm một sự kiện lắng nghe cho liên kết "Previous"
-                            const pr =document.getElementById("pr");
-                            pr.addEventListener("click",function(){                                
-                              <?php if($trangthu>1){
-                                $trangthu--;
-                              } ?>
-                              changeColor();                              
-                            });
-                            <?php 
-                            
-                            for($i=0;$i<$trang;$i++){
-                            ?>
-                            const <?php echo $page[$i] ?> =document.getElementById(<?php echo '"'.$page[$i].'"' ?>);
-                                <?php echo $page[$i] ?>.addEventListener("click",function(){
-                                    <?php $trangthu=($i+1); ?> 
-                                    changeColor(document.getElementById(<?php echo '"'.$page[$i].'"' ?>));                                   
-                                })
-                                 
-                            <?php
-                                
-                            }?>
-                            // Thêm một sự kiện cho liên kết "Next"
-                            const next =document.getElementById("next");
-                            next.addEventListener("click",function(){                                
-                                <?php if($trangthu<$trang)
-                                    $trangthu++;
-                                ?>
-                                changeColor(); 
-                            }
-                            );
-
-                   
-                     </script>
+                    
                         <script>
-                        // document.querySelector("#ne").style.background = '#C0C0C0';
-                        // document.querySelector("#ne").style.color = 'black';
                         if(<?php echo $numpage?>==1){
                             document.querySelector("#start").style.background = '#fff';  
                             document.querySelector("#start1").style.background = '#fff';  

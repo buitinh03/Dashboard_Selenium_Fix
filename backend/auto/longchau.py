@@ -1,11 +1,13 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException,ElementNotInteractableException,TimeoutException
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.common.by import By
 import psycopg2
+from selenium.webdriver.support.ui import WebDriverWait
 import datetime
 from dotenv import load_dotenv
 from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
 import os
 import sys
 import codecs
@@ -16,7 +18,7 @@ if sys.stdout.encoding != 'utf-8':
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.nhathuocankhang.com/"
@@ -33,7 +35,7 @@ connection = psycopg2.connect(
 with connection.cursor() as cursor:
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS thuocsi_vn (
-            title TEXT,
+            title TEXT primary key,
             giacu TEXT,
             ngaycu DATE,
             giamoi TEXT,
@@ -84,6 +86,7 @@ link_lists = [
     'thuoc/thuoc-da-lieu',
     'thuoc/thuoc-ngua-thai',
     'thuoc/mat',
+    'cham-soc-ca-nhan/thiet-bi-lam-dep',
     'thuoc/tai-and-mieng-hong',
     'thuoc/thuoc-gay-me-gay-te-che-pham-dung-trong-phau-thuat-va-cham-soc-vet-thuong',
     'thuoc/dung-dich-tiem-tinh-mach-and-cac-loai-dung-dich-vo-trung-khac',
@@ -93,28 +96,64 @@ link_lists = [
     'thuoc/thuc-pham-bo-sung-and-cac-san-pham-ho-tro-suc-khoe',
     'thuoc/mieng-dan-cao-xoa-dau',
 ]
+wait = WebDriverWait(driver, 1)
+
+
+def extract_product_info():
+    product_name_element = wait.until(
+        EC.presence_of_element_located(
+            (By.CSS_SELECTOR, "h1.css-18o6y07")))
+    product_name = product_name_element.text
+
+    return product_name
+
+def check_product_exist(cursor, product_name):
+    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
+    return cursor.fetchone()[0]
+
 
 base_url = "https://nhathuoclongchau.com.vn"
 all_links = []
+
 for link_list in link_lists:
     full_url = f"{base_url}/{link_list}"
     driver.get(full_url)
 
+    try:
+        active_button = WebDriverWait(driver, 1).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
+        active_button.click()
+    except (ElementNotInteractableException, NoSuchElementException, TimeoutException):
+        pass
+
+    while True:
+        try:
+            view_more_button = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "button.justify-center:nth-child(2)")))
+            if view_more_button.is_displayed():
+                view_more_button.click()
+                sleep(1)
+            else:
+                break
+        except (NoSuchElementException, TimeoutException, ElementNotInteractableException):
+            break
 
     link_elements = driver.find_elements(By.CSS_SELECTOR, ".relative > .product-card > a")
     links = [link.get_attribute('href') for link in link_elements]
     all_links.extend(links)
 
-
-    def check_product_exist(cursor, product_name):
-        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
-        return cursor.fetchone()[0]
-
-
-    for a in links:
+    for a in all_links:
         driver.get(a)
         sleep(1)
         try:
+            product_name = ""
+
+            try:
+                html = driver.page_source
+                product_name = extract_product_info()
+            except NoSuchElementException:
+                pass
+
             try:
                 ten = driver.find_element(By.CSS_SELECTOR, "h1.css-18o6y07").text
 
@@ -189,25 +228,27 @@ for link_list in link_lists:
             current_month = datetime.datetime.now().month
 
             with connection.cursor() as cursor:
-                if check_product_exist(cursor, ten):
-                    cursor.execute(f'''
-                        UPDATE thuocsi_vn
-                        SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                            hamluong_thanhphan = %s, photo = %s, link = %s,
-                            giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
-                        WHERE title = %s;
-                    ''', (
-                        gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan, photo, a,
-                        gia_sales, ngay, 'longchau.vn', ten))
-                else:
-                    cursor.execute(f'''
-                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
-                        nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-                    ''', (
-                        ten, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
-                        hamluong_thanhphan, thong_tin_san_pham, a, 'longchau.vn'))
-                    connection.commit()
+                cursor.execute(f'''
+                           INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                           nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
+                           VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                           ON CONFLICT (title) DO UPDATE
+                               SET month_{current_month} = excluded.month_{current_month},
+                               thong_tin_san_pham = excluded.thong_tin_san_pham,
+                               nha_san_xuat = excluded.nha_san_xuat,
+                               nuoc_san_xuat = excluded.nuoc_san_xuat,
+                               hamluong_thanhphan = excluded.hamluong_thanhphan,
+                               photo = excluded.photo,
+                               link = excluded.link,
+                               giacu = excluded.giamoi,
+                               ngaycu = excluded.ngaymoi,
+                               giamoi = excluded.giamoi,
+                               ngaymoi = excluded.ngaymoi,
+                               nguon = excluded.nguon;
+                       ''', (
+                    product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, a, 'longchau.vn'))
+                connection.commit()
+
         except Exception as e:
             print("Lỗi khi scraping sản phẩm:", str(e))
 

@@ -19,7 +19,7 @@ if sys.stdout.encoding != 'utf-8':
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://thuocsi.vn/products"
@@ -36,7 +36,7 @@ connection = psycopg2.connect(
 with connection.cursor() as cursor:
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS thuocsi_vn (
-            title TEXT,
+            title TEXT primary key,
             giacu TEXT,
             ngaycu date,
             giamoi TEXT,
@@ -99,7 +99,7 @@ def extract_product_info():
     return product_name
 
 
-num_pages_to_scrape = 1000
+num_pages_to_scrape = 1
 link = []
 
 for page_num in range(1, num_pages_to_scrape + 1):

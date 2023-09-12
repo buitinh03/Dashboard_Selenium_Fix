@@ -35,7 +35,7 @@ connection = psycopg2.connect(
 with connection.cursor() as cursor:
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS thuocsi_vn (
-            title TEXT,
+            title TEXT primary key,
             giacu TEXT,
             ngaycu DATE,
             giamoi TEXT,
@@ -61,6 +61,7 @@ with connection.cursor() as cursor:
             nguon TEXT DEFAULT 'an_khang'
         )
     ''')
+    wait = WebDriverWait(driver, 1)
 
 link_lists = [
     # Thuốc
@@ -101,6 +102,7 @@ link_lists = [
     "thuc-pham-do-uong",
     "cham-soc-toc",
     "bao-cao-su",
+    "ho-tro-dieu-tri-ung-thu",
     "sua-rua-mat",
 
     "my-pham",
@@ -138,14 +140,27 @@ for url_suffix in link_lists:
     all_links.extend(links)
 
 
+    def extract_product_info():
+        product_name_element = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "h1.detail-title")))
+        product_name = product_name_element.text
+        return product_name
+
     def check_product_exist(cursor, product_name):
-        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn1 WHERE title = %s)", (product_name,))
+        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
     for a in links:
         driver.get(a)
         sleep(1)
         try:
+            product_name = ""
+
+            try:
+                html = driver.page_source
+                product_name = extract_product_info()
+            except NoSuchElementException:
+                pass
             try:
                 ten = driver.find_element(By.CSS_SELECTOR, "h1.detail-title").text
 
@@ -200,25 +215,26 @@ for url_suffix in link_lists:
             current_month = datetime.datetime.now().month
 
             with connection.cursor() as cursor:
-                if check_product_exist(cursor, ten):
-                    cursor.execute(f'''
-                        UPDATE thuocsi_vn
-                        SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                            hamluong_thanhphan = %s, photo = %s, link = %s,
-                            giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s
-                        WHERE title = %s;
-                    ''', (
-                        gia_sales, thong_tin_san_pham, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, photo, a,
-                        gia_sales, ngay, 'ankhang.com', ten))
-                else:
-                    cursor.execute(f'''
-                        INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
-                        nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-                    ''', (
-                        ten, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
-                        thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
-                    connection.commit()
+                cursor.execute(f'''
+                    INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+                    nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (title) DO UPDATE
+                        SET month_{current_month} = excluded.month_{current_month},
+                        thong_tin_san_pham = excluded.thong_tin_san_pham,
+                        nha_san_xuat = excluded.nha_san_xuat,
+                        nuoc_san_xuat = excluded.nuoc_san_xuat,
+                        hamluong_thanhphan = excluded.hamluong_thanhphan,
+                        photo = excluded.photo,
+                        link = excluded.link,
+                        giacu = excluded.giamoi,
+                        ngaycu = excluded.ngaymoi,
+                        giamoi = excluded.giamoi,
+                        ngaymoi = excluded.ngaymoi,
+                        nguon = excluded.nguon;
+                ''', (
+                    product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
+                connection.commit()
         except Exception as e:
             print("Lỗi khi scraping sản phẩm:", str(e))
 
