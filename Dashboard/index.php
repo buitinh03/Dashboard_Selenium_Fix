@@ -525,8 +525,10 @@ $(function(){
                                         <?php if($set['giamoi'] == 0){?>
                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
                                         <?php
-                                        }else{
+                                        }elseif($set['giamoi'] == ""){
                                         ?>
+                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
+                                         <?php }else{ ?>
                                         <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
                                         <?php } ?>
 

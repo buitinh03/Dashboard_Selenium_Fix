@@ -63,7 +63,12 @@ include_once('format/format.php');
             </ul>
         </div>
 
-        <p class="price">Giá:  <span ><?php   echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+       <p class="price">Giá:  <span ><?php if($result['giamoi'] == "" ){ ?>
+
+       Liên hệ</span> </p>
+       <?php }else{ ?>
+        <?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+        <?php }?>
       
 
     </div></div> 
@@ -213,7 +218,7 @@ include_once('format/format.php');
                         <h1>BIỂU ĐỒ SO SÁNH GIÁ QUA CÁC THÁNG</h1>
                     </div>
                     <div class="warranty-policy-content">
-                    <canvas id="myChart"  style="height: 200px; width: 120%; margin-right:-100px;"></canvas>
+                    <canvas id="myChart"  style="height: 250px; width: 120%; margin-right:-100px;"></canvas>
                         
                         
                     <script>
