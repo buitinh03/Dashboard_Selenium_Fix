@@ -226,6 +226,16 @@
             return $result;
         }
         
+        function search_capnhat($name,$nguon){
+            $db = new connect();
+            $dem = "select * from thuocsi_vn where (unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
+            or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
+            or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
+            or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')) and nguon='".$nguon."'";
+            $result = $db->exec($dem);
+            return $result;
+        }
+        
         function count_search($thu){
             $db = new connect();
             $dem = "select count(*) as count from  thuocsi_vn where unaccent(title) ~* replace(unaccent('$thu'), ' ', '.*') 
@@ -237,12 +247,12 @@
             return $result;
         }
 
-        function testcol($thu){
-            $db = new connect();
-            $dem = "select count(*) as sothu from  thuocsi_vn where ".$thu." is not null";
-            $result = $db->exec($dem);
-            return $result;
-        }
+        // function testcol($thu){
+        //     $db = new connect();
+        //     $dem = "select count(*) as sothu from  thuocsi_vn where photo = '".$thu."' and giacu is not null";
+        //     $result = $db->exec($dem);
+        //     return $result;
+        // }
 
         function tongsanpham($theloaiban='tatcasanpham'){
             $db=new connect();

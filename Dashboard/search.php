@@ -68,7 +68,211 @@
                             background: #fff;
                         }
                     </style>
-                    <h2>TỪ KHÓA TÌM KIẾM: <?php if(isset($_SESSION['search'])){echo $_SESSION['search']; } elseif(isset($search)) {echo $search;}?> </h2>
+                    <h2>TỪ KHÓA TÌM KIẾM: <li id="adress-form1" ><a href="#"><h3 style="margin-left: .5rem;font-size: 1.2rem;font-weight: bold;color: #7380ec;background: bisque;padding: 5px;margin-right: .5rem;margin-top: -.5rem;border-radius: 5px;">Cập nhật</h3></a></li>
+                         <?php if(isset($_SESSION['search'])){echo $_SESSION['search']; } elseif(isset($search)) {echo $search;}?> </h2>
+                    
+                    
+                        <div class="adress-form1">
+                            <div class="adress-form-content">
+                                <h2>Cào Dữ Liệu Website <span id="adress-close1">X Đóng</span></h2>
+
+                                    <form action="#" method="post">
+                                   <p style="font-weight: bolder;">Bạn có muốn thực hiện cào giá theo từ khóa: </p>
+                                   <h5><?php echo $search ?></h5>
+
+                                   <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
+                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
+                                    
+                        <?php
+                            if($_SERVER['REQUEST_METHOD']=='POST'){
+                                if(isset($_POST['Capnhattimkiem'])){
+                                    ini_set('max_execution_time', (3600*24*7));
+                                    ignore_user_abort(true);
+                                    $pro = new product();
+                                    $duongdanf=require('db_config.php');
+                                    $sc=$pro->search_capnhat($search,'thuocsi.vn');
+                                    // while($la=$sc->fetch()){
+                                    //     system('python ../backend/product_link/thuocsi_link.py '.$la['link'].'');
+                                    // }
+                                    // // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
+                                    // // while($la=$sc->fetch()){
+                                    // //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
+                                    // // }
+                                    // $sc1=$pro->search_capnhat($search,'pharmacity.vn');
+                                    // while($la1=$sc1->fetch()){
+                                    //     system('python ../backend/product_link/pharmacity_link.py '.$la1['link'].'');
+                                    // }
+                                    // $sc2=$pro->search_capnhat($search,'thuocsi.pharex.vn');
+                                    // while($la2=$sc2->fetch()){
+                                    //     system('python ../backend/product_link/pharex_link.py '.$la2['link'].'');
+                                    // }
+                                    // $sc3=$pro->search_capnhat($search,'medigoapp.com');
+                                    // while($la3=$sc3->fetch()){
+                                    //     system('python ../backend/product_link/medigoapp_link.py '.$la3['link'].'');
+                                    // }
+                                    // $sc4=$pro->search_capnhat($search,'ankhang.com');
+                                    // while($la4=$sc4->fetch()){
+                                    //     system('python ../backend/product_link/ankhang_link.py '.$la4['link'].'');
+                                    // }
+                                    // $sc5=$pro->search_capnhat($search,'longchau.vn');
+                                    // while($la5=$sc5->fetch()){
+                                    //     system('python ../backend/product_link/longchau_link.py '.$la5['link'].'');
+                                    // }
+                                    $tam;
+                                    $qww='';
+                                    $qww1='';
+                                    $qww2='';
+                                    $qww3='';
+                                    $qww4='';
+                                    $qww5='';
+                                    $qww6= '';
+                                    $qwwd=0;
+                                    $qwwd1=0;
+                                    $qwwd2=0;
+                                    $qwwd3=0;
+                                    $qwwd4=0;
+                                    $qwwd5=0;
+                                    $qwwd6=0;
+                                    $po=1;
+                                     while($la=$sc->fetch()){
+                                       $tam=$la['link']; 
+                                       $qww=$qww.' '.$tam ;
+                                       $qwwd=$qwwd+1;
+                                    }
+                                    
+                                    
+                                    // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
+                                    // while($la=$sc->fetch()){
+                                    //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
+                                    // }
+                                    $sc1=$pro->search_capnhat($search,'pharmacity.vn');
+                                    while($la1=$sc1->fetch()){
+                                        $tam=$la1['link']; 
+                                        $qww1=$qww1.' '.$tam ;
+                                        $qwwd1=$qwwd1+1;
+                                    }
+                                    $sc2=$pro->search_capnhat($search,'thuocsi.pharex.vn');
+                                    while($la2=$sc2->fetch()){
+                                        $tam=$la2['link']; 
+                                       $qww2=$qww2.' '.$tam ;
+                                       $qwwd2=$qwwd2+1;
+                                    }
+                                    $sc3=$pro->search_capnhat($search,'medigoapp.com');
+                                    while($la3=$sc3->fetch()){
+                                        $tam=$la3['link']; 
+                                       $qww3=$qww3.' '.$tam ; 
+                                       $qwwd3=$qwwd3+1;
+                                    }
+                                    $sc4=$pro->search_capnhat($search,'ankhang.com');
+                                    while($la4=$sc4->fetch()){
+                                        $tam=$la4['link']; 
+                                        $qww4=$qww4.' '.$tam ;
+                                        $qwwd4=$qwwd4+1;
+                                    }
+                                    $sc5=$pro->search_capnhat($search,'longchau.vn');
+                                    while($la5=$sc5->fetch()){
+                                        $tam=$la5['link']; 
+                                       $qww5=$qww5.' '.$tam ;
+                                       $qwwd5=$qwwd5+1;
+                                    }
+                                    $sc6=$pro->search_capnhat($search,'chosithuoc.com');
+                                    while($la6=$sc6->fetch()){
+                                        $tam=$la6['link']; 
+                                       $qww6=$qww6.' '.$tam ;
+                                       $qwwd6=$qwwd6+1;
+                                    }if($qwwd>0){
+                                        system('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww);
+                                    }
+                                    if($qwwd1>0){
+                                        system('python '.$duongdanf['xpathcaogia_link'] .$qww);
+                                        system('python ../backend/product_link/pharmacity_link.py '.$qww1.'');
+                                    }
+                                    if($qwwd2>0){
+                                        system('python '.$duongdanf['xpathcaogiapharex_link'] .$qww);
+                                        system('python ../backend/product_link/pharex_link.py '.$qww2.'');
+                                    }
+                                    if($qwwd3>0){
+                                        system('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww);
+                                        system('python ../backend/product_link/medigoapp_link.py '.$qww3.'');
+                                    }
+                                    if($qwwd4>0){
+                                        system('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww);
+                                        system('python ../backend/product_link/ankhang_link.py '.$qww4.'');
+                                    }
+                                    if($qwwd5>0){
+                                        system('python '.$duongdanf['xpathcaogialongchau_link'] .$qww);
+                                        system('python ../backend/product_link/longchau_link.py '.$qww5.'');
+                                    }
+                                    if($qwwd6>0){
+                                        system('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww);
+                                        system('python ../backend/product_link/chosithuoc_link.py '.$qww6.'');
+                                    }
+                                    ?>
+                                    <script>window.location.href='search.php';</script>
+                                    <?php
+                                }
+                            }
+                         ?>
+                    </form>
+                            </div>
+                        </div>
+                        <style>
+                            .adress-form1 .adress-form-content h2 {
+                            margin-left: 0;
+                            margin-top: -.5rem;
+                            justify-content: center;
+                            }
+                            .adress-form1 .adress-form-content h5{
+                                padding: 5px;
+                                font-size: 16px;
+                                color: #fd7e14;
+                            }
+                            .adress-form1 {
+                                position: fixed;
+                                width: 100vw;
+                                height: 100vh;
+                                background-color: rgba(0, 0, 0, 0.3);
+                                top: 0;
+                                left: 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-align: center;
+                                color: #333;
+                                display: none;
+                                z-index: 999;
+                                }
+                                .adress-form1 .adress-form-content{
+                                    font-size: 16px;
+                                    padding: 12px 0;
+                                    border-bottom: 1px solid #333;
+                                    position: relative;
+                                    color: #333;
+                                    margin-top: 10px;
+                                    margin-bottom: 0.8rem;
+                                    height: auto;
+                                }
+                                .adress-form1 .adress-form-content p{
+                                    font-size: 15px;
+                                }
+                        </style>
+                        <script>
+                            // Click vào Button Địa chỉ
+                            const adressbtn1 = document.querySelector('#adress-form1')
+                            // Click vào nút đóng ở phần địa chỉ giao hàng
+                            const adressclose1 = document.querySelector('#adress-close1')
+
+                            // const rightbtn = document.querySelector('.fa-chevron-right')
+                            // console.log(rightbtn)
+                            adressbtn1.addEventListener("click", function(){
+                                document.querySelector('.adress-form1').style.display = "flex"
+                            })
+
+                            adressclose1.addEventListener("click", function(){
+                                document.querySelector('.adress-form1').style.display = "none"
+                            })
+
+                        </script>
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">
@@ -280,7 +484,7 @@
                                         if($checkLoginAdmin == 0){
                                         ?>
                                         <?php 
-                                        if($sorow==0){
+                                        if(is_null($set['giacu'])){
                                         ?>
                                         <td class="primary" style="text-align: center;">-</td>
                                         <td class="primary" style="text-align: center;">-</td>
@@ -330,7 +534,7 @@
                                         }else{
                                             ?>
                                                 <?php 
-                                            if($sorow==0){
+                                            if(is_null($set['giacu'])){
                                             ?>
                                             <td class="primary" style="text-align: center;">-</td>
                                             <td class="primary" style="text-align: center;">-</td>

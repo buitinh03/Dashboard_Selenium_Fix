@@ -5,6 +5,8 @@ import os
 from dotenv import load_dotenv 
 import sys
 import codecs
+from scrapy.crawler import CrawlerProcess
+
 
 load_dotenv()
 
@@ -63,14 +65,14 @@ class LaptopSpider(scrapy.Spider):
 
     def start_requests(self):
         categories = {
-            'hoa-my-pham': 74,
-            'thuoc-tan-duoc': 341,
-            'thuoc-xuong-khop': 2,
-            'thuoc-giam-can': 9,
-            'thuoc-bo-than': 24,
-            'thuc-pham-chuc-nang': 133,
-            'thuc-pham-cao-cap': 14,
-            'thiet-bi-y-te': 33,
+            # 'hoa-my-pham': 74,
+            # 'thuoc-tan-duoc': 341,
+            # 'thuoc-xuong-khop': 2,
+            # 'thuoc-giam-can': 9,
+            # 'thuoc-bo-than': 24,
+            # 'thuc-pham-chuc-nang': 133,
+            # 'thuc-pham-cao-cap': 14,
+            # 'thiet-bi-y-te': 33,
             'thuoc-khong-ke-don': 6,
         }
 
@@ -179,3 +181,14 @@ class LaptopSpider(scrapy.Spider):
             self.logger.error(f"Error while inserting/updating data: {e}")
 
         yield data
+def run_spider():
+    process = CrawlerProcess(settings={
+        
+    })
+
+    process.crawl(LaptopSpider)
+    process.start()
+
+
+if __name__ == '__main__':
+    run_spider()

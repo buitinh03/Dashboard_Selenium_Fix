@@ -231,9 +231,7 @@ $(function(){
                     <?php
                     
                         $pro = new product();
-                            $demcol = $pro->testcol('giacu');
-                            $demd = $demcol->fetch();
-                            $sorow=$demd['sothu'];
+                            
                         ?>
                         <div id="pagination">
                             
@@ -494,6 +492,8 @@ $(function(){
                                     while($set = $result->fetch()){
                                         $j++
                                 ?>
+                                <?php 
+                            ?>
                             <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr">
                                         <td><?php echo $j;?></td>
@@ -503,7 +503,7 @@ $(function(){
                                         if($checkLoginAdmin == 0){
                                         ?>
                                         <?php 
-                                        if($sorow==0){
+                                        if(is_null($set['giacu'])){
                                         ?>
                                         <td  style="text-align: center;">-</td>
                                         <td  style="text-align: center;">-</td>
@@ -553,7 +553,7 @@ $(function(){
                                         }else{
                                         ?>
                                             <?php 
-                                        if($sorow==0){
+                                        if(is_null($set['giacu'])){
                                         ?>
                                         <td  style="text-align: center;">-</td>
                                         <td  style="text-align: center;">-</td>
@@ -601,7 +601,7 @@ $(function(){
                                         $asterisksString = str_repeat('*', $numberOfAsterisks);
                                         
                                         // Hiển thị kết quả
-                                        echo $maskedValue . $asteriskgoappsString;?>đ</td>
+                                        echo $maskedValue . $asterisksString;?>đ</td>
                                         <?php } ?>
 
                                         <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
@@ -622,7 +622,7 @@ $(function(){
                                         ?>
                                         <td class="nguonb"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
                                         <?php 
-                                            }elseif($set['nguon'] == 'thuocsi.pharex.vn'){
+                                            }elseif($set['nguon'] == 'thuocsi.pharex.vn' or $set['nguon'] == 'pharex.vn'){
                                                 ?>
                                                 <td class="nguonc"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharex.vn</a></td>
                                                 <?php

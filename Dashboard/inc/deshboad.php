@@ -559,15 +559,113 @@ $pd = new product();
                                        
                                     </script>
                                     <?php
+                                    $duongdan= require('db_config.php');
                                     if($_SERVER['REQUEST_METHOD']=='POST'){
                                         
                                         if (isset($_POST['runpython'])){
                                             echo '<div class="loading"></div>';
                                             ini_set('max_execution_time', (3600*24*7));
-                                            ignore_user_abort(true);
+                                            ignore_user_abort(true);    
                                             if(isset($_POST['alll'])){
-                                                if(empty(system('python ../backend/auto/run_chosithuoc.py && python ../backend/auto/thuocsi.py && python ../backend/auto/ankhang.py && python ../backend/auto/pharex.py && python ../backend/auto/longchau.py && python ../backend/auto/pharmacity.py && python ../backend/auto/medigo.py'))){
+                                                if(file_exists($duongdan['xpathcaogiachosithuoc'])){
+                                                    system('python '.$duongdan['xpathcaogiachosithuoc']);
+                                                }else{
                                                     echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của chosithuoc.com không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogiathuocsi'])){
+                                                    system('python '.$duongdan['xpathcaogiathuocsi']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của thuocsi.vn không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogiaankhang'])){
+                                                    system('python '.$duongdan['xpathcaogiaankhang']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của nhathuocankhang không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogiapharex'])){
+                                                    system('python '.$duongdan['xpathcaogiapharex']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của thuocsi.pharex.vn không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogialongchau'])){
+                                                    system('python '.$duongdan['xpathcaogialongchau']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của nhathuoclongchau không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogiapharma'])){
+                                                    system('python '.$duongdan['xpathcaogiapharma']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của pharmacity.com không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                if(file_exists($duongdan['xpathcaogiamedigo'])){
+                                                    system('python '.$duongdan['xpathcaogiamedigo']);
+                                                }else{
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Chương trình cào giá của medigoapp không tồn tại',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        
+                                                    </script>";
+                                                }
+                                                 echo "<script>
                                                 swal({
                                                     title: 'Thông báo',
                                                     text: 'Quá trình cào giá đã hoàn tất',
@@ -579,39 +677,120 @@ $pd = new product();
                                                         window.location='index.php'
                                                       }, 4000);
                                                 </script>";
-                                                }else echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location='index.php'
-                                                          }, 4000);
-                                                </script>";
+                                                
                                             }else{
                                                 if(isset($_POST['thuocsi'])){
-                                                    system('python ../backend/auto/thuocsi.py');
+                                                    
+                                                    if(file_exists($duongdan['xpathcaogiathuocsi'])){
+                                                        system('python '.$duongdan['xpathcaogiathuocsi']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của thuocsi.vn không tồn tại',
+                                                            icon: 'error',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['chosithuoc'])){
-                                                    system('python ../backend/auto/run_chosithuoc.py');
+                                                    if(file_exists($duongdan['xpathcaogiachosithuoc'])){
+                                                        system('python '.$duongdan['xpathcaogiachosithuoc']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của chosithuoc.com không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['ankhang'])){
-                                                    system('python ../backend/auto/ankhang.py');
+                                                    if(file_exists($duongdan['xpathcaogiaankhang'])){
+                                                        system('python '.$duongdan['xpathcaogiaankhang']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của nhathuocankhang không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['pharex'])){
-                                                    system('python ../backend/auto/pharex.py');
+                                                    if(file_exists($duongdan['xpathcaogiapharex'])){
+                                                        system('python '.$duongdan['xpathcaogiapharex']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của thuocsi.pharex.vn không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['longchau'])){
-                                                    system('python ../backend/auto/longchau.py');
+                                                    if(file_exists($duongdan['xpathcaogialongchau'])){
+                                                        system('python '.$duongdan['xpathcaogialongchau']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của nhathuoclongchau không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['pharmacity'])){
-                                                    system('python ../backend/auto/pharmacity.py');
+                                                    if(file_exists($duongdan['xpathcaogiapharma'])){
+                                                        system('python '.$duongdan['xpathcaogiapharma']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của pharmacity.com không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 if(isset($_POST['medigoapp'])){
-                                                    system('python ../backend/auto/medigo.py');
+                                                    if(file_exists($duongdan['xpathcaogiamedigo'])){
+                                                        system('python '.$duongdan['xpathcaogiamedigo']);
+                                                    }else{
+                                                        echo "<script>
+                                                        swal({
+                                                            title: 'Thông báo',
+                                                            text: 'Chương trình cào giá của medigoapp không tồn tại',
+                                                            icon: 'success',
+                                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                            buttons: false,  // Ẩn nút Close
+                                                            });
+                                                            
+                                                        </script>";
+                                                    }
                                                 }
                                                 echo "<script>
                                                     swal({
@@ -655,7 +834,7 @@ $pd = new product();
 
                         </script>
                     </div>
-                    <label style='font-size: 15px;display: flex;align-items: center;justify-content: center;'>Số trang đã cào Auto được: <?php echo $numpagecao?></label>
+                    
                     <?php
                     }else{
                         echo "";
