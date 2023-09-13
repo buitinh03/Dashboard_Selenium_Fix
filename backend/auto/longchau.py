@@ -12,7 +12,6 @@ import os
 import sys
 import codecs
 import logging
-from flask import Flask
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
@@ -23,12 +22,11 @@ logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctim
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.nhathuocankhang.com/"
 load_dotenv()
-
 try:
 # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
@@ -69,7 +67,7 @@ try:
         ''')
 
     link_lists = [
-        'trang-thiet-bi-y-te'
+        'trang-thiet-bi-y-te',
         'thuc-pham-chuc-nang',
         'duoc-my-pham',
         'cham-soc-ca-nhan',
@@ -134,7 +132,7 @@ try:
 
         while True:
             try:
-                view_more_button = WebDriverWait(driver, 10).until(
+                view_more_button = WebDriverWait(driver, 0.5).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "button.justify-center:nth-child(2)")))
                 if view_more_button.is_displayed():
                     view_more_button.click()
@@ -255,10 +253,9 @@ try:
 
             except Exception as e:
                 logging.error(f"Error scraping product: {str(e)}")
-
-            driver.quit()
-
+        
+        driver.quit()
+    
 except Exception as e:
     logging.error(f"Unhandled Exception: {str(e)}")
-
 

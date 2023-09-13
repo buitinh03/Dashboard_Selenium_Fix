@@ -21,8 +21,8 @@ logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctim
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=1920x1080")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
 try:
     driver = webdriver.Chrome(options=chrome_options)
     
