@@ -24,8 +24,8 @@
     $trang=ceil($sotrang/10);
     $_SESSION['sotrangsearch']=$trang;
 
-    if(isset($_GET['trang'])){
-        $trangthu=$_GET['trang'];
+    if(isset($_GET['page'])){
+        $trangthu=$_GET['page'];
         $from=$trangthu-4; if($from<3){$from=2;}
         $to=$trangthu+4; if($to>$trang){$to=$trang-1;}
         $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
