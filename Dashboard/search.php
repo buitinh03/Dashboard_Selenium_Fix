@@ -359,7 +359,7 @@
                                         <?php
                                             }
                                         ?>
-                                        
+                                        <th>MÃ CHUYỂN HÓA</th>
                                     </tr>
                                 </thead>
                         <style>
@@ -646,6 +646,10 @@
                                         <?php
                                             }
                                         ?>
+                                        <td><form action="#" method="post">
+                                            <input type="text" name='machuyenhoa' >
+                                            <button name='submitchuyenhoa'>Lưu</button>
+                                        </form></td>
                                     </tr>
                                     <?php 
                                             }
