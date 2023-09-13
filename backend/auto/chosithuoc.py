@@ -65,14 +65,14 @@ class LaptopSpider(scrapy.Spider):
 
     def start_requests(self):
         categories = {
-            # 'hoa-my-pham': 74,
-            # 'thuoc-tan-duoc': 341,
-            # 'thuoc-xuong-khop': 2,
-            # 'thuoc-giam-can': 9,
-            # 'thuoc-bo-than': 24,
-            # 'thuc-pham-chuc-nang': 133,
-            # 'thuc-pham-cao-cap': 14,
-            # 'thiet-bi-y-te': 33,
+            'hoa-my-pham': 74,
+            'thuoc-tan-duoc': 341,
+            'thuoc-xuong-khop': 2,
+            'thuoc-giam-can': 9,
+            'thuoc-bo-than': 24,
+            'thuc-pham-chuc-nang': 133,
+            'thuc-pham-cao-cap': 14,
+            'thiet-bi-y-te': 33,
             'thuoc-khong-ke-don': 6,
         }
 

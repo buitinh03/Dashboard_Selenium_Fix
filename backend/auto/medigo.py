@@ -79,7 +79,7 @@ try:
     # Mở trang web
     driver.get(base_url)
 
-    num_pages_to_scrape = 2
+    num_pages_to_scrape = 1000
     all_product_links = []
 
     for page_num in range(1, num_pages_to_scrape + 1):

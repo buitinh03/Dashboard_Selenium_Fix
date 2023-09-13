@@ -105,7 +105,7 @@ try:
         return product_name
 
 
-    num_pages_to_scrape = 1
+    num_pages_to_scrape = 10000
     link = []
 
     for page_num in range(1, num_pages_to_scrape + 1):
