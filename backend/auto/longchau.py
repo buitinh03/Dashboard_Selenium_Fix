@@ -12,7 +12,6 @@ import os
 import sys
 import codecs
 import logging
-from flask import Flask
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
@@ -28,7 +27,6 @@ chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://www.nhathuocankhang.com/"
 load_dotenv()
-
 try:
 # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
@@ -69,7 +67,7 @@ try:
         ''')
 
     link_lists = [
-        # 'trang-thiet-bi-y-te'
+        # 'trang-thiet-bi-y-te',
         # 'thuc-pham-chuc-nang',
         # 'duoc-my-pham',
         # 'cham-soc-ca-nhan',
@@ -94,13 +92,13 @@ try:
         # 'thuoc/mat',
         # 'cham-soc-ca-nhan/thiet-bi-lam-dep',
         # 'thuoc/tai-and-mieng-hong',
-        # 'thuoc/thuoc-gay-me-gay-te-che-pham-dung-trong-phau-thuat-va-cham-soc-vet-thuong',
+        'thuoc/thuoc-gay-me-gay-te-che-pham-dung-trong-phau-thuat-va-cham-soc-vet-thuong',
         # 'thuoc/dung-dich-tiem-tinh-mach-and-cac-loai-dung-dich-vo-trung-khac',
         # 'thuoc/san-pham-cham-soc-da-and-cham-soc-ca-nhan',
         # 'thuoc/chua-phan-loai',
         # 'thuoc/cac-san-pham-tri-lieu-khac',
         # 'thuoc/thuc-pham-bo-sung-and-cac-san-pham-ho-tro-suc-khoe',
-        'thuoc/mieng-dan-cao-xoa-dau',
+        # 'thuoc/mieng-dan-cao-xoa-dau',
     ]
     wait = WebDriverWait(driver, 1)
 
@@ -134,7 +132,7 @@ try:
 
         while True:
             try:
-                view_more_button = WebDriverWait(driver, 10).until(
+                view_more_button = WebDriverWait(driver, 0.5).until(
                     EC.presence_of_element_located((By.CSS_SELECTOR, "button.justify-center:nth-child(2)")))
                 if view_more_button.is_displayed():
                     view_more_button.click()
@@ -255,10 +253,9 @@ try:
 
             except Exception as e:
                 logging.error(f"Error scraping product: {str(e)}")
-
-            driver.quit()
-
+        
+        driver.quit()
+    
 except Exception as e:
     logging.error(f"Unhandled Exception: {str(e)}")
-
 

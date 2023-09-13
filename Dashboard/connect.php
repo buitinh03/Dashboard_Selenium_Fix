@@ -104,7 +104,18 @@
             return $result;
 
         }
-
+        function updatech($mach, $link){
+            $db =new connect();
+            $query="update thuocsi_vn set mach='".$mach."' where link = '".$link."'";
+            $result = $db->exec($query);
+            return $result;
+        }
+        function selectch($mach){
+            $db =new connect();
+            $query="select * from thuocsi_vn  where mach= trim('".$mach."')";
+            $result = $db->exec($query);
+            return $result;
+        }
         // function charproductorder(){
         //     $db=new connect();
         //     $query = "SELECT sum(sales_in_last_24_hours) as sale from thuocsi_vn";
@@ -218,7 +229,7 @@
          or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
          or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
          or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
-         ORDER BY gialech desc ";
+         ORDER BY COALESCE(mach, '') desc, gialech desc ";
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
          }

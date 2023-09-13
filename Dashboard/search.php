@@ -647,8 +647,13 @@
                                             }
                                         ?>
                                         <td><form action="#" method="post" style="display:flex">
-                                            <input type="text" name='machuyenhoa' value=''>
-                                            <button name='submitchuyenhoa'>Lưu</button>
+                                            <input type="hidden" name='linkch' value="<?php echo $set['link']?>">
+                                            <input type="hidden" name='machch' value="<?php echo $set['mach']?>">
+                                            <input type="text" name='machuyenhoa' placeholder="Nhập mã chuyển hóa" value='<?php echo $set['mach']?>'
+                                            style="border: 1px solid #333;border-radius: 10px;padding: 5px;color: black;margin: 5px;">
+                                            <button name='submitchuyenhoa' style="padding: 0 5px 0 5px;background: bisque;border-radius: 5px;color: #7380ec;">Lưu</button>
+                                           
+                                            
                                         </form></td>
                                     </tr>
                                     <?php 
@@ -659,6 +664,105 @@
                             
                                 </tbody>
                     </table>
+                    <?php 
+                                            if(isset($_POST['submitchuyenhoa'])){
+                                                if(isset($_POST['machuyenhoa'])&&$_POST['machuyenhoa']!=''){
+                                                if($_POST['machch']==''){
+                                                    $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
+                                                    if($updatech){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                }
+                                                else{
+                                                    $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
+                                                    if($updatech){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Cập nhật mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Cập nhật mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                }
+                                            }
+                                            else{
+                                                $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
+                                                    if($updatech){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Xóa mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Xóa mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            setTimeout(function() {
+                                                                window.history.back();
+                                                            }, 4000);
+                                                            </script>";
+                                                    }
+                                            }
+                                            }
+                                            ?>
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">

@@ -96,6 +96,7 @@ include_once('format/format.php');
                 <h2>Sản phẩm</h2>
                 <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>" target="_blank"><ins>bấm vào đây !</ins></a></p>
             </div>
+
              <?php
                 if($checkLoginAdmin == 0){
                 ?>
@@ -281,8 +282,93 @@ include_once('format/format.php');
                             }
                         }
                         ?>
+    <?php
+    $detailPro = $product->details_product_2($id, $link);
+        while($result = $detailPro->fetch()){
+            if($result["mach"]!=''){
+                $spcungmach=$pro->selectch($result["mach"]);
+                
+    ?>
+    <div class='sanphamlienquan'>
 
-      
+            <div class="warranty-policy-h1">
+                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['mach'] ?> </h1>
+            </div>
+            
+            <div class='danhsach'>
+    <?php   while($spcungda=$spcungmach->fetch()){
+        ?>
+
+        <div class='box'>
+                <img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="">
+                <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],50) ?></a></p>
+                <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
+            </div>
+        
+    
+            
+            <!-- <div class='box'>
+                <img src="images/profile-1.jpg" alt="" srcset="">
+                <p>panadol Extra</p>
+                <span>122.088đ</span>
+            </div>
+            <div class='box'>
+                <img src="images/profile-1.jpg" alt="" srcset="">
+                <p>panadol Extra</p>
+                <span>122.088đ</span>
+            </div>
+            <div class='box'>
+                <img src="images/profile-1.jpg" alt="" srcset="">
+                <p>panadol Extra</p>
+                <span>122.088đ</span>
+            </div> -->
+<?php
+    } ?>       </div>
+    </div>
+    <?php        }}
+    ?>
+    <style>
+        .sanphamlienquan .danhsach{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sanphamlienquan .danhsach .box{
+            margin: 1rem;
+            width: 21%;
+            height: 280px;
+            background-color: #fff;
+            border: 1px solid black;
+            border-radius: 5px;
+            
+        }
+        .sanphamlienquan .danhsach .box img{
+            width: 80%;
+            margin: 10% auto;
+            border-radius: 5px;
+        }
+        .sanphamlienquan .danhsach .box p a{
+            
+            color: #7380ec;
+            font-size: 16px;
+        }
+        .sanphamlienquan .danhsach .box p{
+            width: 80%;
+            margin: 0 10% 1%;
+            color: #7380ec;
+            font-size: 16px;
+        }
+        .sanphamlienquan .danhsach .box p a:hover{
+            color: gold;
+        }
+        .sanphamlienquan .danhsach .box span{
+            width: 80%;
+            margin: 0 10% 10%;
+            color:crimson;
+            font-size: 18px;
+        }
+    </style>
     
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
