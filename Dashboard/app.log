@@ -34,3 +34,5 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FF8ECED26AD+29]
 	RtlUserThreadStart [0x00007FF8EE44AA68+40]
 
+2023-09-14 11:45:14,117 [ERROR] - Unhandled Exception: Message: 
+

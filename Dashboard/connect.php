@@ -239,7 +239,7 @@
             WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
-        FROM thuocsi_vn where unaccent(masp) ~* replace(unaccent('$id_product_xemthem'), ' ', '.*') 
+        FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
         ORDER BY COALESCE(masp, '') desc, gialech desc ";
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
