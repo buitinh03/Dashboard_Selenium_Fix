@@ -25,8 +25,13 @@ logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctim
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
+<<<<<<< HEAD
 # chrome_options.add_argument("--headless")
 # chrome_options.add_argument("--window-size=1920x1080")
+=======
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
+>>>>>>> 12fddea9cc5f056bbf7007d119848ba6499169b7
 driver = webdriver.Chrome(options=chrome_options)
 
 # URL của trang web
@@ -78,7 +83,7 @@ try:
     # Mở trang web
     driver.get(base_url)
 
-    num_pages_to_scrape = 2
+    num_pages_to_scrape = 1000
     all_product_links = []
 
     for page_num in range(1, num_pages_to_scrape + 1):

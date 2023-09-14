@@ -110,9 +110,15 @@
             $result = $db->exec($query);
             return $result;
         }
-        function selectch($mach){
+        function selectch($mach, $limited=0,$st=0){
             $db =new connect();
-            $query="select * from thuocsi_vn  where mach= trim('".$mach."')";
+            $query="select * from thuocsi_vn  where mach= trim('".$mach."') ORDER BY cast(giamoi as real) asc limit ".$limited." offset "."((".$st."-1)*".$limited.")";;
+            $result = $db->exec($query);
+            return $result;
+        }
+        function countmach( $mach){
+            $db = new connect();
+            $query= "select count(*) as demmach from thuocsi_vn where mach = '".$mach."'";
             $result = $db->exec($query);
             return $result;
         }

@@ -285,8 +285,16 @@ include_once('format/format.php');
     <?php
     $detailPro = $product->details_product_2($id, $link);
         while($result = $detailPro->fetch()){
+            if(isset($_GET['luotsp'])){
+                $demluotsp=$_GET['luotsp'];
+            }else {
+                $demluotsp= 1;
+            }
             if($result["mach"]!=''){
-                $spcungmach=$pro->selectch($result["mach"]);
+                $somach=$pro->countmach($result['mach']);
+                $ssomach=$somach->fetch();
+                $demsomach=$ssomach['demmach'];
+                $spcungmach=$pro->selectch($result["mach"],4,$demluotsp);
                 
     ?>
     <div class='sanphamlienquan'>
@@ -295,12 +303,19 @@ include_once('format/format.php');
                 <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['mach'] ?> </h1>
             </div>
             
-            <div class='danhsach'>
-    <?php   while($spcungda=$spcungmach->fetch()){
+            <div class='danhsach'><div class="chuyensp">
+                <?php if($demluotsp>1){ ?>
+                
+                <span><a href="product_detail.php?id=<?php echo $result['photo'];?>&link=<?php echo $result['link'];?>&price=<?php echo $result['giamoi']?>&luotsp=<?php echo ($demluotsp + -1);?>"><</a></span>
+                
+    <?php } 
+    ?></div>
+    <div class="contai">
+    <?php while($spcungda=$spcungmach->fetch()){
         ?>
 
         <div class='box'>
-                <img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="">
+        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset=""></a></div>
                 <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],50) ?></a></p>
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
@@ -323,30 +338,78 @@ include_once('format/format.php');
                 <span>122.088đ</span>
             </div> -->
 <?php
-    } ?>       </div>
+    }?></div>      
+    <div class="chuyensp"><?php
+    if($demluotsp<($demsomach/4)){ ?> 
+                    <span><a href="product_detail.php?id=<?php echo $result['photo'];?>&link=<?php echo $result['link'];?>&price=<?php echo $result['giamoi']?>&luotsp=<?php echo ($demluotsp + 1);?>">></a></span>
+                
+                <?php } ?></div>
+    </div>
     </div>
     <?php        }}
     ?>
     <style>
+        .sanphamlienquan{
+            width: 110%;
+            margin-bottom: 2rem;
+        }
+        .sanphamlienquan .danhsach .chuyensp span{
+            align-items: center;
+            height: 100%;
+            
+        }
+        /* .sanphamlienquan .danhsach .chuyensp:hover ~ .sanphamlienquan .danhsach .chuyensp span
+        {
+            display: flex;
+        } */
+        .sanphamlienquan .danhsach .chuyensp span a{
+            font-size: 25px;
+            color:chocolate;
+
+        }
+        .sanphamlienquan .danhsach .chuyensp span a:hover{
+            font-size: 30px;
+
+        }
         .sanphamlienquan .danhsach{
+            display: grid;
+            grid-template-columns: 2rem auto 2rem;
+            align-items: center;
+        }
+        .sanphamlienquan .danhsach .contai{
+            
             margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .sanphamlienquan .danhsach .box{
+        .sanphamlienquan .danhsach .contai .box{
             margin: 1rem;
+            /* flex-grow: 1; */
             width: 21%;
-            height: 280px;
+            height: 21rem;
             background-color: #fff;
             border: 1px solid black;
-            border-radius: 5px;
+            border-radius: 10px;
             
+        }
+        .sanphamlienquan .danhsach .box .image a{
+            width: 100%;
+            height: 13.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5%;
         }
         .sanphamlienquan .danhsach .box img{
             width: 80%;
-            margin: 10% auto;
+            /* margin: 10% auto; */
             border-radius: 5px;
+        }
+        .sanphamlienquan .danhsach .box .image a img:hover{
+            margin-top: 3%;
+            margin-bottom: 13%;
+            transform: .8s;
         }
         .sanphamlienquan .danhsach .box p a{
             
@@ -367,6 +430,8 @@ include_once('format/format.php');
             margin: 0 10% 10%;
             color:crimson;
             font-size: 18px;
+            display: flex;
+            justify-content: right;
         }
     </style>
     

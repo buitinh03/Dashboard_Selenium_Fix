@@ -28,7 +28,7 @@ def run_scripts():
         script_files = [
             "ankhang.py",
             "longchau.py",
-            "run_chosithuoc.py",
+            "chosithuoc.py",
             "medigo.py",
             "pharex.py",
             "pharmacity.py",

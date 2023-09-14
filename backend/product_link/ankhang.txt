@@ -72,12 +72,12 @@ def check_product_exist(cursor, product_name):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
-# product_links = [
-#     "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/enervon",
-#     # "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/magne-b6-corbiere"
-#     # Thêm các liên kết sản phẩm khác vào đây
-# ]
-product_links=sys.argv[1:]
+product_links = [
+    "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/enervon",
+    "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/magne-b6-corbiere"
+    # Thêm các liên kết sản phẩm khác vào đây
+]
+
 for link in product_links:
     driver.get(link)
     sleep(1)

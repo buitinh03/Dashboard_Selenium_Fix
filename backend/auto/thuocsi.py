@@ -109,7 +109,11 @@ try:
 
         return product_name
 
+<<<<<<< HEAD
     num_pages_to_scrape = 1
+=======
+    num_pages_to_scrape = 1000
+>>>>>>> 12fddea9cc5f056bbf7007d119848ba6499169b7
     link = []
 
     for page_num in range(1, num_pages_to_scrape + 1):
