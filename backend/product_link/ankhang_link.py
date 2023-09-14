@@ -33,7 +33,7 @@ connection = psycopg2.connect(
 
 with connection.cursor() as cursor:
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS thuocsi_vn8 (
+        CREATE TABLE IF NOT EXISTS thuocsi_vn (
             title TEXT,
             giacu TEXT,
             ngaycu DATE,
@@ -69,7 +69,7 @@ def extract_product_info():
     return product_name
 
 def check_product_exist(cursor, product_name):
-    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn8 WHERE title = %s)", (product_name,))
+    cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
 # product_links = [
@@ -150,7 +150,7 @@ for link in product_links:
 
     with connection.cursor() as cursor:
         cursor.execute(f'''
-            INSERT INTO thuocsi_vn8 (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
+            INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
                 nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon, giacu, ngaycu)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NULL, NULL)
             ON CONFLICT (link) DO UPDATE
@@ -160,8 +160,8 @@ for link in product_links:
                 nuoc_san_xuat = excluded.nuoc_san_xuat,
                 hamluong_thanhphan = excluded.hamluong_thanhphan,
                 photo = excluded.photo,
-                giacu = thuocsi_vn8.giamoi,
-                ngaycu = thuocsi_vn8.ngaymoi,
+                giacu = thuocsi_vn.giamoi,
+                ngaycu = thuocsi_vn.ngaymoi,
                 giamoi='{gia_sales}',
                 ngaymoi='{ngay}';
         ''', (

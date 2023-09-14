@@ -13,14 +13,15 @@ include_once('format/format.php');
     }else{
         $id = $_GET['id'];
         $price = $_GET['price'];
-        $link = $_GET['link'];
+        $link = $_GET['link'];        
     }
     $q=0;
 ?>
 <section class="product-gallery-one">
 
 <?php
-    $detailPro = $product->details_product_2($id, $link);   
+    $detailPro = $product->details_product_2($id, $link);
+      
     $format = new Format();
     $pro = new product();                            
     $month=array();
@@ -68,8 +69,38 @@ include_once('format/format.php');
        Liên hệ</span> </p>
        <?php }else{ ?>
         <?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
-        <?php }?>
-      
+        <style>
+              .splq {
+
+                font-weight: normal;
+            }
+
+            .splq:hover {
+                color: blue;
+                font-weight: normal;
+            }
+
+            .sanphamlienquan {
+                /* position: absolute; */
+                
+            }
+           
+        </style>
+        <div class="sanphamlienquan">
+        
+        <h1>Các sản phẩm liên quan: </h1>
+        
+        <?php }
+        $masp=$result['masp'];
+        $detailPro2 = $product->details_product_3($masp); 
+        if($detailPro2){
+            while($result2 = $detailPro2->fetch()){
+        ?>
+          <a class="splq" href="product_detail.php?id=<?php echo $result2['photo'];?>&link=<?php echo $result2['link'];?>&price=<?php echo $result2['giamoi']?>" target="_blank" style="font-size:1.3rem;">- <?php echo $result2['title']; ?>  </a><br>
+       <?php }}?> 
+       
+          
+        </div>
 
     </div></div> 
     <div class="product_hamluong">

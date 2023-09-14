@@ -1,8 +1,4 @@
-
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-
-            <! END OF ASIDE>
+        <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
  
       <?php $fm = new Format();
@@ -11,11 +7,9 @@
     $from=1;
     $to=1;
     
-    if($_SERVER["REQUEST_METHOD"]== 'GET' && isset($_GET['submit'])){
-        $search=$_GET['keyword'];
-        
-        $_SESSION['search']=$search;
-        
+    if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp_xemthem'])){        
+        $id_product_xemthem = $_GET['text_xemthem'];
+        $_SESSION['xemthem']=$id_product_xemthem;
     }
 //
     if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp'])){
@@ -35,12 +29,12 @@
     
        
 //
-    $search=$_SESSION['search'];
-    $demtrang = $product->count_search($search);
+    $id_product_xemthem=$_SESSION['xemthem'];
+    $demtrang = $product->count_search_xemthem($id_product_xemthem);
     $demd = $demtrang->fetch();
     $sotrang=$demd['count'];
     $trang=ceil($sotrang/10);
-    $_SESSION['sotrangsearch']=$trang;
+    $_SESSION['sotrangxemthem']=$trang;
 
     if(isset($_GET['page'])){
         $trangthu=$_GET['page'];
@@ -55,8 +49,8 @@
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
-   
-    $product_search=$product->search($_SESSION['search'],$trangthu,10);
+    $xemthem = $product->search_xemthem($id_product_xemthem,$trangthu,10);
+    
     
      
 
@@ -89,7 +83,7 @@
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
                                         ?><li id="adress-form1" ><a href="#"><h3 style="margin-left: .5rem;font-size: 1.2rem;font-weight: bold;color: #7380ec;background: bisque;padding: 5px;margin-right: .5rem;margin-top: -.5rem;border-radius: 5px;">Cập nhật</h3></a></li><?php }?>
-                         <?php if(isset($_SESSION['search'])){echo $_SESSION['search']; } elseif(isset($search)) {echo $search;}?> </h2>
+                         <?php if(isset($_SESSION['xemthem'])){echo $_SESSION['xemthem']; } elseif(isset($id_product_xemthem)) {echo $id_product_xemthem;}?> </h2>
                     
                     
                         <div class="adress-form1">
@@ -97,8 +91,8 @@
                                 <h2>Cào Dữ Liệu Website <span id="adress-close1">X Đóng</span></h2>
 
                                     <form action="#" method="post">
-                                   <p style="font-weight: bolder;">Bạn có muốn thực hiện cào giá theo từ khóa: </p>
-                                   <h5><?php echo $search ?></h5>
+                                   <p style="font-weight: bolder;">Bạn có muốn thực hiện cào giá theo mã chuyển hóa: </p>
+                                   <h5><?php echo $id_product_xemthem ?></h5>
 
                                    <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
                                     <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
@@ -188,31 +182,31 @@
                                             ini_set('max_execution_time', (3600*24*7));
                                             ignore_user_abort(true);
                                             $pro = new product();
-                                    $sc=$pro->search_capnhat($search,'thuocsi.vn');
+                                    $sc=$pro->search_capnhat($id_product_xemthem,'thuocsi.vn');
                                     // while($la=$sc->fetch()){
                                     //     system('python ../backend/product_link/thuocsi_link.py '.$la['link'].'');
                                     // }
-                                    // // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
+                                    // // $sc=$pro->search_capnhat($id_product_xemthem,'"chosithuoc.com"');
                                     // // while($la=$sc->fetch()){
                                     // //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
                                     // // }
-                                    // $sc1=$pro->search_capnhat($search,'pharmacity.vn');
+                                    // $sc1=$pro->search_capnhat($id_product_xemthem,'pharmacity.vn');
                                     // while($la1=$sc1->fetch()){
                                     //     system('python ../backend/product_link/pharmacity_link.py '.$la1['link'].'');
                                     // }
-                                    // $sc2=$pro->search_capnhat($search,'thuocsi.pharex.vn');
+                                    // $sc2=$pro->search_capnhat($id_product_xemthem,'thuocsi.pharex.vn');
                                     // while($la2=$sc2->fetch()){
                                     //     system('python ../backend/product_link/pharex_link.py '.$la2['link'].'');
                                     // }
-                                    // $sc3=$pro->search_capnhat($search,'medigoapp.com');
+                                    // $sc3=$pro->search_capnhat($id_product_xemthem,'medigoapp.com');
                                     // while($la3=$sc3->fetch()){
                                     //     system('python ../backend/product_link/medigoapp_link.py '.$la3['link'].'');
                                     // }
-                                    // $sc4=$pro->search_capnhat($search,'ankhang.com');
+                                    // $sc4=$pro->search_capnhat($id_product_xemthem,'ankhang.com');
                                     // while($la4=$sc4->fetch()){
                                     //     system('python ../backend/product_link/ankhang_link.py '.$la4['link'].'');
                                     // }
-                                    // $sc5=$pro->search_capnhat($search,'longchau.vn');
+                                    // $sc5=$pro->search_capnhat($id_product_xemthem,'longchau.vn');
                                     // while($la5=$sc5->fetch()){
                                     //     system('python ../backend/product_link/longchau_link.py '.$la5['link'].'');
                                     // }
@@ -239,41 +233,41 @@
                                     }
                                     
                                     
-                                    // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
+                                    // $sc=$pro->search_capnhat($id_product_xemthem,'"chosithuoc.com"');
                                     // while($la=$sc->fetch()){
                                     //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
                                     // }
-                                    $sc1=$pro->search_capnhat($search,'pharmacity.vn');
+                                    $sc1=$pro->search_capnhat_xemthem($id_product_xemthem,'pharmacity.vn');
                                     while($la1=$sc1->fetch()){
                                         $tam=$la1['link']; 
                                         $qww1=$qww1.' '.$tam ;
                                         $qwwd1=$qwwd1+1;
                                     }
-                                    $sc2=$pro->search_capnhat($search,'thuocsi.pharex.vn');
+                                    $sc2=$pro->search_capnhat_xemthem($id_product_xemthem,'thuocsi.pharex.vn');
                                     while($la2=$sc2->fetch()){
                                         $tam=$la2['link']; 
                                        $qww2=$qww2.' '.$tam ;
                                        $qwwd2=$qwwd2+1;
                                     }
-                                    $sc3=$pro->search_capnhat($search,'medigoapp.com');
+                                    $sc3=$pro->search_capnhat_xemthem($id_product_xemthem,'medigoapp.com');
                                     while($la3=$sc3->fetch()){
                                         $tam=$la3['link']; 
                                        $qww3=$qww3.' '.$tam ; 
                                        $qwwd3=$qwwd3+1;
                                     }
-                                    $sc4=$pro->search_capnhat($search,'ankhang.com');
+                                    $sc4=$pro->search_capnhat_xemthem($id_product_xemthem,'ankhang.com');
                                     while($la4=$sc4->fetch()){
                                         $tam=$la4['link']; 
                                         $qww4=$qww4.' '.$tam ;
                                         $qwwd4=$qwwd4+1;
                                     }
-                                    $sc5=$pro->search_capnhat($search,'longchau.vn');
+                                    $sc5=$pro->search_capnhat_xemthem($id_product_xemthem,'longchau.vn');
                                     while($la5=$sc5->fetch()){
                                         $tam=$la5['link']; 
                                        $qww5=$qww5.' '.$tam ;
                                        $qwwd5=$qwwd5+1;
                                     }
-                                    $sc6=$pro->search_capnhat($search,'chosithuoc.com');
+                                    $sc6=$pro->search_capnhat_xemthem($id_product_xemthem,'chosithuoc.com');
                                     while($la6=$sc6->fetch()){
                                         $tam=$la6['link']; 
                                        $qww6=$qww6.' '.$tam ;
@@ -535,12 +529,12 @@
                     ?>
                     <div id="pagination">
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="search_xemthem.php?&word=<?=($id_product_xemthem)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="search.php?&word=<?=($search)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
+                                <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
                             <?php } 
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="start">1</a>
+                            <a href="search_xemthem.php?&word=<?=($id_product_xemthem)?>&page=<?=(1)?>" id="start">1</a>
 
                             <?php
                             $page=array();                        
@@ -557,7 +551,7 @@
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                             
                         } ?>
@@ -567,11 +561,11 @@
                             <a href="#">...</a>
                             <?php
                             } ?> 
-                            <a href="search.php?&word=<?=($search)?>&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
+                            <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                        
                     </div>
@@ -579,7 +573,7 @@
                     <table>
                     <!-- <?php
                         $pro = new product();
-                            $demcol = $pro->search($search);
+                            $demcol = $pro->search($id_product_xemthem);
                             $demd = $demcol->fetch();
                             $sorow=$demd['sothu'];
                      ?> -->
@@ -732,9 +726,9 @@
                         </style>
                         <?php 
                         $format = new Format();
-                        if(!empty($product_search) ){
+                        if(!empty($xemthem) ){
                             $j=0;
-                            while($set = $product_search->fetch()){
+                            while($set = $xemthem->fetch()){
                                 $giabd[$j]=$set['giamoi'];
                                 $tenbd[$j]=$set['title'];
                                 $nguonbd[$j]=$set['nguon'];
@@ -899,21 +893,16 @@
                                         <td><div><form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; width:80%;">
-                                            <button type="submit" id="themma" name="submitMasp" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Thêm mã</button>
+                                            <button type="submit" name="submitMasp" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Thêm mã</button>
                                         </form></div></td>
                                         <?php }else{ ?>
                                             <td><div style="display:flex;">
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; width:80%;">
-                                                <button type="submit" id="suama" name="submitMasp_sua" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Sửa mã</button>
+                                                <button type="submit" name="submitMasp_sua" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Sửa mã</button>
                                             </form>
-                                            <form action="search_xemthem.php" method="get">
-                                                
-                                                <input type="hidden" name="text_xemthem" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; width:80%;">
-                                               
-                                                <button type="submit" name="submitMasp_xemthem" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Xem thêm</button>
-                                            </form>
+                                            
                                         </div></td>
                                         <?php } ?>
                                         
@@ -931,18 +920,16 @@
                                     ?>
                             
                                 </tbody>
-                                
-                
                     </table>
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">
                             
                             <?php if($trangthu==1){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <a href="search_xemthem.php?&word=<?=($id_product_xemthem)?>&page=<?=(1)?>" id="st" style="display:none">Trước</a>
                             <?php }else{ ?> 
-                                <a href="search.php?&word=<?=($search)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
-                            <?php } ?><a href="search.php?&word=<?=($search)?>&page=<?=(1)?>" id="start1">1</a><?php
+                                <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } ?><a href="search_xemthem.php?&word=<?=($id_product_xemthem)?>&page=<?=(1)?>" id="start1">1</a><?php
                             $page=array();                        
                             for($i=$from;$i<=$to;$i++){
                                 $page[$i]="p".($i);
@@ -957,7 +944,7 @@
                             for($i=$from;$i<=$to;$i++){
                                                      
                             ?>
-                            <a href="search.php?&word=<?=($search)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
                             <?php
                             
                         } ?>
@@ -967,11 +954,11 @@
                             <a href="#">...</a>
                             <?php
                             } ?>
-                        <a href="search.php?&word=<?=($search)?>&page=<?=($trang)?>" id="end1"><?php echo $trang;?></a>
+                        <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($trang)?>" id="end1"><?php echo $trang;?></a>
                         <?php if($trangthu>=$trang){ ?> 
-                            <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
-                        <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
+                        <a href="search.php?&word=<?=($id_product_xemthem)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                         
                     </div>
@@ -1033,7 +1020,7 @@
             
             ?>
                 <div class="recent-order sosanh"  style="padding-top:2.5rem;">
-                    <h2 style="padding-top:1rem;">BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($search)){echo $search; }?> </h2> 
+                    <h2 style="padding-top:1rem;">BIỂU ĐỒ SO SÁNH CHO TỪ KHÓA TÌM KIẾM: <?php if(isset($id_product_xemthem)){echo $id_product_xemthem; }?> </h2> 
                     <canvas id="myChart"  style="height: 300px; width: 88%; margin-bottom: 3rem;"></canvas>
                       
                         
