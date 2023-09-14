@@ -13,14 +13,15 @@ include_once('format/format.php');
     }else{
         $id = $_GET['id'];
         $price = $_GET['price'];
-        $link = $_GET['link'];
+        $link = $_GET['link'];        
     }
     $q=0;
 ?>
 <section class="product-gallery-one">
 
 <?php
-    $detailPro = $product->details_product_2($id, $link);   
+    $detailPro = $product->details_product_2($id, $link);
+      
     $format = new Format();
     $pro = new product();                            
     $month=array();
@@ -68,8 +69,9 @@ include_once('format/format.php');
        Liên hệ</span> </p>
        <?php }else{ ?>
         <?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
+        
         <?php }?>
-      
+        
 
     </div></div> 
     <div class="product_hamluong">
@@ -290,17 +292,17 @@ include_once('format/format.php');
             }else {
                 $demluotsp= 1;
             }
-            if($result["mach"]!=''){
-                $somach=$pro->countmach($result['mach']);
+            if($result["masp"]!=''){
+                $somach=$pro->countmach($result['masp']);
                 $ssomach=$somach->fetch();
                 $demsomach=$ssomach['demmach'];
-                $spcungmach=$pro->selectch($result["mach"],4,$demluotsp);
+                $spcungmach=$pro->selectch($result["masp"],4,$demluotsp);
                 
     ?>
     <div class='sanphamlienquan'>
 
             <div class="warranty-policy-h1">
-                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['mach'] ?> </h1>
+                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['masp'] ?> <a href="search_xemthem.php?masp=<?php echo $result['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">Tất cả SP <i class="fa fa-angle-right"></i></a></h1>
             </div>
             
             <div class='danhsach'><div class="chuyensp">

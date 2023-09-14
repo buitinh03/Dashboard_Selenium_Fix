@@ -17,6 +17,72 @@
         $_SESSION['search']=$search;
         
     }
+//
+    if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp'])){
+        $id = $_GET['id_p'];
+        $id_product = $_GET['text'];
+
+        $insert_id_product = $product->insert_id_product($id, $id_product);
+        if($insert_id_product){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                           
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            
+                                                            </script>";
+                                                    }
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp_sua'])){
+        $id_sua = $_GET['id_p_sua'];
+        $id_product_sua = $_GET['text_sua'];
+
+        $insert_id_product_sua = $product->insert_id_product_sua($id_sua, $id_product_sua);
+        if($insert_id_product_sua){
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa thành công',
+                    icon: 'success',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
+        else{
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa không thành công',
+                    icon: 'error',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
+    }
+    
+    
+       
+//
     $search=$_SESSION['search'];
     $demtrang = $product->count_search($search);
     $demd = $demtrang->fetch();
@@ -84,14 +150,92 @@
 
                                    <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
                                     <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
+                                    <script>
+                                document.getElementById("runButton1").addEventListener("click",function(){
+                                        var fun=[a,b]
+                                        for(var i=0;i<fun.length;i++){
+                                            fun[i]();
+                                        }
+                                    })
+                                    function a(){
+                                    // Thực hiện một yêu cầu HTTP (AJAX) để chạy file Python
+                                    setTimeout(function(){
+                                        document.querySelector('.adress-form1').style.display = "none";
+                                        
+                                    },5000)
+                                    //var xhr = new XMLHttpRequest();
+                                    // xhr.open("GET", "/run-python", true); // Đổi "/run-python" thành URL tương ứng với file Python của bạn
+                                    // xhr.send();
                                     
+                                    // Xử lý kết quả từ server (nếu cần thiết)
+                                    // xhr.onreadystatechange = function() {
+                                    //     if (xhr.readyState === 4 && xhr.status === 200) {
+                                    //     var response = xhr.responseText;                       
+                                    //     }                        
+                                    // }; 
+                                                
+                                    };
+                                    function b(){                        
+                                        swal({
+                                        title: "Thông báo",
+                                        text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
+                                        icon: "success",
+                                        timer: 3000, 
+                                        buttons: false,
+                                        });
+                                        setTimeout(function() {   <?php sleep(1)?>                             
+                                            }, 4000);
+                                            
+                                    }
+                                    </script>         
                         <?php
                             if($_SERVER['REQUEST_METHOD']=='POST'){
                                 if(isset($_POST['Capnhattimkiem'])){
-                                    ini_set('max_execution_time', (3600*24*7));
-                                    ignore_user_abort(true);
-                                    $pro = new product();
+                                    
                                     $duongdanf=require('db_config.php');
+                                    if(!file_exists($duongdanf['xpathcaogiathuocsi_link'])){
+                                        echo "<script>
+                                                swal({
+                                                    title: 'Thông báo',
+                                                    text: 'File thuocsi.py không tồn tại!',
+                                                    icon: 'error',
+                                                    timer: 3000,
+                                                    buttons: false,
+                                                });
+                                                </script>";}
+                                    if(!file_exists($duongdanf['xpathcaogiapharex_link'])){
+                                        echo "<script>
+                                                swal({
+                                                    title: 'Thông báo',
+                                                    text: 'File pharex.py không tồn tại!',
+                                                    icon: 'error',
+                                                    timer: 3000,
+                                                    buttons: false,
+                                                });
+                                                </script>";}
+                                if(!file_exists($duongdanf['xpathcaogiamedigo_link'])){
+                                    echo "<script>
+                                            swal({
+                                                title: 'Thông báo',
+                                                text: 'File medigo.py không tồn tại!',
+                                                icon: 'error',
+                                                timer: 3000,
+                                                buttons: false,
+                                            });
+                                            </script>";}
+                                if(!file_exists($duongdanf['xpathcaogiapharma_link'])){
+                                    echo "<script>
+                                            swal({
+                                                title: 'Thông báo',
+                                                text: 'File pharmacity.py không tồn tại!',
+                                                icon: 'error',
+                                                timer: 3000,
+                                                buttons: false,
+                                            });
+                                            </script>";}
+                                            ini_set('max_execution_time', (3600*24*7));
+                                            ignore_user_abort(true);
+                                            $pro = new product();
                                     $sc=$pro->search_capnhat($search,'thuocsi.vn');
                                     // while($la=$sc->fetch()){
                                     //     system('python ../backend/product_link/thuocsi_link.py '.$la['link'].'');
@@ -184,34 +328,194 @@
                                        $qwwd6=$qwwd6+1;
                                     }if($qwwd>0){
                                         system('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File thuocsi.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                     }
                                     if($qwwd1>0){
-                                        system('python '.$duongdanf['xpathcaogiapharma_link'] .$qww1);
                                         
+                                        system('python '.$duongdanf['xpathcaogiapharma_link'] .$qww1);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";
                                     }
                                     if($qwwd2>0){
                                         system('python '.$duongdanf['xpathcaogiapharex_link'] .$qww2);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File pharex.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                         
                                     }
                                     if($qwwd3>0){
                                         system('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww3);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File medigo.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                        
                                     }
                                     if($qwwd4>0){
                                         system('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww4);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File ankhang.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                         
                                     }
                                     if($qwwd5>0){
                                         system('python '.$duongdanf['xpathcaogialongchau_link'] .$qww5);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File longchau.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                         
                                     }
                                     if($qwwd6>0){
                                         system('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6);
+                                        echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File chosithuoc.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
                                         
                                     }
-                                    ?>
-                                    <script>window.location.href='search.php';</script>
-                                    <?php
+                                    
                                 }
                             }
                          ?>
@@ -351,6 +655,7 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
+                                        <th>MÃ CHUYỂN HÓA</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -359,7 +664,7 @@
                                         <?php
                                             }
                                         ?>
-                                        <th>MÃ CHUYỂN HÓA</th>
+                               
                                     </tr>
                                 </thead>
                         <style>
@@ -637,7 +942,27 @@
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
-                                        <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                       
+                                        <?php if($set['masp'] == null){?>
+                                        <td><div><form action="" method="get">
+                                            <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 85%;">
+                                            <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                        </form></div></td>
+                                        <?php }else{ ?>
+                                         
+                                            <td><div >
+                                            <form action="" method="get">
+                                                <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
+                                                <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <a href="search_xemthem.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                            </form>
+                                            
+                                        </div></td>
+                                        <?php } ?>
+
+                                        <td class="chitiet"  style="margin-left: 1rem;"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                         
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -646,15 +971,7 @@
                                         <?php
                                             }
                                         ?>
-                                        <td><form action="#" method="post" style="display:flex">
-                                            <input type="hidden" name='linkch' value="<?php echo $set['link']?>">
-                                            <input type="hidden" name='machch' value="<?php echo $set['mach']?>">
-                                            <input type="text" name='machuyenhoa' placeholder="Nhập mã chuyển hóa" value='<?php echo $set['mach']?>'
-                                            style="border: 1px solid #333;border-radius: 10px;padding: 5px;color: black;margin: 5px;">
-                                            <button name='submitchuyenhoa' style="padding: 0 5px 0 5px;background: bisque;border-radius: 5px;color: #7380ec;">Lưu</button>
-                                           
-                                            
-                                        </form></td>
+                                        
                                     </tr>
                                     <?php 
 
@@ -663,106 +980,11 @@
                                     ?>
                             
                                 </tbody>
+                                
+                
                     </table>
-                    <?php 
-                                            if(isset($_POST['submitchuyenhoa'])){
-                                                if(isset($_POST['machuyenhoa'])&&$_POST['machuyenhoa']!=''){
-                                                if($_POST['machch']==''){
-                                                    $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
-                                                    if($updatech){
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Thêm mã chuyển hóa thành công',
-                                                                icon: 'success',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                                    else{
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Thêm mã chuyển hóa không thành công',
-                                                                icon: 'error',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                                }
-                                                else{
-                                                    $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
-                                                    if($updatech){
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Cập nhật mã chuyển hóa thành công',
-                                                                icon: 'success',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                                    else{
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Cập nhật mã chuyển hóa không thành công',
-                                                                icon: 'error',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                                }
-                                            }
-                                            else{
-                                                $updatech=$pro->updatech($_POST['machuyenhoa'],$_POST['linkch']);
-                                                    if($updatech){
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Xóa mã chuyển hóa thành công',
-                                                                icon: 'success',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                                    else{
-                                                        echo "<script>
-                                                            swal({
-                                                                title: 'Thông báo',
-                                                                text: 'Xóa mã chuyển hóa không thành công',
-                                                                icon: 'error',
-                                                                timer: 3000,
-                                                                buttons: false,
-                                                            });
-                                                            setTimeout(function() {
-                                                                window.history.back();
-                                                            }, 4000);
-                                                            </script>";
-                                                    }
-                                            }
-                                            }
-                                            ?>
+                     
+                                            
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">
@@ -931,4 +1153,5 @@
          
 
             </div>   <script src="js/time.js"></script>
+            <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <?php include_once('inc/footer.php')?>
