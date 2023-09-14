@@ -4,7 +4,7 @@
         'port' => '5432',
         'database' => 'thuocsi',
         'user' => 'postgres',
-        'password' => '123456789a',
+        'password' => 'haquangvinh',
         'xpathcaogiathuocsi' => '../backend/auto/thuocsi.py',
         'xpathcaogiachosithuoc' => '../backend/auto/run_chosithuoc.py',
         'xpathcaogiapharma' => '../backend/auto/pharmacity.py',

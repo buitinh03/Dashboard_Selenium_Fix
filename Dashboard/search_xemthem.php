@@ -601,8 +601,9 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>CHỨC NĂNG</th>
                                         <th>MÃ CHUYỂN HÓA</th>
+                                        <th>CHỨC NĂNG</th>
+                           
                                         <?php
                                             for($k=1;$k<=12;$k++){
                                                 ?>
@@ -888,7 +889,7 @@
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
-                                        <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                      
                                         <?php if($set['masp'] == null){?>
                                         <td><div><form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
@@ -899,13 +900,14 @@
                                             <td><div style="display:flex;">
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; width:80%;">
-                                                <button type="submit" name="submitMasp_sua" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Sửa mã</button>
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; max-width:80%;">
+                                                <button type="submit" name="submitMasp_sua" style="position:absolute; border: 1px solid #333; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                             </form>
                                             
                                         </div></td>
                                         <?php } ?>
                                         
+                                        <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                         <?php
                                             for($k=1;$k<=12;$k++){
                                                 ?>
