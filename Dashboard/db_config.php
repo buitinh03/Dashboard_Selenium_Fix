@@ -18,6 +18,6 @@
         'xpathcaogiapharex_link' => '../backend/product_link/pharex_link.py',
         'xpathcaogiamedigo_link' => '../backend/product_link/medigoapp_link.py',
         'xpathcaogialongchau_link' => '../backend/product_link/longchau_link.py',
-        'xpathcaogiaankhang_link' => '../backend/product_link/ankhang_link.py',
+        'xpathcaogiaankhang_link' => '../backend/product_link/ankhang.py',
     ]
 ?>

@@ -7,38 +7,42 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
-from dotenv import load_dotenv
-import os
+from decouple import config
 import sys
 import codecs
 import logging
 
-
-# def caogia(trangnt):
+# Thiết lập mã hóa cho đầu ra và lỗi
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+
 # Cấu hình ghi log
 log_filename = 'app.log'
 logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
 
+# Cài đặt Chrome Driver
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
+# Không mở cửa sổ trình duyệt
 chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920x1080")
+
+# Khởi tạo trình duyệt
 driver = webdriver.Chrome(options=chrome_options)
+
+# URL cần scrape
 url = "https://thuocsi.vn/products"
-load_dotenv()
 
 try:
     # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
-        host=os.getenv("DB_HOST"),
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD")
+        host=config("DB_HOST"),
+        database=config("DB_NAME"),
+        user=config("DB_USER"),
+        password=config("DB_PASSWORD")
     )
 
+    # Tạo bảng nếu chưa tồn tại
     with connection.cursor() as cursor:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
@@ -65,12 +69,14 @@ try:
                 hamluong_thanhphan TEXT,
                 thong_tin_san_pham TEXT,
                 link TEXT primary key,
-                nguon TEXT DEFAULT 2
+                nguon TEXT DEFAULT 'thuocsi.vn'
             )
         ''')
         connection.commit()
 
+    # Truy cập trang web
     driver.get(url)
+
     try:
         wait = WebDriverWait(driver, 10)
         click_login = wait.until(EC.element_to_be_clickable(
@@ -82,8 +88,8 @@ try:
         password_input = wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
-        username_input.send_keys(os.getenv('USERNAMET'))
-        password_input.send_keys(os.getenv('PASSWORD'))
+        username_input.send_keys(config('USERNAMET'))
+        password_input.send_keys(config('PASSWORD'))
 
         login_button = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_register__zCg7F > .MuiButton-label")))
@@ -95,7 +101,6 @@ try:
         print("Vui lòng đợi, sản phẩm đang tiến hành load")
         connection.commit()
 
-
     def extract_product_info():
 
         product_name_element = wait.until(
@@ -104,8 +109,7 @@ try:
 
         return product_name
 
-
-    num_pages_to_scrape = 1
+    num_pages_to_scrape = 1000
     link = []
 
     for page_num in range(1, num_pages_to_scrape + 1):
@@ -125,21 +129,18 @@ try:
             lin = i.get_attribute('href')
             link.append(lin)
 
-
     def check_product_exist(cursor, product_name):
-        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn11 WHERE title = %s)", (product_name,))
+        cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
-
     for a in link:
-        # wait = WebDriverWait(driver, 1)
         try:
             ngay = datetime.datetime.now()
             a = a.replace("/loading", "")
             driver.get(a)
             ten = ""
             price = ""
-            anh = ""
+            img_url = ""
             nha_san_xuat = ""
             nuoc_san_xuat = ""
             tphl = "Không đề cập"
@@ -182,7 +183,6 @@ try:
 
             try:
                 div_elementt = driver.find_element(By.CLASS_NAME, "styles_content__aW6Pn")
-
                 thong_tin_san_pham = div_elementt.text
             except NoSuchElementException:
                 thong_tin_san_pham = "Không đề cập"
@@ -191,16 +191,14 @@ try:
 
             try:
                 div_element = driver.find_element(By.XPATH, "//div[p[contains(text(), 'Nước sản xuất:')]]")
-
                 nuoc_element = div_element.find_element(By.XPATH,
                                                         ".//p[contains(text(), 'Nước sản xuất:')]/following-sibling::p")
                 nuoc_san_xuat = nuoc_element.text.strip()
-
             except NoSuchElementException:
                 nuoc_san_xuat = "Không đề cập"
+
             try:
                 div_element = driver.find_element(By.XPATH, "//div[p[contains(text(), 'Nhà sản xuất:')]]")
-
                 nsx_element = div_element.find_element(By.XPATH,
                                                         ".//p[contains(text(), 'Nhà sản xuất:')]/following-sibling::p")
                 nha_san_xuat = nsx_element.text.strip()
@@ -209,7 +207,7 @@ try:
 
             try:
                 tt = driver.find_elements(By.CSS_SELECTOR, "div.styles_rightContent__u_m01")
-                tphl = []  # Create an empty list to store the text of each element
+                tphl = []
 
                 for element in tt:
                     tphl.append(element.text.replace("Thành phần", "").strip().replace("\n"," "))
@@ -242,8 +240,8 @@ try:
         except Exception as e:
             logging.error(f"Error scraping product: {str(e)}")
 
-        driver.quit()
+    # Sau khi scrape xong, đóng trình duyệt
+    driver.quit()
 
 except Exception as e:
     logging.error(f"Unhandled Exception: {str(e)}")
-

@@ -1,0 +1,26 @@
+2023-09-13 14:34:46,454 [ERROR] - Unhandled Exception: HTTPConnectionPool(host='localhost', port=58069): Max retries exceeded with url: /session/397afaa8f6aa3228458800a39b78a8a1/url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001FFF5A25C90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2023-09-13 14:35:19,284 [ERROR] - Error scraping product: 'NoneType' object has no attribute 'text'
+2023-09-13 14:35:19,286 [ERROR] - Unhandled Exception: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.188)
+Stacktrace:
+	GetHandleVerifier [0x00007FF68CD552A2+57122]
+	(No symbol) [0x00007FF68CCCEA92]
+	(No symbol) [0x00007FF68CB9E3AB]
+	(No symbol) [0x00007FF68CB7E1B9]
+	(No symbol) [0x00007FF68CBFB417]
+	(No symbol) [0x00007FF68CC0E24F]
+	(No symbol) [0x00007FF68CBF6DB3]
+	(No symbol) [0x00007FF68CBCD2B1]
+	(No symbol) [0x00007FF68CBCE494]
+	GetHandleVerifier [0x00007FF68CFFEF82+2849794]
+	GetHandleVerifier [0x00007FF68D051D24+3189156]
+	GetHandleVerifier [0x00007FF68D04ACAF+3160367]
+	GetHandleVerifier [0x00007FF68CDE6D06+653702]
+	(No symbol) [0x00007FF68CCDA208]
+	(No symbol) [0x00007FF68CCD62C4]
+	(No symbol) [0x00007FF68CCD63F6]
+	(No symbol) [0x00007FF68CCC67A3]
+	BaseThreadInitThunk [0x00007FFD85207614+20]
+	RtlUserThreadStart [0x00007FFD871426B1+33]
+

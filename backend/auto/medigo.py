@@ -14,10 +14,10 @@ import sys
 import codecs
 import logging
 
-
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+
 # Cấu hình ghi log
 log_filename = 'app.log'
 logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
@@ -25,7 +25,7 @@ logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctim
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -35,8 +35,8 @@ base_url = "https://www.medigoapp.com/danh-muc/san-pham"
 # Tải biến môi trường từ file .env
 load_dotenv()
 
-try: 
-# Kết nối đến cơ sở dữ liệu PostgreSQL
+try:
+    # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
@@ -69,17 +69,16 @@ try:
                 nuoc_san_xuat TEXT,
                 hamluong_thanhphan TEXT,
                 thong_tin_san_pham TEXT,
-                link TEXT primary key,
+                link TEXT PRIMARY KEY,
                 nguon TEXT DEFAULT ''
             )
         ''')
         wait = WebDriverWait(driver, 1)
 
-
     # Mở trang web
     driver.get(base_url)
 
-    num_pages_to_scrape = 2
+    num_pages_to_scrape = 1000
     all_product_links = []
 
     for page_num in range(1, num_pages_to_scrape + 1):
@@ -99,7 +98,6 @@ try:
 
         all_product_links.extend(links)
 
-
     def extract_product_info():
         product_name_element = wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "h1.product-name")))
@@ -110,7 +108,6 @@ try:
         cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
-
     for a in all_product_links:
         driver.get(a)
 
@@ -118,7 +115,6 @@ try:
             button_element = driver.find_element(By.CSS_SELECTOR, "button.ml-2:nth-child(1)")
             button_element.click()
             time.sleep(1)
-
         except NoSuchElementException:
             pass
 
@@ -157,15 +153,13 @@ try:
                 thong_tin_san_pham_element = driver.find_element(By.CSS_SELECTOR, "p:nth-child(4) > .html-in-cms > div")
                 thong_tin_san_pham = thong_tin_san_pham_element.text
             except NoSuchElementException:
-                thong_tin_san_pham = "Không dề cập"
+                thong_tin_san_pham = "Không đề cập"
 
             try:
                 hamluong_thanhphan_element = driver.find_element(By.CSS_SELECTOR, "p:nth-child(2) > .html-in-cms > div")
                 hamluong_thanhphan = hamluong_thanhphan_element.text
-
-
             except NoSuchElementException:
-                hamluong_thanhphan = "không đề cập"
+                hamluong_thanhphan = "Không đề cập"
 
             try:
                 nha_san_xuat_element = driver.find_element(By.CSS_SELECTOR, "tr.mb-2:nth-child(5)")
@@ -188,11 +182,13 @@ try:
                     if "Nước sản xuất:" in nuoc_san_xuat_alt_element.text:
                         nuoc_san_xuat = nuoc_san_xuat_alt_element.text.replace("Nước sản xuất:", "").strip()
                     else:
-                        raise NoSuchElementException("Không tìm thấy 'Nước sản xuất:' trong tbody > .d-flex:nth-child(4)")
+                        raise NoSuchElementException(
+                            "Không tìm thấy 'Nước sản xuất:' trong tbody > .d-flex:nth-child(4)")
                 except NoSuchElementException:
                     nuoc_san_xuat = "Không đề cập"
 
-            photo = driver.find_element(By.CSS_SELECTOR, ".col-5 .custom-image-magnifiers > .img-fluid").get_attribute(
+            photo = driver.find_element(By.CSS_SELECTOR,
+                                        ".col-5 .custom-image-magnifiers > .img-fluid").get_attribute(
                 "src")
 
             ngay = datetime.datetime.now().date()
@@ -215,14 +211,12 @@ try:
                         giamoi='{gia_sales}',
                         ngaymoi='{ngay}';
                 ''', (
-                    product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, a, 'medigoapp.com'))
+                    product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan,
+                    thong_tin_san_pham, a, 'medigoapp.com'))
                 connection.commit()
 
         except Exception as e:
             logging.error(f"Error scraping product: {str(e)}")
-            
-        driver.quit()
 
 except Exception as e:
     logging.error(f"Unhandled Exception: {str(e)}")
-

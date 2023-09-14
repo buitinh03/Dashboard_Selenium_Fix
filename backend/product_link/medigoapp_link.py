@@ -79,6 +79,7 @@ def check_product_exist(cursor, product_name):
     return cursor.fetchone()[0]
 
 link = sys.argv[1:]
+# link = 'https://www.medigoapp.com/product/dung-dich-xit-sach-thong-mui-cho-nguoi-lon-xisat-chai-75ml.html'
 for a in link:
     driver.get(a)
     try:

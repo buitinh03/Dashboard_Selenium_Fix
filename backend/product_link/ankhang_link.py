@@ -74,7 +74,7 @@ def check_product_exist(cursor, product_name):
 
 # product_links = [
 #     "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/enervon",
-#     "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/magne-b6-corbiere"
+#     # "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/magne-b6-corbiere"
 #     # Thêm các liên kết sản phẩm khác vào đây
 # ]
 product_links=sys.argv[1:]
