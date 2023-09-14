@@ -924,10 +924,7 @@
                                         <?php
                                             }
                                         ?>
-                                        <td><form action="#" method="post" style="display:flex">
-                                            <input type="text" name='machuyenhoa' value=''>
-                                            <button name='submitchuyenhoa'>Lưu</button>
-                                        </form></td>
+                                        
                                     </tr>
                                     <?php 
 
