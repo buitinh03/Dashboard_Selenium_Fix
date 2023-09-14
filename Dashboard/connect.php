@@ -163,73 +163,7 @@
         }
 
 
-        // function buy_the_most(){
-        //     $db =  new connect();
-        //     $query = "SELECT title, sales_in_last_24_hours, photo, giamoi FROM thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1;";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function buy_at_Last(){
-        //     $db =  new connect();
-        //     $query = "SELECT MIN(sales_in_last_24_hours) AS buy_at_last FROM thuocsi_vn";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function buy_the_two(){
-        //     $db = new connect();
-        //     $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 1";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function buy_the_three(){
-        //     $db = new connect();
-        //     $query = "SELECT title,sales_in_last_24_hours,photo,giamoi FROM  thuocsi_vn ORDER BY sales_in_last_24_hours DESC LIMIT 1 OFFSET 2";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function phantramnhieunhat(){
-        //     $db = new connect();
-        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhat from thuocsi_vn";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function phantramnhieunhi(){
-        //     $db = new connect();
-        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieunhi from thuocsi_vn";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        // function phantramnhieuba(){
-        //     $db = new connect();
-        //     $query = "SELECT SUM(CAST(sales_in_last_24_hours AS real)) as phantramnhieuba from thuocsi_vn";
-        //     $result = $db->getList($query);
-        //     return $result;
-        // }
-
-        //search
-        // function search($name){
-        //     $db =  new connect();
-        //     $query="SELECT *,
-        // CASE
-        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-        //     WHEN cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
-        //     ELSE 0
-        //     END AS gialech   
-        // FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
-        //  or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
-        //  or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
-        //  or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
-        //  ORDER BY gialech desc ";
-        //      $result = $db->getList($query);
-        //     return $result;
-        // }
+       
         function search_xemthem($id_product_xemthem,$st=0,$limited=0){
             $db =  new connect();
             $query="SELECT *,
@@ -239,7 +173,7 @@
             WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
             ELSE 0
             END AS gialech   
-        FROM thuocsi_vn where unaccent(masp) ~* replace(unaccent('$id_product_xemthem'), ' ', '.*') 
+        FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
         ORDER BY COALESCE(masp, '') desc, gialech desc ";
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
