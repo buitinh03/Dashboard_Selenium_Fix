@@ -351,7 +351,7 @@ include_once('format/format.php');
     <?php        }}
     ?>
     <style>
-        .sanphamlienquan{
+           .sanphamlienquan{
             width: 110%;
             margin-bottom: 2rem;
         }
@@ -360,10 +360,12 @@ include_once('format/format.php');
             height: 100%;
             
         }
-        /* .sanphamlienquan .danhsach .chuyensp:hover ~ .sanphamlienquan .danhsach .chuyensp span
-        {
-            display: flex;
-        } */
+        .sanphamlienquan .danhsach .contai .box:hover a {
+            transform: translateY(-5px);
+            transition: 1s all ease;
+            color: gold;
+        }
+
         .sanphamlienquan .danhsach .chuyensp span a{
             font-size: 25px;
             color:chocolate;
@@ -379,7 +381,6 @@ include_once('format/format.php');
             align-items: center;
         }
         .sanphamlienquan .danhsach .contai{
-            
             margin-top: 2rem;
             display: flex;
             justify-content: space-between;
@@ -387,7 +388,6 @@ include_once('format/format.php');
         }
         .sanphamlienquan .danhsach .contai .box{
             margin: 1rem;
-            /* flex-grow: 1; */
             width: 21%;
             height: 21rem;
             background-color: #fff;
@@ -402,19 +402,20 @@ include_once('format/format.php');
             justify-content: center;
             align-items: center;
             margin-bottom: 5%;
+            transition:  .5s all ease;
         }
         .sanphamlienquan .danhsach .box img{
             width: 80%;
-            /* margin: 10% auto; */
             border-radius: 5px;
+            transition:  .5s all ease;
         }
         .sanphamlienquan .danhsach .box .image a img:hover{
             margin-top: 3%;
             margin-bottom: 13%;
-            transform: .8s;
+            transition:  .5s all ease;
+            transform: translateY(3px);
         }
         .sanphamlienquan .danhsach .box p a{
-            
             color: #7380ec;
             font-size: 16px;
         }
