@@ -136,7 +136,7 @@ $pd = new product();
                     <div class="profile">
                         <div class="info">
                         <?php $chucvu = Session::get('adminType');?>
-                             <p  style="margin-bottom: .3rem;">Chào,<b><?php echo Session::get('adminName');?><span style="font-size: .88rem;">(<?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?>)</span></b></p>
+                             <p  style="margin-bottom: .3rem;">Chào,<b><?php echo Session::get('adminName');?><span style="font-size: .7rem;">(<?php if($chucvu == 0){ echo "Admin";}else{echo "Nhân viên";} ?>)</span></b></p>
                           <?php
                           if(isset($_GET['action'])&&$_GET['action']=='logout'){
                             Session::unset();
