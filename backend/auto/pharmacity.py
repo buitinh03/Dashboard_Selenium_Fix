@@ -64,7 +64,7 @@ try:
                 nuoc_san_xuat TEXT,
                 hamluong_thanhphan TEXT,
                 thong_tin_san_pham TEXT,
-                link TEXT,
+                link TEXT  primary key,
                 nguon TEXT DEFAULT 'pharmacity.vn'
             )
         ''')

@@ -69,38 +69,9 @@ include_once('format/format.php');
        Liên hệ</span> </p>
        <?php }else{ ?>
         <?php echo number_format($result['giamoi']); ?><sup>đ</sup></span> </p>
-        <style>
-              .splq {
-
-                font-weight: normal;
-            }
-
-            .splq:hover {
-                color: blue;
-                font-weight: normal;
-            }
-
-            .sanphamlienquan {
-                /* position: absolute; */
-                
-            }
-           
-        </style>
-        <div class="sanphamlienquan">
         
-        <h1>Các sản phẩm liên quan: </h1>
+        <?php }?>
         
-        <?php }
-        $masp=$result['masp'];
-        $detailPro2 = $product->details_product_3($masp); 
-        if($detailPro2){
-            while($result2 = $detailPro2->fetch()){
-        ?>
-          <a class="splq" href="product_detail.php?id=<?php echo $result2['photo'];?>&link=<?php echo $result2['link'];?>&price=<?php echo $result2['giamoi']?>" target="_blank" style="font-size:1.3rem;">- <?php echo $result2['title']; ?>  </a><br>
-       <?php }}?> 
-       
-          
-        </div>
 
     </div></div> 
     <div class="product_hamluong">
@@ -127,6 +98,7 @@ include_once('format/format.php');
                 <h2>Sản phẩm</h2>
                 <p>Để tìm hiểu chi tiết hơn về sản phẩm vui lòng <a href="<?php echo $result['link'] ?>" target="_blank"><ins>bấm vào đây !</ins></a></p>
             </div>
+
              <?php
                 if($checkLoginAdmin == 0){
                 ?>
@@ -312,8 +284,141 @@ include_once('format/format.php');
                             }
                         }
                         ?>
+    <?php
+    $detailPro = $product->details_product_2($id, $link);
+        while($result = $detailPro->fetch()){
+            if(isset($_GET['luotsp'])){
+                $demluotsp=$_GET['luotsp'];
+            }else {
+                $demluotsp= 1;
+            }
+            if($result["masp"]!=''){
+                $somach=$pro->countmach($result['masp']);
+                $ssomach=$somach->fetch();
+                $demsomach=$ssomach['demmach'];
+                $spcungmach=$pro->selectch($result["masp"],4,$demluotsp);
+                
+    ?>
+    <div class='sanphamlienquan'>
 
-      
+            <div class="warranty-policy-h1">
+                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['masp'] ?> <a href="search_xemthem.php?masp=<?php echo $result['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">Tất cả SP <i class="fa fa-angle-right"></i></a></h1>
+            </div>
+            
+            <div class='danhsach'><div class="chuyensp">
+                <?php if($demluotsp>1){ ?>
+                
+                <span><a href="product_detail.php?id=<?php echo $result['photo'];?>&link=<?php echo $result['link'];?>&price=<?php echo $result['giamoi']?>&luotsp=<?php echo ($demluotsp + -1);?>"><</a></span>
+                
+    <?php } 
+    ?></div>
+    <div class="contai">
+    <?php while($spcungda=$spcungmach->fetch()){
+        ?>
+
+        <div class='box'>
+        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset=""></a></div>
+                <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],50) ?></a></p>
+                <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
+            </div>
+<?php
+    }?></div>      
+    <div class="chuyensp"><?php
+    if($demluotsp<($demsomach/4)){ ?> 
+                    <span><a href="product_detail.php?id=<?php echo $result['photo'];?>&link=<?php echo $result['link'];?>&price=<?php echo $result['giamoi']?>&luotsp=<?php echo ($demluotsp + 1);?>">></a></span>
+                
+                <?php } ?></div>
+    </div>
+    </div>
+    <?php        }}
+    ?>
+    <style>
+        .sanphamlienquan{
+            width: 110%;
+            margin-bottom: 2rem;
+        }
+        .sanphamlienquan .danhsach .chuyensp span{
+            align-items: center;
+            height: 100%;
+            
+        }
+        .sanphamlienquan .danhsach .contai .box:hover a {
+            transform: translateY(-5px);
+            transition: 1s all ease;
+            color: gold;
+        }
+
+        .sanphamlienquan .danhsach .chuyensp span a{
+            font-size: 25px;
+            color:chocolate;
+
+        }
+        .sanphamlienquan .danhsach .chuyensp span a:hover{
+            font-size: 30px;
+
+        }
+        .sanphamlienquan .danhsach{
+            display: grid;
+            grid-template-columns: 2rem auto 2rem;
+            align-items: center;
+        }
+        .sanphamlienquan .danhsach .contai{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sanphamlienquan .danhsach .contai .box{
+            margin: 1rem;
+            width: 21%;
+            height: 21rem;
+            background-color: #fff;
+            border: 1px solid black;
+            border-radius: 10px;
+            
+        }
+        .sanphamlienquan .danhsach .box .image a{
+            width: 100%;
+            height: 13.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5%;
+            transition:  .5s all ease;
+        }
+        .sanphamlienquan .danhsach .box img{
+            width: 80%;
+            border-radius: 5px;
+            transition:  .5s all ease;
+        }
+        .sanphamlienquan .danhsach .box .image a img:hover{
+            margin-top: 3%;
+            margin-bottom: 13%;
+            transition:  .5s all ease;
+            transform: translateY(3px);
+        }
+        .sanphamlienquan .danhsach .box p a{
+            color: #7380ec;
+            font-size: 16px;
+        }
+        .sanphamlienquan .danhsach .box p{
+            width: 80%;
+            margin: 0 10% 1%;
+            color: #7380ec;
+            font-size: 16px;
+        }
+        .sanphamlienquan .danhsach .box p a:hover{
+            color: gold;
+        }
+        .sanphamlienquan .danhsach .box span{
+            width: 80%;
+            margin: 0 10% 10%;
+            color:crimson;
+            font-size: 18px;
+            display: flex;
+            justify-content: right;
+        }
+    </style>
     
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>

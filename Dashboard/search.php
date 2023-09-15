@@ -23,6 +23,30 @@
         $id_product = $_GET['text'];
 
         $insert_id_product = $product->insert_id_product($id, $id_product);
+        if($insert_id_product){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                           
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            
+                                                            </script>";
+                                                    }
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp_sua'])){
@@ -30,6 +54,30 @@
         $id_product_sua = $_GET['text_sua'];
 
         $insert_id_product_sua = $product->insert_id_product_sua($id_sua, $id_product_sua);
+        if($insert_id_product_sua){
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa thành công',
+                    icon: 'success',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
+        else{
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa không thành công',
+                    icon: 'error',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
     }
     
     
@@ -189,33 +237,7 @@
                                             ignore_user_abort(true);
                                             $pro = new product();
                                     $sc=$pro->search_capnhat($search,'thuocsi.vn');
-                                    // while($la=$sc->fetch()){
-                                    //     system('python ../backend/product_link/thuocsi_link.py '.$la['link'].'');
-                                    // }
-                                    // // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
-                                    // // while($la=$sc->fetch()){
-                                    // //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
-                                    // // }
-                                    // $sc1=$pro->search_capnhat($search,'pharmacity.vn');
-                                    // while($la1=$sc1->fetch()){
-                                    //     system('python ../backend/product_link/pharmacity_link.py '.$la1['link'].'');
-                                    // }
-                                    // $sc2=$pro->search_capnhat($search,'thuocsi.pharex.vn');
-                                    // while($la2=$sc2->fetch()){
-                                    //     system('python ../backend/product_link/pharex_link.py '.$la2['link'].'');
-                                    // }
-                                    // $sc3=$pro->search_capnhat($search,'medigoapp.com');
-                                    // while($la3=$sc3->fetch()){
-                                    //     system('python ../backend/product_link/medigoapp_link.py '.$la3['link'].'');
-                                    // }
-                                    // $sc4=$pro->search_capnhat($search,'ankhang.com');
-                                    // while($la4=$sc4->fetch()){
-                                    //     system('python ../backend/product_link/ankhang_link.py '.$la4['link'].'');
-                                    // }
-                                    // $sc5=$pro->search_capnhat($search,'longchau.vn');
-                                    // while($la5=$sc5->fetch()){
-                                    //     system('python ../backend/product_link/longchau_link.py '.$la5['link'].'');
-                                    // }
+                                 
                                     $tam;
                                     $qww='';
                                     $qww1='';
@@ -238,11 +260,7 @@
                                        $qwwd=$qwwd+1;
                                     }
                                     
-                                    
-                                    // $sc=$pro->search_capnhat($search,'"chosithuoc.com"');
-                                    // while($la=$sc->fetch()){
-                                    //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
-                                    // }
+                          
                                     $sc1=$pro->search_capnhat($search,'pharmacity.vn');
                                     while($la1=$sc1->fetch()){
                                         $tam=$la1['link']; 
@@ -896,25 +914,26 @@
                                     
                                        
                                         <?php if($set['masp'] == null){?>
-                                        <td><div><form action="" method="get">
+                                        <td><div>
+                                        <?php if($checkLoginAdmin == 0){?>    
+                                        <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 85%;">
                                             <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
                                         </form></div></td>
+                                        <?php } ?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
+                                                <?php if($checkLoginAdmin == 0){?>
                                                 <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
+                                                <a href="search_xemthem.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
-                                            <form action="search_xemthem.php" method="get">
-                                                
-                                                <input type="hidden" name="text_xemthem" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; ">
-                                               
-                                                <button type="submit" name="submitMasp_xemthem" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer;">SP Tương Tự <i class="fa fa-angle-right"></i></button>
-                                            </form>
+                                            
                                         </div></td>
                                         <?php } ?>
 
@@ -927,7 +946,7 @@
                                         <?php
                                             }
                                         ?>
-                                
+                                        
                                     </tr>
                                     <?php 
 
@@ -939,6 +958,8 @@
                                 
                 
                     </table>
+                     
+                                            
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">
