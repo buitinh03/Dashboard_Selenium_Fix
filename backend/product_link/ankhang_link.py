@@ -18,8 +18,8 @@ if sys.stdout.encoding != 'utf-8':
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=1920x1080")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 load_dotenv()
 
@@ -72,29 +72,19 @@ def check_product_exist(cursor, product_name):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
-# product_links = [
-#     "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/enervon",
-#     # "https://www.nhathuocankhang.com/thuoc-bo-va-vitamin/magne-b6-corbiere"
-#     # Thêm các liên kết sản phẩm khác vào đây
-# ]
-product_links=sys.argv[1:]
-for link in product_links:
-    driver.get(link)
+
+link = sys.argv[1:]
+for a in link:
+    driver.get(a)
     sleep(1)
+    product_name = ""
+
     try:
-        active_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, ".btn-wrapper > .active")))
-        active_button.click()
-    except ElementNotInteractableException:
+        html = driver.page_source
+        product_name = extract_product_info()
+    except NoSuchElementException:
         pass
     try:
-        product_name = ""
-
-        try:
-            html = driver.page_source
-            product_name = extract_product_info()
-        except NoSuchElementException:
-            pass
         ten = driver.find_element(By.CSS_SELECTOR, "h1.detail-title").text
 
         try:
@@ -115,7 +105,6 @@ for link in product_links:
             gia_sales = 0
     except NoSuchElementException:
         gia_sales = 0
-
     nha_san_xuat = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(4)").text
     if "Hãng sản xuất" in nha_san_xuat:
         nha_san_xuat = nha_san_xuat.replace("Hãng sản xuất", "").strip()
@@ -151,7 +140,7 @@ for link in product_links:
     with connection.cursor() as cursor:
         cursor.execute(f'''
             INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
-                nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon, giacu, ngaycu)
+            nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, link, nguon, giacu, ngaycu)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NULL, NULL)
             ON CONFLICT (link) DO UPDATE
                 SET month_{current_month} = excluded.month_{current_month},
@@ -165,7 +154,7 @@ for link in product_links:
                 giamoi='{gia_sales}',
                 ngaymoi='{ngay}';
         ''', (
-                product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, thong_tin_san_pham, link, 'ankhang.com'))
+            product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
         connection.commit()
 
 driver.quit()

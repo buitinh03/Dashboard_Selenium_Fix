@@ -18,8 +18,8 @@ if sys.stdout.encoding != 'utf-8':
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=1920x1080")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 load_dotenv()
 
@@ -75,7 +75,7 @@ def check_product_exist(cursor, product_name):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
     return cursor.fetchone()[0]
 
-# link=['https://nhathuoclongchau.com.vn/duoc-my-pham/nuoc-nhuom-phu-bac-nau-hat-de-seedbee-water-coloring-medium-browm-nbiyan-30-g.html']
+# link=['https://nhathuoclongchau.com.vn/thuoc/panadol-cam-cum-gsk-1445.html']
 
 
 link = sys.argv[1:]
@@ -176,10 +176,10 @@ for a in link:
                     nuoc_san_xuat = excluded.nuoc_san_xuat,
                     hamluong_thanhphan = excluded.hamluong_thanhphan,
                     photo = excluded.photo,
-                        giacu = thuocsi_vn.giamoi,
-                ngaycu = thuocsi_vn.ngaymoi,
-                giamoi='{gia_sales}',
-                ngaymoi='{ngay}';
+                    giacu = thuocsi_vn.giamoi,
+                    ngaycu = thuocsi_vn.ngaymoi,
+                    giamoi='{gia_sales}',
+                    ngaymoi='{ngay}';
             ''', (
                 product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, hamluong_thanhphan, thong_tin_san_pham, a, 'longchau.vn'))
             connection.commit()

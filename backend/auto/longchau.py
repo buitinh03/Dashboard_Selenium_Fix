@@ -67,40 +67,6 @@ try:
         ''')
 
     link_lists = [
-<<<<<<< HEAD
-        # 'trang-thiet-bi-y-te',
-        # 'thuc-pham-chuc-nang',
-        # 'duoc-my-pham',
-        # 'cham-soc-ca-nhan',
-        # 'thuoc/thuoc-thay-the',
-        # 'thuoc/thuoc-chong-ung-thu',
-        # 'thuoc/he-tiet-nieu-sinh-duc',
-        # 'thuoc/di-ung-and-he-mien-dich',
-        # 'thuoc/thuoc-dung-ngoai',
-        # 'thuoc/he-co-xuong',
-        # 'thuoc/vitamin-and-khoang-chat',
-        # 'thuoc/he-tim-mach-and-tao-mau',
-        # 'thuoc/thuoc-khang-sinh-duong-toan-than',
-        # 'thuoc/he-than-kinh-trung-uong',
-        # 'thuoc/he-tieu-hoa-and-gan-mat',
-        # 'thuoc/hormon-noi-tiet-to',
-        # 'thuoc/he-ho-hap',
-        # 'thuoc/he-noi-tiet-and-chuyen-hoa',
-        # 'thuoc/san-pham-dinh-duong',
-        # 'thuoc/thuoc-giai-doc-khu-doc-va-ho-tro-cai-nghien',
-        # 'thuoc/thuoc-da-lieu',
-        # 'thuoc/thuoc-ngua-thai',
-        # 'thuoc/mat',
-        # 'cham-soc-ca-nhan/thiet-bi-lam-dep',
-        # 'thuoc/tai-and-mieng-hong',
-        'thuoc/thuoc-gay-me-gay-te-che-pham-dung-trong-phau-thuat-va-cham-soc-vet-thuong',
-        # 'thuoc/dung-dich-tiem-tinh-mach-and-cac-loai-dung-dich-vo-trung-khac',
-        # 'thuoc/san-pham-cham-soc-da-and-cham-soc-ca-nhan',
-        # 'thuoc/chua-phan-loai',
-        # 'thuoc/cac-san-pham-tri-lieu-khac',
-        # 'thuoc/thuc-pham-bo-sung-and-cac-san-pham-ho-tro-suc-khoe',
-        # 'thuoc/mieng-dan-cao-xoa-dau',
-=======
         'trang-thiet-bi-y-te',
         'thuc-pham-chuc-nang',
         'duoc-my-pham',
@@ -133,7 +99,6 @@ try:
         'thuoc/cac-san-pham-tri-lieu-khac',
         'thuoc/thuc-pham-bo-sung-and-cac-san-pham-ho-tro-suc-khoe',
         'thuoc/mieng-dan-cao-xoa-dau',
->>>>>>> 12fddea9cc5f056bbf7007d119848ba6499169b7
     ]
     wait = WebDriverWait(driver, 1)
 

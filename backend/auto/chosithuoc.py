@@ -51,7 +51,7 @@ class LaptopSpider(scrapy.Spider):
             nuoc_san_xuat TEXT,	
             hamluong_thanhphan TEXT,
             thong_tin_san_pham TEXT,
-            link TEXT,
+            link TEXT primary key,
             nguon TEXT DEFAULT 2
         )
         '''
@@ -67,12 +67,12 @@ class LaptopSpider(scrapy.Spider):
         categories = {
             'hoa-my-pham': 74,
             'thuoc-tan-duoc': 341,
-            'thuoc-xuong-khop': 2,
+            'thuoc-xuong-khop': 31,
             'thuoc-giam-can': 9,
             'thuoc-bo-than': 24,
-            'thuc-pham-chuc-nang': 133,
-            'thuc-pham-cao-cap': 14,
-            'thiet-bi-y-te': 33,
+            'thuc-pham-chuc-nang': 134,
+            'thuc-pham-cao-cap': 16,
+            'thiet-bi-y-te': 36,
             'thuoc-khong-ke-don': 6,
         }
 

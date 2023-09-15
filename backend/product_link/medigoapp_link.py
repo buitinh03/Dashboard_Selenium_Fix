@@ -19,8 +19,8 @@ if sys.stdout.encoding != 'utf-8':
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=1920x1080")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 
 # Tải biến môi trường từ file .env
@@ -79,7 +79,6 @@ def check_product_exist(cursor, product_name):
     return cursor.fetchone()[0]
 
 link = sys.argv[1:]
-# link = 'https://www.medigoapp.com/product/dung-dich-xit-sach-thong-mui-cho-nguoi-lon-xisat-chai-75ml.html'
 for a in link:
     driver.get(a)
     try:
