@@ -302,7 +302,7 @@ include_once('format/format.php');
     <div class='sanphamlienquan'>
 
             <div class="warranty-policy-h1">
-                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['masp'] ?> <a href="search_xemthem.php?masp=<?php echo $result['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">Tất cả SP <i class="fa fa-angle-right"></i></a></h1>
+                <h1>SẢN PHẨM LIÊN QUAN: <?php echo $result['masp'] ?> <a href="search.php?masp=<?php echo $result['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">Tất cả SP <i class="fa fa-angle-right"></i></a></h1>
             </div>
             
             <div class='danhsach'><div class="chuyensp">

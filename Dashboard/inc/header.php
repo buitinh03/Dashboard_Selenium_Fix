@@ -1,5 +1,8 @@
-
 <?php
+    header("Cache-Control: max-age=604800");
+  ?>
+<?php
+    
     include_once "connect.php";
 ?>
 <?php 

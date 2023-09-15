@@ -13,14 +13,16 @@ import re
 import sys
 import codecs
 from bs4 import BeautifulSoup
+import logging 
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 # Cấu hình ghi log
-log_filename = 'app.log'
-logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
+# log_filename = 'app.log'
+# logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
+logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
