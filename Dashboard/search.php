@@ -1002,19 +1002,25 @@
                                     
                                        
                                         <?php if($set['masp'] == null){?>
-                                        <td><div><form action="" method="get">
+                                        <td><div>
+                                         <?php if($checkLoginAdmin == 0){?>        
+                                        <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 85%;">
                                             <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
-                                        </form></div></td>
+                                        </form>
+                                         <?php } ?>
+                                        </div></td>
                                         <?php }else{ ?>
                                          
                                             <td><div >
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
-                                                <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
-                                                <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                <?php if($checkLoginAdmin == 0){?>
+                                                    <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
