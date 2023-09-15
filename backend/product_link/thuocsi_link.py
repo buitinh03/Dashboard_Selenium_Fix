@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
-# from decouple import config
+from decouple import config
 import sys
 import os
 import codecs
@@ -18,7 +18,18 @@ import pytesseract
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Điều chỉnh đường dẫn dựa trên cài đặt của bạn
 pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD')
 # Thiết lập hệ thống ghi log
-logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
+log_directory = config('LOG_DIRECTORY')
+
+log_filename = os.path.join(log_directory, 'scraping_log.log')
+
+# Tạo thư mục chứa tệp log nếu nó không tồn tại
+os.makedirs(os.path.dirname(log_filename), exist_ok=True)
+
+# Tạo một đối tượng FileHandler để ghi log vào tệp
+file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=False)
+
+# Thiết lập hệ thống ghi log
+logging.basicConfig(filename=log_filename, level=logging.INFO)
 
 # Kiểm tra và thiết lập mã hóa cho sys.stdout và sys.stderr
 if sys.stdout.encoding != 'utf-8':
