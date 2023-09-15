@@ -13,12 +13,25 @@ import sys
 import codecs
 from bs4 import BeautifulSoup
 import logging
+from decouple import config
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
-logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
+# Thiết lập hệ thống ghi log
+log_directory = config('LOG_DIRECTORY')
+
+log_filename = os.path.join(log_directory, 'scraping_log.log')
+
+# Tạo thư mục chứa tệp log nếu nó không tồn tại
+os.makedirs(os.path.dirname(log_filename), exist_ok=True)
+
+# Tạo một đối tượng FileHandler để ghi log vào tệp
+file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=False)
+
+# Thiết lập hệ thống ghi log
+logging.basicConfig(filename=log_filename, level=logging.INFO)
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
