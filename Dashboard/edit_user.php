@@ -14,10 +14,11 @@
         $customername = $_POST['customername'];
         $email = $_POST['email'];
         $username = $_POST['username'];
-        $password = hash('sha256',$_POST['password']);
+        $hash = $_POST['password'];
+        $password = hash('sha256', $hash);
         $type = $_POST['type'];
 
-        $update = $customer->update_customer($customername, $email, $username, $password, $type,$id);
+        $update = $customer->update_customer($customername, $email, $username, $password, $type, $hash, $id);
         
     }
 
