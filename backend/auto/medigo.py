@@ -19,8 +19,9 @@ if sys.stdout.encoding != 'utf-8':
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 # Cấu hình ghi log
-log_filename = 'app.log'
-logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
+# log_filename = 'app.log'
+# logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
+logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
 
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()

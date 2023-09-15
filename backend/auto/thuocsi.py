@@ -7,11 +7,17 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
-from decouple import config
+import os
+# from decouple import config
 import sys
 import codecs
 import logging
-
+from dotenv import load_dotenv
+load_dotenv()
+from PIL import Image
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD')
+logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
 # Thiết lập mã hóa cho đầu ra và lỗi
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
@@ -36,10 +42,10 @@ url = "https://thuocsi.vn/products"
 try:
     # Kết nối đến cơ sở dữ liệu PostgreSQL
     connection = psycopg2.connect(
-        host=config("DB_HOST"),
-        database=config("DB_NAME"),
-        user=config("DB_USER"),
-        password=config("DB_PASSWORD")
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD")
     )
 
     # Tạo bảng nếu chưa tồn tại
@@ -88,11 +94,11 @@ try:
         password_input = wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "input.MuiInputBase-inputAdornedEnd")))
 
-        username_input.send_keys(config('USERNAMET'))
-        password_input.send_keys(config('PASSWORD'))
+        username_input.send_keys(os.getenv('USERNAMET'))
+        password_input.send_keys(os.getenv('PASSWORD'))
 
         login_button = wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_register__zCg7F > .MuiButton-label")))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".styles_btn_login__jK984 > .MuiButton-label")))
         login_button.click()
 
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".styles_root__yHa_F > .styles_tab_panel__NAwAa")))
@@ -175,11 +181,13 @@ try:
                 ten = "Không đề cập"
 
             try:
-                price_element = driver.find_element(By.CSS_SELECTOR,
-                                                    ".MuiTypography-root.styles_price__uDwZz.MuiTypography-body1")
-                price = price_element.text.replace("đ", "").replace(".", "")
+                canvas = driver.find_element(By.XPATH, "//canvas[@class='styles_canvasPrice__vw932']")
+                canvas.screenshot("canvas.png")
+                image = Image.open("canvas.png")
+                price = pytesseract.image_to_string(image).strip()
+                price = price.replace('.', '').replace('d', '')
             except NoSuchElementException:
-                price = "0"
+                price = "Không đề cập"
 
             try:
                 div_elementt = driver.find_element(By.CLASS_NAME, "styles_content__aW6Pn")

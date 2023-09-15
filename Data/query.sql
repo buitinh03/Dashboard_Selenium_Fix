@@ -1,0 +1,1 @@
+ALTER TABLE thuocsi_vn ADD masp TEXT;
