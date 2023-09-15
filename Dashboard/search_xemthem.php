@@ -946,18 +946,24 @@
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                       
-                                        <?php if($set['masp'] == null){?>
-                                        <td><div><form action="" method="get">
+                                         <?php if($set['masp'] == null){?>
+                                        <td><div>
+                                        <?php if($checkLoginAdmin == 0){?>    
+                                        <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; width:80%;">
                                             <button type="submit" name="submitMasp" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:darksalmon; color: #fff; cursor:pointer;">Thêm mã</button>
-                                        </form></div></td>
+                                        </form>
+                                        <?php } ?>
+                                    </div></td>
                                         <?php }else{ ?>
                                             <td><div style="display:flex;">
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; max-width:80%;">
+                                                <?php if($checkLoginAdmin == 0){?>
                                                 <button type="submit" name="submitMasp_sua" style="position:absolute; border: 1px solid #333; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
                                             </form>
                                             
                                         </div></td>
