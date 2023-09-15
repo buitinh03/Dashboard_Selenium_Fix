@@ -14,10 +14,11 @@
         $customername = $_POST['customername'];
         $email = $_POST['email'];
         $username = $_POST['username'];
-        $password = hash('sha256',$_POST['password']);
+        $hash = $_POST['password'];
+        $password = hash('sha256', $hash);
         $type = $_POST['type'];
 
-        $update = $customer->update_customer($customername, $email, $username, $password, $type,$id);
+        $update = $customer->update_customer($customername, $email, $username, $password, $type, $hash, $id);
         
     }
 
@@ -34,6 +35,7 @@
                             echo $update;
                         }
                     ?>
+                   
                     <div class="recent-order-forms">
                     <style>
                         .recent-order-forms {
@@ -180,7 +182,7 @@
                             </div>
                             <div class="recent-order-form">
                                 <label for="password">Mật khẩu:</label>
-                                <input type="text" name="password" id="password" value="<?php echo $fm->textShorten($result['password'], 30) ?>" placeholder="Mật khẩu" class="productname">
+                                <input type="text" name="password" id="password" value="<?php echo trim($result['password']); ?>" placeholder="Mật khẩu" class="productname">
                             </div>
              
                             <div class="recent-order-form">

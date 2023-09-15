@@ -40,19 +40,39 @@
         return $result;
     }
 
-    function update_customer($customername, $email, $username, $password, $type,$id){
+    function update_customer($customername, $email, $username, $password, $type, $hash, $id){
         $db = new connect();
-        $query = "UPDATE tbl_admin SET fullname='$customername', email='$email', username='$username', password='$password',type='$type' WHERE id='$id'";
-        $result = $db->exec($query);
-        if($result){
-            $alert = "<span class='success' style='color: #0000FF;font-size: 1.3em; margin:10rem;'>Cập nhật thành công !</span>";
-            return $alert;
-   
+        $select = "SELECT * FROM tbl_admin WHERE id='$id'";
+        $selectResult = $db->getList($select);
+        $values = $selectResult->fetch(PDO::FETCH_ASSOC);
+                Session::set('password', $values['password']);
+                $r =  Session::get('password');
+        if(trim($r) == $hash){
+            $query = "UPDATE tbl_admin SET fullname='$customername', email='$email', username='$username',type='$type' WHERE id='$id'";
+            $result = $db->exec($query);
+            if($result){
+                $alert = "<span class='success' style='color: #0000FF;font-size: 1.3em; margin:10rem;'>Cập nhật thành công !</span>";
+                return $alert;
+       
+            }else {
+            
+                $msg = "<span class='error' style='color:  #FF0000;font-size: 1.3em; margin:10rem;'>Cập nhật thất bại !</span>";
+                return $msg;
+            }
         }else {
-        
-            $msg = "<span class='error' style='color:  #FF0000;font-size: 1.3em; margin:10rem;'>Cập nhật thất bại !</span>";
-            return $msg;
+            $query = "UPDATE tbl_admin SET fullname='$customername', email='$email', username='$username', password='$password',type='$type' WHERE id='$id'";
+            $result = $db->exec($query);
+            if($result){
+                $alert = "<span class='success' style='color: #0000FF;font-size: 1.3em; margin:10rem;'>Cập nhật thành công !</span>";
+                return $alert;
+       
+            }else {
+            
+                $msg = "<span class='error' style='color:  #FF0000;font-size: 1.3em; margin:10rem;'>Cập nhật thất bại !</span>";
+                return $msg;
+            }
         }
+       
     }
 
     
