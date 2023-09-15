@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
 import os
-# from decouple import config
+from decouple import config
 import sys
 import codecs
 import logging
@@ -16,16 +16,27 @@ from dotenv import load_dotenv
 load_dotenv()
 from PIL import Image
 import pytesseract
+
 pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD')
-logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
+
+# Thiết lập hệ thống ghi log
+log_directory = config('LOG_DIRECTORY')
+
+log_filename = os.path.join(log_directory, 'scraping_log.log')
+
+# Tạo thư mục chứa tệp log nếu nó không tồn tại
+os.makedirs(os.path.dirname(log_filename), exist_ok=True)
+
+# Tạo một đối tượng FileHandler để ghi log vào tệp
+file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=False)
+
+# Thiết lập hệ thống ghi log
+logging.basicConfig(filename=log_filename, level=logging.INFO)
+
 # Thiết lập mã hóa cho đầu ra và lỗi
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
-
-# Cấu hình ghi log
-log_filename = 'app.log'
-logging.basicConfig(filename=log_filename, level=logging.ERROR, format='%(asctime)s [%(levelname)s] - %(message)s')
 
 # Cài đặt Chrome Driver
 chromedriver_autoinstaller.install()
