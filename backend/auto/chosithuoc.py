@@ -7,9 +7,21 @@ import sys
 import codecs
 from scrapy.crawler import CrawlerProcess
 import logging
+from decouple import config
 
-# cấu hỉnh file log
-logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
+# Thiết lập hệ thống ghi log
+log_directory = config('LOG_DIRECTORY')
+
+log_filename = os.path.join(log_directory, 'scraping_log.log')
+
+# Tạo thư mục chứa tệp log nếu nó không tồn tại
+os.makedirs(os.path.dirname(log_filename), exist_ok=True)
+
+# Tạo một đối tượng FileHandler để ghi log vào tệp
+file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=False)
+
+# Thiết lập hệ thống ghi log
+logging.basicConfig(filename=log_filename, level=logging.INFO)
 
 load_dotenv()
 
