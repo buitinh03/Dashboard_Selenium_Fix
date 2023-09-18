@@ -139,7 +139,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['xacnhan'])){
                 </div>
     <script src="js/login.js"></script>
     <script src="js/time.js"></script>
-    <script  src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/hiddenpassword.js"></script>
     <script src="js/loginmessage.js"></script>
 </body>
