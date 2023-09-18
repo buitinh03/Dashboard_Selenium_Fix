@@ -181,7 +181,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])){
         </div>
     </div>
     <script src="js/login.js"></script>
-    <script  src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/hiddenpassword.js"></script>
 </body>
 </html>
