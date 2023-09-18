@@ -291,40 +291,7 @@ $(function(){
                         <a href="index.php?&page=<?=($nextpage)?>" id="next">></a>
                         <?php } ?>
                         
-                        <!-- <style>
-                        .bloc p{
-                            /* position:relative; */
-                            color: chocolate;
-                            /* margin-top: .5rem;                         
-                            margin-left: .5rem; */
-                        }
-                        .bloc p select{
-                            /* width: 6rem;
-                            margin-left: .5rem;
-                            padding: .5rem;
-                            align-items: center;
-                            display: flex;
-                            justify-content: center;
-                            border-radius: 3px;
-                            
-                            
-                            margin-top: .3rem; */
-                            display: flex;
-                            color: #7380ec;
-                                                
-                            text-align: center;
-                            padding: 5px 8px;
-                            margin: 5px;
-                            background: bisque;
-                            border-radius: 3px;
-
-                        }
-                        .bloc h2 i{
-                            /* position: absolute; */
-                            margin-top: -1.5rem;
-                             margin-left: 1.5rem;
-                        }
-                    </style> -->
+                     
                         <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
                         <p>Sắp xếp theo: 
                         <form method="POST" action="index.php" class="boloc" >
@@ -665,14 +632,21 @@ $(function(){
                                         
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
                                         <?php if($checkLoginAdmin == 0){?>    
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
+                                            <div class="input-flex" style="display: flex; justify-content: center;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;   max-width: 80%;">
+                                            <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                            </div>
+                                        </form></div></td>
+                                        <?php }elseif($checkLoginAdmin == 1){?>    
+                                        <form action="" method="get">
+                                            <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
-                                            <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                            <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                         <?php } ?>
                                         <?php }else{ ?>
@@ -680,10 +654,12 @@ $(function(){
                                             <td><div >
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
+                                                <div class="input-flex" style="display: flex; justify-content: center;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 80%;">
                                                 <?php if($checkLoginAdmin == 0){?>
-                                                <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
+                                                </div>
                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             

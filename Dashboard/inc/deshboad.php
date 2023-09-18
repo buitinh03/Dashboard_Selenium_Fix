@@ -814,7 +814,7 @@ $pd = new product();
                                                 }
                                                 if(isset($_POST['pharex'])){
                                                     if(file_exists($duongdan['xpathcaogiapharex'])){
-                                                        exec('python '.$duongdan['xpathcaogiapharex'],$output,$exit_code);
+                                                        exec('python '.$duongdan['xpathcaogiapharex'].' > /dev/null 2>&1 & echo $!',$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({

@@ -16,7 +16,7 @@ try:
     import codecs
     import time
 
-    from decouple import config
+    # from decouple import config
     load_dotenv()
     # Set up UTF-8 encoding
     if sys.stdout.encoding != 'utf-8':

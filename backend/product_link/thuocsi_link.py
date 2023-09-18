@@ -57,6 +57,7 @@ try:
         password=os.getenv("DB_PASSWORD")
     )
 
+
     with connection.cursor() as cursor:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
@@ -87,7 +88,6 @@ try:
             )
         ''')
         connection.commit()
-
     driver.get(url)
     try:
         wait = WebDriverWait(driver, 3)
@@ -132,11 +132,10 @@ try:
 
     for link in product_links:
         driver.get(link)
-
         try:
             ngay = datetime.datetime.now()
-            link = link.replace("/loading", "")
-            driver.get(link)
+            a = a.replace("/loading", "")
+            driver.get(a)
             ten = ""
             price = ""
             img_url = ""
@@ -173,7 +172,6 @@ try:
             except NoSuchElementException:
                 ten = "Không đề cập"
 
-            # Trích xuất giá từ thẻ canvas
             try:
                 canvas = driver.find_element(By.XPATH, "//canvas[@class='styles_canvasPrice__vw932']")
                 canvas.screenshot("canvas.png")
@@ -188,7 +186,7 @@ try:
                 thong_tin_san_pham = div_elementt.text
             except NoSuchElementException:
                 thong_tin_san_pham = "Không đề cập"
-            if thong_tin_san_pham == "":
+            if  thong_tin_san_pham == "":
                 thong_tin_san_pham = "Không đề cập"
 
             try:
@@ -198,28 +196,29 @@ try:
                 nuoc_san_xuat = nuoc_element.text.strip()
             except NoSuchElementException:
                 nuoc_san_xuat = "Không đề cập"
+
             try:
                 div_element = driver.find_element(By.XPATH, "//div[p[contains(text(), 'Nhà sản xuất:')]]")
                 nsx_element = div_element.find_element(By.XPATH,
-                                                    ".//p[contains(text(), 'Nhà sản xuất:')]/following-sibling::p")
+                                                        ".//p[contains(text(), 'Nhà sản xuất:')]/following-sibling::p")
                 nha_san_xuat = nsx_element.text.strip()
             except NoSuchElementException:
                 nha_san_xuat = "Không đề cập"
 
             try:
                 tt = driver.find_elements(By.CSS_SELECTOR, "div.styles_rightContent__u_m01")
-                tphl = []  # Create an empty list to store the text of each element
+                tphl = []
 
                 for element in tt:
-                    tphl.append(element.text.replace("Thành phần", "").strip().replace("\n", " "))
+                    tphl.append(element.text.replace("Thành phần", "").strip().replace("\n"," "))
             except NoSuchElementException:
                 tphl = ["Không đề cập"]
             if all(not item.strip() for item in tphl):
                 tphl = ["Không đề cập"]
 
             current_month = datetime.datetime.now().month
-            logging.info(f"Link : {link}")
-            logging.info(f"Gia : {price}")
+            print(f"Link : {a}")
+        
             with connection.cursor() as cursor:
                 cursor.execute(f'''
                     INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
