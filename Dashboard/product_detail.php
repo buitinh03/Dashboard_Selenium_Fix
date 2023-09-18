@@ -291,7 +291,7 @@ include_once('format/format.php');
             
         }
         .sanphamlienquan .danhsach .contai .box:hover a {
-            transform: translateY(5px);
+            transform: translateY(-5px);
             transition: 1s all ease;
             color: gold;
         }
@@ -301,10 +301,7 @@ include_once('format/format.php');
             color:chocolate;
 
         }
-        .sanphamlienquan .danhsach .chuyensp span a:hover{
-            font-size: 30px;
-
-        }
+ 
         .sanphamlienquan .danhsach{
             display: grid;
             grid-template-columns: 2rem auto 2rem;
@@ -340,12 +337,7 @@ include_once('format/format.php');
             border-radius: 5px;
             transition:  .5s all ease;
         }
-        .sanphamlienquan .danhsach .box .image a img:hover{
-            margin-top: 3%;
-            margin-bottom: 13%;
-            transition:  .5s all ease;
-            /* transform: translateY(-3px); */
-        }
+  
         .sanphamlienquan .danhsach .box p a{
             color: #7380ec;
             font-size: 16px;
@@ -358,6 +350,7 @@ include_once('format/format.php');
         }
         .sanphamlienquan .danhsach .box p a:hover{
             color: gold;
+            transition: all .5s ease;
         }
         .sanphamlienquan .danhsach .box span{
             width: 80%;
