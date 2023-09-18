@@ -616,7 +616,7 @@ $pd = new product();
                                                         file_exists($duongdan['xpathcaogialongchau']) &&
                                                         file_exists($duongdan['xpathcaogiapharma']) &&
                                                         file_exists($duongdan['xpathcaogiamedigo'])) {
-                                                    if (empty(system('python '.$duongdan['xpathcaogiachosithuoc'].' && python '.$duongdan['xpathcaogiathuocsi'].' && python '.$duongdan['xpathcaogiaankhang'].' && python '.$duongdan['xpathcaogiapharex'].' && '.$duongdan['xpathcaogialongchau'].' && python '.$duongdan['xpathcaogiapharma'].' && python '.$duongdan['xpathcaogiamedigo']))) {
+                                                    if (empty(system($duongdan['operation'].$duongdan['xpathcaogiachosithuoc'].' && python '.$duongdan['xpathcaogiathuocsi'].' && python '.$duongdan['xpathcaogiaankhang'].' && python '.$duongdan['xpathcaogiapharex'].' && '.$duongdan['xpathcaogialongchau'].' && python '.$duongdan['xpathcaogiapharma'].' && python '.$duongdan['xpathcaogiamedigo']))) {
                                                         echo "<script>
                                                             swal({
                                                                 title: 'Thông báo',
@@ -660,7 +660,7 @@ $pd = new product();
                                             } else {
                                                 // Thêm phần xử lý cho các đường dẫn khác ở đây
                                                 if (isset($_POST['thuocsi'])) {
-                                                 if(file_exists($duongdan['xpathcaogiathuocsi'])){system('python '.$duongdan['xpathcaogiathuocsi']);
+                                                 if(file_exists($duongdan['xpathcaogiathuocsi'])){system($duongdan['operation'].$duongdan['xpathcaogiathuocsi']);
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
@@ -688,7 +688,7 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['chosithuoc'])){
-                                                        if(file_exists($duongdan['xpathcaogiachosithuoc'])){system('python '.$duongdan['xpathcaogiachosithuoc']);
+                                                        if(file_exists($duongdan['xpathcaogiachosithuoc'])){system($duongdan['operation'].$duongdan['xpathcaogiachosithuoc']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -716,7 +716,7 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['ankhang'])){
-                                                    if(file_exists($duongdan['xpathcaogiaankhang'])){system('python '.$duongdan['xpathcaogiaankhang']);
+                                                    if(file_exists($duongdan['xpathcaogiaankhang'])){system($duongdan['operation'].$duongdan['xpathcaogiaankhang']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -744,7 +744,7 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['pharex'])){
-                                                    if(file_exists($duongdan['xpathcaogiapharex'])){system('python '.$duongdan['xpathcaogiapharex']);
+                                                    if(file_exists($duongdan['xpathcaogiapharex'])){system($duongdan['operation'].$duongdan['xpathcaogiapharex']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -773,7 +773,7 @@ $pd = new product();
                                                 }
                                                   
                                                 if(isset($_POST['longchau'])){
-                                                    if(file_exists($duongdan['xpathcaogialongchau'])){system('python '.$duongdan['xpathcaogialongchau']);
+                                                    if(file_exists($duongdan['xpathcaogialongchau'])){system($duongdan['operation'].$duongdan['xpathcaogialongchau']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -801,7 +801,7 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['pharmacity'])){
-                                                    if(file_exists($duongdan['xpathcaogiapharma'])){system('python '.$duongdan['xpathcaogiapharma']);
+                                                    if(file_exists($duongdan['xpathcaogiapharma'])){system($duongdan['operation'].$duongdan['xpathcaogiapharma']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -829,7 +829,7 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['medigoapp'])){
-                                                    if(file_exists($duongdan['xpathcaogiamedigo'])){system('python '.$duongdan['xpathcaogiamedigo']);
+                                                    if(file_exists($duongdan['xpathcaogiamedigo'])){system($duongdan['operation'].$duongdan['xpathcaogiamedigo']);
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',

@@ -40,7 +40,7 @@
         return $result;
     }
 
-    function update_customer($customername, $email, $username, $password, $type,$id){
+    function update_customer($customername, $email, $username, $password, $type, $hash, $id){
         $db = new connect();
         $select = "SELECT * FROM tbl_admin WHERE id='$id'";
         $selectResult = $db->getList($select);
@@ -72,6 +72,7 @@
                 return $msg;
             }
         }
+       
     }
 
     

@@ -321,24 +321,6 @@ include_once('format/format.php');
                 <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],50) ?></a></p>
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
-        
-    
-            
-            <!-- <div class='box'>
-                <img src="images/profile-1.jpg" alt="" srcset="">
-                <p>panadol Extra</p>
-                <span>122.088đ</span>
-            </div>
-            <div class='box'>
-                <img src="images/profile-1.jpg" alt="" srcset="">
-                <p>panadol Extra</p>
-                <span>122.088đ</span>
-            </div>
-            <div class='box'>
-                <img src="images/profile-1.jpg" alt="" srcset="">
-                <p>panadol Extra</p>
-                <span>122.088đ</span>
-            </div> -->
 <?php
     }?></div>      
     <div class="chuyensp"><?php

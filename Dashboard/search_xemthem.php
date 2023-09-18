@@ -239,33 +239,7 @@
                                             ignore_user_abort(true);
                                             $pro = new product();
                                     $sc=$pro->search_capnhat($id_product_xemthem,'thuocsi.vn');
-                                    // while($la=$sc->fetch()){
-                                    //     system('python ../backend/product_link/thuocsi_link.py '.$la['link'].'');
-                                    // }
-                                    // // $sc=$pro->search_capnhat($id_product_xemthem,'"chosithuoc.com"');
-                                    // // while($la=$sc->fetch()){
-                                    // //     system('python ../backend/product_link/longchau_link.py '.$la['link'].'');
-                                    // // }
-                                    // $sc1=$pro->search_capnhat($id_product_xemthem,'pharmacity.vn');
-                                    // while($la1=$sc1->fetch()){
-                                    //     system('python ../backend/product_link/pharmacity_link.py '.$la1['link'].'');
-                                    // }
-                                    // $sc2=$pro->search_capnhat($id_product_xemthem,'thuocsi.pharex.vn');
-                                    // while($la2=$sc2->fetch()){
-                                    //     system('python ../backend/product_link/pharex_link.py '.$la2['link'].'');
-                                    // }
-                                    // $sc3=$pro->search_capnhat($id_product_xemthem,'medigoapp.com');
-                                    // while($la3=$sc3->fetch()){
-                                    //     system('python ../backend/product_link/medigoapp_link.py '.$la3['link'].'');
-                                    // }
-                                    // $sc4=$pro->search_capnhat($id_product_xemthem,'ankhang.com');
-                                    // while($la4=$sc4->fetch()){
-                                    //     system('python ../backend/product_link/ankhang_link.py '.$la4['link'].'');
-                                    // }
-                                    // $sc5=$pro->search_capnhat($id_product_xemthem,'longchau.vn');
-                                    // while($la5=$sc5->fetch()){
-                                    //     system('python ../backend/product_link/longchau_link.py '.$la5['link'].'');
-                                    // }
+                                  
                                     $tam;
                                     $qww='';
                                     $qww1='';
@@ -946,7 +920,7 @@
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                       
-                                         <?php if($set['masp'] == null){?>
+                                        <?php if($set['masp'] == null){?>
                                         <td><div>
                                         <?php if($checkLoginAdmin == 0){?>    
                                         <form action="" method="get">

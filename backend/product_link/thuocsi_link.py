@@ -15,6 +15,13 @@ import logging
 from dotenv import load_dotenv
 from PIL import Image
 import pytesseract
+<<<<<<< HEAD
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Điều chỉnh đường dẫn dựa trên cài đặt của bạn
+
+# Thiết lập hệ thống ghi log
+logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
+
+=======
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Điều chỉnh đường dẫn dựa trên cài đặt của bạn
 pytesseract.pytesseract.tesseract_cmd = config('TESSERACT_CMD')
 # Thiết lập hệ thống ghi log
@@ -31,6 +38,7 @@ file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=
 # Thiết lập hệ thống ghi log
 logging.basicConfig(filename=log_filename, level=logging.INFO)
 
+>>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
 # Kiểm tra và thiết lập mã hóa cho sys.stdout và sys.stderr
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
@@ -39,8 +47,8 @@ if sys.stdout.encoding != 'utf-8':
 # Tự động cài đặt ChromeDriver
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920x1080")
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://thuocsi.vn/products"
 load_dotenv()
@@ -123,10 +131,17 @@ def check_product_exist(cursor, product_name):
 
 
 # List các link sản phẩm
+<<<<<<< HEAD
+# product_link = ['https://thuocsi.vn/product/medx-enterogermina-2-billion5ml-sanofi-hop20ong5ml']
+product_link = sys.argv[1:]
+
+for link in product_link:
+=======
 # product_links = ['https://thuocsi.vn/product/medx-enterogermina-2-billion5ml-sanofi-hop20ong5ml']
 product_links = sys.argv[1:]
 
 for link in product_links:
+>>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
     driver.get(link)
 
     try:
@@ -170,15 +185,27 @@ for link in product_links:
             ten = "Không đề cập"
 
         # Trích xuất giá từ thẻ canvas
+<<<<<<< HEAD
+        # Trích xuất giá từ thẻ canvas
+=======
+>>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
         try:
             canvas = driver.find_element(By.XPATH, "//canvas[@class='styles_canvasPrice__vw932']")
             canvas.screenshot("canvas.png")
             image = Image.open("canvas.png")
             price = pytesseract.image_to_string(image).strip()
+<<<<<<< HEAD
+            price = price.replace("d", "").replace(".", "")
+            # if isinstance(price, list):
+            #     price = ''.join(price)
+        except NoSuchElementException:
+            price = "Không đề cập"
+=======
             price = price.replace('.', '').replace('d', '')
         except NoSuchElementException:
             price = "Không đề cập"
 
+>>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
         try:
             div_elementt = driver.find_element(By.CLASS_NAME, "styles_content__aW6Pn")
             thong_tin_san_pham = div_elementt.text
@@ -216,6 +243,10 @@ for link in product_links:
         current_month = datetime.datetime.now().month
         logging.info(f"Link : {link}")
         logging.info(f"Gia : {price}")
+<<<<<<< HEAD
+        print(f"link: {link}")
+=======
+>>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
         with connection.cursor() as cursor:
             cursor.execute(f'''
                 INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,
