@@ -180,7 +180,7 @@
                                 <label for="username">Tên đăng nhập:</label>
                                 <input type="text" name="username" id="username" value="<?php echo $result['username'] ?>" placeholder="Tên đăng nhập" class="productname">
                             </div>
-                            <div class="recent-order-form">
+                             <div class="recent-order-form">
                                 <label for="password">Mật khẩu:</label>
                                 <input type="text" name="password" id="password" value="<?php echo trim($result['password']); ?>" placeholder="Mật khẩu" class="productname">
                             </div>

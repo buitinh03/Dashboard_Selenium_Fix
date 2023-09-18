@@ -1003,7 +1003,7 @@
                                        
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
-                                         <?php if($checkLoginAdmin == 0){?>        
+                                        <?php if($checkLoginAdmin == 0){?>    
                                         <form action="" method="get">
                                             
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
