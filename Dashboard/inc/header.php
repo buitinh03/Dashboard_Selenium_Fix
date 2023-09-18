@@ -135,6 +135,15 @@ window.addEventListener('popstate', function(event) {
                             <span class="material-icons-sharp"></span>
                             <h3></h3>
                         </a>
+                        <script>
+                            window.onkeydown = function(event) {
+  if (event.keyCode === 37) { // keyCode của nút mũi tên bên trái
+    history.go(-1);
+  }
+};
+
+
+                        </script>
                         
                     </div>
                 
