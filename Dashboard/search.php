@@ -15,7 +15,13 @@
         $search=$_GET['keyword'];
         
         $_SESSION['search']=$search;
-        
+        unset($_SESSION['mach']);
+    }elseif(isset($_GET['masp'])){
+        $search=$_GET['masp'];
+        $_SESSION['search']=$search;
+        $_SESSION['mach']=$search;
+    }elseif(isset($_SESSION['search'])){
+        $search=$_SESSION['search'];
     }
 //
     if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp'])){
@@ -23,6 +29,30 @@
         $id_product = $_GET['text'];
 
         $insert_id_product = $product->insert_id_product($id, $id_product);
+        if($insert_id_product){
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa thành công',
+                                                                icon: 'success',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                           
+                                                            </script>";
+                                                    }
+                                                    else{
+                                                        echo "<script>
+                                                            swal({
+                                                                title: 'Thông báo',
+                                                                text: 'Thêm mã chuyển hóa không thành công',
+                                                                icon: 'error',
+                                                                timer: 3000,
+                                                                buttons: false,
+                                                            });
+                                                            
+                                                            </script>";
+                                                    }
     }
 
     if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp_sua'])){
@@ -30,13 +60,41 @@
         $id_product_sua = $_GET['text_sua'];
 
         $insert_id_product_sua = $product->insert_id_product_sua($id_sua, $id_product_sua);
+        if($insert_id_product_sua){
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa thành công',
+                    icon: 'success',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
+        else{
+            echo "<script>
+                swal({
+                    title: 'Thông báo',
+                    text: 'Sửa mã chuyển hóa không thành công',
+                    icon: 'error',
+                    timer: 3000,
+                    buttons: false,
+                });
+                
+                </script>";
+        }
     }
     
     
        
 //
     $search=$_SESSION['search'];
-    $demtrang = $product->count_search($search);
+    if(isset($_GET['masp']) or isset($_SESSION['mach'])){
+        $demtrang = $product->count_search_xemthem($search);
+    }else{
+        $demtrang = $product->count_search($search);
+    }
     $demd = $demtrang->fetch();
     $sotrang=$demd['count'];
     $trang=ceil($sotrang/10);
@@ -55,8 +113,12 @@
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
-   
-    $product_search=$product->search($_SESSION['search'],$trangthu,10);
+    if(isset($_GET['masp']) or isset($_SESSION['mach'])){
+        $product_search=$product->search_xemthem($_SESSION['search'],$trangthu,10);
+    }else{
+           $product_search=$product->search($_SESSION['search'],$trangthu,10);
+ 
+    }
     
      
 
@@ -116,18 +178,66 @@
                                         
                                     },5000)  
                                     };
-                                    function b(){                        
-                                        swal({
-                                        title: "Thông báo",
-                                        text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
-                                        icon: "success",
-                                        timer: 3000, 
-                                        buttons: false,
-                                        });
-                                        setTimeout(function() {   <?php sleep(1)?>                             
-                                            }, 4000);
+                                    function b(){     
+                                        // var demnguon=0; 
+                                        // <?php 
+                                        // if(!file_exists($duongdanf['xpathcaogiapharex_link'])){
+                                        // ?>
+                                        // var pharex='pharex.py';
+                                        // demnguon = demnguon+1;
+                                        // <?php
+                                        // }else{
+                                        //     ?>
+                                        //     var pharex='';
+                                        //     <?php  
+                                        // }
+                                        //  ?> 
+                                        //  if(demnguon=7){
+                                        //     swal({
+                                        //             title: 'Thông báo',
+                                        //             text: 'File pharex.py không tồn tại!',
+                                        //             icon: 'error',
+                                        //             timer: 3000,
+                                        //             buttons: false,
+                                        //         });
+                                        //         setTimeout(function() {   <?php sleep(1)?>                             
+                                        //     }, 4000);
+                                        //  }else{
+                                        //     if(demnguon=0){
+                                        //         swal({
+                                        // title: "Thông báo",
+                                        // text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
+                                        // icon: "success",
+                                        // timer: 3000, 
+                                        // buttons: false,
+                                        // });
+                                        // setTimeout(function() {   <?php sleep(1)?>                             
+                                        //     }, 4000); 
+                                        //     }else{
+                                                    
+                                        //         swal({
+                                        //             title: 'Thông báo',
+                                        //             text: 'File '+pharex+' không tồn tại!',
+                                        //             icon: 'error',
+                                        //             timer: 3000,
+                                        //             buttons: false,
+                                        //         });
+                                        //         setTimeout(function() {   <?php sleep(1)?>                             
+                                        //     }, 4000);
+                                                swal({
+                                            title: "Thông báo",
+                                            text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
+                                            icon: "success",
+                                            timer: 3000, 
+                                            buttons: false,
+                                            });
+                                            setTimeout(function() {   <?php sleep(1)?>                             
+                                                }, 4000);
                                             
-                                    }
+                                         }                
+                                        
+                                            
+                                    
                                     </script>         
                         <?php
                             if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -236,6 +346,7 @@
                                        $qww6=$qww6.' '.$tam ;
                                        $qwwd6=$qwwd6+1;
                                     }if($qwwd>0){
+                                        if(file_exists($duongdanf['xpathcaogiathuocsi_link'])){
                                         system('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww);
                                     //     echo "<script>
                                     //                 swal({
@@ -274,6 +385,7 @@
                                         //         </script>";
                                     }
                                     if($qwwd2>0){
+                                        if(file_exists($duongdanf['xpathcaogiapharex_link'])){
                                         system('python '.$duongdanf['xpathcaogiapharex_link'] .$qww2);
                                         // echo "<script>
                                         //             swal({
@@ -297,8 +409,9 @@
                                                     
                                         //             </script>";
                                         
-                                    }
+                                    }}
                                     if($qwwd3>0){
+                                        if(file_exists($duongdanf['xpathcaogiamedigo_link'])){
                                         system('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww3);
                                         // echo "<script>
                                         //             swal({
@@ -322,8 +435,9 @@
                                                    
                                         //             </script>";
                                        
-                                    }
+                                    }}
                                     if($qwwd4>0){
+                                        if(file_exists($duongdanf['xpathcaogiaankhang_link'])){
                                         system('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww4);
                                         // echo "<script>
                                         //             swal({
@@ -347,8 +461,9 @@
                                                     
                                         //             </script>";
                                         
-                                    }
+                                    }}
                                     if($qwwd5>0){
+                                        if(file_exists($duongdanf['xpathcaogialongchau_link'])){
                                         system('python '.$duongdanf['xpathcaogialongchau_link'] .$qww5);
                                         // echo "<script>
                                         //             swal({
@@ -372,8 +487,9 @@
                                                     
                                         //             </script>";
                                         
-                                    }
+                                    }}
                                     if($qwwd6>0){
+                                        if(file_exists($duongdanf['xpathcaogiachosithuoc_link'])){
                                         system('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6);
                                         // echo "<script>
                                         //             swal({
@@ -406,10 +522,27 @@
                                                         timer: 3000,  // Thời gian tự động đóng (3 giây)
                                                         buttons: false,  // Ẩn nút Close
                                                         });
-                                     setTimeout(function() {
-                                        window.location = 'search.php';
-                                    }, 4000);
-                                    </script>";
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script>";}                                                    
+                                                 else {
+                                                    $cst='chosithuoc.py';
+                                                    echo "<script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'File chosithuoc.py không tồn tại!',
+                                                        icon: 'error',
+                                                        timer: 3000,
+                                                        buttons: false,
+                                                    });
+                                                    setTimeout(function() {
+                                                        window.location = 'search.php';
+                                                    }, 4000);
+                                                    </script>";
+                                        
+                                    }}
+                                    
                                 }
                             }
                          ?>
@@ -838,25 +971,27 @@
                                     
                                        
                                         <?php if($set['masp'] == null){?>
-                                        <td><div><form action="" method="get">
+                                        <td><div>
+                                         <?php if($checkLoginAdmin == 0){?>        
+                                        <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 85%;">
-                                            <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -3%;">+</button>
-                                        </form></div></td>
+                                            <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                        </form>
+                                         <?php } ?>
+                                        </div></td>
                                         <?php }else{ ?>
                                          
                                             <td><div >
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
-                                                <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php if($checkLoginAdmin == 0){?>
+                                                    <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
-                                            <form action="search_xemthem.php" method="get">
-                                                
-                                                <input type="hidden" name="text_xemthem" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #333; padding: .2rem .5rem; border-radius: 1rem; ">
-                                               
-                                                <button type="submit" name="submitMasp_xemthem" style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer;">SP Tương Tự <i class="fa fa-angle-right"></i></button>
-                                            </form>
+                                            
                                         </div></td>
                                         <?php } ?>
 
@@ -881,6 +1016,8 @@
                                 
                 
                     </table>
+                     
+                                            
                     <?php if($trang>1){
                     ?>
                     <div id="pagination">

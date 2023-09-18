@@ -33,24 +33,26 @@
         }
         function insert_id_product($id, $id_product){
             $db=new connect();
-            $query = "UPDATE thuocsi_vn SET masp='$id_product' WHERE id='$id'";
+            $query = "UPDATE thuocsi_vn SET masp='".$id_product."' WHERE id='".$id."'";
             $result = $db->exec($query);
-            if($result){
-                echo "<span class='success' style='color: #0000FF; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Thêm mã sản phẩm thành công!</span>";
-            }else {
-                echo "<span class='error' style='color:  #FF0000; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Thêm mã sản phẩn thất bại !</span>"; 
-            }
+            // if($result){
+            //     echo "<span class='success' style='color: #0000FF; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Thêm mã sản phẩm thành công!</span>";
+            // }else {
+            //     echo "<span class='error' style='color:  #FF0000; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Thêm mã sản phẩn thất bại !</span>"; 
+            // }
+            return $result;
         }
 
         function insert_id_product_sua($id_sua, $id_product_sua){
             $db=new connect();
             $query = "UPDATE thuocsi_vn SET masp='$id_product_sua' WHERE id='$id_sua'";
             $result = $db->exec($query);
-            if($result){
-                echo "<span class='success' id='suama' style='color: #0000FF; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Sửa mã sản phẩm thành công!</span>";
-            }else {
-                echo "<span class='error' id='suama' style='color:  #FF0000; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Sửa mã sản phẩn thất bại !</span>"; 
-            }
+            // if($result){
+            //     echo "<span class='success' id='suama' style='color: #0000FF; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Sửa mã sản phẩm thành công!</span>";
+            // }else {
+            //     echo "<span class='error' id='suama' style='color:  #FF0000; font-size: 1rem; margin-left: 4rem; margin-top: 5rem;'>Sửa mã sản phẩn thất bại !</span>"; 
+            // }
+            return $result;
         }
 
         function getListproduct($theloai='tatcasanpham',$value='option1',$start=1,$limit=0){
@@ -125,7 +127,24 @@
             return $result;
 
         }
-
+        function updatech($mach, $link){
+            $db =new connect();
+            $query="update thuocsi_vn set masp='".$mach."' where link = '".$link."'";
+            $result = $db->exec($query);
+            return $result;
+        }
+        function selectch($mach, $limited=0,$st=0){
+            $db =new connect();
+            $query="select * from thuocsi_vn  where masp= trim('".$mach."') ORDER BY cast(giamoi as real) asc limit ".$limited." offset "."((".$st."-1)*".$limited.")";;
+            $result = $db->exec($query);
+            return $result;
+        }
+        function countmach( $mach){
+            $db = new connect();
+            $query= "select count(*) as demmach from thuocsi_vn where masp = '".$mach."'";
+            $result = $db->exec($query);
+            return $result;
+        }
         // function charproductorder(){
         //     $db=new connect();
         //     $query = "SELECT sum(sales_in_last_24_hours) as sale from thuocsi_vn";

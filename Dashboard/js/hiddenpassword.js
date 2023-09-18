@@ -1,5 +1,5 @@
-// Hiện ẩn mật khẩu Phần Đăng Nhập
-$(document).ready(function(){
+ // Hiện ẩn mật khẩu Phần Đăng Nhập
+ $(document).ready(function(){
     $('#eye').click(function(){
 
         $(this).toggleClass('open');

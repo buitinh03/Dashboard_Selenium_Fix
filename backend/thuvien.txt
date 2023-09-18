@@ -6,3 +6,6 @@ flask == 1.1.2
 datetime == 5.2
 python-dotenv == 1.0.0
 schedule == 1.2.0
+python-decouple == 3.8
+Pillow == 10.0.0
+pytesseract == 0.3.10

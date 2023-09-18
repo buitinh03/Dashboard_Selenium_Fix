@@ -2,6 +2,22 @@
         include_once('inc/deshboad.php');
 
 ?>
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp'])){
+        $id = $_GET['id_p'];
+        $id_product = $_GET['text'];
+
+        $insert_id_product = $pd->insert_id_product($id, $id_product);
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['submitMasp_sua'])){
+        $id_sua = $_GET['id_p_sua'];
+        $id_product_sua = $_GET['text_sua'];
+
+        $insert_id_product_sua = $pd->insert_id_product_sua($id_sua, $id_product_sua);
+    }
+    
+?>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
@@ -359,6 +375,7 @@ $(function(){
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
+                                        <th>MÃ CHUYỂN HOÁ</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -648,7 +665,31 @@ $(function(){
                                         
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-                                    
+
+                                        <?php if($set['masp'] == null){?>
+                                        <td><div>
+                                        <?php if($checkLoginAdmin == 0){?>    
+                                        <form action="" method="get">
+                                            <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
+                                            <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                        </form></div></td>
+                                        <?php } ?>
+                                        <?php }else{ ?>
+                                         
+                                            <td><div >
+                                            <form action="" method="get">
+                                                <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem; max-width: 80%;">
+                                                <?php if($checkLoginAdmin == 0){?>
+                                                <button type="submit" id="suama" name="submitMasp_sua" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
+                                                <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                            </form>
+                                            
+                                        </div></td>
+                                        <?php } ?>
+                                            
                                         <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
                                         <?php
                                             for($k=1;$k<=12;$k++){
