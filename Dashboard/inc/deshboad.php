@@ -145,7 +145,6 @@ $pd = new product();
                             <style>
                             .text-muted {
                                 border-radius: 1rem;
-                                /* background: linear-gradient(#fff, #ddd); */
                                 background-color: #fff;
                                 padding: .3rem .5rem .3rem .5rem;
                                 font-weight: 500;
@@ -262,10 +261,12 @@ $pd = new product();
                         ?>
                         </div>
                     </div>
+                    <a href="?superAdmin"></a>
                     <?php
-                    if($chucvu == 0){
+                  if(isset($_GET['superAdmin'])){
 
                     ?>
+                
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
                         <style>
@@ -326,7 +327,7 @@ $pd = new product();
                             }
 
                             
-.adress-form-content form button {
+                           .adress-form-content form button {
                                 margin-top: 20px;
                                 height: 40px;
                                 width: 80%;
@@ -891,6 +892,7 @@ $pd = new product();
 
                         </script>
                     </div>
+                        </a>
                    
                     <?php
                     }else{
