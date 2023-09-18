@@ -158,63 +158,7 @@ include_once('format/format.php');
                 </div>
                         
             </div>
-            <!-- <div class="container-cat">
-                <div class="warranty-policy">
-                    <div class="warranty-policy-h1">
-                        <h1>BIỂU ĐỒ SO SÁNH GIÁ QUA CÁC LƯỢT CÀO TRONG THÁNG</h1>
-                    </div>
-                    <div class="warranty-policy-content">
-                    <canvas id="myChart"   style="display:block; height: 170px; width: 100%; margin-right:-100px;" ></canvas>
-                        
-                        
-                    <script>
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        var myChart = new Chart(ctx, {
-                            type: 'bar',
-                    data: {
-                                labels: [],
-                                datasets: []
-                            },
-                            options: {}
-                        });
-
-                        function handleClick() {
-                            var data = [];
-                            
-                            <?php
-                            for($r=0;$r<12;$r++){
-                                if($result['month_'.($r+1)]!=''){
-                            ?>
-                            data[<?php echo $r?>]=parseInt('<?php echo $result['month_'.($r+1)]?>');
-                            <?php
-                                }else {
-                            ?>
-                            data[<?php echo $r?>]=parseInt('0');
-                            <?php        
-                                }
-                            }
-                             ?>
-                            var dataset = {
-                                label:'<?php echo $result['title'] ?>',
-                                data: data,
-                                backgroundColor: 'blue'
-                            };
-                            var h=1;
-                            var lb=[];
-                            for (var i = 0; i <12; i++){
-                                lb.push("Tháng "+h);
-                                h++
-                            }
-                            
-                            myChart.data.labels = lb;
-                            myChart.data.datasets = [dataset];
-                            myChart.update();
-                        }
-                        window.onload=handleClick;
-                    </script>
-                    </div>
-                </div>
-                 -->
+         
             <div class="container-cat">
                 <div class="warranty-policy">
                     <div class="warranty-policy-h1">
@@ -337,13 +281,17 @@ include_once('format/format.php');
             width: 110%;
             margin-bottom: 2rem;
         }
+
+        .sanphamlienquan .danhsach .contai .box{
+            height: auto;
+        }
         .sanphamlienquan .danhsach .chuyensp span{
             align-items: center;
             height: 100%;
             
         }
         .sanphamlienquan .danhsach .contai .box:hover a {
-            transform: translateY(-5px);
+            transform: translateY(5px);
             transition: 1s all ease;
             color: gold;
         }
@@ -371,7 +319,7 @@ include_once('format/format.php');
         .sanphamlienquan .danhsach .contai .box{
             margin: 1rem;
             width: 21%;
-            height: 21rem;
+            height: 23rem;
             background-color: #fff;
             border: 1px solid black;
             border-radius: 10px;
@@ -379,11 +327,12 @@ include_once('format/format.php');
         }
         .sanphamlienquan .danhsach .box .image a{
             width: 100%;
-            height: 13.5rem;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 5%;
+            margin-top: 10%;
             transition:  .5s all ease;
         }
         .sanphamlienquan .danhsach .box img{
@@ -395,7 +344,7 @@ include_once('format/format.php');
             margin-top: 3%;
             margin-bottom: 13%;
             transition:  .5s all ease;
-            transform: translateY(3px);
+            /* transform: translateY(-3px); */
         }
         .sanphamlienquan .danhsach .box p a{
             color: #7380ec;
