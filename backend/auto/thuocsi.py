@@ -17,7 +17,7 @@ load_dotenv()
 from PIL import Image
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD')
+pytesseract.pytesseract.tesseract_cmd = config('TESSERACT_CMD')
 
 # Thiết lập hệ thống ghi log
 log_directory = config('LOG_DIRECTORY')

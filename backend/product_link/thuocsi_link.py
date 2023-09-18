@@ -23,7 +23,7 @@ logging.basicConfig(filename='scraping_log.log', level=logging.INFO)
 
 =======
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Điều chỉnh đường dẫn dựa trên cài đặt của bạn
-pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD')
+pytesseract.pytesseract.tesseract_cmd = config('TESSERACT_CMD')
 # Thiết lập hệ thống ghi log
 log_directory = config('LOG_DIRECTORY')
 
