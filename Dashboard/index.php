@@ -638,14 +638,14 @@ $(function(){
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <div class="input-flex" style="display: flex; justify-content: center;">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;   max-width: 80%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;   max-width: 60%;">
                                             <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
                                             </div>
                                         </form></div></td>
                                         <?php }elseif($checkLoginAdmin == 1){?>    
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                         <?php } ?>
@@ -655,12 +655,12 @@ $(function(){
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <div class="input-flex" style="display: flex; justify-content: center;">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 80%;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
                                                 <?php if($checkLoginAdmin == 0){?>
                                                 <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto; max-width: 60%;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
