@@ -1,0 +1,202 @@
+#pagination {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#pagination a{
+    display: flex;
+    text-align: center;
+    padding: 5px 8px;
+    margin: 5px;
+    background:bisque;
+    border-radius: 3px;
+}
+#pagination a:hover{
+    color: #0000BB;
+    background: #fff;
+}
+
+.adress-form1 .adress-form-content h2 {
+    margin-left: 0;
+    margin-top: -.5rem;
+    justify-content: center;
+ }
+.adress-form1 .adress-form-content h5{
+    padding: 5px;
+    font-size: 16px;
+    color: #fd7e14;
+}
+.adress-form1 {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #333;
+    display: none;
+    z-index: 999;
+}
+.adress-form1 .adress-form-content{
+    font-size: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    position: relative;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 0.8rem;
+    height: auto;
+}
+
+.adress-form1 .adress-form-content p{
+    font-size: 15px;
+}
+
+.primary {
+    text-align: right;
+}
+
+.title {
+    text-align: left;
+}
+
+.nha-san-xuat {
+    text-align: left;
+}
+
+.nuoc-san-xuat {
+    text-align: left;
+}
+
+.thong_tin {
+    text-align: left;
+}
+
+.nguon {
+    width: 10%;
+}
+
+ td:nth-child(7) a{
+    transition: all .5s ease;
+    color: green;
+    font-weight: bold;
+    text-align: left;
+}
+
+.nguon a:hover{
+    color: #00CC00;
+}
+.nguona .thea {
+    transition: all .5s ease;
+    color: #0000BB;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguona .thea:hover {
+    color: #3366FF;
+}
+.nguon .thea1{
+    transition: all .5s ease;
+    color: green;
+    font-weight: bold;
+    text-align: left;
+}
+.nguonb .thea {
+transition: all .5s ease;
+color:#FFCC33;
+font-weight: bold;
+text-align: left;
+} 
+
+.nguonb .thea:hover {
+    color: #00DD00;
+}
+
+.recent-order tbody tr td:nth-child(2) a{
+text-align: left;
+color: #333;
+}
+
+.recent-order tbody tr td:nth-child(2):hover a{
+    color: rgb(221, 50, 50);
+}
+.nguonc .thea {
+    transition: all .5s ease;
+    color:#17a2b8;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguonc .thea:hover {
+    color:#0000BB;
+}
+.nguond .thea {
+    transition: all .5s ease;
+    color:#1250dc;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguond .thea:hover {
+    color:#acc0f3;
+}
+.nguone .thea {
+    transition: all .5s ease;
+    color:#5dac46;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguone .thea:hover {
+    color:#0f62f9;
+}
+.nguonf .thea {
+    transition: all .5s ease;
+    color:#F60B8A;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguonf .thea:hover {
+    color:#fd7e14;
+}
+
+main .recent-order canvas{
+background: var(--color-white);
+width: 100%;
+border-radius:var(--card-border-radius) ;
+padding :var(--card-padding);
+text-align: center;
+box-shadow: var(--box-shadow);
+transition: all 300ms ease;
+border: #0b0c0c 2px;
+}
+
+main .recent-order canvas:hover{
+box-shadow: none;
+}
+.sosanh {
+    margin-bottom: 5rem;
+    width: 88%;
+    margin: 0 5rem;
+    background-color: #fff;
+    border-radius: 2rem;
+    margin-top: 2rem;
+}    
+html{
+    margin-bottom: 5rem;
+}
+
+.div {
+    margin-top: 2rem;
+    height: 1rem;
+}
+.chart-label {
+    white-space: normal;
+}
+    

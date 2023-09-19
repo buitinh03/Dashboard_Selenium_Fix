@@ -1,6 +1,7 @@
 
 <?php include_once('header.php'); 
-    include_once('format/format.php');?>
+      include_once('format/format.php');
+?>
 
 <?php
 
@@ -26,6 +27,7 @@ $pd = new product();
 
 
 <! END OF ASIDE>
+    <link rel="stylesheet" href="css/dashboard.css">
             <main>
             <h1>BẢNG ĐIỀU KHIỂN</h1>
                 
@@ -34,15 +36,6 @@ $pd = new product();
                 </div>
             
                 <div class="insights">
-                    <style>
-                        .tongsanpham {
-                            transition: 0.5s all ease;
-                            cursor: pointer;
-                        }
-                        .tongsanpham:hover {
-                            transform: translateY(-10px);
-                        }
-                    </style>
                 <?php
                         $tongsanpham =  $pd->tongsanpham('tatcasanpham');
                         if($tongsanpham){
@@ -67,49 +60,10 @@ $pd = new product();
                  ?>
                 </div>
                 
-                <style>
-                    main .recent-order .a{
-                        text-align: start;
-                        display:contents;
-                        color: green;
-                    }
-                </style>
                 <div class="recent-updates">
                 <h2>Tìm kiếm sản phẩm</h2>
                 <div class="updates">
                     
-                    <style>
-        .search-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 4vh;
-        }
-
-        .search-box input[type="text"] {
-            width: 85%;
-            padding: 10px;
-            margin-right: 10px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-        }
-
-        .search-box button {
-            width: 100;
-            padding: 7px 7px;
-            background-color:orange;
-            color:aliceblue;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
-           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
                     <form action="search.php" method="get" class="search-box">
                                 <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
                                 <button type="submit" name="submit">Tìm kiếm</button>
@@ -142,19 +96,7 @@ $pd = new product();
                             Session::unset();
                           }
                           ?>
-                            <style>
-                            .text-muted {
-                                border-radius: 1rem;
-                                background-color: #fff;
-                                padding: .3rem .5rem .3rem .5rem;
-                                font-weight: 500;
-                            }
-
-                            .text-muted a {
-                                padding: 1rem .5rem 1rem .5rem;
-                                color: red;
-                            }
-                          </style>
+                 
                             <small class="text-muted" ><a style='font-size:1rem;' href="?action=logout">Đăng xuất</a></small>
                         </div>
                     </div>
@@ -164,46 +106,7 @@ $pd = new product();
                 </div>
             
             <! END OF TOP>
-            <!-- <div class="recent-updates">
-                <h2>Tìm kiếm sản phẩm</h2>
-                <div class="updates"> -->
-                    
-                    <style>
-        .search-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 4vh;
-        }
-
-        .search-box input[type="text"] {
-            width: 70%;
-            padding: 10px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-        }
-
-        .search-box button {
-            width: 100;
-            padding: 7px 7px;
-            background-color:orange;
-            color:aliceblue;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
-        }
-    </style>
-                    <!-- <form action="search.php" method="post" class="search-box">
-                                <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm..." required >
-                                <button type="submit" name="submit">Tìm kiếm</button>
-                    </form>
-                </div>
-            </div> -->
+       
             <!END OF RECENT>
              <div class="sales-analytics">
                     <h2></h2>
@@ -221,30 +124,7 @@ $pd = new product();
  
                    
                          ?>
-                         <style>
-
-                            .img {
-                                background-color: #ddd;
-                            }
-                          
-                          .right .item.online h3 a span{
-                            transition: all .5s ease;
-                           
-                        }
-
-                        .right .item.online h3 a:hover span{
-                            color:  #f97e0e;
-                            margin-top: 5px;
-                        }
-
-                        .right .item.online .h3 {
-                            margin-top: 10px;
-                        }
-
-                        .info a:hover span{
-                            color:  #f97e0e;
-                        }
-                         </style>
+               
                          <div class="info">
                                 <h3 class="h3"><a href="#"><span>Tổng sản phẩm</span></a></h3>
                          
@@ -269,159 +149,13 @@ $pd = new product();
                 
                     <div class="item add-product">
                         <span class="material-icons-sharp">add</span>
-                        <style>
-                            
-                            /* -------------------- adress form --------------- */
-
-                            .adress-form {
-                                position: fixed;
-                                width: 100vw;
-                                height: 100vh;
-                                background-color: rgba(0, 0, 0, 0.3);
-                                top: 0;
-                                left: 0;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                color: #333;
-                                display: none;
-                                z-index: 999;
-                            }
-
-                            .adress-form-content {
-                                width: 400px;
-                                height: 450px;
-                                background-color: #fff;
-                                border-radius: 5px;
-                            }
-
-                            .adress-form-content form {
-                                padding: 12px 40px;
-                            }
-
-                            .adress-form-content h2 {
-                                font-size: 16px;
-                                padding: 12px 0;
-                                border-bottom: 1px solid #333;
-                                position: relative;
-                            }
-
-                            .adress-form-content h2 span {
-                                display: block;
-                                position: absolute;
-                                height: 30px;
-                                padding: 0 6px;
-                                border: 1px solid #ddd;
-                                right: 12px;
-                                cursor: pointer;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                line-height: 30px;
-                                color: #333;
-                                border-radius: 5px;
-                            }
-
-                            .adress-form-content form p {
-                                font-size: 16px;
-                            }
-
-                            
-                           .adress-form-content form button {
-                                margin-top: 20px;
-                                height: 40px;
-                                width: 80%;
-                                cursor: pointer;
-                                background-color: #f97e0e;
-                                outline: none;
-                                border: none;
-                                color: #fff;
-                                border-radius: 5px;
-                            }
-
-                        </style>
+                
                         <li id="adress-form"><a href="#"><h3>Cập nhật</h3></a></li>
                         <div class="adress-form">
                             <div class="adress-form-content">
                                 <h2>Cào Dữ Liệu Website <span id="adress-close">X Đóng</span></h2>
                                     <form action="#" method="post">
                                    <p style="font-weight: bolder;">Chọn website bạn muốn thực hiện cào</p>
-                                   <style>
-                                    /* Customize the label (the container) */
-                                    .containerr {
-                                    margin-top: 8px;
-                                    display: block;
-                                    position: relative;
-                                    padding-left: 20px;
-                                    margin-bottom: 8px;
-                                    cursor: pointer;
-                                    font-size: 14px;
-                                    -webkit-user-select: none;
-                                    -moz-user-select: none;
-                                    -ms-user-select: none;
-                                    user-select: none;
-                                    text-align: left;
-                                    }
-                                    
-
-                                    /* Hide the browser's default radio button */
-                                    .containerr input {
-                                        margin-top: 8px;   
-                                    position: absolute;
-                                    opacity: 0;
-                                    cursor: pointer;
-                                    height: 0;
-                                    width: 0;
-                                    }
-
-                                    /* Create a custom radio button */
-                                    .checkmark {
-                                    
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    height: 15px;
-                                    width: 15px;
-                                    background-color:bisque;
-                                    border-radius: 50%;
-                                    }
-
-                                    /* On mouse-over, add a grey background color */
-                                    .containerr:hover input ~ .checkmark {
-                                    background-color:#f97e0e;
-                                    }
-
-                                    /* When the radio button is checked, add a blue background */
-                                    .containerr input:checked ~ .checkmark {
-                                    background-color: #2196F3;
-                                    }
-                                    .containerr input:disabled ~ .checkmark {
-                                    background-color:darkgray;
-                                    }
-
-                                    /* Create the indicator (the dot/circle - hidden when not checked) */
-                                    .checkmark:after {
-                                    content: "";
-                                    position: absolute;
-                                    display: none;
-                                    }
-
-                                    /* Show the indicator (dot/circle) when checked */
-                                    .containerr input:checked ~ .checkmark:after {
-                                    display: block;
-                                    }
-
-                                    /* Style the indicator (dot/circle) */
-                                    .containerr .checkmark:after {
-                                       
-                                    top: 5px;
-                                    left: 5px;
-                                    width: 5px;
-                                    height: 5px;
-                                    border-radius: 50%;
-                                    background: white;
-                                    }
-                                   </style>
                                    
                                    <label class="containerr" style="font-weight: 400;">Thuocsi.vn
                                         <input type="checkbox" name='thuocsi' value="thuocsi" id="checkbox-1">

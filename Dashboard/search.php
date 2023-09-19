@@ -4,6 +4,7 @@
 
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
+<link rel="stylesheet" href="css/search_css.css">
  
       <?php $fm = new Format();
     $product=new product();
@@ -129,25 +130,6 @@
 ?>
                 </div>
                 <div class="recent-order">
-                <style>
-                        #pagination {
-                            display: flex;
-                            text-align: center;
-                            justify-content: center;
-                        }
-                        #pagination a{
-                            display: flex;
-                            text-align: center;
-                            padding: 5px 8px;
-                            margin: 5px;
-                            background:bisque;
-                            border-radius: 3px;
-                        }
-                        #pagination a:hover{
-                            color: #0000BB;
-                            background: #fff;
-                        }
-                    </style>
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
                                         ?><li id="adress-form1" ><a href="#"><h3 style="margin-left: .5rem;font-size: 1.2rem;font-weight: bold;color: #7380ec;background: bisque;padding: 5px;margin-right: .5rem;margin-top: -.5rem;border-radius: 5px;">Cập nhật</h3></a></li><?php }?>
@@ -535,46 +517,7 @@
                     </form>
                             </div>
                         </div>
-                        <style>
-                            .adress-form1 .adress-form-content h2 {
-                            margin-left: 0;
-                            margin-top: -.5rem;
-                            justify-content: center;
-                            }
-                            .adress-form1 .adress-form-content h5{
-                                padding: 5px;
-                                font-size: 16px;
-                                color: #fd7e14;
-                            }
-                            .adress-form1 {
-                                position: fixed;
-                                width: 100vw;
-                                height: 100vh;
-                                background-color: rgba(0, 0, 0, 0.3);
-                                top: 0;
-                                left: 0;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                color: #333;
-                                display: none;
-                                z-index: 999;
-                                }
-                                .adress-form1 .adress-form-content{
-                                    font-size: 16px;
-                                    padding: 12px 0;
-                                    border-bottom: 1px solid #333;
-                                    position: relative;
-                                    color: #333;
-                                    margin-top: 10px;
-                                    margin-bottom: 0.8rem;
-                                    height: auto;
-                                }
-                                .adress-form1 .adress-form-content p{
-                                    font-size: 15px;
-                                }
-                        </style>
+                     
                         <script>
                             // Click vào Button Địa chỉ
                             const adressbtn1 = document.querySelector('#adress-form1')
@@ -680,117 +623,6 @@
                                
                                     </tr>
                                 </thead>
-                        <style>
-                             .primary {
-                                text-align: right;
-                            }
-
-                            .title {
-                                text-align: left;
-                            }
-
-                            .nha-san-xuat {
-                                text-align: left;
-                            }
-
-                            .nuoc-san-xuat {
-                                text-align: left;
-                            }
-
-                            .thong_tin {
-                                text-align: left;
-                            }
-                            
-                            .nguon {
-                                width: 10%;
-                            }
-
-                             td:nth-child(7) a{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-
-                            .nguon a:hover{
-                                color: #00CC00;
-                            }
-                            .nguona .thea {
-                                transition: all .5s ease;
-                                color: #0000BB;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguona .thea:hover {
-                                color: #3366FF;
-                            }
-                           .nguon .thea1{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-                           .nguonb .thea {
-                            transition: all .5s ease;
-                            color:#FFCC33;
-                            font-weight: bold;
-                            text-align: left;
-                            } 
-        
-                        .nguonb .thea:hover {
-                            color: #00DD00;
-                        }
-                        
-                            .recent-order tbody tr td:nth-child(2) a{
-                        text-align: left;
-                        color: #333;
-                        }
-
-                            .recent-order tbody tr td:nth-child(2):hover a{
-                                color: rgb(221, 50, 50);
-                            }
-                            .nguonc .thea {
-                                transition: all .5s ease;
-                                color:#17a2b8;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguonc .thea:hover {
-                                color:#0000BB;
-                            }
-                            .nguond .thea {
-                                transition: all .5s ease;
-                                color:#1250dc;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguond .thea:hover {
-                                color:#acc0f3;
-                            }
-                            .nguone .thea {
-                                transition: all .5s ease;
-                                color:#5dac46;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguone .thea:hover {
-                                color:#0f62f9;
-                            }
-                            .nguonf .thea {
-                                        transition: all .5s ease;
-                                        color:#F60B8A;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguonf .thea:hover {
-                                        color:#fd7e14;
-                                    }
-                        </style>
                         <?php 
                         $format = new Format();
                         if(!empty($product_search) ){
@@ -954,11 +786,6 @@
                                         
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-                                    <style>
-                                        /* a {
-                                            justify-content: center;
-                                        } */
-                                    </style>
                                        
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
@@ -967,7 +794,7 @@
                                             
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <div class="input-flex" style="display: flex; justify-content: center;">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
                                             <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
                                             </div>
                                             
@@ -977,7 +804,7 @@
                                         <?php }elseif($checkLoginAdmin == 1){?>    
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                       
@@ -988,12 +815,12 @@
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <div class="input-flex" style="display: flex; justify-content: center;">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
                                                 <?php if($checkLoginAdmin == 0){?>
                                                     <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto; max-width: 60%;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
@@ -1079,42 +906,7 @@
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
-                <style>
-                    main .recent-order canvas{
-                    background: var(--color-white);
-                    width: 100%;
-                    border-radius:var(--card-border-radius) ;
-                    padding :var(--card-padding);
-                    text-align: center;
-                    box-shadow: var(--box-shadow);
-                    transition: all 300ms ease;
-                    border: #0b0c0c 2px;
-                    }
-
-                    main .recent-order canvas:hover{
-                    box-shadow: none;
-                    }
-                    .sosanh {
-                        margin-bottom: 5rem;
-                        width: 88%;
-                        margin: 0 5rem;
-                        background-color: #fff;
-                        border-radius: 2rem;
-                        margin-top: 2rem;
-                    }    
-                    html{
-                        margin-bottom: 5rem;
-                    }
-
-                    .div {
-                        margin-top: 2rem;
-                        height: 1rem;
-                    }
-                    .chart-label {
-                        white-space: normal;
-                        }
-                    
-                </style>
+          
             <?php
                 if($checkLoginAdmin == 0){
             

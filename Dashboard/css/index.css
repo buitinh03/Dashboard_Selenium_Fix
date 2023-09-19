@@ -1,0 +1,193 @@
+#theloaiban{
+    position: relative;
+    width: 5.1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    background: bisque;
+    color: #7380ec;
+}
+#xeptheotheloai i{
+    position: relative;
+    top: -1.9rem;
+    left: 4.35rem;
+    color: chocolate;
+}
+
+#pagination {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#pagination a{
+    display: flex;
+    text-align: center;
+    padding: 5px 8px;
+    margin: 5px;
+    background:bisque;
+    border-radius: 3px;
+}
+#pagination a:hover{
+    color: #0000BB;
+    background: #fff;
+}
+.bloc p{
+    /* position:relative; */
+    color: chocolate;
+    /* margin-top: .5rem;                         
+    margin-left: .5rem; */
+}
+#pagination .bloc select{
+        
+        text-align: center;
+        padding: 7px 20px 7px 8px;
+     
+        background: bisque;
+        border-radius: 3px;
+      
+        color: #7380ec;
+        margin-left: 5px; 
+}
+
+#pagination .bloc i{
+    position: relative;
+    left: -1.3rem;
+    color: chocolate;
+}
+
+.primary {
+    text-align: right;
+}
+
+.title {
+    text-align: left;
+}
+
+.nha-san-xuat {
+    text-align: left;
+}
+
+.nuoc-san-xuat {
+    text-align: left;
+}
+
+.thong_tin {
+    text-align: left;
+}
+
+.nguon {
+    width: 10%;
+}
+
+td:nth-child(8) a{
+    transition: all .5s ease;
+    color: green;
+    font-weight: bold;
+    text-align: left;
+}
+
+.nguon a:hover{
+    color: #00CC00;
+}
+.nguona .thea {
+    transition: all .5s ease;
+    color: #0000BB;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguona .thea:hover {
+    color: #3366FF;
+}
+.nguonb .thea {
+    transition: all .5s ease;
+    color:tomato;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguonb .thea:hover {
+    color:lightcoral;
+}
+.nguonc .thea {
+    transition: all .5s ease;
+    color:#17a2b8;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguonc .thea:hover {
+    color:#0000BB;
+}
+.nguond .thea {
+    transition: all .5s ease;
+    color:#1250dc;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguond .thea:hover {
+    color:#acc0f3;
+}
+.nguone .thea {
+    transition: all .5s ease;
+    color:#5dac46;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguone .thea:hover {
+    color:#0f62f9;
+}
+.nguonf .thea {
+    transition: all .5s ease;
+    color:#F60B8A;
+    font-weight: bold;
+    text-align: left;
+} 
+
+.nguonf .thea:hover {
+    color:#fd7e14;
+}
+.recent-order tbody tr td:nth-child(2) a{
+cursor: pointer;
+color: rgb(221, 94, 94);
+transition: .5s all ease;
+text-align: left;
+}
+
+.recent-order tbody tr td:nth-child(2):hover a{
+color: rgb(221, 50, 50);
+font-size: 14px;
+}
+
+.nguon .thea1{
+transition: all .5s ease;
+color: green;
+font-weight: bold;
+text-align: left;
+
+}
+
+.quaylai {
+    display: none;
+    position: fixed;
+    font-size: 2rem;
+    text-align: right;
+    max-width: 97%;
+    color: #333;
+    cursor: pointer;
+    top: 50%;
+    right: 1.3%;
+    transition: .3s all ease;
+}
+
+.quaylai i {
+    transition: .3s all ease;
+    color: #fff;
+    font-size: 2.5rem;
+}
