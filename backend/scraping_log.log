@@ -1,49 +1,5 @@
 WARNING:root:Can not find chromedriver for currently installed chrome version.
-ERROR:root:Error scraping product: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=116.0.5845.188)
-Stacktrace:
-	GetHandleVerifier [0x00007FF68D1E52A2+57122]
-	(No symbol) [0x00007FF68D15EA92]
-	(No symbol) [0x00007FF68D02E3AB]
-	(No symbol) [0x00007FF68D00E1B9]
-	(No symbol) [0x00007FF68D08B417]
-	(No symbol) [0x00007FF68D09E24F]
-	(No symbol) [0x00007FF68D086DB3]
-	(No symbol) [0x00007FF68D05D2B1]
-	(No symbol) [0x00007FF68D05E494]
-	GetHandleVerifier [0x00007FF68D48EF82+2849794]
-	GetHandleVerifier [0x00007FF68D4E1D24+3189156]
-	GetHandleVerifier [0x00007FF68D4DACAF+3160367]
-	GetHandleVerifier [0x00007FF68D276D06+653702]
-	(No symbol) [0x00007FF68D16A208]
-	(No symbol) [0x00007FF68D1662C4]
-	(No symbol) [0x00007FF68D1663F6]
-	(No symbol) [0x00007FF68D1567A3]
-	BaseThreadInitThunk [0x00007FFE3E457344+20]
-	RtlUserThreadStart [0x00007FFE3EB226B1+33]
-
-ERROR:root:Unhandled Exception: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=116.0.5845.188)
-Stacktrace:
-	GetHandleVerifier [0x00007FF68D1E52A2+57122]
-	(No symbol) [0x00007FF68D15EA92]
-	(No symbol) [0x00007FF68D02E3AB]
-	(No symbol) [0x00007FF68D00E1B9]
-	(No symbol) [0x00007FF68D08B417]
-	(No symbol) [0x00007FF68D09E24F]
-	(No symbol) [0x00007FF68D086DB3]
-	(No symbol) [0x00007FF68D05D2B1]
-	(No symbol) [0x00007FF68D05E494]
-	GetHandleVerifier [0x00007FF68D48EF82+2849794]
-	GetHandleVerifier [0x00007FF68D4E1D24+3189156]
-	GetHandleVerifier [0x00007FF68D4DACAF+3160367]
-	GetHandleVerifier [0x00007FF68D276D06+653702]
-	(No symbol) [0x00007FF68D16A208]
-	(No symbol) [0x00007FF68D1662C4]
-	(No symbol) [0x00007FF68D1663F6]
-	(No symbol) [0x00007FF68D1567A3]
-	BaseThreadInitThunk [0x00007FFE3E457344+20]
-	RtlUserThreadStart [0x00007FFE3EB226B1+33]
-
+INFO:root:\u0110\u0103ng nh\u1eadp thành công
+INFO:root:Vui lòng \u0111\u1ee3i, s\u1ea3n ph\u1ea9m \u0111ang ti\u1ebfn hành load
+INFO:root:Link : https://thuocsi.vn/product/medx-marvelon-bayer-h21v
+INFO:root:Gia : 64800
