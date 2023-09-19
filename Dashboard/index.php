@@ -342,7 +342,7 @@ $(function(){
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>MÃ CHUYỂN HOÁ</th>
+                                        <th>MÃ CHUẨN HOÁ</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
