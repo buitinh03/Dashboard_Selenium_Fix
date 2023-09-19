@@ -120,8 +120,8 @@ try:
         cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
         return cursor.fetchone()[0]
 
-    link = ['https://thuocsi.pharex.vn/products/acarbose-50mg-khapharco-h100v-pid36241']
-    # link = sys.argv[1:]
+    # link = ['https://thuocsi.pharex.vn/products/acarbose-50mg-khapharco-h100v-pid36241']
+    link = sys.argv[1:]
     for a in link:
         driver.get(a)
         try:
