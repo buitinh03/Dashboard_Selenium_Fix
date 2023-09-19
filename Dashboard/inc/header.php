@@ -69,7 +69,7 @@ window.addEventListener('popstate', function(event) {
                     <div class="sidebar">
                         <a href="index.php" for="Dashboard">
                             <span class="material-icons-sharp">space_dashboard</span>
-                            <h3 id="Dashboard">Bảng chính</h3>
+                            <h3 id="Dashboard">Trang chủ</h3>
                         </a>
                         
                           <?php

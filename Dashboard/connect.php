@@ -225,6 +225,7 @@
              $result = $db->getList($query);
             return $result;
         }
+    }
         function count_search_xemthem($thu){
             $db = new connect();
             $dem = "select count(*) as count from  thuocsi_vn where unaccent(masp) ~* replace(unaccent('$thu'), ' ', '.*') 
@@ -309,5 +310,5 @@
         // }
 
         
-    }
+    
 ?>
