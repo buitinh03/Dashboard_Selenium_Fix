@@ -231,24 +231,20 @@
         ORDER BY COALESCE(masp, '') desc, gialech desc ";
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
-         }}
-         elseif($value=='option2'){
-            $query="SELECT *,
-        CASE
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
-            ELSE 0
-            END AS gialech   
+         }
+             $result = $db->getList($query);
+            return $result;
+        }else{
+            $query="SELECT *   
         FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
         ORDER BY COALESCE(masp, '') desc, ngaymoi desc ";
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
          }
-         }
              $result = $db->getList($query);
             return $result;
         }
+    }
         function count_search_xemthem($thu){
             $db = new connect();
             $dem = "select count(*) as count from  thuocsi_vn where unaccent(masp) ~* replace(unaccent('$thu'), ' ', '.*') 

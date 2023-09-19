@@ -601,7 +601,35 @@
                             <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
-                        <?php } ?><?php } ?>
+                        <?php } ?>
+                       
+                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+                        <p>Sắp xếp theo: 
+                        <form method="POST" action="" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></p>
+                        
+                    </div>
+                    </div>
+                    <?php }else{ ?>
+                        <div id="pagination" >
+                           
                        
                         <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
                         <p>Sắp xếp theo: 
@@ -628,9 +656,12 @@
                     </div>
                     
                     </div>
-                    
+                    <?php } ?>
                     <?php if(isset($_GET['masp']) or isset($_SESSION['mach'])){
-                        $product_search=$product->search_xemthem($selectedValue,$_SESSION['search'],$trangthu,10);
+                        if(!empty($selectedValue)){
+                            $product_search=$product->search_xemthem($selectedValue,$_SESSION['search'],$trangthu,10);
+                        }else{$product_search=$product->search_xemthem('option1',$_SESSION['search'],$trangthu,10);}
+                       
                     }else{
                            $product_search=$product->search($selectedValue,$_SESSION['search'],$trangthu,10);
                  
