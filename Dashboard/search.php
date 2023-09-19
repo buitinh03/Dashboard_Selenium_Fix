@@ -163,7 +163,7 @@
                                    <h5><?php echo $search ?></h5>
 
                                    <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
-                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
+                                    <label for="" style="font-size: 1rem; margin: 0 auto;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
                                     <script>
                                 document.getElementById("runButton1").addEventListener("click",function(){
                                         var fun=[a,b]
@@ -536,6 +536,131 @@
                             </div>
                         </div>
                         <style>
+                            .adress-form-content {
+                                width: 400px;
+                                height: 450px;
+                                background-color: #fff;
+                                border-radius: 5px;
+                            }
+                            .adress-form-content form {
+                                padding: 12px 40px;
+                            }
+
+                            .adress-form-content h2 {
+                                font-size: 16px;
+                                padding: 12px 0;
+                                border-bottom: 1px solid #333;
+                                position: relative;
+                            }
+
+                            .adress-form-content h2 span {
+                                display: block;
+                                position: absolute;
+                                height: 30px;
+                                padding: 0 6px;
+                                border: 1px solid #ddd;
+                                right: 12px;
+                                cursor: pointer;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                line-height: 30px;
+                                color: #333;
+                                border-radius: 5px;
+                            }
+
+                            .adress-form-content form p {
+                                font-size: 16px;
+                            }
+
+                            .adress-form-content form input, select {
+                                display: block;
+                                height: 40px;
+                                width: 100%;
+                                margin-top: 10px;
+                                border: 1px solid #ddd;
+                                padding: 6px;
+                                border-radius: 5px;
+                                outline: none;
+                                font-size: 1.2rem;
+                            }
+
+                            .adress-form-content form label {
+                                margin-right: 13rem;
+                                width: 50vw;
+                                margin-bottom: 0rem;
+                                margin-top: 3rem;
+                            }
+
+                            .adress-form-content form input:hover {
+                                border-color: #0000FF;
+                            }
+
+                            .adress-form-content form input:focus {
+                                border-color: #0000FF;
+                            }
+
+                            .adress-form-content form button {
+                                margin-top: 20px;
+                                height: 40px;
+                                width: 60%;
+                                cursor: pointer;
+                                background-color: #250ef9;
+                                outline: none;
+                                border: none;
+                                color: #fff;
+                                border-radius: 5px;
+                                font-weight: 700;
+                            }
+                            
+                            .adress-form-content {
+                                width: 400px;
+                                height: 450px;
+                                background-color: #fff;
+                                border-radius: 5px;
+                            }
+
+                            .adress-form-content form {
+                                padding: 12px 40px;
+                            }
+
+                            .adress-form-content h2 {
+                                font-size: 16px;
+                                padding: 12px 0;
+                                border-bottom: 1px solid #333;
+                                position: relative;
+                            }
+
+                            .adress-form-content h2 span {
+                                display: block;
+                                position: absolute;
+                                height: 30px;
+                                padding: 0 6px;
+                                border: 1px solid #ddd;
+                                right: 12px;
+                                cursor: pointer;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                line-height: 30px;
+                                color: #333;
+                                border-radius: 5px;
+                            }
+
+                            .adress-form-content form p {
+                                font-size: 16px;
+                            }
+
+                            
+.adress-form-content form button {
+                                margin-top: 20px;
+                                height: 40px;
+                                width: 80%;
+                                cursor: pointer;
+                                background-color: #f97e0e;
+                                outline: none;
+                                border: none;
+                                color: #fff;
+                                border-radius: 5px;
+                            }
                             .adress-form1 .adress-form-content h2 {
                             margin-left: 0;
                             margin-top: -.5rem;
@@ -804,7 +929,7 @@
                                                          <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: var(--color-info-dark); font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -980,7 +1105,7 @@
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
-                                      
+                                        <?php } ?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
@@ -992,7 +1117,7 @@
                                                     <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:var(--color-white); color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
@@ -1187,7 +1312,7 @@
 
             </div>
          
-<?php } ?>
+
             </div>   <script src="js/time.js"></script>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <?php include_once('inc/footer.php')?>

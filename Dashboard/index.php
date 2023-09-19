@@ -99,14 +99,14 @@ $(function(){
  <?php 
  if($theloaiban=='tatcasanpham'){
     ?>
-  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+   <span style="color: green; ">- <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> <span style="color: blue;">- 
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span><span style="color: #33CC33;">- <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span><span style="color: #17a2b8;"> - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span><span style="color: #1250dc;"> - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span><span style="color: #5dac46;"> - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span><span style="color: #F60B8A;"> - <i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
@@ -479,9 +479,9 @@ $(function(){
                                 <?php 
                             ?>
                             <tbody>
-                                    <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr" >
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: var(--color-info-dark); font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -635,32 +635,32 @@ $(function(){
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
                                         <?php if($checkLoginAdmin == 0){?>    
-                                        <form action="" method="get">
+                                        <form action="" method="get" class='form-mach'>
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <div class="input-flex" style="display: flex; justify-content: center;">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;   max-width: 80%;">
-                                            <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." >
+                                            <button type="submit" id="themma" name="submitMasp" style="background-color:#669966;">+</button>
                                             </div>
                                         </form></div></td>
                                         <?php }elseif($checkLoginAdmin == 1){?>    
-                                        <form action="" method="get">
+                                        <form action="" method="get" class='form-mach'>
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." >
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                         <?php } ?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
-                                            <form action="" method="get">
+                                            <form action="" method="get" class='form-mach'>
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <div class="input-flex" style="display: flex; justify-content: center;">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 80%;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã...">
                                                 <?php if($checkLoginAdmin == 0){?>
-                                                <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
+                                                <button type="submit" id="suama" name="submitMasp_sua" style="background-color:darksalmon;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                <a href="search.php?masp=<?php echo $set['masp']?>">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
@@ -739,24 +739,7 @@ $(function(){
                     </script>
                 </div>
                <style>
-                    .quaylai {
-                        display: none;
-                        position: fixed;
-                        font-size: 2rem;
-                        text-align: right;
-                        max-width: 97%;
-                        color: #333;
-                        cursor: pointer;
-                        top: 50%;
-                        right: 1.3%;
-                        transition: .3s all ease;
-                    }
-
-                    .quaylai i {
-                        transition: .3s all ease;
-                        color: #fff;
-                        font-size: 2.5rem;
-                    }
+                    
                 </style>
                 <div class="quaylai">
                 <i class="fas fa-chevron-circle-up" onclick="scrollUp()"></i><br>

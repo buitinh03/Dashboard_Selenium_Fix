@@ -12,7 +12,7 @@ See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for 
   return cls(crawler)
 
 DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
-INFO:scrapy.extensions.telnet:Telnet Password: ec5bafaccf6fd42b
+INFO:scrapy.extensions.telnet:Telnet Password: 7875526cfb522e97
 INFO:scrapy.middleware:Enabled extensions:
 ['scrapy.extensions.corestats.CoreStats',
  'scrapy.extensions.telnet.TelnetConsole',
@@ -40,33 +40,45 @@ INFO:scrapy.middleware:Enabled item pipelines:
 INFO:scrapy.core.engine:Spider opened
 INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
 INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6023
-DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500> (referer: None)
-DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500>
-{'name': 'Panadol Extra, H\u1ed9p 180 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': '\u0110au \u0111\u1ea7u.; \u0110au n\u1eeda \u0111\u1ea7u.; \u0110au c\u01a1.; \u0110au b\u1ee5ng kinh.; \u0110au h\u1ecdng.; \u0110au c\u01a1 x\u01b0\u01a1ng.; S\u1ed1t và \u0111au sau khi tiêm vacxin.', 'nha_san_xuat': 'Gsk', 'nuoc_san_xuat': 'Vi\u1ec7t Nam', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg, Caffeine 65mg Tá d\u01b0\u1ee3c: Pregelatinised starch, Maize starch, Povidone, Potassium Sorbate,Talc, Stearic acid, Croscarmellose sodium.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-0.jpg', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500'}
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg> (referer: None)
 DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb> (referer: None)
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum>
+{'name': 'Thu\u1ed1c Panadol C\u1ea3m Cúm, H\u1ed9p 180 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Panadol C\u1ea3m cúm làm gi\u1ea3m các tri\u1ec7u ch\u1ee9ng c\u1ee7a c\u1ea3m cúm nh\u01b0 s\u1ed1t, \u0111au và xung huy\u1ebft m\u0169i.', 'nha_san_xuat': 'Không \u0111\u1ec1 c\u1eadp', 'nuoc_san_xuat': 'Vi\u1ec7t Nam', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg, Caffeine 25mg, Phenylephrine hydrochloride 5mg. Tá d\u01b0\u1ee3c: Starch maize, Pre-gelatinised starch, Povidone, Eurocol Sunset yellow, Sodium lauryl sulfate, Potassium sorbate, Stearic acid, Talc, Microcrystalline cellulose, Hydroxypropyl methylcellulose, Polyethylene glycol, Titanium Dioxide, Quinoline yellow lake (El 04), Sunset yellow aluminium lake (E110).', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-0.jpg', 'link': 'https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien>
+{'name': 'Thu\u1ed1c gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t Panadol 120mg', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Paracetamol là m\u1ed9t ch\u1ea5t gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t.; \u0110i\u1ec1u tr\u1ecb \u0111au nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0111au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm v\u1eafc xin; \u0110au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'Sterling drug (M) SDN.BHD', 'nuoc_san_xuat': 'M\u1ef9', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 120 mg/viên. Tá d\u01b0\u1ee3c: Mannitol, b\u1ed9t h\u01b0\u01a1ng anh \u0111ào, natri saccharin, h\u1ed7n h\u1ee3p D&C red lake, acid stearic, tinh b\u1ed9t ngô.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/hapacol-325mg-dhg-pharma-400-vien-dieu-tri-giam-dau-ha-sot_00626.webp', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg>
+{'name': 'Thu\u1ed1c Panadol 500mg giúp gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Panadol Viên s\u1ee7i ch\u1ee9a paracetamol là m\u1ed9t ch\u1ea5t h\u1ea1 s\u1ed1t và gi\u1ea3m \u0111au.; \u0110i\u1ec1u tr\u1ecb c\u01a1n \u0111au t\u1eeb nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t; \u0110au sau khi tiêm v\u1eafc xin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'GlaxoSmithKline', 'nuoc_san_xuat': 'Úc', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg/viên. Tá d\u01b0\u1ee3c: Citric acid - anhydrous, Sodium carbonate anhydrous, Sodium bicarbonate, Sorbitol, Aspartame, Dimethicone 200, Povidone, Sodium lauryl sulfate, Saccharin sodium, Imitation Lemon Flavour 610406E, Imitation candied sugar flavor 650122U, Permaseal Lemon Powder Flavour 84260-51, Drydex Nature Identical Lemon Flavour 16 - 8320.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien-0.jpg', 'link': 'https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg'}
 DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb>
 {'name': 'Panadol Extra with Optizorb, H\u1ed9p 120 viên', 'giamoi': '2000', 'month_9': '2000', 'thong_tin': '\u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm v\u1eafc xin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.', 'nha_san_xuat': 'GlaxoSmithKline', 'nuoc_san_xuat': 'Ai Len', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol: 500mg, Caffeine: 65mg.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/hapacol-325mg-dhg-pharma-400-vien-dieu-tri-giam-dau-ha-sot_00626.webp', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb'}
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500> (referer: None)
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol>
+{'name': 'Panadol Caplet 500mg, H\u1ed9p 120 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': '\u0110i\u1ec1u tr\u1ecb \u0111au nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm vacxin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'Sterling drug (M) SDN.BHD', 'nuoc_san_xuat': 'Không \u0111\u1ec1 c\u1eadp', 'hamluong_thanhphan': 'Paracetamol.........500mg', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-tri-cam-cum-panadol-cam-cum-0.png', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500>
+{'name': 'Panadol Extra, H\u1ed9p 180 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': '\u0110au \u0111\u1ea7u.; \u0110au n\u1eeda \u0111\u1ea7u.; \u0110au c\u01a1.; \u0110au b\u1ee5ng kinh.; \u0110au h\u1ecdng.; \u0110au c\u01a1 x\u01b0\u01a1ng.; S\u1ed1t và \u0111au sau khi tiêm vacxin.', 'nha_san_xuat': 'Gsk', 'nuoc_san_xuat': 'Vi\u1ec7t Nam', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg, Caffeine 65mg Tá d\u01b0\u1ee3c: Pregelatinised starch, Maize starch, Povidone, Potassium Sorbate,Talc, Stearic acid, Croscarmellose sodium.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-0.jpg', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500'}
 INFO:scrapy.core.engine:Closing spider (finished)
 INFO:scrapy.statscollectors:Dumping Scrapy stats:
-{'downloader/request_bytes': 518,
- 'downloader/request_count': 2,
- 'downloader/request_method_count/GET': 2,
- 'downloader/response_bytes': 45376,
- 'downloader/response_count': 2,
- 'downloader/response_status_count/200': 2,
- 'elapsed_time_seconds': 1.305756,
+{'downloader/request_bytes': 1528,
+ 'downloader/request_count': 6,
+ 'downloader/request_method_count/GET': 6,
+ 'downloader/response_bytes': 135962,
+ 'downloader/response_count': 6,
+ 'downloader/response_status_count/200': 6,
+ 'elapsed_time_seconds': 2.418962,
  'finish_reason': 'finished',
- 'finish_time': datetime.datetime(2023, 9, 18, 7, 47, 33, 305450),
- 'httpcompression/response_bytes': 248137,
- 'httpcompression/response_count': 2,
- 'item_scraped_count': 2,
- 'log_count/DEBUG': 5,
+ 'finish_time': datetime.datetime(2023, 9, 19, 8, 45, 20, 373385),
+ 'httpcompression/response_bytes': 770797,
+ 'httpcompression/response_count': 6,
+ 'item_scraped_count': 6,
+ 'log_count/DEBUG': 13,
  'log_count/INFO': 10,
  'log_count/WARNING': 1,
- 'response_received_count': 2,
- 'scheduler/dequeued': 2,
- 'scheduler/dequeued/memory': 2,
- 'scheduler/enqueued': 2,
- 'scheduler/enqueued/memory': 2,
- 'start_time': datetime.datetime(2023, 9, 18, 7, 47, 31, 999694)}
+ 'response_received_count': 6,
+ 'scheduler/dequeued': 6,
+ 'scheduler/dequeued/memory': 6,
+ 'scheduler/enqueued': 6,
+ 'scheduler/enqueued/memory': 6,
+ 'start_time': datetime.datetime(2023, 9, 19, 8, 45, 17, 954423)}
 INFO:scrapy.core.engine:Spider closed (finished)
