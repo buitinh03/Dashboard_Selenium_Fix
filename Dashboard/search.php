@@ -113,12 +113,7 @@
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
-    if(isset($_GET['masp']) or isset($_SESSION['mach'])){
-        $product_search=$product->search_xemthem($_SESSION['search'],$trangthu,10);
-    }else{
-           $product_search=$product->search($_SESSION['search'],$trangthu,10);
- 
-    }
+    
     
      
 
@@ -147,6 +142,30 @@
                             color: #0000BB;
                             background: #fff;
                         }
+                        .bloc p{
+                            /* position:relative; */
+                            color: chocolate;
+                            /* margin-top: .5rem;                         
+                            margin-left: .5rem; */
+                        }
+                        #pagination .bloc select{
+                                
+                                text-align: center;
+                                padding: 7px 20px 7px 8px;
+                             
+                                background: bisque;
+                                border-radius: 3px;
+                              
+                                color: #7380ec;
+                                margin-left: 5px; 
+                        }
+                        
+                        #pagination .bloc i{
+                            position: relative;
+                            left: -1.3rem;
+                            color: chocolate;
+                        }
+                                                
                     </style>
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
@@ -647,17 +666,44 @@
                             <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
                             <?php }else{ ?>                     
                         <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
-                        <?php } ?>
+                        <?php } ?><?php } ?>
                        
+                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+                        <p>Sắp xếp theo: 
+                        <form method="POST" action="" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></p>
+                        
                     </div>
-                    <?php } ?>
+                    
+                    </div>
+                    
+                    <?php if(isset($_GET['masp']) or isset($_SESSION['mach'])){
+                        $product_search=$product->search_xemthem($selectedValue,$_SESSION['search'],$trangthu,10);
+                    }else{
+                           $product_search=$product->search($selectedValue,$_SESSION['search'],$trangthu,10);
+                 
+                    }
+                    ?>
+
                     <table>
-                    <!-- <?php
-                        $pro = new product();
-                            $demcol = $pro->search($search);
-                            $demd = $demcol->fetch();
-                            $sorow=$demd['sothu'];
-                     ?> -->
+                    
                         <thead style="color:#FF8247;">
                                     <tr>
                                         <th>STT</th>
