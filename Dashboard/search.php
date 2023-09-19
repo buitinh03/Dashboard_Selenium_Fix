@@ -981,6 +981,7 @@
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                       
+                                        <?php  }?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
@@ -1010,9 +1011,8 @@
                                         
                                     </tr>
                                     <?php 
-
-                                            }
                                         }
+                                
                                     ?>
                             
                                 </tbody>
