@@ -89,7 +89,7 @@
     
        
 //
-    $search=$_SESSION['search'];
+    // $search=$_SESSION['search'];
     if(isset($_GET['masp']) or isset($_SESSION['mach'])){
         $demtrang = $product->count_search_xemthem($search);
     }else{
@@ -190,51 +190,6 @@
                                                 
                                     };
                                     function b(){     
-                                        // var demnguon=0; 
-                                        // <?php 
-                                        // if(!file_exists($duongdanf['xpathcaogiapharex_link'])){
-                                        // ?>
-                                        // var pharex='pharex.py';
-                                        // demnguon = demnguon+1;
-                                        // <?php
-                                        // }else{
-                                        //     ?>
-                                        //     var pharex='';
-                                        //     <?php  
-                                        // }
-                                        //  ?> 
-                                        //  if(demnguon=7){
-                                        //     swal({
-                                        //             title: 'Thông báo',
-                                        //             text: 'File pharex.py không tồn tại!',
-                                        //             icon: 'error',
-                                        //             timer: 3000,
-                                        //             buttons: false,
-                                        //         });
-                                        //         setTimeout(function() {   <?php sleep(1)?>                             
-                                        //     }, 4000);
-                                        //  }else{
-                                        //     if(demnguon=0){
-                                        //         swal({
-                                        // title: "Thông báo",
-                                        // text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
-                                        // icon: "success",
-                                        // timer: 3000, 
-                                        // buttons: false,
-                                        // });
-                                        // setTimeout(function() {   <?php sleep(1)?>                             
-                                        //     }, 4000); 
-                                        //     }else{
-                                                    
-                                        //         swal({
-                                        //             title: 'Thông báo',
-                                        //             text: 'File '+pharex+' không tồn tại!',
-                                        //             icon: 'error',
-                                        //             timer: 3000,
-                                        //             buttons: false,
-                                        //         });
-                                        //         setTimeout(function() {   <?php sleep(1)?>                             
-                                        //     }, 4000);
                                                 swal({
                                             title: "Thông báo",
                                             text: "Quá trình cào giá đang diễn ra, vui lòng chờ ...",
@@ -315,6 +270,8 @@
                                     $qwwd4=0;
                                     $qwwd5=0;
                                     $qwwd6=0;
+                                    $loii=$loii1=$loii2= $loii3= $loii4= $loii5= $loii6='';
+                                    $demloi=0;
                                     $po=1;
                                      while($la=$sc->fetch()){
                                        $tam=$la['link']; 
@@ -360,24 +317,20 @@
                                        $qwwd6=$qwwd6+1;
                                     }if($qwwd>0){
                                         if(file_exists($duongdanf['xpathcaogiathuocsi_link'])){
-                                        system('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww,$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii='thuocsi_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                          }                                                 
                                                  else {
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File thuocsi.py không tồn tại!',
+                                                        text: 'File thuocsi_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -390,24 +343,20 @@
                                     if($qwwd1>0){
                                         
                                         if(file_exists($duongdanf['xpathcaogiapharma_link'])){
-                                       system('python '.$duongdanf['xpathcaogiapharma_link'] .$qww1);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";
+                                       exec('python '.$duongdanf['xpathcaogiapharma_link'] .$qww1,$output,$exit_code);
+                                       if($exit_code != 0){
+                                           $loii1='pharmacity_link.py';
+                                        $demloi=$demloi+1;
+                                   foreach ($output as $line) {
+                                       echo $line . "\n";
+                                   }  
+                               }   
+                                
                                                         }else {
                                                             echo "<script>
                                                             swal({
                                                                 title: 'Thông báo',
-                                                                text: 'File pharmacity.py không tồn tại!',
+                                                                text: 'File pharmacity_link.py không tồn tại!',
                                                                 icon: 'error',
                                                                 timer: 3000,
                                                                 buttons: false,
@@ -420,24 +369,20 @@
                                     }
                                     if($qwwd2>0){
                                         if(file_exists($duongdanf['xpathcaogiapharex_link'])){
-                                        system('python '.$duongdanf['xpathcaogiapharex_link'] .$qww2);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogiapharex_link'] .$qww2.'',$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii2='pharex_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                          }                                                  
                                                  else {
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File pharex.py không tồn tại!',
+                                                        text: 'File pharex_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -450,24 +395,20 @@
                                     }}
                                     if($qwwd3>0){
                                         if(file_exists($duongdanf['xpathcaogiamedigo_link'])){
-                                        system('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww3);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww3.'',$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii3='medigo_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                         }                                                  
                                                  else {
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File medigo.py không tồn tại!',
+                                                        text: 'File medigo_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -480,24 +421,20 @@
                                     }}
                                     if($qwwd4>0){
                                         if(file_exists($duongdanf['xpathcaogiaankhang_link'])){
-                                        system('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww4);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww4,$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii4='ankhang_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                                }                                            
                                                  else {
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File ankhang.py không tồn tại!',
+                                                        text: 'File ankhang_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -510,24 +447,20 @@
                                     }}
                                     if($qwwd5>0){
                                         if(file_exists($duongdanf['xpathcaogialongchau_link'])){
-                                        system('python '.$duongdanf['xpathcaogialongchau_link'] .$qww5);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogialongchau_link'] .$qww5,$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii5='longchau_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                             }                                               
                                                  else {
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File longchau.py không tồn tại!',
+                                                        text: 'File longchau_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -540,25 +473,21 @@
                                     }}
                                     if($qwwd6>0){
                                         if(file_exists($duongdanf['xpathcaogiachosithuoc_link'])){
-                                        system('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6);
-                                        echo "<script>
-                                                    swal({
-                                                        title: 'Thông báo',
-                                                        text: 'Quá trình cào giá đã hoàn tất',
-                                                        icon: 'success',
-                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
-                                                        buttons: false,  // Ẩn nút Close
-                                                        });
-                                                        setTimeout(function () {
-                                                            window.location = 'search.php';
-                                                          }, 4000);
-                                                </script>";}                                                    
+                                        exec('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6,$output,$exit_code);
+                                        if($exit_code != 0){
+                                            $loii6='chosithuoc_link.py';
+                                        $demloi=$demloi+1;
+                                    foreach ($output as $line) {
+                                        echo $line . "\n";
+                                    }  
+                                }   
+                                             }                                               
                                                  else {
-                                                    $cst='chosithuoc.py';
+                                                    
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
-                                                        text: 'File chosithuoc.py không tồn tại!',
+                                                        text: 'File chosithuoc_link.py không tồn tại!',
                                                         icon: 'error',
                                                         timer: 3000,
                                                         buttons: false,
@@ -569,6 +498,36 @@
                                                     </script>";
                                         
                                     }}
+                                    if($demloi>0){
+                                    ?>
+                                    <script>
+                                        swal({
+                                            title: 'Thông báo',
+                                            text: 'Lỗi file '+<?php echo $loii.' '.$loii1.' '.$loii2.' '.$loii3.' '.$loii4.' '.$loii5.' '.$loii6 ?>,
+                                            icon: 'error',
+                                            timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                            buttons: false,  // Ẩn nút Close
+                                            });
+                                            setTimeout(function () {
+                                                window.location='index.php' 
+                                              }, 4000);
+                                    </script>
+                                    <?php
+                                    }
+                                    if($demloi<7){
+                                        ?><script>
+                                                    swal({
+                                                        title: 'Thông báo',
+                                                        text: 'Quá trình cào giá đã hoàn tất',
+                                                        icon: 'success',
+                                                        timer: 3000,  // Thời gian tự động đóng (3 giây)
+                                                        buttons: false,  // Ẩn nút Close
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location = 'search.php';
+                                                          }, 4000);
+                                                </script><?php
+                                    }
                                     
                                 }
                             }
@@ -709,7 +668,7 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>MÃ CHUYỂN HÓA</th>
+                                        <th>MÃ CHUẨN HÓA</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -1021,7 +980,7 @@
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
-                                        <?php } ?>
+                                      
                                         <?php }else{ ?>
                                          
                                             <td><div >
@@ -1228,7 +1187,7 @@
 
             </div>
          
-
+<?php } ?>
             </div>   <script src="js/time.js"></script>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <?php include_once('inc/footer.php')?>
