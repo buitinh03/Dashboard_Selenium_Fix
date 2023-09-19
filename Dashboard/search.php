@@ -668,7 +668,7 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>MÃ CHUYỂN HÓA</th>
+                                        <th>MÃ CHUẨN HÓA</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
