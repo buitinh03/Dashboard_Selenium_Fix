@@ -351,12 +351,8 @@ $pd = new product();
                                                         file_exists($duongdan['xpathcaogialongchau']) &&
                                                         file_exists($duongdan['xpathcaogiapharma']) &&
                                                         file_exists($duongdan['xpathcaogiamedigo'])) {
-<<<<<<< HEAD
-                                                    if (empty(system($duongdan['operation'].$duongdan['xpathcaogiachosithuoc'].' && python '.$duongdan['xpathcaogiathuocsi'].' && python '.$duongdan['xpathcaogiaankhang'].' && python '.$duongdan['xpathcaogiapharex'].' && '.$duongdan['xpathcaogialongchau'].' && python '.$duongdan['xpathcaogiapharma'].' && python '.$duongdan['xpathcaogiamedigo']))) {
-=======
                                                     exec('python '.$duongdan['xpathcaogiachosithuoc'].' && python '.$duongdan['xpathcaogiathuocsi'].' && python '.$duongdan['xpathcaogiaankhang'].' && python '.$duongdan['xpathcaogiapharex'].' && '.$duongdan['xpathcaogialongchau'].' && python '.$duongdan['xpathcaogiapharma'].' && python '.$duongdan['xpathcaogiamedigo'],$output,$exit_code);
                                                     if($exit_code != 0){
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
@@ -365,17 +361,6 @@ $pd = new product();
                                                         timer: 3000,  // Thời gian tự động đóng (3 giây)
                                                         buttons: false,  // Ẩn nút Close
                                                         });
-<<<<<<< HEAD
-                                                        setTimeout(function() {
-                                                            window.location = 'index.php';
-                                                        }, 4000);
-                                                        </script>";
-                                                }
-                                            } else {
-                                                // Thêm phần xử lý cho các đường dẫn khác ở đây
-                                                if (isset($_POST['thuocsi'])) {
-                                                 if(file_exists($duongdan['xpathcaogiathuocsi'])){system($duongdan['operation'].$duongdan['xpathcaogiathuocsi']);
-=======
                                                         setTimeout(function () {
                                                             window.location='index.php' 
                                                           }, 4000);
@@ -387,7 +372,6 @@ $pd = new product();
                                                     else{
 
                                                     
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                     echo "<script>
                                                     swal({
                                                         title: 'Thông báo',
@@ -466,9 +450,6 @@ $pd = new product();
                                                 </script>";}
                                             }
                                                 if(isset($_POST['chosithuoc'])){
-<<<<<<< HEAD
-                                                        if(file_exists($duongdan['xpathcaogiachosithuoc'])){system($duongdan['operation'].$duongdan['xpathcaogiachosithuoc']);
-=======
                                                         if(file_exists($duongdan['xpathcaogiachosithuoc'])){
                                                             exec('python '.$duongdan['xpathcaogiachosithuoc'],$output,$exit_code);
                                                             if($exit_code != 0){
@@ -504,7 +485,6 @@ $pd = new product();
                                                                   }, 4000);
                                                         </script>";}  }                                                  
                                                      else {
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -519,9 +499,6 @@ $pd = new product();
                                                         </script>";}
                                                     }
                                                 if(isset($_POST['ankhang'])){
-<<<<<<< HEAD
-                                                    if(file_exists($duongdan['xpathcaogiaankhang'])){system($duongdan['operation'].$duongdan['xpathcaogiaankhang']);
-=======
                                                     if(file_exists($duongdan['xpathcaogiaankhang'])){
                                                         exec('python '.$duongdan['xpathcaogiaankhang'],$output,$exit_code);
                                                         if($exit_code != 0){
@@ -544,7 +521,6 @@ $pd = new product();
                                                         else{
 
                                                         
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -572,9 +548,6 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['pharex'])){
-<<<<<<< HEAD
-                                                    if(file_exists($duongdan['xpathcaogiapharex'])){system($duongdan['operation'].$duongdan['xpathcaogiapharex']);
-=======
                                                     if(file_exists($duongdan['xpathcaogiapharex'])){
                                                         exec('python '.$duongdan['xpathcaogiapharex'].' > /dev/null 2>&1 & echo $!',$output,$exit_code);
                                                         if($exit_code != 0){
@@ -597,7 +570,6 @@ $pd = new product();
                                                         else{
 
                                                         
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -626,9 +598,6 @@ $pd = new product();
                                                 }
                                                   
                                                 if(isset($_POST['longchau'])){
-<<<<<<< HEAD
-                                                    if(file_exists($duongdan['xpathcaogialongchau'])){system($duongdan['operation'].$duongdan['xpathcaogialongchau']);
-=======
                                                     if(file_exists($duongdan['xpathcaogialongchau'])){
                                                         exec('python '.$duongdan['xpathcaogialongchau'],$output,$exit_code);
                                                         if($exit_code != 0){
@@ -651,7 +620,6 @@ $pd = new product();
                                                         else{
 
                                                         
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -679,9 +647,6 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['pharmacity'])){
-<<<<<<< HEAD
-                                                    if(file_exists($duongdan['xpathcaogiapharma'])){system($duongdan['operation'].$duongdan['xpathcaogiapharma']);
-=======
                                                     if(file_exists($duongdan['xpathcaogiapharma'])){
                                                         exec('python '.$duongdan['xpathcaogiapharma'],$output,$exit_code);
                                                         if($exit_code != 0){
@@ -704,7 +669,6 @@ $pd = new product();
                                                         else{
 
                                                         
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',
@@ -732,9 +696,6 @@ $pd = new product();
                                                     </script>";}
                                                 }
                                                 if(isset($_POST['medigoapp'])){
-<<<<<<< HEAD
-                                                    if(file_exists($duongdan['xpathcaogiamedigo'])){system($duongdan['operation'].$duongdan['xpathcaogiamedigo']);
-=======
                                                     if(file_exists($duongdan['xpathcaogiamedigo'])){
                                                         exec('python '.$duongdan['xpathcaogiamedigo'],$output,$exit_code);
                                                         if($exit_code != 0){
@@ -757,7 +718,6 @@ $pd = new product();
                                                         else{
 
                                                         
->>>>>>> e5499ffd26a2a848d81a2dbadf957bdd0ebe6da9
                                                         echo "<script>
                                                         swal({
                                                             title: 'Thông báo',

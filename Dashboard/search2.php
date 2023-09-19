@@ -4,7 +4,7 @@
 
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
-
+<link rel="stylesheet" href="css/search_css.css">
  
       <?php $fm = new Format();
     $product=new product();
@@ -89,8 +89,8 @@
     
     
        
-
-    $search=$_SESSION['search'];
+//
+    // $search=$_SESSION['search'];
     if(isset($_GET['masp']) or isset($_SESSION['mach'])){
         $demtrang = $product->count_search_xemthem($search);
     }else{
@@ -114,7 +114,12 @@
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
-    
+    if(isset($_GET['masp']) or isset($_SESSION['mach'])){
+        $product_search=$product->search_xemthem($_SESSION['search'],$trangthu,10);
+    }else{
+           $product_search=$product->search($_SESSION['search'],$trangthu,10);
+ 
+    }
     
      
 
@@ -123,11 +128,9 @@
     $tenbd=[];
     $nguonbd=[];
 ?>
-<link rel="stylesheet" href="css/search_css.css">
-
                 </div>
                 <div class="recent-order">
-             
+              
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
                                         ?><li id="adress-form1" ><a href="#"><h3 style="margin-left: .5rem;font-size: 1.2rem;font-weight: bold;color: #7380ec;background: bisque;padding: 5px;margin-right: .5rem;margin-top: -.5rem;border-radius: 5px;">Cập nhật</h3></a></li><?php }?>
@@ -143,7 +146,7 @@
                                    <h5><?php echo $search ?></h5>
 
                                    <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
-                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
+                                    <label for="" style="font-size: 1rem; margin: 0 auto;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
                                     <script>
                                 document.getElementById("runButton1").addEventListener("click",function(){
                                         var fun=[a,b]
@@ -156,7 +159,18 @@
                                     setTimeout(function(){
                                         document.querySelector('.adress-form1').style.display = "none";
                                         
-                                    },5000)  
+                                    },5000)
+                                    //var xhr = new XMLHttpRequest();
+                                    // xhr.open("GET", "/run-python", true); // Đổi "/run-python" thành URL tương ứng với file Python của bạn
+                                    // xhr.send();
+                                    
+                                    // Xử lý kết quả từ server (nếu cần thiết)
+                                    // xhr.onreadystatechange = function() {
+                                    //     if (xhr.readyState === 4 && xhr.status === 200) {
+                                    //     var response = xhr.responseText;                       
+                                    //     }                        
+                                    // }; 
+                                                
                                     };
                                     function b(){     
                                                 swal({
@@ -223,7 +237,7 @@
                                             ignore_user_abort(true);
                                             $pro = new product();
                                     $sc=$pro->search_capnhat($search,'thuocsi.vn');
-                                   
+                                    
                                     $tam;
                                     $qww='';
                                     $qww1='';
@@ -247,6 +261,8 @@
                                        $qww=$qww.' '.$tam ;
                                        $qwwd=$qwwd+1;
                                     }
+                                    
+                          
                                     $sc1=$pro->search_capnhat($search,'pharmacity.vn');
                                     while($la1=$sc1->fetch()){
                                         $tam=$la1['link']; 
@@ -563,42 +579,15 @@
                         <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                        
-                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
-                        <p>Sắp xếp theo: 
-                         <form action="" method="POST" class="boloc" >
-                    
-                            <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
-                            </select>                 
-                            <noscript><button type="submit">Submit</button></noscript>                        
-                            <?php
-                            
-                            if (isset($_POST['myComboBox'])) {
-                                $selectedValue = $_POST['myComboBox'];
-                                unset($_SESSION['selectedValue']);
-                                $_SESSION['selectedValue'] = $selectedValue;
-                            }elseif(isset($_SESSION['selectedValue'])){
-                                $selectedValue=$_SESSION['selectedValue'];
-                            } else {$selectedValue='option1';}
-                            ?>
-                            <i class="fa fa-caret-down dropdown__caret"></i>
-                        </form></p>
-                        
-                    </div> 
-                    <?php } ?>
                     </div>
-                    
-                    <?php if(isset($_GET['masp']) or isset($_SESSION['mach'])){
-                        $product_search=$product->search_xemthem($_SESSION['search'],$trangthu,10);
-                    }else{
-                           $product_search=$product->search($selectedValue,$_SESSION['search'],$trangthu,10);
-                 
-                    }
-                    ?>
-
+                    <?php } ?>
                     <table>
-                    
+                    <!-- <?php
+                        $pro = new product();
+                            $demcol = $pro->search($search);
+                            $demd = $demcol->fetch();
+                            $sorow=$demd['sothu'];
+                     ?> -->
                         <thead style="color:#FF8247;">
                                     <tr>
                                         <th>STT</th>
@@ -623,7 +612,7 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>MÃ CHUẨN HÓA</th>
+                                        <th>MÃ CHUYỂN HÓA</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -632,9 +621,10 @@
                                         <?php
                                             }
                                         ?>
-                                        
+                               
                                     </tr>
                                 </thead>
+                     
                         <?php 
                         $format = new Format();
                         if(!empty($product_search) ){
@@ -648,7 +638,7 @@
                                                          <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: var(--color-info-dark); font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -798,6 +788,11 @@
                                         
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
+                                    <style>
+                                        /* a {
+                                            justify-content: center;
+                                        } */
+                                    </style>
                                        
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
@@ -806,7 +801,7 @@
                                             
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <div class="input-flex" style="display: flex; justify-content: center;">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
                                             <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
                                             </div>
                                             
@@ -816,23 +811,22 @@
                                         <?php }elseif($checkLoginAdmin == 1){?>    
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
-                                      
-                                        <?php  }?>
+                                        <?php } ?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <div class="input-flex" style="display: flex; justify-content: center;">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
                                                 <?php if($checkLoginAdmin == 0){?>
                                                     <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto; max-width: 60%;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:var(--color-white); color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
@@ -850,8 +844,9 @@
                                         
                                     </tr>
                                     <?php 
+
+                                            }
                                         }
-                                
                                     ?>
                             
                                 </tbody>
@@ -918,7 +913,7 @@
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
-          
+            
             <?php
                 if($checkLoginAdmin == 0){
             
@@ -991,7 +986,7 @@
 
             </div>
          
-<?php } ?>
+
             </div>   <script src="js/time.js"></script>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <?php include_once('inc/footer.php')?>
