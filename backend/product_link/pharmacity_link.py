@@ -90,8 +90,8 @@ try:
     def check_product_exist(cursor, ten):
         cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (ten,))
         return cursor.fetchone()[0]
-    link = ['https://www.pharmacity.vn/acegoi-3g-30-goi.html']
-    # link = sys.argv[1:]
+    # link = ['https://www.pharmacity.vn/acegoi-3g-30-goi.html']
+    link = sys.argv[1:]
     for a in link:
 
         driver.get(a)
