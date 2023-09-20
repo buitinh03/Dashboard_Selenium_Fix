@@ -58,13 +58,26 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
+   
 
        <div class="recent-order">
- <h2>SẢN PHẨM     <form style="height: 1rem;" action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
-        <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
-        <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
-        <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
-        <noscript><button type="submit">Submit</button></noscript> 
+ <h2>SẢN PHẨM     <form style="height: 1rem; width:12rem;" action="" method="get" id="xeptheotheloai">
+    <div class="select-wrapper">
+        <select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
+            <option value="tatcasanpham" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?> >Tất cả</option>
+            <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?> >Bán sỉ</option>
+            <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?> >Bán lẻ</option>
+            <option value="thuocsi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'thuocsi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='thuocsi'){echo "selected";}?> >Thuocsi</option>
+            <option value="chosithuoc" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'chosithuoc') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='chosithuoc'){echo "selected";}?> >Chosithuoc</option>
+            <option value="ankhang" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'ankhang'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='ankhang'){echo "selected";}?> >AnKhang</option>
+            <option value="pharex" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'pharex') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='pharex'){echo "selected";}?> >Pharex</option>
+            <option value="longchau" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'longchau') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='longchau'){echo "selected";}?> >Longchau</option>
+            <option value="pharmacity" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'pharmacity'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='pharmacity'){echo "selected";}?> >Pharmacity</option>
+            <option value="medigo" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'medigo'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='medigo'){echo "selected";}?> >Medigo</option>
+        </select>
+        <noscript><button type="submit">Submit</button></noscript>
+    </div>
+ 
         <?php 
         if(isset($_GET['theloaiban'])){
             unset($_SESSION['theloai']);
@@ -75,42 +88,82 @@ $(function(){
             $theloaiban=$_SESSION['theloai'];
         }else $theloaiban='tatcasanpham';
          ?>
+         <!-- <i class="fa fa-caret-down dropdown__caret" id="ico"></i> -->
  </form>
- </h2>
+    </h2>
+ <script>
+    const icon = document.getElementById('ico');
+icon.addEventListener("click", function(){
+        
+    // document.getElementById("xeptheotheloai").;
+    document.getElementById("theloaiban").click();
+});
+
+ </script>
  <?php 
  if($theloaiban=='tatcasanpham'){
     ?>
-    <h2 class='dsach'>
-   <span >- <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> <span>- 
+   <h2 class="dsach"><span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a">Thuocsi.vn</a></span>  <span>-
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span><span >- <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" >Ankhang.com</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" >Pharex.vn</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" >Longchau.vn</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span><span> - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" >Medigoapp.com</a></span></h2>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span> <span> -<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
-    ?>
-    <h2 class='dsach'>
-   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span>  <span >-
+    ?><h2>
+   <span class="dsach">-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a">Thuocsi.vn</a></span>  <span>-
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" >Chosithuoc</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span>   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" >Medigoapp.com</a></span></h2>
+ <a href="https://www.pharmacity.vn/" class="a">Pharmacity.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='banle'){
     ?>
-    <h2 class='dsach'>
-   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" >Longchau.vn</a></span></h2>
+    <h2 class="dsach">
+   <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span></h2>
+ <?php
+ }elseif($theloaiban=='thuocsi'){
+    ?> <h2 class="dsach"> <span >-<i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span></h2>
+ <?php
+ }elseif($theloaiban=='chosithuoc'){
+    ?>
+  <h2 class="dsach"> <span > -<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span> </h2>
+ <?php
+ }elseif($theloaiban=='ankhang'){
+    ?>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i> <a href="https://www.nhathuocankhang.com/" class="a" >Ankhang.com</a></span> </h2>
   <?php
+ }elseif($theloaiban=='longchau'){
+    ?>
+<h2 class="dsach"> <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span></h2>
+ <?php
+ }elseif($theloaiban=='pharmacity'){
+    ?>
+<h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span></h2>
+ <?php
+ }elseif($theloaiban=='medigo'){
+    ?>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+<a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
+<?php
+ }elseif($theloaiban=='pharex'){
+    ?>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span></h2>
+
+<?php
  }
- 
   ?>
     <?php
     $sotrang=1;
@@ -208,7 +261,7 @@ $(function(){
             ?>
             
         </form></p>
-        
+   
     </div>
     <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
     </div>

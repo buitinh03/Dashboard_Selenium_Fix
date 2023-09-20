@@ -2,7 +2,7 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
-            <! END OF ASIDE>
+        <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
 <link rel="stylesheet" href="css/search_css.css">
  

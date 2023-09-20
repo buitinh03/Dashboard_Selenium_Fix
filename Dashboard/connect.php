@@ -116,9 +116,194 @@
                                 }                    
                             }
                     }
-
+//                     //the loai ban =thuocsi
+                     if($theloai=='thuocsi'){
+                            if($value=='option1'){
+                            $select=" SELECT *,
+                                            CASE
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                                ELSE 0
+                                                END AS gialech   
+                                            FROM thuocsi_vn where nguon='thuocsi.vn' ORDER BY  gialech desc" ;
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }           
+                        }else {
+                                $select="SELECT *          
+                                FROM thuocsi_vn where nguon='thuocsi.vn' ORDER BY ngaymoi desc ";
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }                    
+                            }}
+//
+            if($theloai=='chosithuoc'){
+                if($value=='option1'){
+                $select=" SELECT *,
+                                CASE
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                    WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                    ELSE 0
+                                    END AS gialech   
+                                FROM thuocsi_vn where nguon='chosithuoc.com' ORDER BY  gialech desc" ;
+                    if($limit!=0){
+                        $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                    }           
+            }else {
+                    $select="SELECT *          
+                    FROM thuocsi_vn where nguon='chosithuoc.com' ORDER BY ngaymoi desc ";
+                    if($limit!=0){
+                        $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                    }                    
+                }}
+                //theloai=pharex
+                if($theloai=='pharex'){
+                    if($value=='option1'){
+                    $select=" SELECT *,
+                                    CASE
+                                        WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                        WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                        WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                        ELSE 0
+                                        END AS gialech   
+                                    FROM thuocsi_vn where nguon='thuocsi.pharex.vn' ORDER BY  gialech desc" ;
+                        if($limit!=0){
+                            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                        }           
+                }else {
+                        $select="SELECT *          
+                        FROM thuocsi_vn where nguon='thuocsi.pharex.vn' ORDER BY ngaymoi desc ";
+                        if($limit!=0){
+                            $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                        }                    
+                    }}
+                    // ankhang
+                    if($theloai=='ankhang'){
+                        if($value=='option1'){
+                        $select=" SELECT *,
+                                        CASE
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                            ELSE 0
+                                            END AS gialech   
+                                        FROM thuocsi_vn where nguon='ankhang.com' ORDER BY  gialech desc" ;
+                            if($limit!=0){
+                                $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                            }           
+                    }else {
+                            $select="SELECT *          
+                            FROM thuocsi_vn where nguon='ankhang.com' ORDER BY ngaymoi desc ";
+                            if($limit!=0){
+                                $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                            }                    
+                        }}
+                        //longchau
+                        if($theloai=='longchau'){
+                            if($value=='option1'){
+                            $select=" SELECT *,
+                                            CASE
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                                ELSE 0
+                                                END AS gialech   
+                                            FROM thuocsi_vn where nguon='longchau.vn' ORDER BY  gialech desc" ;
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }           
+                        }else {
+                                $select="SELECT *          
+                                FROM thuocsi_vn where nguon='longchau.vn' ORDER BY ngaymoi desc ";
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }                    
+                            }}
+                            //pharmacity
+                    if($theloai=='pharmacity'){
+                    if($value=='option1'){
+                        $select=" SELECT *,
+                                        CASE
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                            ELSE 0
+                                            END AS gialech   
+                                        FROM thuocsi_vn where nguon='pharmacity.vn' ORDER BY  gialech desc" ;
+                            if($limit!=0){
+                                $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                            }           
+                    }else {
+                            $select="SELECT *          
+                            FROM thuocsi_vn where nguon='pharmacity.vn' ORDER BY ngaymoi desc ";
+                            if($limit!=0){
+                                $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                            }                    
+                        }}
+                        //medigo
+                        if($theloai=='medigo'){
+                            if($value=='option1'){
+                            $select=" SELECT *,
+                                            CASE
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                                                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                                                ELSE 0
+                                                END AS gialech   
+                                            FROM thuocsi_vn where nguon='medigoapp.com' ORDER BY  gialech desc" ;
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }           
+                        }else {
+                                $select="SELECT *          
+                                FROM thuocsi_vn where nguon='medigoapp.com' ORDER BY ngaymoi desc ";
+                                if($limit!=0){
+                                    $select=$select." limit ".$limit." offset "."((".$start."-1)*".$limit.")";
+                                }                    
+                            }}
+                            //
             $result=$db->getList($select);
                     return $result; 
+        }
+        function tongsanpham($theloaiban='tatcasanpham'){
+            $db=new connect();
+            if($theloaiban=='tatcasanpham'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn ";
+            }elseif($theloaiban=='bansi'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where  nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn' or nguon='medigoapp.com'";
+
+            }elseif($theloaiban=='banle'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='ankhang.com' or nguon='longchau.vn'";
+
+            }
+            elseif($theloaiban=='thuocsi'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='thuocsi.vn'";
+
+            }elseif($theloaiban=='chosithuoc'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='chosithuoc.com'";
+
+            }elseif($theloaiban=='pharex'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='thuocsi.pharex.vn'";
+
+            }elseif($theloaiban=='pharmacity'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='pharmacity.vn'";
+
+            }elseif($theloaiban=='longchau'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='longchau.vn'";
+
+            }elseif($theloaiban=='ankhang'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='ankhang.com'";
+
+            }elseif($theloaiban=='medigo'){
+                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='medigoapp.com'";
+
+            }
+            
+            $result = $db->getList($query);
+            return $result;
+
         }   
         function search($value='option1',$name,$st=0,$limited=0){
             $db =  new connect();
@@ -217,9 +402,9 @@
 
 
        
-        function search_xemthem($value='option1',$id_product_xemthem,$st=0,$limited=0){
+        function search_xemthem($value = 'option1',$id_product_xemthem,$st=0,$limited=0){
             $db =  new connect();
-            if($value=='option1'){
+            if($value == 'option1'){
             $query="SELECT *,
         CASE
             WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
@@ -232,17 +417,25 @@
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
          }
+         
              $result = $db->getList($query);
             return $result;
         }else{
-            $query="SELECT *   
-        FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
-        ORDER BY COALESCE(masp, '') desc, ngaymoi desc ";
-         if($st!=0){
-            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
-         }
-             $result = $db->getList($query);
-            return $result;
+            $query="SELECT *,
+            CASE
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                ELSE 0
+                END AS gialech   
+            FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
+            ORDER BY COALESCE(masp, '') desc, gialech desc ";
+             if($st!=0){
+                $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+             }
+             
+                 $result = $db->getList($query);
+                return $result;
         }
     }
         function count_search_xemthem($thu){
@@ -296,22 +489,7 @@
         //     return $result;
         // }
 
-        function tongsanpham($theloaiban='tatcasanpham'){
-            $db=new connect();
-            if($theloaiban=='tatcasanpham'){
-                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn ";
-            }elseif($theloaiban=='bansi'){
-                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where  nguon='thuocsi.vn' or nguon='chosithuoc.com' or nguon='thuocsi.pharex.vn' or nguon='pharmacity.vn'";
-
-            }elseif($theloaiban=='banle'){
-                $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn where   nguon='ankhang.com' or nguon='longchau.vn'";
-
-            }
-            
-            $result = $db->getList($query);
-            return $result;
-
-        }
+        
         // function buy_min(){
         //     $db =new connect();
         //     $query = "SELECT title, photo, giamoi,sales_in_last_24_hours

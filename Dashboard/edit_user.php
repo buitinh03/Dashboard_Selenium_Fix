@@ -26,12 +26,7 @@
         ?>
             
         <?php
-        
-        // if($pass==$password){
-        //     $update = $customer->update_customer($customername, $email, $username, $pass, $type,$id);
-        // }else{
-        //     $update = $customer->update_customer($customername, $email, $username, $password, $type,$id);
-        // }
+ 
     }
 
 ?>
