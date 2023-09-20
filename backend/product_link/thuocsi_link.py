@@ -122,7 +122,8 @@ def check_product_exist(cursor, product_name):
 
 
 # List các link sản phẩm
-# product_links = ['https://thuocsi.vn/product/medx-marvelon-bayer-h21v']
+# product_links = ["https://thuocsi.vn/product/medx-savi-esomeprazole-40-h14v"]
+#                  "https://thuocsi.vn/product/medx-marvelon-bayer-h63v"]
 product_links = sys.argv[1:]
 
 for link in product_links:
@@ -234,5 +235,4 @@ for link in product_links:
             connection.commit()
     except Exception as e:
         logging.error(f"Lỗi khi scraping sản phẩm: {str(e)}")
-    finally:
-        driver.quit()
+driver.quit()
