@@ -2,7 +2,7 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
-        <! END OF ASIDE>
+            <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
 <link rel="stylesheet" href="css/search_css.css">
  
@@ -183,7 +183,7 @@
                                    <h5><?php echo $search ?></h5>
 
                                    <button type="submit" name="Capnhattimkiem" id="runButton1">Xác nhận</button><br><br>
-                                    <label for="" style="font-size: 1rem; margin: 0 auto;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
+                                    <label for="" style="font-size: 1rem;">Quá trình cào dữ liệu có thể mất khá nhiều thời gian, vui lòng chờ !</label>
                                     <script>
                                 document.getElementById("runButton1").addEventListener("click",function(){
                                         var fun=[a,b]
@@ -324,7 +324,7 @@
                                        $qwwd6=$qwwd6+1;
                                     }if($qwwd>0){
                                         if(file_exists($duongdanf['xpathcaogiathuocsi_link'])){
-                                        exec('python '.$duongdanf['xpathcaogiathuocsi_link'] .$qww,$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiathuocsi_link'] .$qww,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii='thuocsi_link.py';
                                         $demloi=$demloi+1;
@@ -350,7 +350,7 @@
                                     if($qwwd1>0){
                                         
                                         if(file_exists($duongdanf['xpathcaogiapharma_link'])){
-                                       exec('python '.$duongdanf['xpathcaogiapharma_link'] .$qww1,$output,$exit_code);
+                                       exec($duongdanf['operation'].$duongdanf['xpathcaogiapharma_link'] .$qww1,$output,$exit_code);
                                        if($exit_code != 0){
                                            $loii1='pharmacity_link.py';
                                         $demloi=$demloi+1;
@@ -376,7 +376,7 @@
                                     }
                                     if($qwwd2>0){
                                         if(file_exists($duongdanf['xpathcaogiapharex_link'])){
-                                        exec('python '.$duongdanf['xpathcaogiapharex_link'] .$qww2.'',$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiapharex_link'] .$qww2.'',$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii2='pharex_link.py';
                                         $demloi=$demloi+1;
@@ -402,7 +402,7 @@
                                     }}
                                     if($qwwd3>0){
                                         if(file_exists($duongdanf['xpathcaogiamedigo_link'])){
-                                        exec('python '.$duongdanf['xpathcaogiamedigo_link'] .$qww3.'',$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiamedigo_link'] .$qww3.'',$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii3='medigo_link.py';
                                         $demloi=$demloi+1;
@@ -428,7 +428,7 @@
                                     }}
                                     if($qwwd4>0){
                                         if(file_exists($duongdanf['xpathcaogiaankhang_link'])){
-                                        exec('python '.$duongdanf['xpathcaogiaankhang_link'] .$qww4,$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiaankhang_link'] .$qww4,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii4='ankhang_link.py';
                                         $demloi=$demloi+1;
@@ -454,7 +454,7 @@
                                     }}
                                     if($qwwd5>0){
                                         if(file_exists($duongdanf['xpathcaogialongchau_link'])){
-                                        exec('python '.$duongdanf['xpathcaogialongchau_link'] .$qww5,$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogialongchau_link'] .$qww5,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii5='longchau_link.py';
                                         $demloi=$demloi+1;
@@ -480,7 +480,7 @@
                                     }}
                                     if($qwwd6>0){
                                         if(file_exists($duongdanf['xpathcaogiachosithuoc_link'])){
-                                        exec('python '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6,$output,$exit_code);
+                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiachosithuoc_link'] .$qww6,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii6='chosithuoc_link.py';
                                         $demloi=$demloi+1;
@@ -719,7 +719,7 @@
                                                          <tbody>
                                     <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
                                         <td><?php echo $j;?></td>
-                                        <td class="title"><a style="color: var(--color-info-dark); font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
                                         
                                         <?php
                                         if($checkLoginAdmin == 0){
@@ -890,7 +890,8 @@
                                             <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
-                                        <?php } ?>
+                                      
+                                        <?php  }?>
                                         <?php }else{ ?>
                                          
                                             <td><div >
@@ -902,7 +903,7 @@
                                                     <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
                                                 </div>
-                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:var(--color-white); color: #FF9966; cursor:pointer; margin:0 auto;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                                 <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto; max-width: 60%;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
                                             </form>
                                             
                                         </div></td>
@@ -921,7 +922,7 @@
                                     </tr>
                                     <?php 
                                         }
-                                    }
+                                
                                     ?>
                             
                                 </tbody>
@@ -1060,8 +1061,8 @@
             <div class="div">
 
             </div>
-
-
+         
+<?php } ?>
             </div>   <script src="js/time.js"></script>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
             <?php include_once('inc/footer.php')?>
