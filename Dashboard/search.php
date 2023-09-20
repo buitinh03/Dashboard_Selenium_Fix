@@ -2,9 +2,9 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
-            <! END OF ASIDE>
+        <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
-
+<link rel="stylesheet" href="css/search_css.css">
  
       <?php $fm = new Format();
     $product=new product();
@@ -89,8 +89,8 @@
     
     
        
-
-    $search=$_SESSION['search'];
+//
+    // $search=$_SESSION['search'];
     if(isset($_GET['masp']) or isset($_SESSION['mach'])){
         $demtrang = $product->count_search_xemthem($search);
     }else{
@@ -123,11 +123,51 @@
     $tenbd=[];
     $nguonbd=[];
 ?>
-<link rel="stylesheet" href="css/search_css.css">
-
                 </div>
                 <div class="recent-order">
-             
+                <style>
+                        #pagination {
+                            display: flex;
+                            text-align: center;
+                            justify-content: center;
+                        }
+                        #pagination a{
+                            display: flex;
+                            text-align: center;
+                            padding: 5px 8px;
+                            margin: 5px;
+                            background:bisque;
+                            border-radius: 3px;
+                        }
+                        #pagination a:hover{
+                            color: #0000BB;
+                            background: #fff;
+                        }
+                        .bloc p{
+                            /* position:relative; */
+                            color: chocolate;
+                            /* margin-top: .5rem;                         
+                            margin-left: .5rem; */
+                        }
+                        #pagination .bloc select{
+                                
+                                text-align: center;
+                                padding: 7px 20px 7px 8px;
+                             
+                                background: bisque;
+                                border-radius: 3px;
+                              
+                                color: #7380ec;
+                                margin-left: 5px; 
+                        }
+                        
+                        #pagination .bloc i{
+                            position: relative;
+                            left: -1.3rem;
+                            color: chocolate;
+                        }
+                                                
+                    </style>
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
                                         ?><li id="adress-form1" ><a href="#"><h3 style="margin-left: .5rem;font-size: 1.2rem;font-weight: bold;color: #7380ec;background: bisque;padding: 5px;margin-right: .5rem;margin-top: -.5rem;border-radius: 5px;">Cập nhật</h3></a></li><?php }?>
@@ -593,8 +633,8 @@
                        
                         <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
                         <p>Sắp xếp theo: 
-                         <form action="" method="POST" class="boloc" >
-                    
+                        <form method="POST" action="" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
                             <select  name="myComboBox" onchange="this.form.submit()">
                                 <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
                                 <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
@@ -613,10 +653,10 @@
                             <i class="fa fa-caret-down dropdown__caret"></i>
                         </form></p>
                         
-                    </div> 
-                    <?php } ?>
                     </div>
-                  
+                    
+                    </div>
+                    <?php } ?>
                     <?php if(isset($_GET['masp']) or isset($_SESSION['mach'])){
                         if(!empty($selectedValue)){
                             $product_search=$product->search_xemthem($selectedValue,$_SESSION['search'],$trangthu,10);
