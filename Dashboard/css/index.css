@@ -1,9 +1,9 @@
 #theloaiban{
     position: relative;
-    width: 5.1rem;
+    width: 6.5rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem ;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -188,6 +188,45 @@ text-align: left;
 
 .quaylai i {
     transition: .3s all ease;
-    color: #fff;
+    
     font-size: 2.5rem;
 }
+.bloc{
+    display: flex;
+    align-items: center;
+    /* background: bisque; */
+    border-radius: 3px;
+    margin: 5px 5px 5px 3rem;
+}
+@media screen and (max-width: 450px) {
+    #pagination .bloc select {
+      padding: 6px 4px 6px 2px;
+      font-size: 8px;
+    }
+    #pagination .bloc p {
+        display: none;
+    }
+    .bloc{
+        margin: 5px 5px 5px 5px;
+    }
+    .recent-order tbody tr td:nth-child(2):hover a{
+        font-size: 10px;
+    }
+    .recent-order table #tbody {
+        font-size: 6px;
+      }
+  }
+  @media screen and (max-width: 376px) {
+    #pagination a{
+        padding: 4px;
+    }
+    #pagination .bloc select{
+        padding: 4px;
+    }
+    .recent-order tbody tr td:nth-child(2):hover a{
+        font-size: 7px;
+      }
+      .recent-order table #tbody {
+        font-size: 5px;
+      }
+  }

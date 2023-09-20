@@ -199,4 +199,46 @@ html{
 .chart-label {
     white-space: normal;
 }
+
+#pagination {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#pagination a{
+    display: flex;
+    text-align: center;
+    padding: 5px 8px;
+    margin: 5px;
+    background:bisque;
+    border-radius: 3px;
+}
+#pagination a:hover{
+    color: #0000BB;
+    background: #fff;
+}
+.bloc p{
+    /* position:relative; */
+    color: chocolate;
+    /* margin-top: .5rem;                         
+    margin-left: .5rem; */
+}
+#pagination .bloc select{
+        
+        text-align: center;
+        padding: 7px 20px 7px 8px;
+     
+        background: bisque;
+        border-radius: 3px;
+      
+        color: #7380ec;
+        margin-left: 5px; 
+}
+
+#pagination .bloc i{
+    position: relative;
+    left: -1.3rem;
+    color: chocolate;
+}
+   
     

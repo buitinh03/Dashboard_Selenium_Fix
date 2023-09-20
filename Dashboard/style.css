@@ -14,9 +14,9 @@
     --color-background: #b8dbd7;
     
     --color-yellow:rgb(255, 255, 3);
-    
-   
-
+    --color-backround-logo:#b8dbd7;
+    --color-backround-time:#d2d6f7;
+    --color-border-time:#b8dbd7;
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
@@ -92,6 +92,9 @@
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
     --color-info-dark:#edeffd;
+    --color-backround-logo:#a3bdcc;
+    --color-backround-time:#181a1e;
+    --color-border-time:#edeffd;
 }
 *{
     margin:0;
@@ -172,6 +175,7 @@ aside .top{
     justify-content: space-between;
     margin-top: 1.4rem;
     border-radius: 2rem;
+    background-color: var(--color-backround-logo);
 }
 aside .logo{
     display: flex;
@@ -264,11 +268,12 @@ main{
 main .date{
     display:inline-block;
     /* background: var(--color-light); */
-    background: #d2d6f7;
+    background: var(--color-backround-time);
     border-radius: var(--border-radius-1);
     margin-top: 1rem;
     padding: 0.5rem 1.6rem;
     margin-bottom: 5px;
+    border: var(--color-border-time) solid 1px;
 }
 .income{
     background:var(--color-white) ;
@@ -399,7 +404,7 @@ padding :var(--card-padding);
 text-align: center;
 box-shadow: var(--box-shadow);
 transition: all 300ms ease;
-border: #0b0c0c 2px;
+border: var(--color-border-time) solid 1px;
 margin: 0 5rem;
 }
 
@@ -411,7 +416,7 @@ box-shadow: none;
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
     /* color: var(--color-dark-variant); */
-    color: black;
+    color: var(--color-info-dark);
 }
 
  table tbody tr:last-child td{
@@ -447,14 +452,16 @@ gap: 1rem;
 display: none;}
 
 .right .theme-logger{
-background: var(--color-light);
-display: flex;
-justify-content: space-between;
-align-items: center;
-height: 1.6rem;
-width: 4.2rem;
-cursor: pointer;
-border-radius: var(--border-radius-1);}
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+    border: var(--color-border-time) solid 1px;
+}
 
 .right .theme-logger span{
 font-size: 1.2rem;
@@ -508,7 +515,9 @@ background: var(--color-white);
 padding:var(--card-padding);
 box-shadow: var(--box-shadow);
 border-radius: var(--card-border-radius);
-transition:all 300ms ease;}
+transition:all 300ms ease;
+border: var(--color-border-time) solid 1px;
+}
 
 .recent-updates .updates:hover{
 box-shadow: none;
@@ -535,6 +544,7 @@ margin-bottom: 0.8rem;}
     border-radius: var(--border-radius-3);
     box-shadow:var(--box-shadow) ;
     transition: all 300ms ease;
+    border: var(--color-border-time) solid 1px;
 }
 .right .sales-analytics  .item:hover{
 box-shadow: none;}
@@ -623,201 +633,53 @@ gap: 0.6rem;
 .right .item.online h3 a:hover {
     color: #001eff;
 }
-
-
-@media screen and (max-width: 1200px){
-   .container{
-        width: 94%;
-        grid-template-columns: 7rem auto 23rem;
-    }
-
-    aside .logo h2{
-    display:none;}
-
-    aside .sidebar h3{
-    display: none;}
-
-    aside .sidebar a{
-    width: 5.6rem;}
-
-    aside .sidebar a:last-child{
-        position: relative;
-        margin-top: 1.8rem;
-    }
-
-    main .insights{ 
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    main .recent-order{
-    width: 94%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 2rem 0 0 8.8rem;
-    }
-
-    main .recent-order table{
-    width: 83vw;
-    }
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-         display: none;}
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        display: none;}
-
+.recent-order table #tbody{
+    font-size: 1rem;
+}
+.recent-order tbody tr td:nth-child(10) a{
+    border-radius: 1rem;
+  padding: .1rem .5rem;
+  background-color: var(--color-white);
+  color: #FF9966;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.recent-order tbody tr td:nth-child(10) input{
+    border: 1px solid #777777;
+  padding: .2rem .5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  max-width: 80%;
+}
+.recent-order tbody tr td:nth-child(10) button{
+    border: 1px solid #777777;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: .2rem .7rem;
+  background-color: darksalmon;
+  color: #fff;
+  cursor: pointer;
+  margin-left: -2%;
+}
+.quaylai {
+    display: none;
+    position: fixed;
+    font-size: 2rem;
+    text-align: right;
+    max-width: 97%;
+    color: #333;
+    cursor: pointer;
+    top: 50%;
+    right: 1.3%;
+    transition: .3s all ease;
 }
 
-@media screen and (max-width: 768px){
-    body {
-        max-width: 100%;
-    }
-
-    main .recent-order {
-        width: 87%;
-        /* left:none; */
-    }
-   .container{
-    max-width: 100%;
-        grid-template-columns: 1fr;
-    }
-    aside{
-        position: fixed;
-        left: -100%;
-        background: var(--color-white);
-        width: 18rem;
-        z-index:3;
-        box-shadow:  1rem 3rem 4rem var(--color-light);
-        height:100vh;
-        padding-right:var(--card-padding) ;
-        display: none;
-        animation: showMenu 500ms ease forwards;
-    }
-
-    @keyframes showMenu{
-        to{
-            left: 0;
-        }  
-    }
-    
-    aside .logo{
-        margin-left: 1rem;
-    }
-    aside .logo h2{
-        display: inline;
-    }
-    aside .sidebar h3{
-        display: inline;
-    }
-    aside .sidebar a{
-    width: 90%;
-    height: 3.4rem;}
-
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 5rem;    
-
-    }
-    aside .close{
-        display: inline-block;
-        cursor: pointer;
-    } 
-    aside .logo{
-        margin-left: 1rem;
-    }  
-    main{
-        margin-top: 8rem;
-        padding: 0 1rem;
-    }
-
-    main .date {
-        margin-top: 3em;
-    }
-    main .recent-order{
-        position: relative;
-        margin: 3rem 0 0 0;
-        max-width: 100%;
-    }
-
-     .recent-order h2 {
-        margin-top: 5em;
-    }
-    main .recent-order table {
-        width: 87%;
-        margin-right: 5em;
-       
-    }
-    .right{
-        max-width:94%;
-        margin:0 auto 4rem;
-    }
-    .right .top{
-        position: fixed;
-        top:0;
-        left: 0;
-        align-items: 0 0.8rem;
-        height: 4.6rem;
-        background: var(--color-white);
-        width: 100%;
-        margin:0;
-        z-index: 2;
-        box-sizing: 0 1rem 1rem var(--color-light);
-    }
-
-    .right .top .theme-logger{
-        width: 4.4rem;
-        position: absolute;
-        left: 66%;
-    }
-
-    /* .right .profile .info{
-        display: none;
-    } */
-    .right .top button{
-        display: inline-block;
-        background: transparent;
-        cursor:pointer;
-        color: var(--color-dark);
-        position: absolute;
-        left: 1rem;
-        font-size: 2rem;
-    }
-
-    .right .top button span{
-        font-size: 2rem;
-    }
-
-    .updates {
-        width: 200%;
-    }
-
-    .right .item.customers {
-        width: 200%;  
-    }
-
-    .right .item.online {
-        width: 200%;  
-    }
-
-    .right .sales-analytics .add-product {
-        width: 200%; 
-    }
-
-    footer {
-       width: 200vw;
-     }
-
-     .sapxeptheo {
-        font-size: .6rem;
-     }
-
-     #pagination {
-        margin-left: 50%;
-     }
-
+.quaylai i {
+    transition: .3s all ease;
+    color: #fff;
+    font-size: 2.5rem;
 }
+
 
 .icon img {
     width:30px;
@@ -906,17 +768,290 @@ gap: 0.6rem;
     /* background: var(--color-primary); */
     color: var(--color-white);
 }
+ .recent-order h2 {
+    margin-left: 4rem;
+    margin-top: -2rem;
+ }
+
+  .recent-order h2 span i {
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    font-size: 0px;
+    margin-right: 2em;
+ }
+
+  .recent-order h2 span {
+    font-size: 1rem;
+ }
+
+
+  .recent-order h2 span:hover i{
+    transform: translateX(100%);
+    transform: rotate(-90deg);
+    font-size: 1.2rem;
+ }
+ .recent-order .dsach{
+    margin: 1rem 1rem 1rem 4rem;
+ }
 
 
 
-
-
+ @media screen and (max-width: 1200px){
+    .container{
+         width: 94%;
+         grid-template-columns: 7rem auto 23rem;
+     }
+ 
+     aside .logo h2{
+     display:none;}
+ 
+     aside .sidebar h3{
+     display: none;}
+ 
+     aside .sidebar a{
+     width: 5.6rem;}
+ 
+     aside .sidebar a:last-child{
+         position: relative;
+         margin-top: 1.8rem;
+     }
+ 
+     main .insights{ 
+         grid-template-columns: 1fr;
+         gap: 0;
+     }
+ 
+     main .recent-order{
+     width: 94%;
+     position: absolute;
+     left: 50%;
+     transform: translateX(-50%);
+     margin: 2rem 0 0 8.8rem;
+     }
+ 
+     main .recent-order table{
+     width: 83vw;
+     }
+     main table thead tr th:last-child,
+     main table thead tr th:first-child{
+          display: none;}
+     main table tbody tr td:last-child,
+     main table tbody tr td:first-child{
+         display: none;}
+ 
+ }
+ 
+ @media screen and (max-width: 768px){
+     body {
+         max-width: 100%;
+         font-size: .7rem;
+     }
+ 
+     main .recent-order {
+         width: 87%;
+         /* left:none; */
+     }
+    .container{
+     max-width: 100%;
+         grid-template-columns: 1fr;
+     }
+     aside{
+         position: fixed;
+         left: -100%;
+         background: var(--color-white);
+         width: 18rem;
+         z-index:3;
+         box-shadow:  1rem 3rem 4rem var(--color-light);
+         height:100vh;
+         padding-right:var(--card-padding) ;
+         display: none;
+         animation: showMenu 500ms ease forwards;
+     }
+ 
+     @keyframes showMenu{
+         to{
+             left: 0;
+         }  
+     }
+     
+     aside .logo{
+         margin-left: 1rem;
+     }
+     aside .logo h2{
+         display: inline;
+     }
+     aside .sidebar h3{
+         display: inline;
+     }
+     aside .sidebar a{
+     width: 90%;
+     height: 3.4rem;}
+ 
+     aside .sidebar a:last-child{
+         position: absolute;
+         bottom: 5rem;    
+ 
+     }
+     aside .close{
+         display: inline-block;
+         cursor: pointer;
+     } 
+     aside .logo{
+         margin-left: 1rem;
+     }  
+     main{
+         margin-top: 8rem;
+         padding: 0 1rem;
+     }
+ 
+     main .date {
+         margin-top: 3em;
+     }
+     main .recent-order{
+         position: relative;
+         margin: 3rem 0 0 0;
+         max-width: 100%;
+     }
+ 
+      .recent-order h2 {
+         margin-top: .5rem;
+         font-size: 16px;
+         display: grid;
+         grid-template-columns: auto auto auto ;
+ 
+     }
+     #theloaiban{
+         margin-top: -.3rem;
+     }
+     .recent-order h2 a{
+         font-size: 1.2rem;
+     }
+     .recent-order h2 span{
+         margin: .5rem 0 0;
+     }
+     main .recent-order table {
+         width: 87%;
+         margin-right: 5em;
+        
+     }
+     .right{
+         max-width:94%;
+         margin:0 auto 4rem;
+     }
+     .right .top{
+         position: fixed;
+         top:0;
+         left: 0;
+         align-items: 0 0.8rem;
+         height: 4.6rem;
+         background: var(--color-white);
+         width: 100%;
+         margin:0;
+         z-index: 2;
+         box-sizing: 0 1rem 1rem var(--color-light);
+     }
+     .recent-order a{
+         font-size: .7rem;
+     }
+     .right .top .theme-logger{
+         width: 4.4rem;
+         position: absolute;
+         left: 66%;
+     }
+ 
+     /* .right .profile .info{
+         display: none;
+     } */
+     .right .top button{
+         display: inline-block;
+         background: transparent;
+         cursor:pointer;
+         color: var(--color-dark);
+         position: absolute;
+         left: 1rem;
+         font-size: 2rem;
+     }
+ 
+     .right .top button span{
+         font-size: 2rem;
+     }
+ 
+     .updates {
+         width: 200%;
+     }
+ 
+     .right .item.customers {
+         width: 200%;  
+     }
+ 
+     .right .item.online {
+         width: 200%;  
+     }
+ 
+     .right .sales-analytics .add-product {
+         width: 200%; 
+     }
+ 
+     footer {
+        width: 100%;
+      }
+ 
+      .sapxeptheo {
+         font-size: .6rem;
+      }
+ 
+      /* #pagination {
+         margin-left: 50%;
+      } */
+      .recent-order table{
+         margin: 0 1rem;
+         width: 95%;
+        margin-right: 1rem;
+        font-size: 0.7rem;
+        padding: 1rem;
+      }
+      .recent-order table .form-mach{
+         width: 4rem;
+      }
+      .recent-order table .form-mach input{
+         font-size: .7rem;
+         max-width: 50%;
+      }
+      .recent-order tbody tr td:nth-child(2) a{
+         font-size: .7rem;
+      }
+      .recent-order tbody tr td:nth-child(10){
+         margin: 0 .1rem;
+      }
+      .recent-order tbody tr td:nth-child(10) a{
+         margin: 0 .1rem;
+         padding: 0;
+     font-size: .5rem;
+      }
+      .recent-order table #tbody{
+         font-size: .7rem;
+      }
+      .recent-order tbody tr td:nth-child(10) input{
+         max-width: 50%;
+      }
+      .recent-order tbody tr td:nth-child(10) button{
+         padding: .1rem;
+      }
+      
+      .quaylai i{
+         color: var(--color-info-dark);
+      }
+ 
+ }
 
 @media screen and (max-width: 1100px ){
     .container{
          width: 100%;
          grid-template-columns: 1fr;
-        
+        /* grid-template-rows: auto 1fr; */
+     }
+     main{
+        width: 66%;
      }
      aside{
          position: fixed;
@@ -967,6 +1102,12 @@ gap: 0.6rem;
          padding: 0 -1em;
          margin: 0 auto;
      } */
+     main .date{
+        margin-left: 2rem;
+     }
+     .recent-updates{
+        margin: 1rem 2rem 0;
+     }
      main .recent-order{
          position: relative;
          margin: 3rem 0 0 0;
@@ -977,14 +1118,14 @@ gap: 0.6rem;
          margin:0 0;
      }
      .right{
-         width:94%;
-         margin:0 auto 4rem;
+         width:30%;
+         margin:-9.8rem 1rem 4rem auto;
      }
      .right .top{
          position: fixed;
          top:0;
          left: 0;
-         align-items: 0 0.8rem;
+         align-items: center;
          height: 4.6rem;
          background: var(--color-white);
          width: 100%;
@@ -992,11 +1133,16 @@ gap: 0.6rem;
          z-index: 2;
          box-sizing: 0 1rem 1rem var(--color-light);
      }
- 
+     .profile-photo{
+        display: none;
+     }
+     .right .top .profile{
+        margin-right: 1rem;
+     }
      .right .top .theme-logger{
          width: 4.4rem;
-         position: absolute;
-         left: 66%;
+         position: static;
+         /* left: 66%; */
      }
  
      /* .right .profile .info{
@@ -1027,9 +1173,110 @@ gap: 0.6rem;
      .quaylai {
         margin-left: 30%;
      }
+     /* .recent-updates{
+        margin: 1rem .5rem 0 .5rem;
+     } */
+     .recent-updates .updates{
+        width: 100%;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+     .search-box{
+        width: 110%;
+        margin-left: -5%;
+     }
+     .right .sales-analytics .item{
+        width: 100%;
+     }
+     /* .right .sales-analytics .item .right h3{
+        display: none;
+     } */
  }
-
- @media screen and (max-width: 300px){
+ @media screen and (max-width: 992px){
+    html{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 12px;
+    }
+    .recent-order h2 a{
+        font-size:  1.2rem;
+    }
+    .recent-order {
+        margin-top: 2px;
+    }
+    .right {
+    width: 30%;
+    margin: -9.8rem 1rem 2rem auto;
+    }
+    .recent-order table {
+        margin-left: 1rem;
+    }
+    .recent-order table #tbody {
+        font-size: .9rem;
+      }
+      .recent-order tbody tr td:nth-child(10) input{
+        max-width: 50%;
+      }
+ }
+ 
+ @media screen and (max-width: 450px){
+    .right{
+        width: 100%;
+        margin: 0 1rem 2rem;
+    }
+    main{
+        width: 100%;
+    }
+    main .date{
+        margin-top: 1rem;
+    }
+    .recent-order h2{
+        font-size: 14px;
+    display: grid;
+    grid-template-columns: auto auto;
+    }
+    .recent-order h2 span{
+        font-size: 14px;
+    }
+    .recent-order h2 a{
+        font-size: 14px;
+    }
+    .bloc p{
+        font-size: 8px;
+    }
+    #pagination .bloc select{
+        padding: 2px 4px 2px 2px;
+    }
+    .recent-order table {
+        margin: 0 .6rem;
+        
+        
+        /* margin-right: 1rem; */
+        font-size: 6px;
+        padding: .5rem;
+      }
+      .recent-order tbody tr td:nth-child(2) a {
+        font-size: 7px;
+      }
+      .recent-order tbody tr td:nth-child(10) input {
+        padding: 2px;
+        font-size: 6px;
+      }
+      .recent-order tbody tr td:nth-child(10) button{
+        font-size: 7px;
+      }
+      .recent-order tbody tr td:nth-child(10) a{
+        font-size: 5px;
+      }
+      .recent-order a{
+        margin: .2rem auto;
+        font-size: 6px;
+      }
+ }
+ @media screen and (max-width: 376px){
     .container{
          width: 100%;
          grid-template-columns: 1fr;
@@ -1079,7 +1326,7 @@ gap: 0.6rem;
          margin-left: 1rem;
      }  
      main{
-         margin-top: 8rem;
+         margin-top: 6rem;
          padding: 0 1rem;
      }
      main .recent-order{
@@ -1091,10 +1338,10 @@ gap: 0.6rem;
          width: 100%;
          margin:0;
      }
-     .right{
+     /* .right{
          width:94%;
          margin:0 auto 4rem;
-     }
+     } */
      .right .top{
          position: fixed;
          top:0;
@@ -1145,31 +1392,169 @@ gap: 0.6rem;
 
     .right .sales-analytics .add-product {
         max-width: 87%; 
+    }.container{
+        width: 100%;
+        grid-template-columns: 1fr;
+       
     }
+    aside{
+        position: fixed;
+        left: -100%;
+        background: var(--color-white);
+        width: 18rem;
+        z-index:3;
+        box-shadow:  1rem 3rem 4rem var(--color-light);
+        height:100vh;
+        padding-right:var(--card-padding) ;
+        display: none;
+        animation: showMenu 500ms ease forwards;
+    }
+
+    @keyframes showMenu{
+        to{
+            left: 0;
+        }  
+    }
+    
+    aside .logo{
+        margin-left: 1rem;
+    }
+    aside .logo h2{
+        display: inline;
+    }
+    aside .sidebar h3{
+        display: inline;
+    }
+    aside .sidebar a{
+    width: 100%;
+    height: 3.4rem;}
+
+    aside .sidebar a:last-child{
+        position: absolute;
+        bottom: 5rem;    
+
+    }
+    aside .close{
+        display: inline-block;
+        cursor: pointer;
+    } 
+    aside .logo{
+        margin-left: 1rem;
+    }  
+    /* main{
+        margin-top: 8rem;
+        padding: 0 -1em;
+        margin: 0 auto;
+    } */
+    main .recent-order{
+        position: relative;
+        margin: 3rem 0 0 0;
+        max-width: 90%;
+    }
+    main .recent-order table {
+        width: 100%;
+        margin:0 0;
+    }
+    .right{
+        max-width: 100%;
+        margin:0 auto 1rem;
+    }
+    .right .sales-analytics{
+        width: 100%;
+        align-items: center;
+    }
+    .right .top{
+        position: fixed;
+        top:0;
+        left: 0;
+        align-items: center;
+        height: 4.6rem;
+        background: var(--color-white);
+        width: 100%;
+        margin:0;
+        z-index: 2;
+        box-sizing: 0 1rem 1rem var(--color-light);
+    }
+    .profile-photo{
+       display: none;
+    }
+    .right .top .profile{
+       margin-right: 1rem;
+    }
+    .right .top .theme-logger{
+        width: 4.4rem;
+        position: static;
+        /* left: 66%; */
+    }
+
+    /* .right .profile .info{
+        display: none;
+    } */
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor:pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+        font-size: 2rem;
+    }
+
+    .right .top button span{
+        font-size: 2rem;
+    }
+
+    .search-box input[type="text"] {
+       width: 90%;
+    }
+
+    .footer {
+       width: 250vw;
+    }
+
+    .quaylai {
+       margin-left: 30%;
+    }
+    /* .recent-updates{
+       margin: 1rem .5rem 0 .5rem;
+    } */
+    .recent-updates .updates{
+       width: 100%;
+    }
+    .search-box{
+       width: 110%;
+       margin-left: -5%;
+    }
+    .right .sales-analytics .item{
+       width: 100%;
+       margin: 0 auto;
+    }
+    .recent-updates {
+        margin: 1rem 0 0;
+        width: 114%;
+      }
+      .recent-order table{
+        border-radius: 10px;
+        padding: .2rem;
+        margin: 5px;
+      }
+      .recent-order tbody tr td:nth-child(2) a{
+        width: 50px;
+        font-size: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .recent-order tbody tr td:nth-child(2):hover a{
+        font-size: 7px;
+      }
+
+    /* .right .sales-analytics .item .right h3{
+       display: none;
+    } */
+}
  
- }
+ 
 
- .recent-order h2 {
-    margin-left: 4rem;
-    margin-top: -2rem;
- }
-
-  .recent-order h2 span i {
-    transform: translateX(-100%);
-    transition: all .5s ease;
-    font-size: 0px;
-    margin-right: 2em;
- }
-
-  .recent-order h2 span {
-    font-size: 1rem;
- }
-
-
-  .recent-order h2 span:hover i{
-    transform: translateX(100%);
-    transform: rotate(-90deg);
-    font-size: 1.2rem;
- }
 
 

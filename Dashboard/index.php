@@ -58,6 +58,7 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
+   
 
        <div class="recent-order">
  <h2>SẢN PHẨM     <form style="height: 1rem; width:12rem;" action="" method="get" id="xeptheotheloai">
@@ -89,6 +90,7 @@ $(function(){
          ?>
          <!-- <i class="fa fa-caret-down dropdown__caret" id="ico"></i> -->
  </form>
+    </h2>
  <script>
     const icon = document.getElementById('ico');
 icon.addEventListener("click", function(){
@@ -101,59 +103,64 @@ icon.addEventListener("click", function(){
  <?php 
  if($theloaiban=='tatcasanpham'){
     ?>
-  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+   <h2 class="dsach"><span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a">Thuocsi.vn</a></span>  <span>-
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span>- <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span> <span> -<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
-    ?>
-  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+    ?><h2>
+   <span class="dsach">-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a">Thuocsi.vn</a></span>  <span>-
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span>   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a">Pharmacity.vn</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='banle'){
     ?>
-  - <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span></h2>
+    <h2 class="dsach">
+   <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span></h2>
  <?php
  }elseif($theloaiban=='thuocsi'){
-    ?> <span style="color: green; "><a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+    ?> <h2 class="dsach"> <span >-<i class="fa fa-caret-down dropdown__caret"></i><a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span></h2>
  <?php
  }elseif($theloaiban=='chosithuoc'){
     ?>
-  - <span style="color: green; "> <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
+  <h2 class="dsach"> <span > -<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span> </h2>
  <?php
  }elseif($theloaiban=='ankhang'){
     ?>
-  <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i> <a href="https://www.nhathuocankhang.com/" class="a" >Ankhang.com</a></span> </h2>
   <?php
  }elseif($theloaiban=='longchau'){
     ?>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span> - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
+<h2 class="dsach"> <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a">Longchau.vn</a></span></h2>
  <?php
  }elseif($theloaiban=='pharmacity'){
     ?>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
+<h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span></h2>
  <?php
  }elseif($theloaiban=='medigo'){
     ?>
-<a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+<a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
 <?php
  }elseif($theloaiban=='pharex'){
     ?>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
+ <h2 class="dsach"> <span>-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span></h2>
 
 <?php
  }
@@ -233,7 +240,7 @@ icon.addEventListener("click", function(){
         <?php } ?>
         
         
-        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+        <div class="bloc" >
         <p>Sắp xếp theo: 
         <form method="POST" action="index.php" class="boloc" >
         <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
@@ -252,14 +259,14 @@ icon.addEventListener("click", function(){
                 $selectedValue=$_SESSION['selectedValue'];
             } else {$selectedValue='option1';}
             ?>
-            <i class="fa fa-caret-down dropdown__caret"></i>
+            
         </form></p>
-        
+   
     </div>
     <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
     </div>
             <table id="mytable">                    
-                <thead style="color:#FF8247;">
+                <thead >
                     <tr>
                         <th>STT</th>
                         <th>TÊN SẢN PHẨM</th>
@@ -293,280 +300,278 @@ icon.addEventListener("click", function(){
                             }
                         ?>
                         
-                    </tr>
-                </thead>
-                    
-                    <?php
-                    if($result){
-                        $j=0;
-                        while($set = $result->fetch()){
-                            $j++
-                    ?>
-                    <?php 
-                ?>
-                <tbody>
-                        <tr onclick="handleClick(event)" id="tbody" class="tr" style="font-size: 1rem;">
-                            <td><?php echo $j;?></td>
-                            <td class="title"><a style="color: #333; font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
-                            
-                            <?php
-                            if($checkLoginAdmin == 0){
-                            ?>
-                            <?php 
-                            if(is_null($set['giacu'])){
-                            ?>
-                            <td  style="text-align: center;">-</td>
-                            <td  style="text-align: center;">-</td>
-                            <?php   
-                            }else{
-                            ?>
-                            <?php if($set['giacu'] == 0){?>
-                            <td  style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
-                            <?php
-                            }else{
-                            ?>
-                            <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
-                            <?php } ?>
                                 
-                            <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
-                            <?php
-                            }
-                            ?>
-                            <?php if($set['giamoi'] == 0){?>
-                            <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
-                            <?php
-                            }elseif($set['giamoi'] == ""){
-                            ?>
-                                <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
-                                <?php }else{ ?>
-                            <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
-                            <?php } ?>
-
-                            <td  style="text-align: center; padding-left: 5px;  width: 10%;"><?php echo $set['ngaymoi']; ?></td>
-
-                            
-                            <?php
-                                if($set['giamoi']!=0&&$set['giacu']!=0){
-                                    if( $set['giamoi']>$set['giacu']){
-                                    $gialech=($set['giamoi']/$set['giacu']*100)-100;
-                                    }
-                                    else $gialech=100-($set['giamoi']/ $set['giacu']*100);
-                                }else {$gialech= 0;}
-                                $gialech=round($gialech,2);
-                                if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
-                            ?>
-                            <td class="primary" style="text-align: center; width: 7%; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
-                            <?php } elseif($set['giamoi']<$set['giacu']){ ?>
-                                <td class="primary" style="text-align: center; width: 7%; color:red"><?php echo "-".$gialech."%" ?></td>
-                            <?php } else { ?>
-                                <td  style="text-align: center; width: 7%;"><?php echo $gialech."%" ?></td>
-                            <?php } ?>
-                            <?php
-                            }else{
-                            ?>
-                                <?php 
-                            if(is_null($set['giacu'])){
-                            ?>
-                            <td  style="text-align: center;">-</td>
-                            <td  style="text-align: center;">-</td>
-                            <?php   
-                            }else{
-                            ?>
-                            <?php if($set['giacu'] == 0){?>
-                            <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
-                            <?php
-                            }else{
-                            ?>
-                            <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
-                            $priceString = (string) $set['giacu'];
-
-                            // Lấy số ký tự đầu tiên của giá trị
-                            $numberOfCharactersToMask = 1;
-                            $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
-                            
-                            // Tạo chuỗi dấu "*"
-                            $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
-                            $asterisksString = str_repeat('*', $numberOfAsterisks);
-                            
-                            // Hiển thị kết quả
-                            echo $maskedValue . $asterisksString; ?>đ</td>
-                            <?php } ?>
-                                
-                            <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
-                            <?php
-                            }
-                            ?>
-                            <?php if($set['giamoi'] == 0){?>
-                            <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
-                            <?php
-                            }else{
-                            ?>
-                            <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
-                            $priceString = (string) $set['giamoi'];
-
-                            // Lấy số ký tự đầu tiên của giá trị
-                            $numberOfCharactersToMask = 1;
-                            $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
-                            
-                            // Tạo chuỗi dấu "*"
-                            $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
-                            $asterisksString = str_repeat('*', $numberOfAsterisks);
-                            
-                            // Hiển thị kết quả
-                            echo $maskedValue . $asterisksString;?>đ</td>
-                            <?php } ?>
-
-                            <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
-                            <?php
-                            
-                            }
-                            ?>
-                            <?php 
-                                if($set['nguon'] == 'thuocsi.vn'){
-                            ?>
-                                <td class="nguon"><a href="<?php echo $set['link'];?>" target="_blank" class="thea1"><?php echo $set['nguon'];?></a></td>
-                            <?php 
-                                }elseif($set['nguon'] == 'chosithuoc.com'){
-                            ?>
-                            <td class="nguona"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
-                            <?php 
-                                }elseif($set['nguon'] == 'ankhang.com'){
-                            ?>
-                            <td class="nguonb"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
-                            <?php 
-                                }elseif($set['nguon'] == 'thuocsi.pharex.vn' or $set['nguon'] == 'pharex.vn'){
-                                    ?>
-                                    <td class="nguonc"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharex.vn</a></td>
-                                    <?php
-                                    }elseif($set['nguon'] == 'longchau.vn'){
-                                        ?>
-                                        <td class="nguond"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">longchau.vn</a></td>
-                                        <?php  
-                                    }elseif($set['nguon'] == 'pharmacity.vn'){
-                                        ?>
-                                        <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
-                                        <?php
-                                    }elseif($set['nguon'] == 'medigoapp.com'){
-                                        ?>
-                                        <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
-                                        <?php  
-                                }else{
-                                    echo "";
-                                }
+                                <?php
+                                if($result){
+                                    $j=0;
+                                    while($set = $result->fetch()){
+                                        $j++
                                 ?>
-
-                            
-
-                            <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-                            <?php if($set['masp'] == null){?>
-                            <td><div>
-                            <?php if($checkLoginAdmin == 0){?>    
-                            <form action="" method="get">
-                                <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                <div class="input-flex" style="display: flex; justify-content: center;">
-                                <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;   max-width: 60%;">
-                                <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
-                                </div>
-                            </form></div></td>
-                            
-                            <?php }elseif($checkLoginAdmin == 1){?>   
-                            <td><div> 
-                            <form action="" method="get">
-                                <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
-                                <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
-                            </form></div></td>
-                            <?php } ?>
-                            <?php }else{ ?>
-                                
-                                <td><div> 
-                                <form action="" method="get">
-                                    <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
-                                    <div class="input-flex" style="display: flex; justify-content: center;">
-                                    <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem;  border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
-                                    <?php if($checkLoginAdmin == 0){?>
-                                    <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
-                                    <?php } ?>
-                                    </div>
-                                    <a href="search.php?masp=<?php echo $set['masp']?>"style="border-radius: 1rem; padding: .1rem .5rem;   background-color:#fff; color: #FF9966; cursor:pointer; margin:0 auto; max-width: 60%;">SP Tương Tự <i class="fa fa-angle-right"></i></a>
-                                </form>
-                                
-                            </div></td>
-                            <?php } ?>
-                                
-                            <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
-                            <?php
-                                for($k=1;$k<=12;$k++){
-                                    ?>
-                                    <td hidden><?php echo $set['month_'.$k] ?></td>
-                            <?php
-                                }
+                                <?php 
                             ?>
-                        </tr>
-                        <?php 
-                                }
-                            }
-                        ?>
-                
-                    </tbody>
-                </table>
-                <div id="pagination" >
-                <?php if($trangthu==1){ ?> 
-                <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
-                <?php }else{ ?> 
-                    <a href="index.php?&page=<?=($previouspage)?>" id="pr">Trước</a>
-                <?php } 
-                ?>
-                <a href="index.php?&page=<?=(1)?>" id="start1">1</a>
-                <?php
-                $page=array();                        
-                for($i=$from;$i<=$to;$i++){
-                    $page[$i]="p".($i);
-                }
-                $next=1; 
-                if(($from-1)>1){
-                    ?>
-                <a href="#">...</a>
-                
-                <?php    
-                }
-                for($i=$from;$i<=$to;$i++){
+                            <tbody>
+                                    <tr onclick="handleClick(event)" id="tbody" class="tr" >
+                                        <td><?php echo $j;?></td>
+                                        <td class="title"><a style="color: var(--color-info-dark); font-weight:bold;" href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>"><?php echo $set['title'] ?></a></td>
+                                        
+                                        <?php
+                                        if($checkLoginAdmin == 0){
+                                        ?>
+                                        <?php 
+                                        if(is_null($set['giacu'])){
+                                        ?>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <?php   
+                                        }else{
+                                        ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giacu']); ?><sup>đ</sup></td>
+                                        <?php } ?>
                                             
-                ?>
-                
-                <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
-                <?php
-            } ?>
-                <?php
-                if(($trang-$to)>1){
-                    ?>
-                <a href="#">...</a>
-                <?php
-                } ?>
-                
-            <a href="index.php?&page=<?=($trang)?>" id="end1"><?php echo $trang?></a>
-            <?php if($trangthu>=$trang){ ?> 
-                <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
-                <?php }else{ ?>                     
-            <a href="index.php?&page=<?=($nextpage)?>" id="next">Sau</a>
-            <?php } ?>
-        </div>
-        
-        
-            <script>
-            if(<?php echo $trangthu?>==1){
-                document.querySelector("#start").style.background = '#fff';  
-                document.querySelector("#start1").style.background = '#fff';  
-            }
-            if(<?php echo $trangthu?>==<?php echo $trang?>){
-                document.querySelector("#end").style.background = '#fff';  
-                document.querySelector("#end1").style.background = '#fff';
-            }
-            document.querySelector("#p<?php echo $trangthu?>").style.background = '#fff';
-            document.querySelector("#pa<?php echo $trangthu?>").style.background = '#fff';
-        </script>
-    </div>
-         
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
+                                        <?php
+                                        }elseif($set['giamoi'] == ""){
+                                        ?>
+                                         <td style="text-align: right; padding-left: 5px; width: 7%;">Liên hệ</td>
+                                         <?php }else{ ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 7%; color:crimson"><?php echo number_format( $set['giamoi']); ?><sup>đ</sup></td>
+                                        <?php } ?>
+
+                                        <td  style="text-align: center; padding-left: 5px;  width: 10%;"><?php echo $set['ngaymoi']; ?></td>
+
+                                        
+                                        <?php
+                                            if($set['giamoi']!=0&&$set['giacu']!=0){
+                                                if( $set['giamoi']>$set['giacu']){
+                                                $gialech=($set['giamoi']/$set['giacu']*100)-100;
+                                                }
+                                                else $gialech=100-($set['giamoi']/ $set['giacu']*100);
+                                            }else {$gialech= 0;}
+                                            $gialech=round($gialech,2);
+                                            if ($set['giamoi']>$set['giacu'] && $set['giacu']!=0){
+                                        ?>
+                                        <td class="primary" style="text-align: center; width: 7%; color:#00CC00"><?php echo "+".$gialech."%" ?></td>
+                                        <?php } elseif($set['giamoi']<$set['giacu']){ ?>
+                                            <td class="primary" style="text-align: center; width: 7%; color:red"><?php echo "-".$gialech."%" ?></td>
+                                        <?php } else { ?>
+                                            <td  style="text-align: center; width: 7%;"><?php echo $gialech."%" ?></td>
+                                        <?php } ?>
+                                        <?php
+                                        }else{
+                                        ?>
+                                            <?php 
+                                        if(is_null($set['giacu'])){
+                                        ?>
+                                        <td  style="text-align: center;">-</td>
+                                        <td  style="text-align: center;">-</td>
+                                        <?php   
+                                        }else{
+                                        ?>
+                                        <?php if($set['giacu'] == 0){?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
+                                        $priceString = (string) $set['giacu'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 1;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asterisksString; ?>đ</td>
+                                        <?php } ?>
+                                            
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%;"><?php echo $set['ngaycu']; ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php if($set['giamoi'] == 0){?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%;">Liên hệ</td>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <td  style="text-align: right; padding-left: 5px; width: 10%; color:crimson"><?php 
+                                        $priceString = (string) $set['giamoi'];
+
+                                        // Lấy số ký tự đầu tiên của giá trị
+                                        $numberOfCharactersToMask = 1;
+                                        $maskedValue = substr_replace($priceString, '*', $numberOfCharactersToMask);
+                                        
+                                        // Tạo chuỗi dấu "*"
+                                        $numberOfAsterisks = strlen($priceString) - $numberOfCharactersToMask;
+                                        $asterisksString = str_repeat('*', $numberOfAsterisks);
+                                        
+                                        // Hiển thị kết quả
+                                        echo $maskedValue . $asterisksString;?>đ</td>
+                                        <?php } ?>
+
+                                        <td  style="text-align: center; padding-left: 5px; width: 10%; "><?php echo $set['ngaymoi']; ?></td>
+                                        <?php
+                                        
+                                        }
+                                        ?>
+                                        <?php 
+                                            if($set['nguon'] == 'thuocsi.vn'){
+                                        ?>
+                                         <td class="nguon"><a href="<?php echo $set['link'];?>" target="_blank" class="thea1"><?php echo $set['nguon'];?></a></td>
+                                        <?php 
+                                            }elseif($set['nguon'] == 'chosithuoc.com'){
+                                        ?>
+                                        <td class="nguona"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
+                                        <?php 
+                                            }elseif($set['nguon'] == 'ankhang.com'){
+                                        ?>
+                                        <td class="nguonb"><a href="<?php echo $set['link'];?>" target="_blank" class="thea"><?php echo $set['nguon'];?></a></td>
+                                        <?php 
+                                            }elseif($set['nguon'] == 'thuocsi.pharex.vn' or $set['nguon'] == 'pharex.vn'){
+                                                ?>
+                                                <td class="nguonc"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharex.vn</a></td>
+                                                <?php
+                                                }elseif($set['nguon'] == 'longchau.vn'){
+                                                    ?>
+                                                    <td class="nguond"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">longchau.vn</a></td>
+                                                    <?php  
+                                                }elseif($set['nguon'] == 'pharmacity.vn'){
+                                                    ?>
+                                                    <td class="nguone"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">pharmacity.vn</a></td>
+                                                    <?php
+                                                }elseif($set['nguon'] == 'medigoapp.com'){
+                                                    ?>
+                                                    <td class="nguonf"><a href="<?php echo $set['link'];?>" target="_blank" class="thea">medigoapp.com</a></td>
+                                                    <?php  
+                                            }else{
+                                                echo "";
+                                            }
+                                            ?>
+
+                                        
+
+                                        <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
+                                        <?php if($set['masp'] == null){?>
+                                        <td><div>
+                                        <?php if($checkLoginAdmin == 0){?>    
+                                        <form action="" method="get" class='form-mach'>
+                                            <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
+                                            <div class="input-flex" style="display: flex; justify-content: center;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." >
+                                            <button type="submit" id="themma" name="submitMasp" style="background-color:#669966;">+</button>
+                                            </div>
+                                        </form></div></td>
+                                        <?php }elseif($checkLoginAdmin == 1){?>    
+                                        <form action="" method="get" class='form-mach'>
+                                            <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." >
+                                            <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
+                                        </form></div></td>
+                                        <?php } ?>
+                                        <?php }else{ ?>
+                                         
+                                            <td><div >
+                                            <form action="" method="get" class='form-mach'>
+                                                <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
+                                                <div class="input-flex" style="display: flex; justify-content: center;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã...">
+                                                <?php if($checkLoginAdmin == 0){?>
+                                                <button type="submit" id="suama" name="submitMasp_sua" style="background-color:darksalmon;"><i class="fa fa-save"></i></button>
+                                                <?php } ?>
+                                                </div>
+                                                <a href="search.php?masp=<?php echo $set['masp']?>">SP Tương Tự <i class="fa fa-angle-right"></i></a>
+                                            </form>
+                                            
+                                        </div></td>
+                                        <?php } ?>
+                                            
+                                        <td class="chitiet"><a href="product_detail.php?id=<?php echo $set['photo'];?>&link=<?php echo $set['link'];?>&price=<?php echo $set['giamoi']?>">Chi tiết</a></td>
+                                        <?php
+                                            for($k=1;$k<=12;$k++){
+                                                ?>
+                                                <td hidden><?php echo $set['month_'.$k] ?></td>
+                                        <?php
+                                            }
+                                        ?>
+                                    </tr>
+                                    <?php 
+                                            }
+                                        }
+                                    ?>
+                            
+                                </tbody>
+                            </table>
+                            <div id="pagination" >
+                            <?php if($trangthu==1){ ?> 
+                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
+                            <?php }else{ ?> 
+                                <a href="index.php?&page=<?=($previouspage)?>" id="pr">Trước</a>
+                            <?php } 
+                            ?>
+                            <a href="index.php?&page=<?=(1)?>" id="start1">1</a>
+                            <?php
+                            $page=array();                        
+                            for($i=$from;$i<=$to;$i++){
+                                $page[$i]="p".($i);
+                            }
+                            $next=1; 
+                            if(($from-1)>1){
+                                ?>
+                            <a href="#">...</a>
+                            
+                            <?php    
+                            }
+                            for($i=$from;$i<=$to;$i++){
+                                                     
+                            ?>
+                            
+                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+                            <?php
+                        } ?>
+                            <?php
+                            if(($trang-$to)>1){
+                                ?>
+                            <a href="#">...</a>
+                            <?php
+                            } ?>
+                            
+                        <a href="index.php?&page=<?=($trang)?>" id="end1"><?php echo $trang?></a>
+                        <?php if($trangthu>=$trang){ ?> 
+                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+                            <?php }else{ ?>                     
+                        <a href="index.php?&page=<?=($nextpage)?>" id="next">Sau</a>
+                        <?php } ?>
+                    </div>
+                 
+                    
+                        <script>
+                        if(<?php echo $trangthu?>==1){
+                            document.querySelector("#start").style.background = '#fff';  
+                            document.querySelector("#start1").style.background = '#fff';  
+                        }
+                        if(<?php echo $trangthu?>==<?php echo $trang?>){
+                            document.querySelector("#end").style.background = '#fff';  
+                            document.querySelector("#end1").style.background = '#fff';
+                        }
+                        document.querySelector("#p<?php echo $trangthu?>").style.background = '#fff';
+                        document.querySelector("#pa<?php echo $trangthu?>").style.background = '#fff';
+                    </script>
+                </div>
+               <style>
+                    
+                </style>
                 <div class="quaylai">
                 <i class="fas fa-chevron-circle-up" onclick="scrollUp()"></i><br>
                 <i class="fas fa-chevron-circle-down" onclick="scrollDown()"></i>

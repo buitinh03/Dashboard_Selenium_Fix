@@ -402,9 +402,9 @@
 
 
        
-        function search_xemthem($value='option1',$id_product_xemthem,$st=0,$limited=0){
+        function search_xemthem($value = 'option1',$id_product_xemthem,$st=0,$limited=0){
             $db =  new connect();
-            if($value=='option1'){
+            if($value == 'option1'){
             $query="SELECT *,
         CASE
             WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
@@ -417,17 +417,25 @@
          if($st!=0){
             $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
          }
+         
              $result = $db->getList($query);
             return $result;
         }else{
-            $query="SELECT *   
-        FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
-        ORDER BY COALESCE(masp, '') desc, ngaymoi desc ";
-         if($st!=0){
-            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
-         }
-             $result = $db->getList($query);
-            return $result;
+            $query="SELECT *,
+            CASE
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+                WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+                ELSE 0
+                END AS gialech   
+            FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
+            ORDER BY COALESCE(masp, '') desc, gialech desc ";
+             if($st!=0){
+                $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+             }
+             
+                 $result = $db->getList($query);
+                return $result;
         }
     }
         function count_search_xemthem($thu){

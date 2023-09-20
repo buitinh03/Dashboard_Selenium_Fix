@@ -83,10 +83,10 @@ $pd = new product();
                     <button id="menu-btn"><span class="material-icons-sharp">
                         menu</span>
                     </button>
-                    <div class="theme-logger">
+                    <!-- <div class="theme-logger">
                         <span class="material-icons-sharp active"> light_mode</span>
                         <span class="material-icons-sharp">dark_mode</span>
-                    </div>
+                    </div> -->
                     <div class="profile">
                         <div class="info">
                         <?php $chucvu = Session::get('adminType');?>
@@ -130,7 +130,7 @@ $pd = new product();
                          
                          </div>
                         
-                        <h1 class="success" style="color: black; font-weight:normal;"><?php echo $result['quantity']?></h1>
+                        <h1 class="success" style="color: var(--color-info-dark); font-weight:normal;"><?php echo $result['quantity']?></h1>
                       
                        
                           <h3></h3>
