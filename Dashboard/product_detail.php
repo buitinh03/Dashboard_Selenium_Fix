@@ -39,7 +39,7 @@ include_once('format/format.php');
 <!-- <div class="product"> -->
  
     <div class="product-image">
-       <img src="<?php echo $result['photo'] ?>" alt="" style="max-width:90px;max-height:auto; margin-bottom:5px;">
+       <img src="<?php echo $result['photo'] ?>" alt="" style="max-width:90px;max-height:15rem; margin-bottom:5px;">
         
     </div>
 
@@ -261,7 +261,7 @@ include_once('format/format.php');
         ?>
 
         <div class='box'>
-        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-width:50px;max-height:auto;"></a></div>
+        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-width:90px;max-height:15rem;"></a></div>
                 <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],50) ?></a></p>
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
