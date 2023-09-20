@@ -58,9 +58,10 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
+   
 
        <div class="recent-order">
- <h2>SẢN PHẨM     <form style="height: 1rem;" action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" id="select" onchange="this.form.submit()" style="cursor:pointer;">
+ <h2>SẢN PHẨM     <form style="height: 1rem;" action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()" style="cursor:pointer;">
         <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
         <option value="bansi" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'bansi') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='bansi'){echo "selected";}?>>Bán sỉ</option>
         <option value="banle" <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'banle'){unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='banle'){echo "selected";}?>>Bán lẻ</option></select>
@@ -76,18 +77,18 @@ $(function(){
         }else $theloaiban='tatcasanpham';
          ?>
  
-         <i onclick="select()" class="fa fa-caret-down dropdown__caret i" ></i>
-         <script>
-    function select() {
-      // Lấy thẻ select
-      var select = document.getElementById("select");
+         <!-- <i class="fa fa-caret-down dropdown__caret i thei" id="select" style="cursor:pointer;"></i> -->
+     
+ </form>
+ <script>
+            const select = document.getElementById("theloaiban");
+            const arrow = document.querySelector(".thei");
 
-      // Chọn thẻ select
-      select.select();
-    }
+            arrow.addEventListener("click", () => {
+            select.click(); 
+            });
 
   </script>
- </form>
  <?php 
  if($theloaiban=='tatcasanpham'){
     ?>
@@ -216,7 +217,7 @@ $(function(){
             ?>
             <i class="fa fa-caret-down dropdown__caret"></i>
         </form></p>
-        
+   
     </div>
     <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
     </div>

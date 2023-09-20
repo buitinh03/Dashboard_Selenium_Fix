@@ -1,0 +1,11 @@
+<input type="select" name="country" id="country" style="display: none;">
+<i class="arrow" style="cursor: pointer;">123</i>
+
+<script>
+    const select = document.getElementById("country");
+const arrow = document.querySelector(".arrow");
+
+arrow.addEventListener("click", () => {
+  select.click();
+});
+</script>
