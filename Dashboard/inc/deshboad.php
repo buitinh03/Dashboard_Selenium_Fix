@@ -351,7 +351,7 @@ $pd = new product();
                                                         file_exists($duongdan['xpathcaogialongchau']) &&
                                                         file_exists($duongdan['xpathcaogiapharma']) &&
                                                         file_exists($duongdan['xpathcaogiamedigo'])) {
-                                                    exec('python '.$duongdan['xpathcaogiachosithuoc'].' && python '.$duongdan['xpathcaogiathuocsi'].' && python '.$duongdan['xpathcaogiaankhang'].' && python '.$duongdan['xpathcaogiapharex'].' && '.$duongdan['xpathcaogialongchau'].' && python '.$duongdan['xpathcaogiapharma'].' && python '.$duongdan['xpathcaogiamedigo'],$output,$exit_code);
+                                                    exec($duongdan['operation'].$duongdan['xpathcaogiachosithuoc'].'&&'.$duongdan['operation'].$duongdan['xpathcaogiathuocsi'].' &&'.$duongdan['operation'].$duongdan['xpathcaogiaankhang'].' && '.$duongdan['operation'].$duongdan['xpathcaogiapharex'].' && '.$duongdan['operation'].$duongdan['xpathcaogialongchau'].' &&'.$duongdan['operation'].$duongdan['xpathcaogiapharma'].' &&'.$duongdan['operation'].$duongdan['xpathcaogiamedigo'],$output,$exit_code);
                                                     if($exit_code != 0){
                                                         echo "<script>
                                                     swal({
@@ -402,7 +402,7 @@ $pd = new product();
                                                 // Thêm phần xử lý cho các đường dẫn khác ở đây
                                                 if (isset($_POST['thuocsi'])) {
                                                  if(file_exists($duongdan['xpathcaogiathuocsi'])){
-                                                    exec('python '.$duongdan['xpathcaogiathuocsi'],$output,$exit_code);
+                                                    exec($duongdan['operation'].$duongdan['xpathcaogiathuocsi'],$output,$exit_code);
                                                     if($exit_code != 0){
                                                         echo "<script>
                                                     swal({
@@ -451,7 +451,7 @@ $pd = new product();
                                             }
                                                 if(isset($_POST['chosithuoc'])){
                                                         if(file_exists($duongdan['xpathcaogiachosithuoc'])){
-                                                            exec('python '.$duongdan['xpathcaogiachosithuoc'],$output,$exit_code);
+                                                            exec($duongdan['operation'].$duongdan['xpathcaogiachosithuoc'],$output,$exit_code);
                                                             if($exit_code != 0){
                                                                 echo "<script>
                                                             swal({
@@ -500,7 +500,7 @@ $pd = new product();
                                                     }
                                                 if(isset($_POST['ankhang'])){
                                                     if(file_exists($duongdan['xpathcaogiaankhang'])){
-                                                        exec('python '.$duongdan['xpathcaogiaankhang'],$output,$exit_code);
+                                                        exec($duongdan['operation'].$duongdan['xpathcaogiaankhang'],$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({
@@ -549,7 +549,7 @@ $pd = new product();
                                                 }
                                                 if(isset($_POST['pharex'])){
                                                     if(file_exists($duongdan['xpathcaogiapharex'])){
-                                                        exec('python '.$duongdan['xpathcaogiapharex'].' > /dev/null 2>&1 & echo $!',$output,$exit_code);
+                                                        exec($duongdan['operation'].$duongdan['xpathcaogiapharex'].' > /dev/null 2>&1 & echo $!',$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({
@@ -599,7 +599,7 @@ $pd = new product();
                                                   
                                                 if(isset($_POST['longchau'])){
                                                     if(file_exists($duongdan['xpathcaogialongchau'])){
-                                                        exec('python '.$duongdan['xpathcaogialongchau'],$output,$exit_code);
+                                                        exec($duongdan['operation'].$duongdan['xpathcaogialongchau'],$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({
@@ -648,7 +648,7 @@ $pd = new product();
                                                 }
                                                 if(isset($_POST['pharmacity'])){
                                                     if(file_exists($duongdan['xpathcaogiapharma'])){
-                                                        exec('python '.$duongdan['xpathcaogiapharma'],$output,$exit_code);
+                                                        exec($duongdan['operation'].$duongdan['xpathcaogiapharma'],$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({
@@ -697,7 +697,7 @@ $pd = new product();
                                                 }
                                                 if(isset($_POST['medigoapp'])){
                                                     if(file_exists($duongdan['xpathcaogiamedigo'])){
-                                                        exec('python '.$duongdan['xpathcaogiamedigo'],$output,$exit_code);
+                                                        exec($duongdan['operation'].$duongdan['xpathcaogiamedigo'],$output,$exit_code);
                                                         if($exit_code != 0){
                                                             echo "<script>
                                                         swal({

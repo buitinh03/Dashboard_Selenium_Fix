@@ -629,8 +629,6 @@
                     </div>
                     <?php }else{ ?>
                         <div id="pagination" >
-                           
-                       
                         <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
                         <p>Sắp xếp theo: 
                         <form method="POST" action="" class="boloc" >
