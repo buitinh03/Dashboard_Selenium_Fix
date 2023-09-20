@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
 INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
 INFO:scrapy.addons:Enabled addons:
@@ -82,3 +83,10 @@ INFO:scrapy.statscollectors:Dumping Scrapy stats:
  'scheduler/enqueued/memory': 6,
  'start_time': datetime.datetime(2023, 9, 19, 8, 45, 17, 954423)}
 INFO:scrapy.core.engine:Spider closed (finished)
+=======
+WARNING:root:Can not find chromedriver for currently installed chrome version.
+INFO:root:\u0110\u0103ng nh\u1eadp thành công
+INFO:root:Vui lòng \u0111\u1ee3i, s\u1ea3n ph\u1ea9m \u0111ang ti\u1ebfn hành load
+INFO:root:Link : https://thuocsi.vn/product/medx-marvelon-bayer-h21v
+INFO:root:Gia : 64800
+>>>>>>> 1347423a5f7640c4018f2ffea30a793d7033982a

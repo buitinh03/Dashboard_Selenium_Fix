@@ -119,7 +119,41 @@
 
             $result=$db->getList($select);
                     return $result; 
-        }        
+        }   
+        function search($value='option1',$name,$st=0,$limited=0){
+            $db =  new connect();
+            if($value=='option1'){
+            $query="SELECT *,
+        CASE
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
+            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
+            ELSE 0
+            END AS gialech   
+        FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
+         ORDER BY COALESCE(masp, '') desc, gialech desc ";
+         if($st!=0){
+            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+         }
+         $result = $db->getList($query);
+            return $result;
+        }else{
+            $query="SELECT * FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
+         or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
+         ORDER BY COALESCE(masp, '') desc, ngaymoi desc ";
+         if($st!=0){
+            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+         }
+         $result = $db->getList($query);
+            return $result;
+         }
+             
+        }     
         function analysischart(){
             $db=new connect();
             $query = "SELECT COUNT(giamoi) AS quantity FROM thuocsi_vn";
@@ -183,8 +217,9 @@
 
 
        
-        function search_xemthem($id_product_xemthem,$st=0,$limited=0){
+        function search_xemthem($value='option1',$id_product_xemthem,$st=0,$limited=0){
             $db =  new connect();
+            if($value=='option1'){
             $query="SELECT *,
         CASE
             WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
@@ -199,11 +234,27 @@
          }
              $result = $db->getList($query);
             return $result;
+        }else{
+            $query="SELECT *   
+        FROM thuocsi_vn where unaccent(masp)= unaccent('".$id_product_xemthem."')
+        ORDER BY COALESCE(masp, '') desc, ngaymoi desc ";
+         if($st!=0){
+            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
+         }
+             $result = $db->getList($query);
+            return $result;
         }
+    }
         function count_search_xemthem($thu){
             $db = new connect();
             $dem = "select count(*) as count from  thuocsi_vn where unaccent(masp) ~* replace(unaccent('$thu'), ' ', '.*') 
             ";
+            $result = $db->exec($dem);
+            return $result;
+        }
+        function search_id($email){
+            $db = new connect();
+            $dem = "select * from tbl_admin where email='".$email."'";
             $result = $db->exec($dem);
             return $result;
         }
@@ -215,26 +266,7 @@
         }
          
         //test phan trang
-        function search($name,$st=0,$limited=0){
-            $db =  new connect();
-            $query="SELECT *,
-        CASE
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and (CAST(giamoi AS real) > CAST(giacu AS real)) THEN (CAST(giamoi AS real) / CAST(giacu AS real) )- 1
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 and CAST(giamoi AS real) < CAST(giacu AS real) THEN 1- (CAST(giamoi AS real) / CAST(giacu AS real) )
-            WHEN giamoi is not null and giamoi !='' and cast(giamoi as real)!=0 and cast(giacu as real)!=0 THEN CAST(giamoi AS real) / CAST(giacu AS real)-1
-            ELSE 0
-            END AS gialech   
-        FROM thuocsi_vn where unaccent(title) ~* replace(unaccent('$name'), ' ', '.*') 
-         or unaccent(nguon) ~* replace(unaccent('$name'), ' ', '.*') 
-         or unaccent(cast((to_char(ngaymoi, 'dd-mm-YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*') 
-         or unaccent(cast((to_char(ngaymoi, 'dd/mm/YYYY')) as text)) ~* replace(unaccent('$name'), ' ', '.*')
-         ORDER BY COALESCE(masp, '') desc, gialech desc ";
-         if($st!=0){
-            $query=$query." limit ".$limited." offset "."((".$st."-1)*".$limited.")";
-         }
-             $result = $db->getList($query);
-            return $result;
-        }
+        
         
         function search_capnhat($name,$nguon){
             $db = new connect();

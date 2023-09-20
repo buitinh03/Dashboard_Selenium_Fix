@@ -4,6 +4,7 @@
 
             <! END OF ASIDE>
 <?php  include ('inc/deshboad.php'); ?>
+<link rel="stylesheet" href="css/search_css.css">
  
       <?php $fm = new Format();
     $product=new product();
@@ -113,12 +114,7 @@
         $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
     }
 
-    if(isset($_GET['masp']) or isset($_SESSION['mach'])){
-        $product_search=$product->search_xemthem($_SESSION['search'],$trangthu,10);
-    }else{
-           $product_search=$product->search($_SESSION['search'],$trangthu,10);
- 
-    }
+    
     
      
 
@@ -147,6 +143,30 @@
                             color: #0000BB;
                             background: #fff;
                         }
+                        .bloc p{
+                            /* position:relative; */
+                            color: chocolate;
+                            /* margin-top: .5rem;                         
+                            margin-left: .5rem; */
+                        }
+                        #pagination .bloc select{
+                                
+                                text-align: center;
+                                padding: 7px 20px 7px 8px;
+                             
+                                background: bisque;
+                                border-radius: 3px;
+                              
+                                color: #7380ec;
+                                margin-left: 5px; 
+                        }
+                        
+                        #pagination .bloc i{
+                            position: relative;
+                            left: -1.3rem;
+                            color: chocolate;
+                        }
+                                                
                     </style>
                     <h2>TỪ KHÓA TÌM KIẾM: <?php
                                         if($checkLoginAdmin == 0){
@@ -176,18 +196,7 @@
                                     setTimeout(function(){
                                         document.querySelector('.adress-form1').style.display = "none";
                                         
-                                    },5000)
-                                    //var xhr = new XMLHttpRequest();
-                                    // xhr.open("GET", "/run-python", true); // Đổi "/run-python" thành URL tương ứng với file Python của bạn
-                                    // xhr.send();
-                                    
-                                    // Xử lý kết quả từ server (nếu cần thiết)
-                                    // xhr.onreadystatechange = function() {
-                                    //     if (xhr.readyState === 4 && xhr.status === 200) {
-                                    //     var response = xhr.responseText;                       
-                                    //     }                        
-                                    // }; 
-                                                
+                                    },5000)  
                                     };
                                     function b(){     
                                                 swal({
@@ -254,7 +263,7 @@
                                             ignore_user_abort(true);
                                             $pro = new product();
                                     $sc=$pro->search_capnhat($search,'thuocsi.vn');
-                                    
+                                   
                                     $tam;
                                     $qww='';
                                     $qww1='';
@@ -278,8 +287,6 @@
                                        $qww=$qww.' '.$tam ;
                                        $qwwd=$qwwd+1;
                                     }
-                                    
-                          
                                     $sc1=$pro->search_capnhat($search,'pharmacity.vn');
                                     while($la1=$sc1->fetch()){
                                         $tam=$la1['link']; 
@@ -535,171 +542,7 @@
                     </form>
                             </div>
                         </div>
-                        <style>
-                            .adress-form-content {
-                                width: 400px;
-                                height: 450px;
-                                background-color: #fff;
-                                border-radius: 5px;
-                            }
-                            .adress-form-content form {
-                                padding: 12px 40px;
-                            }
-
-                            .adress-form-content h2 {
-                                font-size: 16px;
-                                padding: 12px 0;
-                                border-bottom: 1px solid #333;
-                                position: relative;
-                            }
-
-                            .adress-form-content h2 span {
-                                display: block;
-                                position: absolute;
-                                height: 30px;
-                                padding: 0 6px;
-                                border: 1px solid #ddd;
-                                right: 12px;
-                                cursor: pointer;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                line-height: 30px;
-                                color: #333;
-                                border-radius: 5px;
-                            }
-
-                            .adress-form-content form p {
-                                font-size: 16px;
-                            }
-
-                            .adress-form-content form input, select {
-                                display: block;
-                                height: 40px;
-                                width: 100%;
-                                margin-top: 10px;
-                                border: 1px solid #ddd;
-                                padding: 6px;
-                                border-radius: 5px;
-                                outline: none;
-                                font-size: 1.2rem;
-                            }
-
-                            .adress-form-content form label {
-                                margin-right: 13rem;
-                                width: 50vw;
-                                margin-bottom: 0rem;
-                                margin-top: 3rem;
-                            }
-
-                            .adress-form-content form input:hover {
-                                border-color: #0000FF;
-                            }
-
-                            .adress-form-content form input:focus {
-                                border-color: #0000FF;
-                            }
-
-                            .adress-form-content form button {
-                                margin-top: 20px;
-                                height: 40px;
-                                width: 60%;
-                                cursor: pointer;
-                                background-color: #250ef9;
-                                outline: none;
-                                border: none;
-                                color: #fff;
-                                border-radius: 5px;
-                                font-weight: 700;
-                            }
-                            
-                            .adress-form-content {
-                                width: 400px;
-                                height: 450px;
-                                background-color: #fff;
-                                border-radius: 5px;
-                            }
-
-                            .adress-form-content form {
-                                padding: 12px 40px;
-                            }
-
-                            .adress-form-content h2 {
-                                font-size: 16px;
-                                padding: 12px 0;
-                                border-bottom: 1px solid #333;
-                                position: relative;
-                            }
-
-                            .adress-form-content h2 span {
-                                display: block;
-                                position: absolute;
-                                height: 30px;
-                                padding: 0 6px;
-                                border: 1px solid #ddd;
-                                right: 12px;
-                                cursor: pointer;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                line-height: 30px;
-                                color: #333;
-                                border-radius: 5px;
-                            }
-
-                            .adress-form-content form p {
-                                font-size: 16px;
-                            }
-
-                            
-.adress-form-content form button {
-                                margin-top: 20px;
-                                height: 40px;
-                                width: 80%;
-                                cursor: pointer;
-                                background-color: #f97e0e;
-                                outline: none;
-                                border: none;
-                                color: #fff;
-                                border-radius: 5px;
-                            }
-                            .adress-form1 .adress-form-content h2 {
-                            margin-left: 0;
-                            margin-top: -.5rem;
-                            justify-content: center;
-                            }
-                            .adress-form1 .adress-form-content h5{
-                                padding: 5px;
-                                font-size: 16px;
-                                color: #fd7e14;
-                            }
-                            .adress-form1 {
-                                position: fixed;
-                                width: 100vw;
-                                height: 100vh;
-                                background-color: rgba(0, 0, 0, 0.3);
-                                top: 0;
-                                left: 0;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                color: #333;
-                                display: none;
-                                z-index: 999;
-                                }
-                                .adress-form1 .adress-form-content{
-                                    font-size: 16px;
-                                    padding: 12px 0;
-                                    border-bottom: 1px solid #333;
-                                    position: relative;
-                                    color: #333;
-                                    margin-top: 10px;
-                                    margin-bottom: 0.8rem;
-                                    height: auto;
-                                }
-                                .adress-form1 .adress-form-content p{
-                                    font-size: 15px;
-                                }
-                        </style>
+                     
                         <script>
                             // Click vào Button Địa chỉ
                             const adressbtn1 = document.querySelector('#adress-form1')
@@ -760,15 +603,73 @@
                         <a href="search.php?&word=<?=($search)?>&page=<?=($nextpage)?>" id="next">Sau</a>
                         <?php } ?>
                        
+                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+                        <p>Sắp xếp theo: 
+                        <form method="POST" action="" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></p>
+                        
+                    </div>
+                    </div>
+                    <?php }else{ ?>
+                        <div id="pagination" >
+                           
+                       
+                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
+                        <p>Sắp xếp theo: 
+                        <form method="POST" action="" class="boloc" >
+                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+                            <select  name="myComboBox" onchange="this.form.submit()">
+                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+                            </select>                 
+                            <noscript><button type="submit">Submit</button></noscript>                        
+                            <?php
+                            
+                            if (isset($_POST['myComboBox'])) {
+                                $selectedValue = $_POST['myComboBox'];
+                                unset($_SESSION['selectedValue']);
+                                $_SESSION['selectedValue'] = $selectedValue;
+                            }elseif(isset($_SESSION['selectedValue'])){
+                                $selectedValue=$_SESSION['selectedValue'];
+                            } else {$selectedValue='option1';}
+                            ?>
+                            <i class="fa fa-caret-down dropdown__caret"></i>
+                        </form></p>
+                        
+                    </div>
+                    
                     </div>
                     <?php } ?>
+                    <?php if(isset($_GET['masp']) or isset($_SESSION['mach'])){
+                        if(!empty($selectedValue)){
+                            $product_search=$product->search_xemthem($selectedValue,$_SESSION['search'],$trangthu,10);
+                        }else{$product_search=$product->search_xemthem('option1',$_SESSION['search'],$trangthu,10);}
+                       
+                    }else{
+                           $product_search=$product->search($selectedValue,$_SESSION['search'],$trangthu,10);
+                 
+                    }
+                    ?>
+
                     <table>
-                    <!-- <?php
-                        $pro = new product();
-                            $demcol = $pro->search($search);
-                            $demd = $demcol->fetch();
-                            $sorow=$demd['sothu'];
-                     ?> -->
+                    
                         <thead style="color:#FF8247;">
                                     <tr>
                                         <th>STT</th>
@@ -793,7 +694,7 @@
                                         ?>
                                         <th>NGUỒN</th>
                                         <th>ẢNH</th>
-                                        <th>MÃ CHUYỂN HÓA</th>
+                                        <th>MÃ CHUẨN HÓA</th>
                                         <th>CHỨC NĂNG</th>
                                         <?php
                                             for($k=1;$k<=12;$k++){
@@ -802,120 +703,9 @@
                                         <?php
                                             }
                                         ?>
-                               
+                                        
                                     </tr>
                                 </thead>
-                        <style>
-                             .primary {
-                                text-align: right;
-                            }
-
-                            .title {
-                                text-align: left;
-                            }
-
-                            .nha-san-xuat {
-                                text-align: left;
-                            }
-
-                            .nuoc-san-xuat {
-                                text-align: left;
-                            }
-
-                            .thong_tin {
-                                text-align: left;
-                            }
-                            
-                            .nguon {
-                                width: 10%;
-                            }
-
-                             td:nth-child(7) a{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-
-                            .nguon a:hover{
-                                color: #00CC00;
-                            }
-                            .nguona .thea {
-                                transition: all .5s ease;
-                                color: #0000BB;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguona .thea:hover {
-                                color: #3366FF;
-                            }
-                           .nguon .thea1{
-                                transition: all .5s ease;
-                                color: green;
-                                font-weight: bold;
-                                text-align: left;
-                            }
-                           .nguonb .thea {
-                            transition: all .5s ease;
-                            color:#FFCC33;
-                            font-weight: bold;
-                            text-align: left;
-                            } 
-        
-                        .nguonb .thea:hover {
-                            color: #00DD00;
-                        }
-                        
-                            .recent-order tbody tr td:nth-child(2) a{
-                        text-align: left;
-                        color: #333;
-                        }
-
-                            .recent-order tbody tr td:nth-child(2):hover a{
-                                color: rgb(221, 50, 50);
-                            }
-                            .nguonc .thea {
-                                transition: all .5s ease;
-                                color:#17a2b8;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguonc .thea:hover {
-                                color:#0000BB;
-                            }
-                            .nguond .thea {
-                                transition: all .5s ease;
-                                color:#1250dc;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguond .thea:hover {
-                                color:#acc0f3;
-                            }
-                            .nguone .thea {
-                                transition: all .5s ease;
-                                color:#5dac46;
-                                font-weight: bold;
-                                text-align: left;
-                            } 
-
-                            .nguone .thea:hover {
-                                color:#0f62f9;
-                            }
-                            .nguonf .thea {
-                                        transition: all .5s ease;
-                                        color:#F60B8A;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguonf .thea:hover {
-                                        color:#fd7e14;
-                                    }
-                        </style>
                         <?php 
                         $format = new Format();
                         if(!empty($product_search) ){
@@ -1079,11 +869,6 @@
                                         
 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-                                    <style>
-                                        /* a {
-                                            justify-content: center;
-                                        } */
-                                    </style>
                                        
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
@@ -1092,7 +877,7 @@
                                             
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
                                             <div class="input-flex" style="display: flex; justify-content: center;">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
                                             <button type="submit" id="themma" name="submitMasp" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem 1rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button>
                                             </div>
                                             
@@ -1102,7 +887,7 @@
                                         <?php }elseif($checkLoginAdmin == 1){?>    
                                         <form action="" method="get">
                                             <input type="hidden" name="id_p" value="<?php echo $set['id']?>">
-                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 80%;">
+                                            <input type="text" name="text" value="" id="" placeholder="Thêm mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-radius: 1rem;  max-width: 60%;">
                                             <!-- <button type="submit" id="themma" name="submitMasp" style="position:absolute; border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .77rem;   background-color:#669966; color: #fff; cursor:pointer; margin-left: -2%;">+</button> -->
                                         </form></div></td>
                                         <?php } ?>
@@ -1112,7 +897,7 @@
                                             <form action="" method="get">
                                                 <input type="hidden" name="id_p_sua" value="<?php echo $set['id']?>">
                                                 <div class="input-flex" style="display: flex; justify-content: center;">
-                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 85%;">
+                                                <input type="text" name="text_sua" value="<?php echo $set['masp']?>" id="" placeholder="Sửa mã..." style="border: 1px solid #777777; padding: .2rem .5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;  max-width: 60%;">
                                                 <?php if($checkLoginAdmin == 0){?>
                                                     <button type="submit" id="suama" name="submitMasp_sua" style="border: 1px solid #777777; border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; padding: .2rem .7rem;   background-color:darksalmon; color: #fff; cursor:pointer; margin-left: -2%;"><i class="fa fa-save"></i></button>
                                                 <?php } ?>
@@ -1135,9 +920,8 @@
                                         
                                     </tr>
                                     <?php 
-
-                                            }
                                         }
+                                    }
                                     ?>
                             
                                 </tbody>
@@ -1204,42 +988,7 @@
                         document.querySelector("#p<?php echo $numpage?>").style.background = '#fff';
                         document.querySelector("#pa<?php echo $numpage?>").style.background = '#fff';
                     </script>
-                <style>
-                    main .recent-order canvas{
-                    background: var(--color-white);
-                    width: 100%;
-                    border-radius:var(--card-border-radius) ;
-                    padding :var(--card-padding);
-                    text-align: center;
-                    box-shadow: var(--box-shadow);
-                    transition: all 300ms ease;
-                    border: #0b0c0c 2px;
-                    }
-
-                    main .recent-order canvas:hover{
-                    box-shadow: none;
-                    }
-                    .sosanh {
-                        margin-bottom: 5rem;
-                        width: 88%;
-                        margin: 0 5rem;
-                        background-color: #fff;
-                        border-radius: 2rem;
-                        margin-top: 2rem;
-                    }    
-                    html{
-                        margin-bottom: 5rem;
-                    }
-
-                    .div {
-                        margin-top: 2rem;
-                        height: 1rem;
-                    }
-                    .chart-label {
-                        white-space: normal;
-                        }
-                    
-                </style>
+          
             <?php
                 if($checkLoginAdmin == 0){
             
@@ -1311,7 +1060,7 @@
             <div class="div">
 
             </div>
-         
+
 
             </div>   <script src="js/time.js"></script>
             <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

@@ -14,12 +14,24 @@
         $customername = $_POST['customername'];
         $email = $_POST['email'];
         $username = $_POST['username'];
-        $hash = $_POST['password'];
-        $password = hash('sha256', $hash);
+        $hash=$_POST['password'];
+        $password = hash('sha256',$hash);
         $type = $_POST['type'];
 
-        $update = $customer->update_customer($customername, $email, $username, $password, $type, $hash, $id);
+         $fm = new Format();
+        $product=new product();
+        $result=$product->search_id($email);
+        $demd = $result->fetch();
+        $pass=$demd['password'];
+        ?>
+            
+        <?php
         
+        // if($pass==$password){
+        //     $update = $customer->update_customer($customername, $email, $username, $pass, $type,$id);
+        // }else{
+        //     $update = $customer->update_customer($customername, $email, $username, $password, $type,$id);
+        // }
     }
 
 ?>
@@ -28,6 +40,9 @@
 
                     <!END OF INCOME>
                 </div>
+                <?php if(isset($hash)) {echo $hash."  +    ";}
+                    if(isset($pass)) {echo $pass."  +    ";}
+                    if(isset($password)) {echo $password."  +    ";}?>
                 <div class="recent-order">
                     <h2 style="margin-left:10rem; font-size:1.5rem">Cập nhật người dùng</h2>
                     <?php
@@ -229,6 +244,9 @@
                         }
                     </style>
                     <a href="#"></a>
+                    <?php if(isset($hash)) {echo $hash."  +    ";}
+                    if(isset($pass)) {echo $pass."  +    ";}
+                    if(isset($password)) {echo $password."  +    ";}?>
                 </div>
             </main>
             <! END OF MAIN>

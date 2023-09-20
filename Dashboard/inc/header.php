@@ -57,7 +57,7 @@ window.addEventListener('popstate', function(event) {
 
                 <div class="top">
                     <div class="logo">
-                        <img src="./images/logo1.png">
+                        <a href="index.php"><img src="./images/logo1.png"></a>
                         <!-- <h2 class="text-muted">HB<span class="sphone" style="color:#00CC33;"> Pharma</span></h2> -->
                     </div>
                 
@@ -69,7 +69,7 @@ window.addEventListener('popstate', function(event) {
                     <div class="sidebar">
                         <a href="index.php" for="Dashboard">
                             <span class="material-icons-sharp">space_dashboard</span>
-                            <h3 id="Dashboard">Bảng chính</h3>
+                            <h3 id="Dashboard">Trang chủ</h3>
                         </a>
                         
                           <?php
@@ -138,6 +138,15 @@ window.addEventListener('popstate', function(event) {
                             <span class="material-icons-sharp"></span>
                             <h3></h3>
                         </a>
+                        <script>
+                            window.onkeydown = function(event) {
+  if (event.keyCode === 37) { // keyCode của nút mũi tên bên trái
+    history.go(-1);
+  }
+};
+
+
+                        </script>
                         
                     </div>
                 

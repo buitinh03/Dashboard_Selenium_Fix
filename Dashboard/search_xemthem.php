@@ -920,11 +920,7 @@
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
                                     
                                       
-<<<<<<< HEAD
                                         <?php if($set['masp'] == null){?>
-=======
-                                         <?php if($set['masp'] == null){?>
->>>>>>> 44a66bf9172a5fbaf32659ba4a76ec3a8211fcbb
                                         <td><div>
                                         <?php if($checkLoginAdmin == 0){?>    
                                         <form action="" method="get">

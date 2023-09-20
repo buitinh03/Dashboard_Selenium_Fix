@@ -422,5 +422,20 @@ section .loader span::before{
         transform: scale(0);
     }
 }
+@media screen and (max-width: 991px) {
+    body {
+      font-size: .75rem;
+    }
+  }
+@media screen and (max-width: 768px) {
+    body {
+      font-size: .7rem;
+    }
+  }
 
+  @media screen and (max-width: 450px) {
+    body {
+      font-size: 8px;
+    }
+  }
 

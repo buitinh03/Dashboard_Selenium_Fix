@@ -1,27 +1,26 @@
 import sys
 import logging
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, TimeoutException
+from selenium import webdriver
+import chromedriver_autoinstaller
+from selenium.webdriver.common.by import By
+import psycopg2
+import datetime
+from dotenv import load_dotenv
+from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import os
+import codecs
+
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+    sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+load_dotenv()
+# Thiết lập hệ thống ghi log
+
 try:
-    from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, TimeoutException
-    from selenium import webdriver
-    import chromedriver_autoinstaller
-    from selenium.webdriver.common.by import By
-    import psycopg2
-    import datetime
-    from dotenv import load_dotenv
-    from time import sleep
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    import os
-
-    import codecs
-
-    # from decouple import config
-
-
-    if sys.stdout.encoding != 'utf-8':
-        sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
-        sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
-    # Thiết lập hệ thống ghi log
+    # Lấy giá trị từ biến môi trường LOG_DIRECTORY
     log_directory = os.getenv('LOG_DIRECTORY')
 
     log_filename = os.path.join(log_directory, 'scraping_log.log')
@@ -41,10 +40,10 @@ try:
     chrome_options.add_argument("--window-size=1920x1080")
     driver = webdriver.Chrome(options=chrome_options)
     url = "https://www.nhathuocankhang.com/"
-    load_dotenv()
+    
 
     try:
-    # Kết nối đến cơ sở dữ liệu PostgreSQL
+        # Kết nối đến cơ sở dữ liệu PostgreSQL
         connection = psycopg2.connect(
             host=os.getenv("DB_HOST"),
             database=os.getenv("DB_NAME"),
@@ -93,11 +92,11 @@ try:
             "khang-sinh-khang-nam",
             "tiet-nieu-sinh-duc",
             "than-kinh-nao-bo",
-            "tieu-hoa-gan-mat"
+            "tieu-hoa-gan-mat",
             "co-xuong-khop-gut",
             "dau-cao-xoa-mieng-dan",
             "da-lieu-di-ung",
-
+            
             # TPCN
             "bo-gan-thanh-nhiet",
             "vitamin-va-khoang-chat",
@@ -124,7 +123,7 @@ try:
             "bao-cao-su",
             "ho-tro-dieu-tri-ung-thu",
             "sua-rua-mat",
-
+            
             "my-pham",
             "dung-cu-y-te",
             "cham-soc-tre-em",
@@ -166,9 +165,11 @@ try:
                 product_name = product_name_element.text
                 return product_name
 
+
             def check_product_exist(cursor, product_name):
                 cursor.execute("SELECT EXISTS(SELECT 1 FROM thuocsi_vn WHERE title = %s)", (product_name,))
                 return cursor.fetchone()[0]
+
 
             for a in links:
                 driver.get(a)
@@ -185,10 +186,12 @@ try:
                         ten = driver.find_element(By.CSS_SELECTOR, "h1.detail-title").text
 
                         try:
-                            gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(3) b")
+                            gia_sales_element = driver.find_element(By.CSS_SELECTOR,
+                                                                    ".list-price-tracking:nth-child(3) b")
                         except NoSuchElementException:
                             try:
-                                gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".list-price-tracking:nth-child(2) b")
+                                gia_sales_element = driver.find_element(By.CSS_SELECTOR,
+                                                                        ".list-price-tracking:nth-child(2) b")
                             except NoSuchElementException:
                                 try:
                                     gia_sales_element = driver.find_element(By.CSS_SELECTOR, ".box-price b")
@@ -196,7 +199,8 @@ try:
                                     gia_sales_element = 0
 
                         if gia_sales_element:
-                            gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ", "")
+                            gia_sales_text = gia_sales_element.text.replace("₫", "").replace(".", "").replace(" ",
+                                                                                                                "")
                             gia_sales = int(gia_sales_text)
                         else:
                             gia_sales = 0
@@ -220,7 +224,8 @@ try:
                     if "Nơi sản xuất" in nuoc_san_xuat:
                         nuoc_san_xuat = nuoc_san_xuat.replace("Nơi sản xuất", "").strip()
                     else:
-                        nuoc_san_xuat_alt = driver.find_element(By.CSS_SELECTOR, ".des-infor > li:nth-child(6)").text
+                        nuoc_san_xuat_alt = driver.find_element(By.CSS_SELECTOR,
+                                                                ".des-infor > li:nth-child(6)").text
                         if "Nơi sản xuất" in nuoc_san_xuat_alt:
                             nuoc_san_xuat = nuoc_san_xuat_alt.replace("Nơi sản xuất", "").strip()
                         else:
@@ -251,7 +256,8 @@ try:
                                 giamoi='{gia_sales}',
                                 ngaymoi='{ngay}';
                         ''', (
-                            product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat, thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
+                            product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
+                            thanhphan_hamluong, thong_tin_san_pham, a, 'ankhang.com'))
                         connection.commit()
                 except Exception as e:
                     logging.error(f"Error scraping product: {str(e)}")
@@ -261,5 +267,6 @@ try:
     except Exception as e:
         logging.error(f"Unhandled Exception: {str(e)}")
 except Exception as e:
-    sys.stderr.write(str(e)+'\n')
+    logging.error(f"Unhandled Exception: {str(e)}")
+
     sys.exit(1)

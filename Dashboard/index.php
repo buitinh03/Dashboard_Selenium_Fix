@@ -23,6 +23,7 @@
 
             <! END OF ASIDE>
             <script src="https://code.jquery.com/jquery-latest.js"></script>
+            <link rel="stylesheet" href="css/index.css">
 <script>
 var loader = function() {
     setTimeout(function() {
@@ -57,27 +58,7 @@ $(function(){
             <span style="--i:20;"></span> -->
         </div>
     </section>
-    <style>
-        #theloaiban{
-            position: relative;
-            width: 5.1rem;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-            padding: 0.5rem;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            border-radius: 3px;
-            background: bisque;
-            color: #7380ec;
-        }
-        #xeptheotheloai i{
-            position: relative;
-            top: -1.9rem;
-            left: 4.35rem;
-            color: chocolate;
-        }
-    </style>
+
        <div class="recent-order">
  <h2>SẢN PHẨM     <form style="height: 1rem;" action="" method="get" id='xeptheotheloai'><select name="theloaiban" id="theloaiban" onchange="this.form.submit()">
         <option value="tatcasanpham"  <?php if(isset($_GET['theloaiban']) && $_GET['theloaiban'] == 'tatcasanpham') {unset($_SESSION['theloai']);echo "selected";}elseif(isset($_SESSION['theloai']) && $_SESSION['theloai']=='tatcasanpham'){echo "selected";}?>>Tất cả</option>
@@ -94,381 +75,178 @@ $(function(){
             $theloaiban=$_SESSION['theloai'];
         }else $theloaiban='tatcasanpham';
          ?>
-         <i class="fa fa-caret-down dropdown__caret"></i>
  </form>
+ </h2>
  <?php 
  if($theloaiban=='tatcasanpham'){
     ?>
-   <span style="color: green; ">- <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> <span style="color: blue;">- 
+    <h2 class='dsach'>
+   <span >- <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> <span>- 
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span><span style="color: #33CC33;">- <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span><span style="color: #17a2b8;"> - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span><span style="color: #1250dc;"> - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span><span style="color: #5dac46;"> - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span><span style="color: #F60B8A;"> - <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
+ <a href="https://chosithuoc.com/" class="a">Chosithuoc</a></span><span >- <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a" >Ankhang.com</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a" >Pharex.vn</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a" >Longchau.vn</a></span><span > - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span><span> - <i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" >Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
     ?>
-  - <span style="color: green; "><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span> - <span style="color: blue;">
+    <h2 class='dsach'>
+   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.vn/products" target="_blank" class="a" >Thuocsi.vn</a></span>  <span >-
  <i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://chosithuoc.com/" class="a" style="color:blue;">Chosithuoc</a></span> - <span style="color: #17a2b8;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://thuocsi.pharex.vn/products" class="a" style="color: #17a2b8; ">Pharex.vn</a></span>  - <span style="color: #5dac46;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.pharmacity.vn/" class="a" style="color: #5dac46; ">Pharmacity.vn</a></span> - <span style="color: #F60B8A;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.medigoapp.com/" class="a" style="color: #F60B8A; ">Medigoapp.com</a></span></h2>
+ <a href="https://chosithuoc.com/" class="a" >Chosithuoc</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://thuocsi.pharex.vn/products" class="a">Pharex.vn</a></span>   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.pharmacity.vn/" class="a" >Pharmacity.vn</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.medigoapp.com/" class="a" >Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='banle'){
     ?>
-  - <span style="color: #33CC33;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://www.nhathuocankhang.com/" class="a" style="color: #33CC33;">Ankhang.com</a></span> - <span style="color: #1250dc;"><i class="fa fa-caret-down dropdown__caret"></i>
- <a href="https://nhathuoclongchau.com.vn/" class="a" style="color: #1250dc; ">Longchau.vn</a></span></h2>
+    <h2 class='dsach'>
+   <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://www.nhathuocankhang.com/" class="a">Ankhang.com</a></span>  <span >-<i class="fa fa-caret-down dropdown__caret"></i>
+ <a href="https://nhathuoclongchau.com.vn/" class="a" >Longchau.vn</a></span></h2>
   <?php
  }
  
   ?>
-       
- 
-                <style>
-                        #pagination {
-                            display: flex;
-                            text-align: center;
-                            justify-content: center;
-                        }
-                        #pagination a{
-                            display: flex;
-                            text-align: center;
-                            padding: 5px 8px;
-                            margin: 5px;
-                            background:bisque;
-                            border-radius: 3px;
-                        }
-                        #pagination a:hover{
-                            color: #0000BB;
-                            background: #fff;
-                        }
-                        .bloc p{
-                            /* position:relative; */
-                            color: chocolate;
-                            /* margin-top: .5rem;                         
-                            margin-left: .5rem; */
-                        }
-                        #pagination .bloc select{
-                                
-                                text-align: center;
-                                padding: 7px 20px 7px 8px;
-                             
-                                background: bisque;
-                                border-radius: 3px;
-                              
-                                color: #7380ec;
-                                margin-left: 5px; 
-                        }
-                        
-                        #pagination .bloc i{
-                            position: relative;
-                            left: -1.3rem;
-                            color: chocolate;
-                        }
-                                                
-                    </style>
-                    <style>                       
-                            .select-wrapper {
-                            position: relative;
-                            display: inline-block;
-                            margin-bottom: 10px;
-                            }
-
-                            .select-dropdown {
-                            width: 200px;
-                            height: 40px;
-                            padding: 10px;
-                            font-size: 16px;
-                            border: 1px solid #ccc;
-                            border-radius: 4px;
-                            appearance: none;
-                            -webkit-appearance: none;
-                            background-color: #fff;
-                            }
-
-                            .select-dropdown:focus {
-                            outline: none;
-                            border-color: #2196F3;
-                            box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
-                            }
-
-                            .submit-btn {
-                            padding: 10px 20px;
-                            font-size: 16px;
-                            border: none;
-                            border-radius: 4px;
-                            background-color: #2196F3;
-                            color: #fff;
-                            cursor: pointer;
-                            }
-
-                            .submit-btn:hover {
-                            background-color: #1565C0;
-                            }
-                            
-
-                    </style>
-                    
-                    
-                    
-                    <?php
-                    $sotrang=1;
-                         $tongsanpham =  $pd->tongsanpham($theloaiban);
-                         if($tongsanpham){
-                             while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){                   
-                            $tong= $result['quantity'];
-                         }
-                         if($tong%100==0){$trang=$tong/100;}
-                         else{$trang=ceil($tong/100);}
-                        }
-                         
-                                $format = new Format();
-                                $pro = new product();
-                                $trangthu=1;
-                                $from=2;
-                                $to=6;
-                                $nextpage=2;
-                        if(isset($_GET['page'])){
-                            $trangthu=$_GET['page'];
-                            $from=$trangthu-4; if($from<3){$from=2;}
-                            $to=$trangthu+4; if($to>=$trang){$to=$trang-1;}
-                            $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
-                            $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
-                        }
-                        
-                        ?>  
-                    
-                    <?php
-                    
-                        $pro = new product();
-                            
-                        ?>
-                        <div id="pagination">
-                            
-                            <?php if($trangthu==1){ ?> 
-                            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
-                            <?php }else{ ?> 
-                                <a href="index.php?&page=<?=($previouspage)?>" id="pr"><</a>
-                            <?php } 
-                            ?>
-                            <a href="index.php?&page=<?=(1)?>" id="start">1</a>
-                            <?php
-                            $page=array();                        
-                            for($i=$from;$i<=$to;$i++){
-                                $page[$i]="pa".($i);
-                            }
-                            $next=1; 
-                            if(($from-1)>1){
-                                ?>
-                            <a href="#">...</a>
-                            
-                            <?php    
-                            }
-                            for($i=$from;$i<=$to;$i++){
-                                                     
-                            ?>
-                            
-                            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
-                            <?php
-                        } ?>
-                            <?php
-                            if(($trang-$to)>1){
-                                ?>
-                            <a href="#">...</a>
-                            <?php
-                            } ?>
-                            
-                        <a href="index.php?&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
-                        <?php if($trangthu>=$trang){ ?> 
-                            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
-                            <?php }else{ ?>                     
-                        <a href="index.php?&page=<?=($nextpage)?>" id="next">></a>
-                        <?php } ?>
-                        
-                     
-                        <div class="bloc" style="display: flex;align-items: center;/* background: bisque; */border-radius: 3px;margin: 5px 5px 5px 3rem;">
-                        <p>Sắp xếp theo: 
-                        <form method="POST" action="index.php" class="boloc" >
-                        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
-                            <select  name="myComboBox" onchange="this.form.submit()">
-                                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
-                                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
-                            </select>                 
-                            <noscript><button type="submit">Submit</button></noscript>                        
-                            <?php
-                            
-                            if (isset($_POST['myComboBox'])) {
-                                $selectedValue = $_POST['myComboBox'];
-                                unset($_SESSION['selectedValue']);
-                                $_SESSION['selectedValue'] = $selectedValue;
-                            }elseif(isset($_SESSION['selectedValue'])){
-                                $selectedValue=$_SESSION['selectedValue'];
-                            } else {$selectedValue='option1';}
-                            ?>
-                            <i class="fa fa-caret-down dropdown__caret"></i>
-                        </form></p>
-                        
-                    </div>
-                    <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
-                    </div>
-                            <table id="mytable">                    
-                                <thead style="color:#FF8247;">
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>TÊN SẢN PHẨM</th>
-                                        <?php
-                                        if($checkLoginAdmin == 0){
-                                        ?>
-                                        <th>GIÁ CŨ</th>
-                                        <th>THỜI GIAN</th>
-                                        <th>GIÁ MỚI</th>
-                                        <th>THỜI GIAN</th>
-                                        <th>GIÁ LỆCH</th>
-                                        <?php
-                                        }else{
-                                        ?>
-                                        <th>GIÁ CŨ</th>
-                                        <th>THỜI GIAN</th>
-                                        <th>GIÁ MỚI</th>
-                                        <th>THỜI GIAN</th>
-                                        <?php
-                                        }
-                                        ?>
-                                        <th>NGUỒN</th>
-                                        <th>ẢNH</th>
-                                        <th>MÃ CHUYỂN HOÁ</th>
-                                        <th>CHỨC NĂNG</th>
-                                        <?php
-                                            for($k=1;$k<=12;$k++){
-                                                ?>
-                                                <th hidden>MONTH_<?php echo $k ?></th>
-                                        <?php
-                                            }
-                                        ?>
+    <?php
+    $sotrang=1;
+            $tongsanpham =  $pd->tongsanpham($theloaiban);
+            if($tongsanpham){
+                while($result = $tongsanpham->fetch(PDO::FETCH_ASSOC)){                   
+            $tong= $result['quantity'];
+            }
+            if($tong%100==0){$trang=$tong/100;}
+            else{$trang=ceil($tong/100);}
+        }
+            
+                $format = new Format();
+                $pro = new product();
+                $trangthu=1;
+                $from=2;
+                $to=6;
+                $nextpage=2;
+        if(isset($_GET['page'])){
+            $trangthu=$_GET['page'];
+            $from=$trangthu-4; if($from<3){$from=2;}
+            $to=$trangthu+4; if($to>=$trang){$to=$trang-1;}
+            $previouspage=$trangthu-1;if($previouspage<2){$previouspage=1;}
+            $nextpage=$trangthu+1;if($nextpage>$trang){$$nextpage=$trang;}
+        }
+        
+        ?>  
+    
+    <?php
+    
+        $pro = new product();
+            
+        ?>
+        <div id="pagination">
+            
+            <?php if($trangthu==1){ ?> 
+            <a href="index.php?&page=<?=(1)?>" id="st" style="display:none">Trước</a>
+            <?php }else{ ?> 
+                <a href="index.php?&page=<?=($previouspage)?>" id="pr"><</a>
+            <?php } 
+            ?>
+            <a href="index.php?&page=<?=(1)?>" id="start">1</a>
+            <?php
+            $page=array();                        
+            for($i=$from;$i<=$to;$i++){
+                $page[$i]="pa".($i);
+            }
+            $next=1; 
+            if(($from-1)>1){
+                ?>
+            <a href="#">...</a>
+            
+            <?php    
+            }
+            for($i=$from;$i<=$to;$i++){
                                         
-                                    </tr>
-                                </thead>
-                                <style>
-                                    .primary {
-                                        text-align: right;
-                                    }
-
-                                    .title {
-                                        text-align: left;
-                                    }
-
-                                    .nha-san-xuat {
-                                        text-align: left;
-                                    }
-
-                                    .nuoc-san-xuat {
-                                        text-align: left;
-                                    }
-
-                                    .thong_tin {
-                                        text-align: left;
-                                    }
-                                    
-                                    .nguon {
-                                        width: 10%;
-                                    }
-
-                                    td:nth-child(8) a{
-                                        transition: all .5s ease;
-                                        color: green;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    }
-
-                                    .nguon a:hover{
-                                        color: #00CC00;
-                                    }
-                                    .nguona .thea {
-                                        transition: all .5s ease;
-                                        color: #0000BB;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguona .thea:hover {
-                                        color: #3366FF;
-                                    }
-                                    .nguonb .thea {
-                                        transition: all .5s ease;
-                                        color:tomato;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguonb .thea:hover {
-                                        color:lightcoral;
-                                    }
-                                    .nguonc .thea {
-                                        transition: all .5s ease;
-                                        color:#17a2b8;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguonc .thea:hover {
-                                        color:#0000BB;
-                                    }
-                                    .nguond .thea {
-                                        transition: all .5s ease;
-                                        color:#1250dc;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguond .thea:hover {
-                                        color:#acc0f3;
-                                    }
-                                    .nguone .thea {
-                                        transition: all .5s ease;
-                                        color:#5dac46;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguone .thea:hover {
-                                        color:#0f62f9;
-                                    }
-                                    .nguonf .thea {
-                                        transition: all .5s ease;
-                                        color:#F60B8A;
-                                        font-weight: bold;
-                                        text-align: left;
-                                    } 
-
-                                    .nguonf .thea:hover {
-                                        color:#fd7e14;
-                                    }
-                                    .recent-order tbody tr td:nth-child(2) a{
-                                    cursor: pointer;
-                                    color: rgb(221, 94, 94);
-                                    transition: .5s all ease;
-                                    text-align: left;
-                                }
-                                
-                                .recent-order tbody tr td:nth-child(2):hover a{
-                                    color: rgb(221, 50, 50);
-                                    font-size: 14px;
-                                }
-
-                                 .nguon .thea1{
-                                    transition: all .5s ease;
-                                    color: green;
-                                    font-weight: bold;
-                                    text-align: left;
-                                    
-                                }
-                                </style>
+            ?>
+            
+            <a href="index.php?&page=<?=($i)?>" id=<?php echo "$page[$i]" ?>><?php echo ($i) ?></a>
+            <?php
+        } ?>
+            <?php
+            if(($trang-$to)>1){
+                ?>
+            <a href="#">...</a>
+            <?php
+            } ?>
+            
+        <a href="index.php?&page=<?=($trang)?>" id="end"><?php echo $trang?></a>
+        <?php if($trangthu>=$trang){ ?> 
+            <a href="index.php?&page=<?=($nextpage)?>" id="ne" style="display:none">Sau</a>
+            <?php }else{ ?>                     
+        <a href="index.php?&page=<?=($nextpage)?>" id="next">></a>
+        <?php } ?>
+        
+        
+        <div class="bloc" >
+        <p>Sắp xếp theo: 
+        <form method="POST" action="index.php" class="boloc" >
+        <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+            <select  name="myComboBox" onchange="this.form.submit()">
+                <option value="option1" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option1') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option1'){echo "selected";} ?>>Giá lệch</option> <i class="fa fa-caret-down dropdown__caret"></i>
+                <option value="option2" <?php if(isset($_POST['myComboBox']) && $_POST['myComboBox'] == 'option2') {unset($_SESSION['selectedValue']);echo "selected";}elseif(isset($_SESSION['selectedValue'])&&$_SESSION['selectedValue']=='option2'){echo "selected";} ?>>Thời gian</option><i class="fa fa-caret-down dropdown__caret"></i>
+            </select>                 
+            <noscript><button type="submit">Submit</button></noscript>                        
+            <?php
+            
+            if (isset($_POST['myComboBox'])) {
+                $selectedValue = $_POST['myComboBox'];
+                unset($_SESSION['selectedValue']);
+                $_SESSION['selectedValue'] = $selectedValue;
+            }elseif(isset($_SESSION['selectedValue'])){
+                $selectedValue=$_SESSION['selectedValue'];
+            } else {$selectedValue='option1';}
+            ?>
+            
+        </form></p>
+        
+    </div>
+    <?php $result = $pro ->getListproduct($theloaiban,$selectedValue,$trangthu,100);?>
+    </div>
+            <table id="mytable">                    
+                <thead >
+                    <tr>
+                        <th>STT</th>
+                        <th>TÊN SẢN PHẨM</th>
+                        <?php
+                        if($checkLoginAdmin == 0){
+                        ?>
+                        <th>GIÁ CŨ</th>
+                        <th>THỜI GIAN</th>
+                        <th>GIÁ MỚI</th>
+                        <th>THỜI GIAN</th>
+                        <th>GIÁ LỆCH</th>
+                        <?php
+                        }else{
+                        ?>
+                        <th>GIÁ CŨ</th>
+                        <th>THỜI GIAN</th>
+                        <th>GIÁ MỚI</th>
+                        <th>THỜI GIAN</th>
+                        <?php
+                        }
+                        ?>
+                        <th>NGUỒN</th>
+                        <th>ẢNH</th>
+                        <th>MÃ CHUẨN HOÁ</th>
+                        <th>CHỨC NĂNG</th>
+                        <?php
+                            for($k=1;$k<=12;$k++){
+                                ?>
+                                <th hidden>MONTH_<?php echo $k ?></th>
+                        <?php
+                            }
+                        ?>
+                        
                                 
                                 <?php
                                 if($result){
