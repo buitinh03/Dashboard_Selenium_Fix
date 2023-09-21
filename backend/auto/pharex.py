@@ -1,6 +1,6 @@
 import sys
 import logging
-
+from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium import webdriver
 import chromedriver_autoinstaller
@@ -36,7 +36,7 @@ logging.basicConfig(filename=log_filename, level=logging.INFO)
 
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 try:
@@ -121,12 +121,21 @@ try:
         return cursor.fetchone()[0]
     
     
-    num_pages_to_scrape = 1000
+    num_pages_to_scrape = 700
     link = []
     
-    for page_num in range(1, num_pages_to_scrape + 1):
+    for page_num in range(75, num_pages_to_scrape + 1):
         url = f"https://thuocsi.pharex.vn/products?page={page_num}"
         driver.get(url)
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+
+        search_info_div = soup.find("div", class_="px-2 px-sm-0 mb-2")
+
+        if search_info_div and "Không có sản phẩm" in search_info_div.get_text():
+            break
+
     
         ll = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, "text-decoration-none"))
