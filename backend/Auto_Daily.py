@@ -9,7 +9,7 @@ operation=os.getenv("OPERATION")
 
 def run_script(script_path):
     while True:
-        os.system(os.getenv("OPERATION")+f' {script_path}')
+        os.system(os.getenv("OPERATION")+' '+f'{script_path}')
         time.sleep(1)
 
 def my_task():

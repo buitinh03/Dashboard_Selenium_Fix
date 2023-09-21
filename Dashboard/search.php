@@ -324,7 +324,7 @@
                                        $qwwd6=$qwwd6+1;
                                     }if($qwwd>0){
                                         if(file_exists($duongdanf['xpathcaogiathuocsi_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiathuocsi_link'] .$qww,$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiathuocsi_link'] .$qww,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii='thuocsi_link.py';
                                         $demloi=$demloi+1;
@@ -350,7 +350,7 @@
                                     if($qwwd1>0){
                                         
                                         if(file_exists($duongdanf['xpathcaogiapharma_link'])){
-                                       exec($duongdanf['operation'].$duongdanf['xpathcaogiapharma_link'] .$qww1,$output,$exit_code);
+                                       exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiapharma_link'] .$qww1,$output,$exit_code);
                                        if($exit_code != 0){
                                            $loii1='pharmacity_link.py';
                                         $demloi=$demloi+1;
@@ -376,7 +376,7 @@
                                     }
                                     if($qwwd2>0){
                                         if(file_exists($duongdanf['xpathcaogiapharex_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiapharex_link'] .$qww2.'',$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiapharex_link'] .$qww2.'',$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii2='pharex_link.py';
                                         $demloi=$demloi+1;
@@ -402,7 +402,7 @@
                                     }}
                                     if($qwwd3>0){
                                         if(file_exists($duongdanf['xpathcaogiamedigo_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiamedigo_link'] .$qww3.'',$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiamedigo_link'] .$qww3.'',$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii3='medigo_link.py';
                                         $demloi=$demloi+1;
@@ -428,7 +428,7 @@
                                     }}
                                     if($qwwd4>0){
                                         if(file_exists($duongdanf['xpathcaogiaankhang_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiaankhang_link'] .$qww4,$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiaankhang_link'] .$qww4,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii4='ankhang_link.py';
                                         $demloi=$demloi+1;
@@ -454,7 +454,7 @@
                                     }}
                                     if($qwwd5>0){
                                         if(file_exists($duongdanf['xpathcaogialongchau_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogialongchau_link'] .$qww5,$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogialongchau_link'] .$qww5,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii5='longchau_link.py';
                                         $demloi=$demloi+1;
@@ -480,7 +480,7 @@
                                     }}
                                     if($qwwd6>0){
                                         if(file_exists($duongdanf['xpathcaogiachosithuoc_link'])){
-                                        exec($duongdanf['operation'].$duongdanf['xpathcaogiachosithuoc_link'] .$qww6,$output,$exit_code);
+                                        exec($duongdanf['operation'].' '.$duongdanf['xpathcaogiachosithuoc_link'] .$qww6,$output,$exit_code);
                                         if($exit_code != 0){
                                             $loii6='chosithuoc_link.py';
                                         $demloi=$demloi+1;
