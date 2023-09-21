@@ -124,7 +124,7 @@ try:
     num_pages_to_scrape = 700
     link = []
     
-    for page_num in range(75, num_pages_to_scrape + 1):
+    for page_num in range(1, num_pages_to_scrape + 1):
         url = f"https://thuocsi.pharex.vn/products?page={page_num}"
         driver.get(url)
 
