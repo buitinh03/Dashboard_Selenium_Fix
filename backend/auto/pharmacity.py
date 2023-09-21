@@ -95,7 +95,8 @@ try:
 
         return product_name
 
-
+    logging.info(f"Đăng nhập thành công PHARMACITY")
+    logging.info(f"Vui lòng đợi, sản phẩm đang tiến hành load")
     link_lists = [
         "duoc-pham",
         "cham-soc-ca-nhan",

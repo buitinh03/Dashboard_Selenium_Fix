@@ -115,8 +115,8 @@ try:
 
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".styles_root__yHa_F > .styles_tab_panel__NAwAa")))
     except (NoSuchElementException, TimeoutException) as e:
-        print("Đăng nhập thành công ")
-        print("Vui lòng đợi, sản phẩm đang tiến hành load")
+        logging.info(f"Đăng nhập thành công THUOCSI_VN")
+        logging.info(f"Vui lòng đợi, sản phẩm đang tiến hành load")
         connection.commit()
 
     def extract_product_info():
@@ -237,7 +237,6 @@ try:
                 tphl = ["Không đề cập"]
 
             current_month = datetime.datetime.now().month
-            print(f"Link : {a}")
             with connection.cursor() as cursor:
                 cursor.execute(f'''
                     INSERT INTO thuocsi_vn (title, giamoi, ngaymoi, month_{current_month}, photo, nha_san_xuat,

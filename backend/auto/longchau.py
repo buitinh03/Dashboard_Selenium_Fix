@@ -73,7 +73,7 @@ try:
                 nguon TEXT DEFAULT 'longchau.vn'
             )
         ''')
-
+    logging.info(f"Đăng nhập thành công LONGCHAU")
     link_lists = [
         'trang-thiet-bi-y-te',
         'thuc-pham-chuc-nang',

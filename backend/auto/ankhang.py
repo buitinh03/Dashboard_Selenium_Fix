@@ -81,7 +81,7 @@ try:
                 )
             ''')
             wait = WebDriverWait(driver, 1)
-
+        logging.info(f"Đăng nhập thành công ANKHANG")
         link_lists = [
             # Thuốc
             "thuoc-bo-va-vitamin",

@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import codecs
 from scrapy.crawler import CrawlerProcess
 
-
+load_dotenv()
 # Thiết lập hệ thống ghi log
 log_directory = os.getenv('LOG_DIRECTORY')
 
@@ -24,7 +24,6 @@ file_handler = logging.FileHandler(log_filename, mode="w", encoding=None, delay=
 # Thiết lập hệ thống ghi log
 logging.basicConfig(filename=log_filename, level=logging.INFO)
 
-load_dotenv()
 
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
@@ -74,7 +73,7 @@ class LaptopSpider(scrapy.Spider):
             '''
             self.cursor.execute(query)
             self.connection.commit()
-
+        logging.info(f"Đăng nhập thành công CHOSITHUOC")
         def check_product_exist(self, product_name):
             query = "SELECT EXISTS (SELECT 1 FROM thuocsi_vn WHERE title = %s)"
             self.cursor.execute(query, (product_name,))

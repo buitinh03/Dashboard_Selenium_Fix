@@ -88,7 +88,7 @@ try:
 
     # Mở trang web
     driver.get(base_url)
-
+    logging.info(f"Đăng nhập thành công MEDIGOAPP")
     num_pages_to_scrape = 1000
     all_product_links = []
 
@@ -108,7 +108,7 @@ try:
         links = [link.get_attribute('href') for link in link_elements]
 
         all_product_links.extend(links)
-
+    
     def extract_product_info():
         product_name_element = wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "h1.product-name")))

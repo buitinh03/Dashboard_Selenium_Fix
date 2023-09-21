@@ -102,10 +102,10 @@ try:
         login_button.click()
         wait.until(EC.url_to_be("https://thuocsi.pharex.vn/san-pham"))
     
-        print("Đăng nhập thành công")
+        logging.info(f"Đăng nhập thành công PHAREX")
         time.sleep(3)
     except (NoSuchElementException, TimeoutException) as e:
-        print("Đăng nhập thất bại hoặc sản phẩm đang tiến hành load")
+        logging.info(f"Đăng nhập thất bại hoặc sản phẩm đang tiến hành load")
     
     
     def extract_product_info():
