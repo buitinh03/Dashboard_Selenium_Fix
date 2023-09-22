@@ -95,16 +95,17 @@ try:
 
         return product_name
 
-
+    logging.info(f"Đăng nhập thành công PHARMACITY")
+    logging.info(f"Vui lòng đợi, sản phẩm đang tiến hành load")
     link_lists = [
         "duoc-pham",
-        "cham-soc-ca-nhan",
-        "cham-soc-suc-khoe",
-        "san-pham-tien-loi",
-        "thuc-pham-chuc-nang",
-        "me-va-be",
-        "cham-soc-sac-dep",
-        "thiet-bi-y-te-2",
+        # "cham-soc-ca-nhan",
+        # "cham-soc-suc-khoe",
+        # "san-pham-tien-loi",
+        # "thuc-pham-chuc-nang",
+        # "me-va-be",
+        # "cham-soc-sac-dep",
+        # "thiet-bi-y-te-2",
     ]
     base_url = "https://www.pharmacity.vn/"
     link = []
@@ -112,7 +113,7 @@ try:
         full_url = f"{base_url}/{url_suffix}"
         driver.get(full_url)
 
-        num_pages_to_scrape = 1000
+        num_pages_to_scrape = 1
         for page_num in range(1, num_pages_to_scrape + 1):
             url = f"{base_url}/{url_suffix}?page={page_num}"
             driver.get(url)
