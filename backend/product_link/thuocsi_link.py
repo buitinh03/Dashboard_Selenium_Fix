@@ -38,7 +38,7 @@ if sys.stdout.encoding != 'utf-8':
 # Tự động cài đặt ChromeDriver
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 url = "https://thuocsi.vn/products"
@@ -122,9 +122,9 @@ def check_product_exist(cursor, product_name):
 
 
 # List các link sản phẩm
-# product_links = ["https://thuocsi.vn/product/medx-savi-esomeprazole-40-h14v"]
-#                  "https://thuocsi.vn/product/medx-marvelon-bayer-h63v"]
-product_links = sys.argv[1:]
+product_links = [  "https://thuocsi.vn/product/medx-marvelon-bayer-h63v"]
+               
+# product_links = sys.argv[1:]
 
 for link in product_links:
     try:
