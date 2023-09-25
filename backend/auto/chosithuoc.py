@@ -78,16 +78,15 @@ class LaptopSpider(scrapy.Spider):
 
         def start_requests(self):
             categories = {
-                'hoa-my-pham': 1,
-                'hoa-my-pham': 74,
-                'thuoc-tan-duoc': 341,
-                'thuoc-xuong-khop': 31,
-                'thuoc-giam-can': 9,
-                'thuoc-bo-than': 24,
-                'thuc-pham-chuc-nang': 134,
-                'thuc-pham-cao-cap': 16,
-                'thiet-bi-y-te': 36,
-                'thuoc-khong-ke-don': 6,
+                'hoa-my-pham': 80,
+                'thuoc-tan-duoc': 350,
+                'thuoc-xuong-khop': 40,
+                'thuoc-giam-can': 20,
+                'thuoc-bo-than': 30,
+                'thuc-pham-chuc-nang': 140,
+                'thuc-pham-cao-cap': 20,
+                'thiet-bi-y-te': 40,
+                'thuoc-khong-ke-don': 10,
             }
 
             for category, num_pages in categories.items():
@@ -95,10 +94,12 @@ class LaptopSpider(scrapy.Spider):
                     category_url = f'https://chosithuoc.com/{category}-trang-{page_number}/'
                     yield scrapy.Request(url=category_url, callback=self.parse_page,
                                         meta={'page_number': page_number, 'category': category})
-        def check_product_exist(self, product_name):
-            query = "SELECT EXISTS (SELECT 1 FROM thuocsi_vn WHERE title = %s)"
-            self.cursor.execute(query, (product_name,))
+
+        def check_product_exist(self, product_link):
+            query = "SELECT EXISTS (SELECT 1 FROM thuocsi_vn WHERE link = %s)"
+            self.cursor.execute(query, (product_link,))
             return self.cursor.fetchone()[0]
+
         def parse_page(self, response):
             if response.status == 200:
                 info_divs = response.css('.itemsanpham')
@@ -172,17 +173,17 @@ class LaptopSpider(scrapy.Spider):
             }
 
             try:
-                if self.check_product_exist(data['name']):
+                if self.check_product_exist(data['link']):
                     query = f'''
                         UPDATE thuocsi_vn
                         SET month_{current_month} = %s, thong_tin_san_pham = %s, nha_san_xuat = %s, nuoc_san_xuat = %s,
-                            hamluong_thanhphan = %s, photo = %s, link = %s, giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon=%s 
-                        WHERE title = %s;
+                            hamluong_thanhphan = %s, photo = %s, title = %s, giacu = giamoi, ngaycu = ngaymoi, giamoi = %s, ngaymoi = %s, nguon = %s 
+                        WHERE link = %s;
                     '''
                     values = (
                     data[f'month_{current_month}'], data['thong_tin'], data['nha_san_xuat'], data['nuoc_san_xuat'],
-                    data['hamluong_thanhphan'], data['img_url'], data['link'], data['giamoi'], ngay_moi,'chosithuoc.com',
-                    data['name'])
+                    data['hamluong_thanhphan'], data['img_url'], data['name'], data['giamoi'], ngay_moi,'chosithuoc.com',
+                    data['link'])
                 else:
                     query = f'''
                         INSERT INTO thuocsi_vn (title, giamoi, month_{current_month}, thong_tin_san_pham, nha_san_xuat,
