@@ -68,20 +68,17 @@ class LaptopSpider(scrapy.Spider):
                 hamluong_thanhphan TEXT,
                 thong_tin_san_pham TEXT,
                 link TEXT primary key,
-                nguon TEXT DEFAULT 2
+                nguon TEXT DEFAULT 'chosithuoc.com'
             )
             '''
             self.cursor.execute(query)
             self.connection.commit()
         logging.info(f"Đăng nhập thành công CHOSITHUOC")
-        def check_product_exist(self, product_name):
-            query = "SELECT EXISTS (SELECT 1 FROM thuocsi_vn WHERE title = %s)"
-            self.cursor.execute(query, (product_name,))
-            return self.cursor.fetchone()[0]
+
 
         def start_requests(self):
             categories = {
-                
+                'hoa-my-pham': 1,
                 'hoa-my-pham': 74,
                 'thuoc-tan-duoc': 341,
                 'thuoc-xuong-khop': 31,
@@ -98,7 +95,10 @@ class LaptopSpider(scrapy.Spider):
                     category_url = f'https://chosithuoc.com/{category}-trang-{page_number}/'
                     yield scrapy.Request(url=category_url, callback=self.parse_page,
                                         meta={'page_number': page_number, 'category': category})
-
+        def check_product_exist(self, product_name):
+            query = "SELECT EXISTS (SELECT 1 FROM thuocsi_vn WHERE title = %s)"
+            self.cursor.execute(query, (product_name,))
+            return self.cursor.fetchone()[0]
         def parse_page(self, response):
             if response.status == 200:
                 info_divs = response.css('.itemsanpham')
@@ -127,10 +127,11 @@ class LaptopSpider(scrapy.Spider):
         def parse_detail(self, response):
             name = response.meta.get('name')
             giacu_text = response.meta.get('gia')
-            if giacu_text == 'Liên hệ':
+            if giacu_text == '' or giacu_text == 'Liên hệ':
                 giacu = '0'
             else:
                 giacu = giacu_text.replace('đ', '').replace(',', '')
+
             img_url = response.meta.get('img_url')
             ngay_moi = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -205,6 +206,8 @@ def run_spider():
     process = CrawlerProcess(settings={
         
     })
+    spider = LaptopSpider()
+    spider.create_table()
 
     process.crawl(LaptopSpider)
     process.start()
