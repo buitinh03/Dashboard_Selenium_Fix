@@ -1,9 +1,9 @@
 # Dashboard_Selenium_Fix
 -Source backend:
-
-+File Auto-Auto_daily: dùng để chạy code theo ngày đã đặt lịch
-+Product_link: dùng để chạy link của sản phẩm được tìm kiếm và cập nhật giá mới nhất tại thời điểm 
-+Tesseract_ocr – canvas.png: dùng để chuuển đổi từ hình ảnh sang kiểu chữ để lấy giá (của web thuốc sĩ)
-+Scaping_log.log: khi chạy code có lỗi gì thì sẽ được in ra file này 
-+Env : biến môi trường 
-+Thuvien.txt : dùng để dowload các thư viện cần thiết để chạy Source code 
++ Auto : chứa các file python để cào giá các sàn chuyên buôn bán sản phẩm về thuốc.
++ Auto_daily.py: dùng để chạy Auto các file python trong Folder Auto.
++ Product_link: dùng để chạy link của sản phẩm được tìm kiếm và cập nhật giá mới nhất tại thời điểm .
++ Tesseract_ocr – canvas.png: dùng để chuyển đổi từ hình ảnh sang dạng Text để lấy giá (dùng trong file thuocsi.py).
++ Scraping_log.log: khi chạy các File python cào giá có lỗi gì thì sẽ được in vào file này và sẽ được reset mỗi lần khi chạy file python.
++ .env : biến môi trường ( chứa thông tin của database, các đường dẫn để dẫn đến các file, folder). 
++ Thuvien.txt : chứa các thư viện cần thiết để chạy file python
