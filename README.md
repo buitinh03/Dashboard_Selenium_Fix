@@ -8,4 +8,4 @@
 + .env : biến môi trường ( chứa thông tin của database, các đường dẫn để dẫn đến các file, folder). 
 + Thuvien.txt : chứa các thư viện cần thiết để chạy file python.
 
-- Folder data: chứa database.
+-Folder data: chứa database.
