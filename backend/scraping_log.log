@@ -1,5 +1,130 @@
-WARNING:root:Can not find chromedriver for currently installed chrome version.
-INFO:root:\u0110\u0103ng nh\u1eadp thành công
-INFO:root:Vui lòng \u0111\u1ee3i, s\u1ea3n ph\u1ea9m \u0111ang ti\u1ebfn hành load
-INFO:root:Link : https://thuocsi.vn/product/medx-savi-esomeprazole-40-h14v
-INFO:root:Gia : 74600
+INFO:root:\u0110\u0103ng nh\u1eadp thành công CHOSITHUOC
+INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
+INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
+INFO:scrapy.addons:Enabled addons:
+[]
+INFO:scrapy.crawler:Overridden settings:
+{}
+WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
+INFO:scrapy.extensions.telnet:Telnet Password: bf915018d6c76c50
+INFO:root:\u0110\u0103ng nh\u1eadp thành công CHOSITHUOC
+INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
+INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
+INFO:scrapy.addons:Enabled addons:
+[]
+INFO:scrapy.crawler:Overridden settings:
+{}
+WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
+INFO:scrapy.extensions.telnet:Telnet Password: 7b0bfc0ef75c4ca9
+INFO:scrapy.middleware:Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+INFO:scrapy.middleware:Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+INFO:scrapy.middleware:Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+INFO:scrapy.middleware:Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+INFO:scrapy.middleware:Enabled item pipelines:
+[]
+INFO:scrapy.core.engine:Spider opened
+INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6023
+INFO:scrapy.middleware:Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+INFO:scrapy.middleware:Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+INFO:scrapy.middleware:Enabled item pipelines:
+[]
+INFO:scrapy.core.engine:Spider opened
+INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6024
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/hoa-my-pham-trang-1/> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/hoa-my-pham-trang-1/> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/siro-frangold-fezzin-hop-20-ong-x-10ml> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/haut-haare-nagel-dragees-merz-spezial-120-vien-vien-uong-ho-tro-dep-da-toc-va-mong> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/antiance-skin-care-gel-sohan-20g-gel-tri-mun-lam-mo-vet-tham> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/skinshine-cream-cadia-15g-kem-tri-nam-hydroquinone-tretinoin-mometasone> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/ban-chai-danh-rang-ich-nhi-tren-6-tuoi> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/dau-goi-anti-dandruff-shampoo-dizigone-100ml-ho-tro-lam-sach-da-dau> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/vitamin-a-e-dry-eyes-eye-drops-vizulize-10ml-giup-giam-kho-mat-moi-mat> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/xit-mui-nano-bac-pharma-global-75ml> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/minoxidil-2-topical-solution-usp-60ml-dung-dich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/bioderma-atoderm-stick-levres-4g-son-duong-lam-diu-moi-kho-nut-ne> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/megaduo-plus-gel-15g-dieu-tri-ngua-mun-trung-ca> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/sachi-kem-da-nang-0-20g-ho-tro-viem-da-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/calendula-cream-special-kid-25g-kem-duong-am-cho-be> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/finpecia-1mg-cipla-hop-150-vien> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/siro-frangold-fezzin-hop-20-ong-x-10ml>: HTTP status code is not handled or not allowed
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/cream-anti-vergetue-special-mum-100ml-giup-lam-mo-cac-nep-nhan-tren-da> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/derma-sh-hell-balm-50ml-kem-duong-am-lam-mem-da> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/transino-melano-signal-essence-50g> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-250ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-10-goi-x-10ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/haut-haare-nagel-dragees-merz-spezial-120-vien-vien-uong-ho-tro-dep-da-toc-va-mong>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/antiance-skin-care-gel-sohan-20g-gel-tri-mun-lam-mo-vet-tham>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/skinshine-cream-cadia-15g-kem-tri-nam-hydroquinone-tretinoin-mometasone>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/ban-chai-danh-rang-ich-nhi-tren-6-tuoi>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/dau-goi-anti-dandruff-shampoo-dizigone-100ml-ho-tro-lam-sach-da-dau>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/vitamin-a-e-dry-eyes-eye-drops-vizulize-10ml-giup-giam-kho-mat-moi-mat>: HTTP status code is not handled or not allowed
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/samoxyl-5-hair-regrowth-treatment-shyan-60ml-tinh-chat-kich-thich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/xit-mui-nano-bac-pharma-global-75ml>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/minoxidil-2-topical-solution-usp-60ml-dung-dich-moc-toc>: HTTP status code is not handled or not allowed
+DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/minoxidil-5-topical-solution-usp-60ml-dung-dich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/bioderma-atoderm-stick-levres-4g-son-duong-lam-diu-moi-kho-nut-ne>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/megaduo-plus-gel-15g-dieu-tri-ngua-mun-trung-ca>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/sachi-kem-da-nang-0-20g-ho-tro-viem-da-mun-nhot>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/calendula-cream-special-kid-25g-kem-duong-am-cho-be>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/finpecia-1mg-cipla-hop-150-vien>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/cream-anti-vergetue-special-mum-100ml-giup-lam-mo-cac-nep-nhan-tren-da>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/derma-sh-hell-balm-50ml-kem-duong-am-lam-mem-da>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/transino-melano-signal-essence-50g>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-250ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-10-goi-x-10ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/samoxyl-5-hair-regrowth-treatment-shyan-60ml-tinh-chat-kich-thich-moc-toc>: HTTP status code is not handled or not allowed
+INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/minoxidil-5-topical-solution-usp-60ml-dung-dich-moc-toc>: HTTP status code is not handled or not allowed

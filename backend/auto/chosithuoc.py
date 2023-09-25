@@ -81,16 +81,16 @@ class LaptopSpider(scrapy.Spider):
 
         def start_requests(self):
             categories = {
-                'hoa-my-pham': 1,
-                # 'hoa-my-pham': 74,
-                # 'thuoc-tan-duoc': 341,
-                # 'thuoc-xuong-khop': 31,
-                # 'thuoc-giam-can': 9,
-                # 'thuoc-bo-than': 24,
-                # 'thuc-pham-chuc-nang': 134,
-                # 'thuc-pham-cao-cap': 16,
-                # 'thiet-bi-y-te': 36,
-                # 'thuoc-khong-ke-don': 6,
+                
+                'hoa-my-pham': 74,
+                'thuoc-tan-duoc': 341,
+                'thuoc-xuong-khop': 31,
+                'thuoc-giam-can': 9,
+                'thuoc-bo-than': 24,
+                'thuc-pham-chuc-nang': 134,
+                'thuc-pham-cao-cap': 16,
+                'thiet-bi-y-te': 36,
+                'thuoc-khong-ke-don': 6,
             }
 
             for category, num_pages in categories.items():
