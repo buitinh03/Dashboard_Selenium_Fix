@@ -1,13 +1,13 @@
 <?php
     return [
-        'operation'=>'python ',
+        'operation'=>'python3',
         'host' => 'localhost',
         'port' => '5432',
         'database' => 'thuocsi',
         'user' => 'postgres',
         'password' => 'haquangvinh',
         'xpathcaogiathuocsi' => '../backend/auto/thuocsi.py',
-        'xpathcaogiachosithuoc' => '../backend/auto/run_chosithuoc.py',
+        'xpathcaogiachosithuoc' => '../backend/auto/chosithuoc.py',
         'xpathcaogiapharma' => '../backend/auto/pharmacity.py',
         'xpathcaogiapharex' => '../backend/auto/pharex.py',
         'xpathcaogiamedigo' => '../backend/auto/medigo.py',

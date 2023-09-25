@@ -1,6 +1,6 @@
 import sys
 import logging
-
+from bs4 import BeautifulSoup
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium import webdriver
 import chromedriver_autoinstaller
@@ -102,10 +102,10 @@ try:
         login_button.click()
         wait.until(EC.url_to_be("https://thuocsi.pharex.vn/san-pham"))
     
-        print("Đăng nhập thành công")
+        logging.info(f"Đăng nhập thành công PHAREX")
         time.sleep(3)
     except (NoSuchElementException, TimeoutException) as e:
-        print("Đăng nhập thất bại hoặc sản phẩm đang tiến hành load")
+        logging.info(f"Đăng nhập thất bại hoặc sản phẩm đang tiến hành load")
     
     
     def extract_product_info():
@@ -121,12 +121,21 @@ try:
         return cursor.fetchone()[0]
     
     
-    num_pages_to_scrape = 1000
+    num_pages_to_scrape = 1
     link = []
     
     for page_num in range(1, num_pages_to_scrape + 1):
         url = f"https://thuocsi.pharex.vn/products?page={page_num}"
         driver.get(url)
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+
+        search_info_div = soup.find("div", class_="px-2 px-sm-0 mb-2")
+
+        if search_info_div and "Không có sản phẩm" in search_info_div.get_text():
+            break
+
     
         ll = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, "text-decoration-none"))
