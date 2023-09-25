@@ -318,7 +318,7 @@ icon.addEventListener("click", function(){
                                         if($checkLoginAdmin == 0){
                                         ?>
                                         <?php 
-                                        if(is_null($set['giacu'])){
+                                        if(is_null($set['giacu']) or $set['giacu']==''){
                                         ?>
                                         <td  style="text-align: center;">-</td>
                                         <td  style="text-align: center;">-</td>

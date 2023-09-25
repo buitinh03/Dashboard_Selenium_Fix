@@ -1,11 +1,10 @@
-INFO:root:\u0110\u0103ng nh\u1eadp thành công CHOSITHUOC
 INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
-INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
+INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
 INFO:scrapy.addons:Enabled addons:
 []
 INFO:scrapy.crawler:Overridden settings:
 {}
-WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
 
 It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
 
@@ -13,27 +12,7 @@ See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for 
   return cls(crawler)
 
 DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
-INFO:scrapy.extensions.telnet:Telnet Password: bf915018d6c76c50
-INFO:root:\u0110\u0103ng nh\u1eadp thành công CHOSITHUOC
-INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
-INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
-INFO:scrapy.addons:Enabled addons:
-[]
-INFO:scrapy.crawler:Overridden settings:
-{}
-WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
-
-It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
-
-See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
-  return cls(crawler)
-
-DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
-INFO:scrapy.extensions.telnet:Telnet Password: 7b0bfc0ef75c4ca9
-INFO:scrapy.middleware:Enabled extensions:
-['scrapy.extensions.corestats.CoreStats',
- 'scrapy.extensions.telnet.TelnetConsole',
- 'scrapy.extensions.logstats.LogStats']
+INFO:scrapy.extensions.telnet:Telnet Password: c62f485fe9bf2712
 INFO:scrapy.middleware:Enabled extensions:
 ['scrapy.extensions.corestats.CoreStats',
  'scrapy.extensions.telnet.TelnetConsole',
@@ -61,70 +40,45 @@ INFO:scrapy.middleware:Enabled item pipelines:
 INFO:scrapy.core.engine:Spider opened
 INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
 INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6023
-INFO:scrapy.middleware:Enabled downloader middlewares:
-['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
- 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
- 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
- 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
- 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
- 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
- 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
- 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
- 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
- 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
- 'scrapy.downloadermiddlewares.stats.DownloaderStats']
-INFO:scrapy.middleware:Enabled spider middlewares:
-['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
- 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
- 'scrapy.spidermiddlewares.referer.RefererMiddleware',
- 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
- 'scrapy.spidermiddlewares.depth.DepthMiddleware']
-INFO:scrapy.middleware:Enabled item pipelines:
-[]
-INFO:scrapy.core.engine:Spider opened
-INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
-INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6024
-DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/hoa-my-pham-trang-1/> (referer: None)
-DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/hoa-my-pham-trang-1/> (referer: None)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/siro-frangold-fezzin-hop-20-ong-x-10ml> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/haut-haare-nagel-dragees-merz-spezial-120-vien-vien-uong-ho-tro-dep-da-toc-va-mong> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/antiance-skin-care-gel-sohan-20g-gel-tri-mun-lam-mo-vet-tham> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/skinshine-cream-cadia-15g-kem-tri-nam-hydroquinone-tretinoin-mometasone> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/ban-chai-danh-rang-ich-nhi-tren-6-tuoi> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/dau-goi-anti-dandruff-shampoo-dizigone-100ml-ho-tro-lam-sach-da-dau> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/vitamin-a-e-dry-eyes-eye-drops-vizulize-10ml-giup-giam-kho-mat-moi-mat> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/xit-mui-nano-bac-pharma-global-75ml> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/minoxidil-2-topical-solution-usp-60ml-dung-dich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/bioderma-atoderm-stick-levres-4g-son-duong-lam-diu-moi-kho-nut-ne> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/megaduo-plus-gel-15g-dieu-tri-ngua-mun-trung-ca> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/sachi-kem-da-nang-0-20g-ho-tro-viem-da-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/calendula-cream-special-kid-25g-kem-duong-am-cho-be> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/finpecia-1mg-cipla-hop-150-vien> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/siro-frangold-fezzin-hop-20-ong-x-10ml>: HTTP status code is not handled or not allowed
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/cream-anti-vergetue-special-mum-100ml-giup-lam-mo-cac-nep-nhan-tren-da> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/derma-sh-hell-balm-50ml-kem-duong-am-lam-mem-da> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/transino-melano-signal-essence-50g> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-250ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-10-goi-x-10ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/haut-haare-nagel-dragees-merz-spezial-120-vien-vien-uong-ho-tro-dep-da-toc-va-mong>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/antiance-skin-care-gel-sohan-20g-gel-tri-mun-lam-mo-vet-tham>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/skinshine-cream-cadia-15g-kem-tri-nam-hydroquinone-tretinoin-mometasone>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/ban-chai-danh-rang-ich-nhi-tren-6-tuoi>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/dau-goi-anti-dandruff-shampoo-dizigone-100ml-ho-tro-lam-sach-da-dau>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/vitamin-a-e-dry-eyes-eye-drops-vizulize-10ml-giup-giam-kho-mat-moi-mat>: HTTP status code is not handled or not allowed
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/samoxyl-5-hair-regrowth-treatment-shyan-60ml-tinh-chat-kich-thich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/xit-mui-nano-bac-pharma-global-75ml>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/minoxidil-2-topical-solution-usp-60ml-dung-dich-moc-toc>: HTTP status code is not handled or not allowed
-DEBUG:scrapy.core.engine:Crawled (508) <GET https://chosithuoc.com/minoxidil-5-topical-solution-usp-60ml-dung-dich-moc-toc> (referer: https://chosithuoc.com/hoa-my-pham-trang-1/)
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/bioderma-atoderm-stick-levres-4g-son-duong-lam-diu-moi-kho-nut-ne>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/megaduo-plus-gel-15g-dieu-tri-ngua-mun-trung-ca>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/sachi-kem-da-nang-0-20g-ho-tro-viem-da-mun-nhot>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/calendula-cream-special-kid-25g-kem-duong-am-cho-be>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/finpecia-1mg-cipla-hop-150-vien>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/cream-anti-vergetue-special-mum-100ml-giup-lam-mo-cac-nep-nhan-tren-da>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/derma-sh-hell-balm-50ml-kem-duong-am-lam-mem-da>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/transino-melano-signal-essence-50g>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-250ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/nuoc-tam-thao-duoc-sachi-0-10-goi-x-10ml-ho-tro-phong-ham-ngua-rom-say-mun-nhot>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/samoxyl-5-hair-regrowth-treatment-shyan-60ml-tinh-chat-kich-thich-moc-toc>: HTTP status code is not handled or not allowed
-INFO:scrapy.spidermiddlewares.httperror:Ignoring response <508 https://chosithuoc.com/minoxidil-5-topical-solution-usp-60ml-dung-dich-moc-toc>: HTTP status code is not handled or not allowed
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol> (referer: None)
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum> (referer: None)
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg>
+{'name': 'Thu\u1ed1c Panadol 500mg giúp gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Panadol Viên s\u1ee7i ch\u1ee9a paracetamol là m\u1ed9t ch\u1ea5t h\u1ea1 s\u1ed1t và gi\u1ea3m \u0111au.; \u0110i\u1ec1u tr\u1ecb c\u01a1n \u0111au t\u1eeb nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t; \u0110au sau khi tiêm v\u1eafc xin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'GlaxoSmithKline', 'nuoc_san_xuat': 'Úc', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg/viên. Tá d\u01b0\u1ee3c: Citric acid - anhydrous, Sodium carbonate anhydrous, Sodium bicarbonate, Sorbitol, Aspartame, Dimethicone 200, Povidone, Sodium lauryl sulfate, Saccharin sodium, Imitation Lemon Flavour 610406E, Imitation candied sugar flavor 650122U, Permaseal Lemon Powder Flavour 84260-51, Drydex Nature Identical Lemon Flavour 16 - 8320.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien-0.jpg', 'link': 'https://chosithuoc.com/vien-sui-giam-dau-ha-sot-panadol-500mg'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb>
+{'name': 'Panadol Extra with Optizorb, H\u1ed9p 120 viên', 'giamoi': '2000', 'month_9': '2000', 'thong_tin': '\u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm v\u1eafc xin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.', 'nha_san_xuat': 'GlaxoSmithKline', 'nuoc_san_xuat': 'Ai Len', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol: 500mg, Caffeine: 65mg.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/medexa-16mg-dexa-medica-5-vi-x-6-vien-tri-roi-loan-noi-tiet_00914.webp', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-with-optizorb'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien>
+{'name': 'Thu\u1ed1c gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t Panadol 120mg', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Paracetamol là m\u1ed9t ch\u1ea5t gi\u1ea3m \u0111au, h\u1ea1 s\u1ed1t.; \u0110i\u1ec1u tr\u1ecb \u0111au nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0111au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm v\u1eafc xin; \u0110au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'Sterling drug (M) SDN.BHD', 'nuoc_san_xuat': 'M\u1ef9', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 120 mg/viên. Tá d\u01b0\u1ee3c: Mannitol, b\u1ed9t h\u01b0\u01a1ng anh \u0111ào, natri saccharin, h\u1ed7n h\u1ee3p D&C red lake, acid stearic, tinh b\u1ed9t ngô.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/hapacol-325mg-dhg-pharma-400-vien-dieu-tri-giam-dau-ha-sot_00626.webp', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-tre-em-120mg-96-vien'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500>
+{'name': 'Panadol Extra, H\u1ed9p 180 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': '\u0110au \u0111\u1ea7u.; \u0110au n\u1eeda \u0111\u1ea7u.; \u0110au c\u01a1.; \u0110au b\u1ee5ng kinh.; \u0110au h\u1ecdng.; \u0110au c\u01a1 x\u01b0\u01a1ng.; S\u1ed1t và \u0111au sau khi tiêm vacxin.', 'nha_san_xuat': 'Gsk', 'nuoc_san_xuat': 'Vi\u1ec7t Nam', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg, Caffeine 65mg Tá d\u01b0\u1ee3c: Pregelatinised starch, Maize starch, Povidone, Potassium Sorbate,Talc, Stearic acid, Croscarmellose sodium.', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-0.jpg', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol-extra-500'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol>
+{'name': 'Panadol Caplet 500mg, H\u1ed9p 120 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': '\u0110i\u1ec1u tr\u1ecb \u0111au nh\u1eb9 \u0111\u1ebfn v\u1eeba bao g\u1ed3m: \u0110au \u0111\u1ea7u, \u0111au n\u1eeda \u0111\u1ea7u, \u0111au c\u01a1, \u0111au b\u1ee5ng kinh, \u0111au h\u1ecdng, \u0111au c\u01a1 x\u01b0\u01a1ng, s\u1ed1t và \u0111au sau khi tiêm vacxin, \u0111au sau khi nh\u1ed5 r\u0103ng ho\u1eb7c sau các th\u1ee7 thu\u1eadt nha khoa, \u0111au r\u0103ng, \u0111au do viêm x\u01b0\u01a1ng kh\u1edbp.; H\u1ea1 s\u1ed1t.', 'nha_san_xuat': 'Sterling drug (M) SDN.BHD', 'nuoc_san_xuat': 'Không \u0111\u1ec1 c\u1eadp', 'hamluong_thanhphan': 'Paracetamol.........500mg', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-tri-cam-cum-panadol-cam-cum-0.png', 'link': 'https://chosithuoc.com/thuoc-giam-dau-ha-sot-panadol'}
+DEBUG:scrapy.core.scraper:Scraped from <200 https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum>
+{'name': 'Thu\u1ed1c Panadol C\u1ea3m Cúm, H\u1ed9p 180 viên', 'giamoi': '0', 'month_9': '0', 'thong_tin': 'Panadol C\u1ea3m cúm làm gi\u1ea3m các tri\u1ec7u ch\u1ee9ng c\u1ee7a c\u1ea3m cúm nh\u01b0 s\u1ed1t, \u0111au và xung huy\u1ebft m\u0169i.', 'nha_san_xuat': 'Không \u0111\u1ec1 c\u1eadp', 'nuoc_san_xuat': 'Vi\u1ec7t Nam', 'hamluong_thanhphan': 'Ho\u1ea1t ch\u1ea5t: Paracetamol 500mg, Caffeine 25mg, Phenylephrine hydrochloride 5mg. Tá d\u01b0\u1ee3c: Starch maize, Pre-gelatinised starch, Povidone, Eurocol Sunset yellow, Sodium lauryl sulfate, Potassium sorbate, Stearic acid, Talc, Microcrystalline cellulose, Hydroxypropyl methylcellulose, Polyethylene glycol, Titanium Dioxide, Quinoline yellow lake (El 04), Sunset yellow aluminium lake (E110).', 'img_url': 'https://cdn.famitaa.com/uploads/noidung/thumb/thuoc-giam-dau-ha-sot-panadol-0.jpg', 'link': 'https://chosithuoc.com/thuoc-tri-cam-cum-panadol-cam-cum'}
+INFO:scrapy.core.engine:Closing spider (finished)
+INFO:scrapy.statscollectors:Dumping Scrapy stats:
+{'downloader/request_bytes': 1528,
+ 'downloader/request_count': 6,
+ 'downloader/request_method_count/GET': 6,
+ 'downloader/response_bytes': 136343,
+ 'downloader/response_count': 6,
+ 'downloader/response_status_count/200': 6,
+ 'elapsed_time_seconds': 2.380986,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2023, 9, 25, 2, 28, 29, 368971),
+ 'httpcompression/response_bytes': 771091,
+ 'httpcompression/response_count': 6,
+ 'item_scraped_count': 6,
+ 'log_count/DEBUG': 13,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 1,
+ 'response_received_count': 6,
+ 'scheduler/dequeued': 6,
+ 'scheduler/dequeued/memory': 6,
+ 'scheduler/enqueued': 6,
+ 'scheduler/enqueued/memory': 6,
+ 'start_time': datetime.datetime(2023, 9, 25, 2, 28, 26, 987985)}
+INFO:scrapy.core.engine:Spider closed (finished)
