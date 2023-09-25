@@ -18,11 +18,8 @@
         $password = hash('sha256',$hash);
         $type = $_POST['type'];
 
-         $fm = new Format();
-        $product=new product();
-        $result=$product->search_id($email);
-        $demd = $result->fetch();
-        $pass=$demd['password'];
+        $update = $customer->update_customer($customername, $email, $username, $password, $type, $hash, $id);
+
         ?>
             
         <?php
@@ -35,9 +32,6 @@
 
                     <!END OF INCOME>
                 </div>
-                <?php if(isset($hash)) {echo $hash."  +    ";}
-                    if(isset($pass)) {echo $pass."  +    ";}
-                    if(isset($password)) {echo $password."  +    ";}?>
                 <div class="recent-order">
                     <h2 style="margin-left:10rem; font-size:1.5rem">Cập nhật người dùng</h2>
                     <?php
@@ -191,7 +185,7 @@
                                 <input type="text" name="username" id="username" value="<?php echo $result['username'] ?>" placeholder="Tên đăng nhập" class="productname">
                             </div>
                              <div class="recent-order-form">
-                                <label for="password">Mật khẩu:</label>
+                                <label for="password">Mật khẩu(đã mã hoá):</label>
                                 <input type="text" name="password" id="password" value="<?php echo trim($result['password']); ?>" placeholder="Mật khẩu" class="productname">
                             </div>
              
@@ -239,9 +233,6 @@
                         }
                     </style>
                     <a href="#"></a>
-                    <?php if(isset($hash)) {echo $hash."  +    ";}
-                    if(isset($pass)) {echo $pass."  +    ";}
-                    if(isset($password)) {echo $password."  +    ";}?>
                 </div>
             </main>
             <! END OF MAIN>
