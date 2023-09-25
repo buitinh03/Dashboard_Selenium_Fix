@@ -197,7 +197,7 @@ try:
                 canvas.screenshot("canvas.png")
                 image = Image.open("canvas.png")
                 price = pytesseract.image_to_string(image).strip()
-                price = price.replace('.', '').replace('d', '')
+                price = price.replace('.', '').replace('d', '').replace(' ', '')
             except NoSuchElementException:
                 price = "Không đề cập"
 
