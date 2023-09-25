@@ -69,7 +69,7 @@
     17. search.php: hiển thị sản phẩm theo từ khóa tìm kiếm. có thể thêm sửa xóa mã chuyển hóa tại đây. và biểu đồ so sánh giá của 10 sản phẩm trong 1 trang. chứa tính năng cập nhật sản phẩm theo từ khóa tìm kiếm
     18. style.css: chứa css của trang index.php, search.php
     19. view_user.php: giao diện của quản lý tài khoản, hiển thị tất cả các tài khoản đã tạo. Có thể thực hiện sửa, và xóa tài khoản.
-
+-Folder data: chứa database.
 
     
 
