@@ -6,4 +6,6 @@
 + Tesseract_ocr – canvas.png: dùng để chuyển đổi từ hình ảnh sang dạng Text để lấy giá (dùng trong file thuocsi.py).
 + Scraping_log.log: khi chạy các File python cào giá có lỗi gì thì sẽ được in vào file này và sẽ được reset mỗi lần khi chạy file python.
 + .env : biến môi trường ( chứa thông tin của database, các đường dẫn để dẫn đến các file, folder). 
-+ Thuvien.txt : chứa các thư viện cần thiết để chạy file python
++ Thuvien.txt : chứa các thư viện cần thiết để chạy file python.
+
+- Folder data: chứa database.
