@@ -43,7 +43,7 @@ if sys.stdout.encoding != 'utf-8':
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
 # Không mở cửa sổ trình duyệt
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 
 # Khởi tạo trình duyệt
 driver = webdriver.Chrome(options=chrome_options)
@@ -192,14 +192,19 @@ try:
             except NoSuchElementException:
                 ten = "Không đề cập"
 
+            import re
+
             try:
                 canvas = driver.find_element(By.XPATH, "//canvas[@class='styles_canvasPrice__vw932']")
                 canvas.screenshot("canvas.png")
                 image = Image.open("canvas.png")
                 price = pytesseract.image_to_string(image).strip()
-                price = price.replace('.', '').replace('d', '').replace(' ', '')
+                price = price.replace('.', '').replace('d', '').replace(' ', '').replace('đ', '')
+
+                if not re.match(r'^\d+', price):
+                    price = '0'
             except NoSuchElementException:
-                price = "Không đề cập"
+                price = '0'
 
             try:
                 div_elementt = driver.find_element(By.CLASS_NAME, "styles_content__aW6Pn")
