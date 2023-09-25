@@ -114,7 +114,7 @@ icon.addEventListener("click", function(){
  <a href="https://www.medigoapp.com/" class="a">Medigoapp.com</a></span></h2>
   <?php
  }elseif($theloaiban=='bansi'){
-    ?><h2>
+    ?><h2 class="dsach">
    <span class="dsach">-<i class="fa fa-caret-down dropdown__caret"></i>
  <a href="https://thuocsi.vn/products" target="_blank" class="a">Thuocsi.vn</a></span>  <span>-
  <i class="fa fa-caret-down dropdown__caret"></i>
