@@ -11,7 +11,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 import re
-
 import codecs
 from bs4 import BeautifulSoup
 import logging 
@@ -55,7 +54,7 @@ try:
     with connection.cursor() as cursor:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS thuocsi_vn (
-                title TEXT primary key,
+                title TEXT ,
                 giacu TEXT,
                 ngaycu DATE,
                 giamoi TEXT,
@@ -113,7 +112,7 @@ try:
         full_url = f"{base_url}/{url_suffix}"
         driver.get(full_url)
 
-        num_pages_to_scrape = 1000
+        num_pages_to_scrape = 1
         for page_num in range(1, num_pages_to_scrape + 1):
             url = f"{base_url}/{url_suffix}?page={page_num}"
             driver.get(url)
@@ -168,7 +167,7 @@ try:
                 ten = 'Đang cập nhật'
             try:
                 gia = driver.find_element(By.CSS_SELECTOR, ".ProductPrice_price__tztxw").text
-                gia = gia.replace('.', '').replace('đ', '')
+                gia = gia.replace('.', '').replace('đ', '').replace('-', '')
             except NoSuchElementException:
                 gia = '0'
             if gia == "":
