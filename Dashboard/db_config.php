@@ -1,6 +1,6 @@
 <?php
     return [
-        'operation'=>'python3',
+        'operation'=>'python',
         'host' => 'localhost',
         'port' => '5432',
         'database' => 'thuocsi',
