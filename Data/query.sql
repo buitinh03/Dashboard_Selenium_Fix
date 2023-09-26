@@ -1,4 +1,8 @@
-ALTER TABLE thuocsi_vn ADD masp TEXT;
-update thuocsi_vn
-set nguon ='medigoapp.com'
-where link like '%medigoapp.com%';
+UPDATE thuocsi_vn
+SET giamoi = '0', giacu = '0'
+WHERE giamoi LIKE '%-%' OR giacu LIKE '%-%';
+
+
+UPDATE thuocsi_vn
+SET giamoi = '0', giacu = '0'
+WHERE NOT giamoi ~ '^[0-9]'
