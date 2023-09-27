@@ -168,7 +168,7 @@ $pd = new product();
                                             ignore_user_abort(true);
                                             $duongdanf=require('db_config.php');
                                             if($duongdanf['HDH']=='Windows'){
-                                                $commanddd= $duongdanf['operation'].' '.$duongdanf['xpathcaogiapharex'];
+                                                $commanddd= $duongdanf['operation'].' '.$duongdanf['xpathcaogia'];
                                                 pclose(popen("start /B $commanddd", "r"));
                                                 header("Location: index.php");
                                             }else{
