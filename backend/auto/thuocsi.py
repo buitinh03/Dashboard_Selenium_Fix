@@ -43,7 +43,7 @@ if sys.stdout.encoding != 'utf-8':
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
 # Không mở cửa sổ trình duyệt
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 
 # Khởi tạo trình duyệt
 driver = webdriver.Chrome(options=chrome_options)
@@ -127,7 +127,7 @@ try:
 
         return product_name
 
-    num_pages_to_scrape = 1
+    num_pages_to_scrape = 1000
     link = []
 
     for page_num in range(1, num_pages_to_scrape + 1):
