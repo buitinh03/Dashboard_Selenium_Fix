@@ -91,7 +91,7 @@ include_once('format/format.php');
     
     <!-- </div> -->
         <div class="product_thongtin">
-            <h2>Thông tin sản phẩm</h2>
+            <h2 style="width:80%">Thông tin sản phẩm</h2>
             <p><?php echo $result['thong_tin_san_pham'] ?> </p>
             
             <div class="product_link">
