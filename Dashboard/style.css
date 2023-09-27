@@ -693,7 +693,7 @@ gap: 0.6rem;
     transform: translateY(-3px); 
 }
 
-#adress-form a h3{
+#adress-form button h3{
     font-weight: normal;
     font-style: normal;
     font-size: 24px;
@@ -709,7 +709,7 @@ gap: 0.6rem;
     transition: .5s all ease;
 }
 
-#adress-form a:hover h3{
+#adress-form button:hover h3{
     color: var(--color-white);
 }
 
@@ -717,7 +717,7 @@ gap: 0.6rem;
     color: var(--color-white);
 }
 
-#adress-form a{
+#adress-form button{
     margin-top: -100px;
     margin-left: -120px;
     margin-right: -90px;
@@ -726,6 +726,7 @@ gap: 0.6rem;
     padding-left: 110px;
     padding-right: 100px;
     padding-bottom: 25px;
+    background-color: transparent;
 }
 .chitiet a{
     transition: 1s all ease;

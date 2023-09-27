@@ -4,23 +4,24 @@ import time
 import threading
 
 load_dotenv()
-backend_folder = os.getenv("BACKEND_FOLDER1")
+backend_folder = os.getenv("BACKEND_FOLDER")
 operation=os.getenv("OPERATION")
 
 def run_script(script_path):
-    os.system(os.getenv("OPERATION")+' '+f'{script_path}')
-    time.sleep(1)
+    while True:
+        os.system(os.getenv("OPERATION")+' '+f'{script_path}')
+        time.sleep(1)
 
 def my_task():
     # Danh sách các tên file script
     script_files = [
-        "ankhang.py",
-        "longchau.py",
-        "pharmacity.py",
-        "chosithuoc.py",
-        "medigoapp.py",
-        "pharex.py",
-        "thuocsi.py",
+        "ankhang_CH.py",
+        "longchau_CH.py",
+        "pharmacity_CH.py",
+        "chosithuoc_CH.py",
+        "medigoapp_CH.py",
+        "pharex_CH.py",
+        "thuocsi_CH.py",
 ]
 
     for script_file in script_files:

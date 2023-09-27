@@ -1,11 +1,13 @@
 <?php
     return [
+        "HDH"=> "Windows", //Nhập hệ điều hành Windows, macOS hoặc Linux. Vui lòng nhập đúng như định dạng
         'operation'=>'python',
         'host' => 'localhost',
         'port' => '5432',
         'database' => 'thuocsi',
         'user' => 'postgres',
         'password' => 'Hoang.9112003',
+        'xpathcaogia' => '../backend/Auto_Daily.py',
         'xpathcaogiathuocsi' => '../backend/auto/thuocsi.py',
         'xpathcaogiachosithuoc' => '../backend/auto/chosithuoc.py',
         'xpathcaogiapharma' => '../backend/auto/pharmacity.py',
