@@ -172,7 +172,7 @@ $pd = new product();
                                                 pclose(popen("start /B $commanddd", "r"));
                                                 header("Location: index.php");
                                             }else{
-                                                $commanddd= $duongdanf['operation'].' '.$duongdanf['xpathcaogiapharex'];
+                                                $commanddd= $duongdanf['operation'].' '.$duongdanf['xpathcaogia'];
                                                 exec($commanddd.' > /dev/null 2>&1 &');
                                                 header('Location: index.php');
                                             }
