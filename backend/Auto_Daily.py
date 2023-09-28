@@ -4,7 +4,7 @@ import time
 import threading
 
 load_dotenv()
-backend_folder = os.getenv("BACKEND_FOLDER1")
+backend_folder = os.getenv("BACKEND_FOLDER_AUTO")
 operation=os.getenv("OPERATION")
 
 def run_script(script_path):
@@ -18,7 +18,7 @@ def my_task():
         "longchau.py",
         "pharmacity.py",
         "chosithuoc.py",
-        "medigoapp.py",
+        "medigo.py",
         "pharex.py",
         "thuocsi.py",
 ]
