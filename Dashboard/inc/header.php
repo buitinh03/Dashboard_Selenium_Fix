@@ -57,7 +57,7 @@ window.addEventListener('popstate', function(event) {
 
                 <div class="top">
                     <div class="logo">
-                        <a href="index.php"><img src="./images/logo1.png"></a>
+                        <a href="index.php" style="width:100%; margin-left:20px; margin-top: 5px;"><img src="./images/logo1.png"></a>
                         <!-- <h2 class="text-muted">HB<span class="sphone" style="color:#00CC33;"> Pharma</span></h2> -->
                     </div>
                 

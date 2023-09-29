@@ -264,17 +264,14 @@ include_once('format/format.php');
         ?>
 
         <div class='box'>
-<<<<<<< HEAD
+
             <?php if($spcungda['title']=='Viên sủi giúp bồi bổ sức khỏe, tăng sức đề kháng Multivitamin Healthy Care PLUSSZ tuýp 20 viên'){?>
                 <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-height:15rem; width:40px;height:auto;"></a></div>
                 <?php ;}else { ?>
         <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-height:15rem;"></a></div>
         <?php ;} ?>        
         <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],40) ?></a></p>
-=======
-        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset=""></a></div>
-                <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],45) ?></a></p>
->>>>>>> f2b4b923114e1c16ab0f2fe7ca20050d6a2f3adc
+
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
 <?php
