@@ -83,10 +83,10 @@ class LaptopSpider(scrapy.Spider):
             self.create_table()
 
             # Thêm danh sách các liên kết sản phẩm vào đây
-            links = [
-                "https://chosithuoc.com/alsanvin-alsanza-20g-gel-tiem-noi-khop",
-            ]
-            # links=sys.argv[1:]
+            # links = [
+            #     "https://chosithuoc.com/alsanvin-alsanza-20g-gel-tiem-noi-khop",
+            # ]
+            links=sys.argv[1:]
             for link in links:
                 yield scrapy.Request(url=link, callback=self.parse_detail, meta={'link': link})
 
