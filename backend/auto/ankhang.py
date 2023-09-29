@@ -36,7 +36,7 @@ try:
 
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument("--window-size=1920x1080")
     driver = webdriver.Chrome(options=chrome_options)
     url = "https://www.nhathuocankhang.com/"
@@ -246,6 +246,7 @@ try:
                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NULL, NULL)
                             ON CONFLICT (link) DO UPDATE
                                 SET month_{current_month} = excluded.month_{current_month},
+                                title = excluded.title,
                                 thong_tin_san_pham = excluded.thong_tin_san_pham,
                                 nha_san_xuat = excluded.nha_san_xuat,
                                 nuoc_san_xuat = excluded.nuoc_san_xuat,
