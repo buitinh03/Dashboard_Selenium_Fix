@@ -127,9 +127,10 @@ class LaptopSpider(scrapy.Spider):
                                     meta={'page_number': response.meta['page_number'] + 1, 'category': response.meta['category']})
 
         def parse_detail(self, response):
-            name = response.meta.get('name')
             giacu_text = response.meta.get('gia')
-            if giacu_text == '' or giacu_text == 'Liên hệ':
+            if giacu_text is None:
+                giacu = '0'
+            elif giacu_text == '' or giacu_text == 'Liên hệ':
                 giacu = '0'
             else:
                 giacu = giacu_text.replace('đ', '').replace(',', '')

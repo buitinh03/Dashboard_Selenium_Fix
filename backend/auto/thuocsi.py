@@ -192,19 +192,16 @@ try:
             except NoSuchElementException:
                 ten = "Không đề cập"
 
-            import re
+            
 
             try:
                 canvas = driver.find_element(By.XPATH, "//canvas[@class='styles_canvasPrice__vw932']")
                 canvas.screenshot("canvas.png")
                 image = Image.open("canvas.png")
                 price = pytesseract.image_to_string(image).strip()
-                price = price.replace('.', '').replace('d', '').replace(' ', '').replace('đ', '')
-
-                if not re.match(r'^\d+', price):
-                    price = '0'
+                price = price.replace('.', '').replace('d', '')
             except NoSuchElementException:
-                price = '0'
+                price = "Không đề cập"
 
             try:
                 div_elementt = driver.find_element(By.CLASS_NAME, "styles_content__aW6Pn")

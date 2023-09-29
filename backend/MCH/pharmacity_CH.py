@@ -125,8 +125,10 @@ try:
                 ten = 'Không đề cập'
             try:
                 gia = driver.find_element(By.CSS_SELECTOR, ".ProductPrice_price__tztxw").text
-                gia = gia.replace('.', '').replace('đ', '')
+                gia = gia.replace('.', '').replace('đ', '').replace('-', '')
             except NoSuchElementException:
+                gia = '0'
+            if gia == "":
                 gia = '0'
 
             try:

@@ -1,5 +1,105 @@
-WARNING:root:Can not find chromedriver for currently installed chrome version.
-INFO:root:\u0110\u0103ng nh\u1eadp thành công
-INFO:root:Vui lòng \u0111\u1ee3i, s\u1ea3n ph\u1ea9m \u0111ang ti\u1ebfn hành load
-INFO:root:Link : https://thuocsi.vn/product/medx-myspa-medisun-h30v
-INFO:root:Gia : 103200
+INFO:scrapy.utils.log:Scrapy 2.10.0 started (bot: scrapybot)
+INFO:scrapy.utils.log:Versions: lxml 4.9.3.0, libxml2 2.10.3, cssselect 1.2.0, parsel 1.8.1, w3lib 2.1.2, Twisted 22.10.0, Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)], pyOpenSSL 23.2.0 (OpenSSL 3.1.2 1 Aug 2023), cryptography 41.0.3, Platform Windows-10-10.0.22621-SP0
+INFO:scrapy.addons:Enabled addons:
+[]
+INFO:scrapy.crawler:Overridden settings:
+{}
+WARNING:py.warnings:C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\request.py:248: ScrapyDeprecationWarning: '2.6' is a deprecated value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting.
+
+It is also the default value. In other words, it is normal to get this warning if you have not defined a value for the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting. This is so for backward compatibility reasons, but it will change in a future version of Scrapy.
+
+See the documentation of the 'REQUEST_FINGERPRINTER_IMPLEMENTATION' setting for information on how to handle this deprecation.
+  return cls(crawler)
+
+DEBUG:scrapy.utils.log:Using reactor: twisted.internet.selectreactor.SelectReactor
+INFO:scrapy.extensions.telnet:Telnet Password: 50e4651f51758acf
+INFO:scrapy.middleware:Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+INFO:scrapy.middleware:Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+INFO:scrapy.middleware:Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+INFO:scrapy.middleware:Enabled item pipelines:
+[]
+INFO:scrapy.core.engine:Spider opened
+INFO:scrapy.extensions.logstats:Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+INFO:scrapy.extensions.telnet:Telnet console listening on 127.0.0.1:6023
+DEBUG:scrapy.core.engine:Crawled (200) <GET https://chosithuoc.com/alsanvin-alsanza-20g-gel-tiem-noi-khop> (referer: None)
+ERROR:scrapy.core.scraper:Spider error processing <GET https://chosithuoc.com/alsanvin-alsanza-20g-gel-tiem-noi-khop> (referer: None)
+Traceback (most recent call last):
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\defer.py", line 277, in iter_errback
+    yield next(it)
+          ^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\python.py", line 350, in __next__
+    return next(self.data)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\utils\python.py", line 350, in __next__
+    return next(self.data)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\core\spidermw.py", line 106, in process_sync
+    for r in iterable:
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 28, in <genexpr>
+    return (r for r in result or () if self._filter(r, spider))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\core\spidermw.py", line 106, in process_sync
+    for r in iterable:
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\spidermiddlewares\referer.py", line 352, in <genexpr>
+    return (self._set_referer(r, response) for r in result or ())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\core\spidermw.py", line 106, in process_sync
+    for r in iterable:
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 27, in <genexpr>
+    return (r for r in result or () if self._filter(r, spider))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\core\spidermw.py", line 106, in process_sync
+    for r in iterable:
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\spidermiddlewares\depth.py", line 31, in <genexpr>
+    return (r for r in result or () if self._filter(r, response, spider))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vi van hoang\AppData\Local\Programs\Python\Python311\Lib\site-packages\scrapy\core\spidermw.py", line 106, in process_sync
+    for r in iterable:
+  File "d:\Xampp\htdocs\ThucTap\Git17\Dashboard_Selenium_Fix\backend\product_link\chosithuoc_link.py", line 110, in parse_detail
+    giacu = giacu_text.replace('\u0111', '').replace(',', '')
+            ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+INFO:scrapy.core.engine:Closing spider (finished)
+INFO:scrapy.statscollectors:Dumping Scrapy stats:
+{'downloader/request_bytes': 253,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 23445,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 1.793303,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2023, 9, 29, 4, 10, 41, 382665),
+ 'httpcompression/response_bytes': 139495,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 2,
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 1,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/AttributeError': 1,
+ 'start_time': datetime.datetime(2023, 9, 29, 4, 10, 39, 589362)}
+INFO:scrapy.core.engine:Spider closed (finished)

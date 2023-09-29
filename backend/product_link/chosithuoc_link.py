@@ -83,10 +83,10 @@ class LaptopSpider(scrapy.Spider):
             self.create_table()
 
             # Thêm danh sách các liên kết sản phẩm vào đây
-            # links = [
-            #     "https://chosithuoc.com/oxantin-adomme-light-pharmalife-hop-60-vien-vien-uong-giam-can",
-            # ]
-            links=sys.argv[1:]
+            links = [
+                "https://chosithuoc.com/alsanvin-alsanza-20g-gel-tiem-noi-khop",
+            ]
+            # links=sys.argv[1:]
             for link in links:
                 yield scrapy.Request(url=link, callback=self.parse_detail, meta={'link': link})
 
@@ -103,8 +103,10 @@ class LaptopSpider(scrapy.Spider):
 
             # Kiểm tra trạng thái của trang chi tiết trước khi trích xuất thông tin
             if name and gia and number and img_url:
-                giacu_text = gia
-                if giacu_text == 'Liên hệ':
+                giacu_text = response.meta.get('gia')
+                if giacu_text is None:
+                    giacu = '0'
+                elif giacu_text == '' or giacu_text == 'Liên hệ':
                     giacu = '0'
                 else:
                     giacu = giacu_text.replace('đ', '').replace(',', '')

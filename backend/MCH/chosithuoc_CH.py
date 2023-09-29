@@ -81,8 +81,10 @@ class LaptopSpider(scrapy.Spider):
         detail_url = response.url
 
         if name and gia and number and img_url:
-            giacu_text = gia
-            if giacu_text == 'Liên hệ':
+            giacu_text = response.meta.get('gia')
+            if giacu_text is None:
+                giacu = '0'
+            elif giacu_text == '' or giacu_text == 'Liên hệ':
                 giacu = '0'
             else:
                 giacu = giacu_text.replace('đ', '').replace(',', '')

@@ -261,7 +261,7 @@ include_once('format/format.php');
         ?>
 
         <div class='box'>
-        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-height:15rem;"></a></div>
+        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset=""></a></div>
                 <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],45) ?></a></p>
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
@@ -329,17 +329,22 @@ include_once('format/format.php');
             align-items: center;
         }
         .sanphamlienquan .danhsach .box .image a{
-            width: 100%;
-            height: auto;
+            
+            max-height: 12rem;
+            width: 80%;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 5%;
-            margin-top: 10%;
+            position: relative;
+            /* margin-bottom: 5%;
+            margin-top: 10%; */
             transition:  .5s all ease;
         }
         .sanphamlienquan .danhsach .box img{
-            width: 80%;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
             border-radius: 5px;
             transition:  .5s all ease;
         }
