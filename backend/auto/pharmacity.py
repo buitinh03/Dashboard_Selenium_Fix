@@ -112,7 +112,7 @@ try:
         full_url = f"{base_url}/{url_suffix}"
         driver.get(full_url)
 
-        num_pages_to_scrape = 1
+        num_pages_to_scrape = 1000
         for page_num in range(1, num_pages_to_scrape + 1):
             url = f"{base_url}/{url_suffix}?page={page_num}"
             driver.get(url)

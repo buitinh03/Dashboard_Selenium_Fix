@@ -78,6 +78,7 @@ class LaptopSpider(scrapy.Spider):
 
         def start_requests(self):
             categories = {
+                
                 'hoa-my-pham': 80,
                 'thuoc-tan-duoc': 350,
                 'thuoc-xuong-khop': 40,

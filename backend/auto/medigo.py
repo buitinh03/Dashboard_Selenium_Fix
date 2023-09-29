@@ -39,7 +39,7 @@ logging.basicConfig(filename=log_filename, level=logging.INFO)
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 
