@@ -136,7 +136,7 @@ body{
 }
 
 a{color:var(--color-dark)}
-img{display:block;width: 100%;}
+img{display:block;object-fit: cover;height: 100%; width: 100%;}
 h1{font-weight: 800;font-size: 1.8rem;}
 h2{font-size: 1.4rem;}
 h3{font-size: 0.87rem;}

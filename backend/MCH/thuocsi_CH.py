@@ -9,6 +9,7 @@ import datetime
 import sys
 import os
 import codecs
+import re
 import logging  
 from dotenv import load_dotenv
 from PIL import Image
