@@ -39,7 +39,7 @@ logging.basicConfig(filename=log_filename, level=logging.INFO)
 # Khởi tạo trình duyệt Chrome
 chromedriver_autoinstaller.install()
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -215,7 +215,7 @@ try:
                         title = excluded.title,
                         thong_tin_san_pham = excluded.thong_tin_san_pham,
                         nha_san_xuat = excluded.nha_san_xuat,
-                        title = excluded.title,
+                        
                         nuoc_san_xuat = excluded.nuoc_san_xuat,
                         hamluong_thanhphan = excluded.hamluong_thanhphan,
                         photo = excluded.photo,

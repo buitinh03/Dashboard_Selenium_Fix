@@ -245,7 +245,7 @@ try:
                     nuoc_san_xuat = excluded.nuoc_san_xuat,
                     hamluong_thanhphan = excluded.hamluong_thanhphan,
                     photo = excluded.photo,
-                    title = excluded.title,
+                    
                     giacu = thuocsi_vn.giamoi,
                     ngaycu = thuocsi_vn.ngaymoi,
                     giamoi='{gia}',

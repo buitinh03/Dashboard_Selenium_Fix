@@ -230,7 +230,7 @@ try:
                         title = excluded.title,
                         thong_tin_san_pham = excluded.thong_tin_san_pham,
                         nha_san_xuat = excluded.nha_san_xuat,
-                        title = excluded.title,
+                        
                         nuoc_san_xuat = excluded.nuoc_san_xuat,
                         hamluong_thanhphan = excluded.hamluong_thanhphan,
                         photo = excluded.photo,

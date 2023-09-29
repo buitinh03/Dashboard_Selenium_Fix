@@ -258,9 +258,9 @@ try:
                             hamluong_thanhphan = excluded.hamluong_thanhphan,
                             photo = excluded.photo,
                             giacu = thuocsi_vn.giamoi,
-                        ngaycu = thuocsi_vn.ngaymoi,
-                        giamoi='{gia_sales}',
-                        ngaymoi='{ngay}';
+                            ngaycu = thuocsi_vn.ngaymoi,
+                            giamoi='{gia_sales}',
+                            ngaymoi='{ngay}';
                     ''', (
                         product_name, gia_sales, ngay, gia_sales, photo, nha_san_xuat, nuoc_san_xuat,
                         hamluong_thanhphan, thong_tin_san_pham, a, 'longchau.vn'))
