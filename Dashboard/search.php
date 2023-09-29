@@ -865,9 +865,11 @@
                                             ?>
 
                                         
-
+                                        <?php if($set['title']=='Viên sủi giúp bồi bổ sức khỏe, tăng sức đề kháng Multivitamin Healthy Care PLUSSZ tuýp 20 viên'){?>
+                                            <td style="align-items: center; text-align:center; margin: 0 auto; width: 40px; height:auto; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:40px;height:auto; text-align:center; margin: 0 auto;"></td> 
+                                            <?php ;} else { ?> 
                                         <td style="align-items: center; text-align:center; margin: 0 auto; width: 5%; padding: 0 2px;" ><img src='<?php echo $set['photo'] ?>' style="width:100%; text-align:center; margin: 0 auto;"></td>
-                                       
+                                       <?php } ?>
                                         <?php if($set['masp'] == null){?>
                                         <td><div>
                                         <?php if($checkLoginAdmin == 0){?>    
