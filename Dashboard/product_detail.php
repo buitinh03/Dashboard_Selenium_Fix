@@ -39,8 +39,11 @@ include_once('format/format.php');
 <!-- <div class="product"> -->
  
     <div class="product-image">
+        <?php if($result['title']=='Viên sủi giúp bồi bổ sức khỏe, tăng sức đề kháng Multivitamin Healthy Care PLUSSZ tuýp 20 viên'){ ?>
+       <img src="<?php echo $result['photo'] ?>" alt="" style="max-width:100%;max-height:100%;width:60px;height:auto;">
+       <?php ;} else {?>
        <img src="<?php echo $result['photo'] ?>" alt="" style="max-height:15rem; margin-bottom:5px;">
-        
+       <?php ;} ?> 
     </div>
 
     <div class="product-details">
@@ -261,8 +264,14 @@ include_once('format/format.php');
         ?>
 
         <div class='box'>
-        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset=""></a></div>
-                <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],45) ?></a></p>
+
+            <?php if($spcungda['title']=='Viên sủi giúp bồi bổ sức khỏe, tăng sức đề kháng Multivitamin Healthy Care PLUSSZ tuýp 20 viên'){?>
+                <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-height:15rem; width:40px;height:auto;"></a></div>
+                <?php ;}else { ?>
+        <div class="image"><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><img src="<?php echo $spcungda['photo'] ?>" alt="" srcset="" style="max-height:15rem;"></a></div>
+        <?php ;} ?>        
+        <p><a href="product_detail.php?id=<?php echo $spcungda['photo'];?>&link=<?php echo $spcungda['link'];?>&price=<?php echo $spcungda['giamoi']?>"><?php echo $format->textShorten($spcungda['title'],40) ?></a></p>
+
                 <span><?php echo number_format( $spcungda['giamoi']); ?><sup>đ</sup></span>
             </div>
 <?php
