@@ -119,7 +119,7 @@ $pd = new product();
             </div> -->
             <!END OF RECENT>
              <div class="sales-analytics">
-                    <h2>Sản phẩm bán chạy</h2>
+                    
                     <div class="item online" >
                         <div class="icon" style="background-color: #f97e0e;">
                          <span class="material-icons-sharp"><img src="images/vuongmien1.jpg" alt="" class="img"></span>
